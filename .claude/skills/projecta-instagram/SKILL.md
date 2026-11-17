@@ -40,6 +40,6 @@ legendas, plano, humanizador) criam o conteúdo; este fluxo publica.
 - `python3 scripts/ig.py responder <comment_id> "texto"` só depois do OK dele (o script também confirma).
 
 ## Manutenção
-- O token dura ~60 dias. A cada ~50 dias: `python3 scripts/ig.py renovar-token`, atualizar `.env` e o
-  secret `IG_ACCESS_TOKEN` no GitHub (Settings → Secrets and variables → Actions).
+- O token é de usuário do sistema (Login unificado, graph.facebook.com) e não expira. `ig.py conta` testa a conexão.
+- Se trocar o token, atualize o `.env` (ou o painel) e o secret `IG_ACCESS_TOKEN` no GitHub.
 - Se um post ficar com status `erro`, leia o campo `erro` no `calendario.json`, corrija e aprove de novo.

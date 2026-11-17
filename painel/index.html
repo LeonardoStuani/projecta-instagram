@@ -264,15 +264,15 @@ function setupSteps() {
   return [
     {k:"python", ok: !!S.pillow},
     {k:"github", ok: g.repo && !!g.remote && t.base_url_ok},
-    {k:"token", ok: t.configurado},
+    {k:"token", ok: t.valido},
     {k:"secret", ok: !!(g.repo && g.remote && secretOk())},
     {k:"envio", ok: g.repo && g.remote && g.alteracoes === 0 && g.a_enviar === 0},
   ];
 }
 function pills() {
   const t = S.token, g = S.git;
-  const tokCls = !t.configurado ? "err" : (t.dias_restantes != null && t.dias_restantes < 10 ? "warn" : "ok");
-  const tokTxt = !t.configurado ? "Instagram desconectado" : t.dias_restantes != null ? `Token: ${t.dias_restantes} dias` : "Instagram conectado";
+  const tokCls = t.valido ? "ok" : "err";
+  const tokTxt = !t.configurado ? "Instagram desconectado" : !t.valido ? "Token recusado pela Meta" : `@${t.conta || "conectado"} · conectado`;
   const gCls = !g.repo || !g.remote ? "err" : g.alteracoes || g.a_enviar ? "warn" : "ok";
   const gTxt = !g.repo || !g.remote ? "GitHub não conectado" : g.alteracoes || g.a_enviar ? `${g.alteracoes || g.a_enviar} alteração(ões) não enviada(s)` : "GitHub em dia";
   $("#pills").innerHTML = `<span class="pill"><i class="dot ${tokCls}"></i>${tokTxt}</span><span class="pill"><i class="dot ${gCls}"></i>${gTxt}</span>` +
@@ -294,7 +294,7 @@ function alertas() {
   const out = [], now = agoraDate(), em7 = new Date(now); em7.setDate(em7.getDate() + 7);
   const t = S.token;
   if (!t.configurado) out.push({c:"err", t:"<b>Instagram desconectado.</b> Conecte o token para publicar e ver comentários.", go:"config"});
-  else if (t.dias_restantes != null && t.dias_restantes < 10) out.push({c:"warn", t:`<b>O token vence em ${t.dias_restantes} dias.</b> Renove com um clique.`, go:"config"});
+  else if (!t.valido) out.push({c:"err", t:"<b>A conexão com o Instagram falhou.</b> Abra Conexões e clique em Testar conexão.", go:"config"});
   if (!S.git.repo || !S.git.remote) out.push({c:"err", t:"<b>GitHub não conectado.</b> Sem ele, os aprovados não saem sozinhos.", go:"config"});
   for (const p of S.posts) {
     if (p.status === "publicado") continue;
@@ -519,16 +519,16 @@ function vConfig() {
     <div class="inline"><label class="sr" for="gh-url">Endereço do repositório</label><input type="url" id="gh-url" placeholder="https://github.com/seu-usuario/projecta-instagram" value="${esc(repo)}"><button class="btn" id="gh-go">${g.remote ? "Trocar" : "Conectar"}</button></div></div></div>
 
   <div class="step ${cls(2)}"><span class="ic">${ic(2)}</span><div><h3>Token do Instagram</h3>
-    ${t.configurado ? `<p class="muted" style="margin:4px 0 0">Token salvo em ${t.salvo_em ? new Date(t.salvo_em+"T12:00").toLocaleDateString("pt-BR") : "data desconhecida"}${t.dias_restantes != null ? ` · vence em cerca de <b>${t.dias_restantes} dias</b>` : ""}. Ele fica só no arquivo .env deste computador.</p><p id="conta" class="muted"></p>
-      <div class="inline"><button class="btn ghost sm" id="tk-test">Testar conexão</button><button class="btn ghost sm" id="tk-ren">Renovar token (+60 dias)</button></div>` : `
-    <ol><li>Entre em <a href="https://developers.facebook.com/apps/creation/" target="_blank" rel="noopener">developers.facebook.com → Criar app</a>, caso de uso <b>"Gerenciar mensagens e conteúdo no Instagram"</b>, tipo Empresa.</li>
-    <li>No app: <b>Instagram → Configuração da API com login do Instagram → Gerar tokens de acesso → Adicionar conta</b> e entre com o @projectatech.</li>
-    <li>Permissões: <code>instagram_business_basic</code>, <code>instagram_business_content_publish</code>, <code>instagram_business_manage_comments</code>.</li>
-    <li>Copie o token e cole abaixo. Ele vai direto para o .env e não aparece mais na tela.</li></ol>`}
+    ${t.configurado && !t.valido ? `<p class="alert err" style="cursor:default;margin-top:8px"><b>O último teste falhou.</b> Clique em Testar conexão. Se continuar, confira o token e o IG_USER_ID no .env.</p>` : ""}
+    ${t.configurado ? `<p class="muted" style="margin:4px 0 0">Token de usuário do sistema (Login unificado) · <b>não expira</b>${t.conta ? ` · conta <b>@${esc(t.conta)}</b>` : ""}${t.user_id ? ` · ID ${esc(t.user_id)}` : ""}. Ele fica só no arquivo .env deste computador.</p>
+      <div class="inline"><button class="btn ghost sm" id="tk-test">Testar conexão</button></div>` : `
+    <ol><li>Em <a href="https://developers.facebook.com/apps/" target="_blank" rel="noopener">developers.facebook.com → Meus apps</a>, abra o app da Projecta.</li>
+    <li>Vá em <b>Casos de uso → API do Instagram → Login unificado → Gerar tokens de acesso</b> e gere o token de usuário do sistema para o @projectatech.</li>
+    <li>Copie o token e cole abaixo. Ele vai direto para o .env e não aparece mais na tela. O painel só salva se a Meta confirmar a conta.</li></ol>`}
     <div class="inline"><label class="sr" for="tk">Token</label><input type="password" id="tk" placeholder="${t.configurado ? "Colar um token novo (opcional)" : "Cole o token aqui"}" autocomplete="off"><button class="btn" id="tk-go">Salvar e testar</button></div></div></div>
 
   <div class="step ${cls(3)}"><span class="ic">${ic(3)}</span><div><h3>Token também no GitHub</h3>
-    <p class="muted" style="margin:4px 0 0">É o que deixa o robô publicar sozinho no horário, mesmo com este computador desligado. Faça a cada token novo.</p>
+    <p class="muted" style="margin:4px 0 0">É o que deixa o robô publicar sozinho no horário, mesmo com este computador desligado. Como o token não expira, é só uma vez (ou se você trocar o token).</p>
     <ol><li>${g.remote ? `Abra <a href="${esc(repo)}/settings/secrets/actions/new" target="_blank" rel="noopener">Settings → Secrets → New secret</a>` : "No repositório: Settings → Secrets and variables → Actions → New repository secret"}, nome <code>IG_ACCESS_TOKEN</code>, valor = o mesmo token.</li>
     <li>${g.remote ? `Em <a href="${esc(repo)}/settings/actions" target="_blank" rel="noopener">Settings → Actions → General</a>` : "Em Settings → Actions → General"}, marque <b>Read and write permissions</b> e salve.</li></ol>
     <label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sec" ${secretOk()?"checked":""}> Já fiz os dois passos</label></div></div>
@@ -546,9 +546,8 @@ function vConfig() {
 
   $("#gh-go").onclick = e => run(e.currentTarget, () => api("/api/github/conectar", {url: $("#gh-url").value}), "Repositório conectado.");
   $("#tk-go").onclick = e => { const tok = $("#tk").value; $("#tk").value = "";
-    run(e.currentTarget, () => api("/api/conexao/token", {token: tok}), r => `Conectado como @${r.conta.username} (${r.conta.account_type}).`); };
-  $("#tk-test")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/conexao/testar", {}), r => `Conectado como @${r.conta.username} · ${r.conta.media_count} posts · conta ${r.conta.account_type}.`));
-  $("#tk-ren")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/conexao/renovar", {}), r => r.lembrete));
+    run(e.currentTarget, () => api("/api/conexao/token", {token: tok}), r => `Conectado como @${r.conta.username}. Cole o mesmo token no secret do GitHub.`); };
+  $("#tk-test")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/conexao/testar", {}), r => `Conexão OK: @${r.conta.username} · ${r.conta.media_count} posts · ${r.conta.followers_count ?? "?"} seguidores.`));
   $("#sec").onchange = e => { try { localStorage.setItem("secretOk", e.target.checked ? "1" : "0"); } catch {} pills(); vConfig(); };
   $("#gh-push").onclick = e => run(e.currentTarget, () => api("/api/github/enviar", {}), "Enviado para o GitHub.");
   document.querySelectorAll("[data-aut]").forEach(c => c.onchange = () => run(null, () => api("/api/autorizacoes", {cliente: c.dataset.aut, autorizado: c.checked}), "Autorização atualizada."));

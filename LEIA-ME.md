@@ -31,18 +31,17 @@ scripts/ig.py                     linha de comando
    git push -u origin main
    ```
 
-### 1.2 Token da API do Instagram (você faz; eu nunca vejo o token)
-1. Acesse **developers.facebook.com → Meus apps → Criar app**.
-2. Caso de uso: **"Gerenciar mensagens e conteúdo no Instagram"** (Instagram API com login do Instagram). Tipo: Empresa.
-3. No app: **Instagram → Configuração da API com login do Instagram → Gerar tokens de acesso → Adicionar conta** e entre com o @projectatech.
-4. Marque as permissões: `instagram_business_basic`, `instagram_business_content_publish`, `instagram_business_manage_comments`.
-5. Copie o token gerado (vale ~60 dias). O app pode ficar em modo de desenvolvimento: como você é o dono do app e da conta, não precisa de revisão da Meta.
+### 1.2 Token da API (você faz; eu nunca vejo o token)
+A Meta só oferece o **Login unificado** para apps novos: o token é de **usuário do sistema**, começa com `EAA`, **não expira** e usa `graph.facebook.com`.
+1. Em **developers.facebook.com → Meus apps**, abra o app da Projecta.
+2. **Casos de uso → API do Instagram → Login unificado → Gerar tokens de acesso** para o @projectatech.
+3. Cole o token no painel (aba Conexões) ou no `.env`. O `IG_USER_ID` do @projectatech é `17841478285323581`.
 
 ### 1.3 Configurar
 ```bash
 cp .env.example .env      # cole o token em IG_ACCESS_TOKEN e troque SEU_USUARIO na URL
 pip install pillow        # só para o comando "preparar"
-python3 scripts/ig.py conta   # deve mostrar projectatech
+python3 scripts/ig.py conta   # deve terminar com "Conexão OK: @projectatech"
 ```
 No GitHub: **Settings → Secrets and variables → Actions → New repository secret** → nome `IG_ACCESS_TOKEN`, valor = o token.
 Em **Settings → Actions → General → Workflow permissions**, marque **Read and write permissions**.
@@ -71,7 +70,7 @@ Fale com o Claude Code normalmente, ou rode os comandos:
 | Planejar a semana | "/ig-plan" |
 | Ganchos de Reel | "/ig-reel" (traduz a estrutura para PT-BR) |
 | Auditoria do perfil | "/ig-profile" e "/ig-audit" |
-| Renovar o token (a cada ~50 dias) | `python3 scripts/ig.py renovar-token` → atualizar `.env` e o secret |
+| Testar a conexão | `python3 scripts/ig.py conta` (o token não expira) |
 
 **Agendamento**: o GitHub Actions roda de hora em hora e publica os posts `aprovado` cuja data e hora (horário de Brasília) já passaram. Depois ele grava o link no `calendario.json`. Também dá para disparar na mão em **Actions → Publicar posts aprovados → Run workflow**.
 

@@ -20,7 +20,6 @@ AUT = os.path.join(ROOT, "instagram", "autorizacoes.json")
 UI = os.path.join(ROOT, "painel", "index.html")
 PORT = int(os.environ.get("PAINEL_PORTA", "8765"))
 LOCK = threading.Lock()
-TOKEN_DIAS = 60
 
 PILARES = {"dica": 40, "bastidores": 25, "prova": 20, "oferta": 15}
 CTA = "peça sua análise gratuita: link na bio"
@@ -57,14 +56,8 @@ def env_write(updates):
 def token_info():
     e = env_read()
     ok = bool(e.get("IG_ACCESS_TOKEN"))
-    dias = None
-    if ok and e.get("IG_TOKEN_SALVO_EM"):
-        try:
-            salvo = datetime.strptime(e["IG_TOKEN_SALVO_EM"], "%Y-%m-%d").date()
-            dias = TOKEN_DIAS - (date.today() - salvo).days
-        except ValueError:
-            pass
-    return {"configurado": ok, "dias_restantes": dias, "salvo_em": e.get("IG_TOKEN_SALVO_EM"),
+    return {"configurado": ok, "valido": ok and e.get("IG_TOKEN_OK") == "1", "conta": e.get("IG_CONTA", ""),
+            "user_id": e.get("IG_USER_ID", ""), "salvo_em": e.get("IG_TOKEN_SALVO_EM"),
             "media_base_url": e.get("IG_MEDIA_BASE_URL", ""),
             "base_url_ok": bool(e.get("IG_MEDIA_BASE_URL")) and "USUARIO" not in e.get("IG_MEDIA_BASE_URL", "")}
 
@@ -262,36 +255,55 @@ def preparar(b):
     return {"ok": True}
 
 
+DICA_TOKEN = (" Confira: o token vem de Casos de uso → API do Instagram → Login unificado → Gerar tokens de acesso"
+              " (token de usuário do sistema), e o IG_USER_ID no .env precisa ser o do @projectatech.")
+
+
+def consultar_me(tok):
+    os.environ["IG_ACCESS_TOKEN"] = tok
+    os.environ.setdefault("IG_USER_ID", env_read().get("IG_USER_ID", ""))
+    me = ig.conta()
+    if me.get("username") != ig.CONTA:
+        raise SystemExit(f"O token responde pela conta @{me.get('username')}, não @{ig.CONTA}.")
+    return me
+
+
 def salvar_token(b):
-    tok = (b.get("token") or "").strip()
-    if not tok or len(tok) < 40 or " " in tok:
-        raise SystemExit("Isso não parece um token do Instagram. Copie o token inteiro.")
-    env_write({"IG_ACCESS_TOKEN": tok, "IG_TOKEN_SALVO_EM": date.today().isoformat()})
-    return testar()
+    tok = (b.get("token") or "").strip().strip('"').strip("'")
+    if not tok or len(tok) < 40 or re.search(r"\s", tok):
+        raise SystemExit("Isso não parece um token do Instagram. Copie o token inteiro, sem espaços." + DICA_TOKEN)
+    antigo = env_read().get("IG_ACCESS_TOKEN")
+    try:
+        me = consultar_me(tok)  # só salva se a Meta aceitar
+    except SystemExit as err:
+        if antigo:
+            os.environ["IG_ACCESS_TOKEN"] = antigo
+        raise SystemExit("A Meta recusou este token, então ele NÃO foi salvo. " + scrub_tok(str(err), tok) + DICA_TOKEN)
+    env_write({"IG_ACCESS_TOKEN": tok, "IG_TOKEN_SALVO_EM": date.today().isoformat(),
+               "IG_TOKEN_OK": "1", "IG_CONTA": me.get("username", "")})
+    return {"ok": True, "conta": me,
+            "lembrete": "Token salvo. Cole este MESMO token no secret IG_ACCESS_TOKEN do GitHub."}
+
+
+def scrub_tok(msg, tok):
+    return msg.replace(tok, "•••") if tok else msg
 
 
 def testar(_=None):
-    ig.load_env()
-    if not env_read().get("IG_ACCESS_TOKEN"):
+    tok = env_read().get("IG_ACCESS_TOKEN")
+    if not tok:
         raise SystemExit("Nenhum token salvo ainda.")
-    os.environ["IG_ACCESS_TOKEN"] = env_read()["IG_ACCESS_TOKEN"]
-    os.environ.pop("IG_USER_ID", None)
-    me = ig.api("GET", "me", {"fields": "user_id,username,name,account_type,media_count,profile_picture_url"})
+    try:
+        me = consultar_me(tok)
+    except SystemExit as err:
+        env_write({"IG_TOKEN_OK": "0"})
+        raise SystemExit("A Meta recusou o token salvo. " + str(err) + DICA_TOKEN)
+    env_write({"IG_TOKEN_OK": "1", "IG_CONTA": me.get("username", "")})
     return {"ok": True, "conta": me}
 
 
 def renovar(_=None):
-    tok = env_read().get("IG_ACCESS_TOKEN")
-    if not tok:
-        raise SystemExit("Nenhum token salvo ainda.")
-    url = f"{ig.HOST}/refresh_access_token?" + urllib.parse.urlencode({"grant_type": "ig_refresh_token", "access_token": tok})
-    try:
-        r = json.loads(urllib.request.urlopen(url, timeout=60).read().decode())
-    except Exception as err:  # noqa: BLE001
-        raise SystemExit(f"Não deu para renovar: {getattr(err, 'reason', err)}")
-    env_write({"IG_ACCESS_TOKEN": r["access_token"], "IG_TOKEN_SALVO_EM": date.today().isoformat()})
-    return {"ok": True, "dias": r.get("expires_in", 0) // 86400,
-            "lembrete": "Token novo salvo no .env. Atualize também o secret IG_ACCESS_TOKEN no GitHub."}
+    return {"ok": True, "lembrete": "Não é necessário: o token de usuário do sistema não expira."}
 
 
 def conectar_github(b):
@@ -437,6 +449,12 @@ def scrub(msg):
 
 def main():
     ig.load_env()
+    if env_read().get("IG_ACCESS_TOKEN"):  # confere o token ao abrir o painel
+        try:
+            testar()
+            print("Token do Instagram: OK")
+        except SystemExit:
+            print("Token do Instagram: RECUSADO pela Meta. Abra Conexões no painel.")
     srv = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
     url = f"http://127.0.0.1:{PORT}"
     print(f"Painel do Instagram rodando em {url}  (Ctrl+C para fechar)")

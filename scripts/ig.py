@@ -12,12 +12,13 @@ Comandos:
   python3 scripts/ig.py agendados                  publica os aprovados cuja data/hora já passou (usado pelo GitHub Actions)
   python3 scripts/ig.py comentarios [--n 5]        comentários recentes nos últimos N posts
   python3 scripts/ig.py responder <comment_id> "texto"   responde um comentário (sempre pede confirmação)
-  python3 scripts/ig.py renovar-token              gera um novo token de longa duração (válido ~60 dias)
+  python3 scripts/ig.py renovar-token              não é necessário: o token de usuário do sistema não expira
 
 Variáveis de ambiente (arquivo .env na raiz ou secrets do GitHub):
-  IG_ACCESS_TOKEN   token de longa duração (Business Login for Instagram)
-  IG_USER_ID        opcional; descoberto sozinho
+  IG_ACCESS_TOKEN   token de usuário do sistema (Login unificado da Meta, começa com EAA, não expira)
+  IG_USER_ID        ID da conta profissional do Instagram (@projectatech: 17841478285323581)
   IG_MEDIA_BASE_URL URL pública da pasta media/, ex.: https://raw.githubusercontent.com/USUARIO/REPO/main/media
+  IG_API_HOST       opcional (padrão https://graph.facebook.com)
   IG_API_VERSION    opcional (padrão v23.0)
 
 Só usa a biblioteca padrão do Python, exceto `preparar`, que usa Pillow (pip install pillow).
@@ -29,7 +30,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAL = os.path.join(ROOT, "calendario.json")
 MEDIA = os.path.join(ROOT, "media")
 TZ = timezone(timedelta(hours=-3))  # America/Sao_Paulo (sem horário de verão)
-HOST = "https://graph.instagram.com"
+CONTA = "projectatech"
 
 
 def load_env():
@@ -53,9 +54,13 @@ def ver():
     return os.environ.get("IG_API_VERSION", "v23.0")
 
 
-def api(method, path, params=None, headers=None, data=None, host=HOST):
+def host():
+    return os.environ.get("IG_API_HOST", "https://graph.facebook.com").rstrip("/")
+
+
+def api(method, path, params=None, headers=None, data=None):
     params = dict(params or {})
-    url = f"{host}/{ver()}/{path.lstrip('/')}" if host == HOST else f"{host}/{path.lstrip('/')}"
+    url = f"{host()}/{ver()}/{path.lstrip('/')}"
     hdrs = {"Authorization": f"Bearer {env('IG_ACCESS_TOKEN')}"}
     hdrs.update(headers or {})
     body = None
@@ -77,11 +82,12 @@ def api(method, path, params=None, headers=None, data=None, host=HOST):
 
 
 def user_id():
-    uid = os.environ.get("IG_USER_ID")
-    if not uid:
-        uid = api("GET", "me", {"fields": "user_id,username"})["user_id"]
-        os.environ["IG_USER_ID"] = str(uid)
-    return uid
+    return env("IG_USER_ID")
+
+
+def conta():
+    """Dados da conta ligada ao IG_USER_ID. Serve como teste do token."""
+    return api("GET", user_id(), {"fields": "username,name,media_count,followers_count"})
 
 
 # ---------------- calendário ----------------
@@ -166,8 +172,12 @@ def confirm(msg):
 
 # ---------------- comandos ----------------
 def cmd_conta(a):
-    print(json.dumps(api("GET", "me", {"fields": "user_id,username,name,account_type,media_count"}),
-                     ensure_ascii=False, indent=2))
+    c = conta()
+    print(json.dumps(c, ensure_ascii=False, indent=2))
+    if c.get("username") == CONTA:
+        print(f"Conexão OK: @{CONTA}.")
+    else:
+        sys.exit(f"Atenção: o token responde pela conta @{c.get('username')}, não @{CONTA}.")
 
 
 def cmd_preparar(a):
@@ -266,11 +276,7 @@ def cmd_responder(a):
 
 
 def cmd_renovar(a):
-    url = f"{HOST}/refresh_access_token?" + urllib.parse.urlencode(
-        {"grant_type": "ig_refresh_token", "access_token": env("IG_ACCESS_TOKEN")})
-    r = json.loads(urllib.request.urlopen(url, timeout=60).read().decode())
-    print("Novo token (válido ~", r.get("expires_in", 0) // 86400, "dias). Atualize o .env e o secret do GitHub:")
-    print(r["access_token"])
+    print("Não é necessário: o token é de usuário do sistema (Login unificado) e não expira.")
 
 
 CMDS = {"conta": cmd_conta, "preparar": cmd_preparar, "plano": cmd_plano, "aprovar": cmd_aprovar,

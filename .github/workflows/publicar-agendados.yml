@@ -23,6 +23,7 @@ jobs:
       - name: Publicar aprovados com data/hora vencida
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: "17841478285323581"
           IG_MEDIA_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/media
         run: python3 scripts/ig.py agendados
       - name: Salvar status no calendário
