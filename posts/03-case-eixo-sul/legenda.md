@@ -1,0 +1,21 @@
+# Case Eixo Sul: legenda
+
+```
+Case: Eixo Sul Engenharia 🚀
+
+A Eixo Sul faz topografia, agrimensura e georreferenciamento em Lages, com mais de 500 projetos e 10 anos de mercado. Mesmo assim, não aparecia no Google e controlava os clientes em Excel e anotações.
+
+A gente fez as duas pontas:
+→ o site eixosul.com, para ser encontrada e receber pedidos de orçamento
+→ um sistema interno que organiza clientes, projetos e financeiro
+
+Resultado: presença profissional no Google, tudo em um só sistema, fim do retrabalho e visão financeira clara, projeto por projeto.
+
+Sua empresa também vive no Excel? Peça sua análise gratuita: link na bio.
+
+Obrigado, equipe Eixo Sul, pela confiança! 🤝
+
+#Lages #LagesSC #SerraCatarinense #SistemaSobMedida #CriacaoDeSites
+```
+
+> Eixo Sul autorizou o uso como case em 17/11/2026.

@@ -1,0 +1,19 @@
+# Dica: 5 riscos da planilha: legenda
+
+```
+5 riscos de gerenciar sua empresa por planilha 📉
+
+1. Perder tudo: arquivo corrompido ou apagado e não tem volta.
+2. Erro de digitação: fórmula quebrada que ninguém percebe.
+3. Cada um com uma versão: “clientes_FINAL_v3 (2).xlsx”.
+4. Zero visão do todo: para saber do mês, alguém monta relatório.
+5. Tempo jogado fora: horas corrigindo planilha toda semana.
+
+Planilha é ótima para começar. Para crescer, sua empresa precisa de um sistema: backup automático, dados validados, todo mundo na mesma versão e dashboard pronto.
+
+Salva esse post e manda para quem ainda vive no Excel. 😉
+
+Peça sua análise gratuita: link na bio.
+
+#Lages #LagesSC #SerraCatarinense #GestaoEmpresarial #SistemaDeGestao
+```

@@ -1,0 +1,19 @@
+# Antes e depois: legenda
+
+```
+Antes ou depois? 👀
+
+❌ Planilhas espalhadas, cada uma numa versão
+❌ Orçamentos perdidos no meio do WhatsApp
+❌ Ninguém sabe o custo real de cada serviço
+
+✅ Clientes, orçamentos e financeiro num lugar só
+✅ Fim do retrabalho
+✅ Decisões com base em números
+
+Foi essa a virada da Eixo Sul Engenharia, aqui de Lages: site para ser encontrada e sistema para se organizar.
+
+Sua empresa ainda vive no Excel? Peça sua análise gratuita: link na bio.
+
+#Lages #LagesSC #SerraCatarinense #SistemaDeGestao #SistemasSobMedida
+```

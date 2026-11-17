@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel Instagram Projecta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F1EA; --stone:#E7E4DA; --ink:#111110; --muted:#646057; --fog:#A3A097; --line:#D9D5CA;
+  --accent:#F04E12; --ok:#1F7A4D; --okbg:#DCEFE3; --warn:#9A6200; --warnbg:#F6E7C4; --err:#B42318; --errbg:#F8DDD8;
+  --r:14px; --display:"Bricolage Grotesque",system-ui,sans-serif; --sans:"Instrument Sans",system-ui,sans-serif; --serif:"Instrument Serif",Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.03em;line-height:1.05;margin:0;text-wrap:balance}
+em.s{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+a{color:inherit}
+.tag{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+
+/* layout */
+.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+aside{background:var(--ink);color:var(--paper);padding:24px 18px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh}
+.brand{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.04em;margin:0 8px 22px}
+.brand span{color:var(--accent)}
+.nav{all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:10px;color:var(--fog);font-weight:500}
+.nav:hover{color:var(--paper);background:#1d1c1a}
+.nav[aria-current=page]{background:var(--paper);color:var(--ink)}
+.nav:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.nav .n{font-size:12px;background:var(--accent);color:var(--ink);border-radius:99px;padding:0 8px;font-weight:600}
+.side-foot{margin-top:auto;font-size:13px;color:var(--fog);padding:0 8px}
+main{padding:32px 40px 80px;min-width:0}
+.top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:28px}
+.top h1{font-size:44px}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:5px 12px;font-size:13px;font-weight:500;border:1px solid var(--line);background:#fff8}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--fog)}
+.dot.ok{background:var(--ok)} .dot.warn{background:#D99A1E} .dot.err{background:var(--err)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:99px;padding:10px 18px;font-weight:600;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;transition:transform .15s,background-color .2s,color .2s}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.btn:active{transform:scale(.96)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.accent{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.btn.accent:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.btn.sm{padding:6px 12px;font-size:13px}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* cards */
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.card.ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.card.ink .muted,.card.ink .tag{color:var(--fog)}
+.card h3{font-size:22px;margin-top:6px}
+.big{font-family:var(--display);font-weight:700;font-size:56px;letter-spacing:-.05em;line-height:1}
+
+/* next post */
+.next{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center}
+.next img{width:150px;aspect-ratio:4/5;object-fit:cover;border-radius:10px;display:block}
+.count{font-family:var(--display);font-size:34px;font-weight:700;letter-spacing:-.04em;color:var(--accent)}
+
+/* alerts */
+.alerts{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.alert{display:block;padding:10px 12px;border-radius:10px;font-size:14px;cursor:pointer;border:0;text-align:left;width:100%}
+.alert.err{background:var(--errbg);color:var(--err)} .alert.warn{background:var(--warnbg);color:var(--warn)} .alert.ok{background:var(--okbg);color:var(--ok)}
+.alert b{font-weight:600}
+
+/* mix bar */
+.mix{display:flex;height:14px;border-radius:99px;overflow:hidden;background:var(--stone);margin:12px 0}
+.mix span{display:block;height:100%}
+.legend{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 14px;font-size:13px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.c-dica{background:#F04E12}.c-bastidores{background:#111110}.c-prova{background:#8C8676}.c-oferta{background:#E9B44C}.c-sem{background:#D9D5CA}
+
+/* weeks */
+.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.week{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--paper)}
+.week .days{display:flex;gap:4px;margin-top:8px}
+.week .d{flex:1;height:28px;border-radius:6px;background:var(--stone);display:grid;place-items:center;font-size:11px;font-weight:600;color:var(--muted)}
+.week .d.on{background:var(--ink);color:var(--paper)} .week .d.ap{background:var(--ok);color:#fff} .week .d.pub{background:var(--accent);color:var(--ink)}
+
+/* calendar */
+.cal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.cal-head h2{font-size:32px}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);background:#fff;border-radius:var(--r);overflow:hidden}
+.cal .wd{padding:8px 10px;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper)}
+.day{min-height:118px;padding:6px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:5px;transition:background-color .15s}
+.day .num{font-size:12px;font-weight:600;color:var(--muted);display:flex;justify-content:space-between}
+.day.out{background:#FAF9F5}.day.out .num{color:var(--fog)}
+.day.today .num b{background:var(--accent);color:var(--ink);border-radius:99px;padding:0 7px}
+.day.slot .num::after{content:"18h";font-weight:500;color:var(--fog)}
+.day.over{background:#FDEBE3;outline:2px dashed var(--accent);outline-offset:-4px}
+.chip{display:flex;gap:6px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--fog);border-radius:8px;padding:4px;cursor:grab;font-size:12px;font-weight:500;line-height:1.2;text-align:left;width:100%}
+.chip img{width:30px;height:38px;object-fit:cover;border-radius:4px;flex:none}
+.chip .t{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.chip.pendente{border-left-color:#D99A1E}.chip.aprovado{border-left-color:var(--ok)}.chip.publicado{border-left-color:var(--accent);opacity:.75}.chip.erro{border-left-color:var(--err)}
+.chip .x{margin-left:auto;font-size:11px;color:var(--err);font-weight:700;padding-right:2px}
+.tray{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;min-height:56px;padding:10px;border:1.5px dashed var(--line);border-radius:var(--r)}
+.tray .chip{width:auto;max-width:240px}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;border-radius:99px;padding:2px 10px}
+.status.pendente{background:var(--warnbg);color:var(--warn)}.status.aprovado{background:var(--okbg);color:var(--ok)}.status.publicado{background:#FDE3D7;color:#9C2F07}.status.erro{background:var(--errbg);color:var(--err)}
+
+/* drawer */
+dialog{border:0;padding:0;max-width:min(1100px,96vw);width:100%;border-radius:20px;background:var(--paper);color:var(--ink);box-shadow:0 30px 80px -20px #0007}
+dialog::backdrop{background:#111110aa;backdrop-filter:blur(3px)}
+.dlg{display:grid;grid-template-columns:380px 1fr;min-height:600px;max-height:90vh}
+.dlg .left{background:var(--stone);padding:28px;display:flex;justify-content:center;align-items:flex-start;overflow:auto}
+.dlg .right{padding:28px;overflow:auto;display:flex;flex-direction:column;gap:16px}
+.x-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:18px}
+
+/* phone */
+.phone{width:320px;background:#fff;border-radius:34px;border:8px solid var(--ink);overflow:hidden;box-shadow:0 18px 40px -16px #0006}
+.ph-top{display:flex;align-items:center;gap:8px;padding:10px 12px;font-size:13px;font-weight:600}
+.av{width:30px;height:30px;border-radius:50%;background:var(--ink) center/cover;flex:none;display:grid;place-items:center;color:var(--accent);font-family:var(--display);font-weight:700;font-size:14px}
+.ph-media{position:relative;aspect-ratio:4/5;background:var(--stone);overflow:hidden}
+.ph-media img,.ph-media video{width:100%;height:100%;object-fit:cover;display:block}
+.ph-nav{position:absolute;top:50%;translate:0 -50%;width:28px;height:28px;border-radius:50%;border:0;background:#fffd;cursor:pointer;font-weight:700}
+.ph-nav.l{left:8px}.ph-nav.r{right:8px}
+.ph-n{position:absolute;top:10px;right:10px;background:#111110bb;color:#fff;font-size:12px;border-radius:99px;padding:1px 8px}
+.dots{display:flex;gap:4px;justify-content:center;padding:8px}
+.dots i{width:6px;height:6px;border-radius:50%;background:var(--line)}.dots i.on{background:#3897f0}
+.ph-cap{padding:0 12px 14px;font-size:13px;line-height:1.4;white-space:pre-wrap;max-height:220px;overflow:auto}
+.ph-cap b{font-weight:600}
+
+/* form */
+label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+input[type=text],input[type=password],input[type=date],input[type=time],input[type=url],select,textarea{width:100%;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px}
+textarea{min-height:240px;resize:vertical;line-height:1.5}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.checks li{padding:8px 12px;border-radius:10px}
+.checks .e{background:var(--errbg);color:var(--err)}.checks .w{background:var(--warnbg);color:var(--warn)}.checks .k{background:var(--okbg);color:var(--ok)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding-top:8px;border-top:1px solid var(--line)}
+.danger{margin-top:auto;border:1.5px solid var(--err);border-radius:var(--r);padding:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.danger input{max-width:150px}
+
+/* feed */
+.feed-wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start}
+.profile{padding:14px 12px;display:flex;gap:14px;align-items:center;border-bottom:1px solid #eee}
+.profile .av{width:64px;height:64px;font-size:26px}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-height:520px;overflow:auto}
+.pgrid button{all:unset;cursor:pointer;position:relative;aspect-ratio:4/5;background:var(--stone)}
+.pgrid img{width:100%;height:100%;object-fit:cover;display:block}
+.pgrid .lab{position:absolute;left:4px;bottom:4px;font-size:10px;font-weight:600;background:#fffe;border-radius:4px;padding:0 4px}
+.pgrid .lab.pub{background:var(--accent)}
+
+/* setup */
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:14px}
+.step{display:grid;grid-template-columns:44px 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.step .ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;background:var(--stone)}
+.step.done .ic{background:var(--ok);color:#fff}
+.step.cur{border:2px solid var(--accent)}
+.step h3{font-size:20px}
+.step ol{margin:8px 0;padding-left:20px}.step li{margin:3px 0}
+.inline{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.inline input{flex:1;min-width:240px}
+code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
+
+/* comments */
+.cm-post{display:grid;grid-template-columns:90px 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.cm-post img{width:90px;aspect-ratio:4/5;object-fit:cover;border-radius:8px}
+.cm{border-top:1px solid var(--line);padding:10px 0}
+.cm:first-child{border-top:0}
+.reply{margin-top:8px;display:none;gap:8px;flex-direction:column}
+.reply.open{display:flex}
+.reply textarea{min-height:70px}
+
+.toast{position:fixed;bottom:22px;left:50%;translate:-50% 0;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:99px;font-weight:500;z-index:99;max-width:90vw;box-shadow:0 10px 30px -10px #0008;opacity:0;transition:opacity .2s,translate .2s;pointer-events:none}
+.toast.on{opacity:1;translate:-50% -6px}
+.toast.err{background:var(--err);color:#fff}
+.empty{padding:30px;text-align:center;color:var(--muted);border:1.5px dashed var(--line);border-radius:var(--r)}
+.skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;z-index:100;background:#fff;padding:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media (max-width:1100px){.g3{grid-template-columns:1fr 1fr}.weeks{grid-template-columns:1fr 1fr}.feed-wrap{grid-template-columns:1fr}}
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  aside{position:static;height:auto;flex-direction:row;flex-wrap:wrap;padding:12px}
+  .brand{width:100%;margin:0 4px 6px}.side-foot{display:none}
+  main{padding:20px 16px 60px}.top h1{font-size:32px}
+  .g3,.g2{grid-template-columns:1fr}
+  .dlg{grid-template-columns:1fr}.dlg .left{padding:16px}
+  .cal .wd{font-size:10px;padding:6px 4px}.day{min-height:80px;padding:3px}.chip img{display:none}.chip{font-size:10px}
+  .row{grid-template-columns:1fr}.phone{width:100%;max-width:320px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="app">
+  <aside>
+    <div class="brand">projecta<span>.</span>insta</div>
+    <button class="nav" data-view="hoje" aria-current="page">Hoje</button>
+    <button class="nav" data-view="calendario">Calendário</button>
+    <button class="nav" data-view="feed">Prévia do feed</button>
+    <button class="nav" data-view="comentarios">Comentários</button>
+    <button class="nav" data-view="config">Conexões <span class="n" id="cfg-n" hidden></span></button>
+    <div class="side-foot">Nada vai ao ar sem a sua aprovação.<br>Rodando só neste computador.</div>
+  </aside>
+  <main id="conteudo" tabindex="-1">
+    <div class="top">
+      <div><p class="tag" id="agora"></p><h1 id="titulo">Hoje</h1></div>
+      <div class="pills" id="pills"></div>
+    </div>
+    <section id="view"></section>
+  </main>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlg-t"><div style="position:relative"><button class="x-close" aria-label="Fechar" onclick="dlg.close()">×</button><div id="dlg-body"></div></div></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const file = p => "/arquivo?p=" + encodeURIComponent(p);
+const PIL = {dica:"Dica", bastidores:"Bastidores", prova:"Prova / antes-depois", oferta:"Oferta"};
+const ST = {pendente:"Pendente", aprovado:"Aprovado", publicado:"Publicado", erro:"Erro"};
+const WD = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
+let S = null, view = "hoje", mes = null;
+
+async function api(path, body) {
+  const opt = body === undefined ? {} : {method:"POST", headers:{"Content-Type":"application/json","X-Painel":"1"}, body:JSON.stringify(body)};
+  const r = await fetch(path, opt);
+  const j = await r.json().catch(() => ({erro:"Resposta inválida do painel."}));
+  if (!r.ok) throw new Error(j.erro || "Erro");
+  return j;
+}
+function toast(msg, err) {
+  const t = $("#toast"); t.textContent = msg; t.className = "toast on" + (err ? " err" : "");
+  clearTimeout(t._h); t._h = setTimeout(() => t.className = "toast", err ? 6000 : 3200);
+}
+async function run(btn, fn, ok) {
+  const old = btn?.textContent; if (btn) { btn.disabled = true; btn.textContent = "Aguarde…"; }
+  try { const r = await fn(); if (ok) toast(typeof ok === "function" ? ok(r) : ok); await load(); return r; }
+  catch (e) { toast(e.message, true); }
+  finally { if (btn) { btn.disabled = false; btn.textContent = old; } }
+}
+
+const dt = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y, m-1, d); };
+const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+const fmt = s => s ? dt(s).toLocaleDateString("pt-BR", {weekday:"short", day:"2-digit", month:"2-digit"}) : "sem data";
+const agoraDate = () => { const [d,h] = S.agora.split(" "); const x = dt(d); const [hh,mm] = h.split(":"); x.setHours(+hh, +mm); return x; };
+const quando = p => { const x = dt(p.data); const [h,m] = (p.hora||"18:00").split(":"); x.setHours(+h,+m); return x; };
+
+async function load() {
+  S = await api("/api/estado");
+  $("#agora").textContent = "Brasília · " + new Date(S.agora.replace(" ","T")).toLocaleString("pt-BR", {weekday:"long", day:"2-digit", month:"long", hour:"2-digit", minute:"2-digit"});
+  pills(); render();
+}
+
+function secretOk() { try { return localStorage.getItem("secretOk") === "1"; } catch { return false; } }
+function setupSteps() {
+  const t = S.token, g = S.git;
+  return [
+    {k:"python", ok: !!S.pillow},
+    {k:"github", ok: g.repo && !!g.remote && t.base_url_ok},
+    {k:"token", ok: t.configurado},
+    {k:"secret", ok: !!(g.repo && g.remote && secretOk())},
+    {k:"envio", ok: g.repo && g.remote && g.alteracoes === 0 && g.a_enviar === 0},
+  ];
+}
+function pills() {
+  const t = S.token, g = S.git;
+  const tokCls = !t.configurado ? "err" : (t.dias_restantes != null && t.dias_restantes < 10 ? "warn" : "ok");
+  const tokTxt = !t.configurado ? "Instagram desconectado" : t.dias_restantes != null ? `Token: ${t.dias_restantes} dias` : "Instagram conectado";
+  const gCls = !g.repo || !g.remote ? "err" : g.alteracoes || g.a_enviar ? "warn" : "ok";
+  const gTxt = !g.repo || !g.remote ? "GitHub não conectado" : g.alteracoes || g.a_enviar ? `${g.alteracoes || g.a_enviar} alteração(ões) não enviada(s)` : "GitHub em dia";
+  $("#pills").innerHTML = `<span class="pill"><i class="dot ${tokCls}"></i>${tokTxt}</span><span class="pill"><i class="dot ${gCls}"></i>${gTxt}</span>` +
+    (g.repo && g.remote && (g.alteracoes || g.a_enviar) ? `<button class="btn sm accent" id="push">Enviar para o GitHub</button>` : "");
+  $("#push")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/github/enviar", {}), "Enviado. O robô do GitHub publica os aprovados no horário."));
+  const falta = setupSteps().filter(s => !s.ok).length;
+  const n = $("#cfg-n"); n.hidden = !falta; n.textContent = falta;
+}
+
+function render() {
+  document.querySelectorAll(".nav").forEach(b => { if (b.dataset.view === view) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
+  const titles = {hoje:"Hoje", calendario:"Calendário", feed:"Prévia do feed", comentarios:"Comentários", config:"Conexões"};
+  $("#titulo").textContent = titles[view];
+  ({hoje:vHoje, calendario:vCal, feed:vFeed, comentarios:vComent, config:vConfig})[view]();
+}
+
+/* ---------- HOJE ---------- */
+function alertas() {
+  const out = [], now = agoraDate(), em7 = new Date(now); em7.setDate(em7.getDate() + 7);
+  const t = S.token;
+  if (!t.configurado) out.push({c:"err", t:"<b>Instagram desconectado.</b> Conecte o token para publicar e ver comentários.", go:"config"});
+  else if (t.dias_restantes != null && t.dias_restantes < 10) out.push({c:"warn", t:`<b>O token vence em ${t.dias_restantes} dias.</b> Renove com um clique.`, go:"config"});
+  if (!S.git.repo || !S.git.remote) out.push({c:"err", t:"<b>GitHub não conectado.</b> Sem ele, os aprovados não saem sozinhos.", go:"config"});
+  for (const p of S.posts) {
+    if (p.status === "publicado") continue;
+    if (p.status === "erro") out.push({c:"err", t:`<b>${esc(p.id)} deu erro ao publicar.</b> ${esc(p.erro || "")}`, id:p.id});
+    if (!p.data) continue;
+    const q = quando(p);
+    if (q < now && p.status !== "publicado") out.push({c:"err", t:`<b>${esc(p.id)}</b> estava marcado para ${fmt(p.data)} e não saiu. Mude a data ou publique.`, id:p.id});
+    else if (q <= em7 && p.status === "pendente") {
+      const e = p.checagem.erros.length;
+      out.push({c: e ? "err" : "warn", t:`<b>${esc(p.id)}</b> sai ${fmt(p.data)} e ainda está pendente${e ? ` · ${e} problema(s) para corrigir` : ". Revise e aprove."}`, id:p.id});
+    }
+  }
+  if (!out.length) out.push({c:"ok", t:"<b>Tudo em ordem.</b> Nenhuma pendência para os próximos 7 dias."});
+  return out;
+}
+function semanas() {
+  const now = agoraDate(), seg = new Date(now); seg.setDate(seg.getDate() - ((seg.getDay() + 6) % 7)); seg.setHours(0,0,0,0);
+  return [0,1,2,3].map(w => {
+    const ini = new Date(seg); ini.setDate(ini.getDate() + 7*w);
+    const dias = [0,2,4].map(o => { const d = new Date(ini); d.setDate(d.getDate()+o); const ps = S.posts.filter(p => p.data === iso(d)); return {d, ps}; });
+    const todos = S.posts.filter(p => p.data && dt(p.data) >= ini && dt(p.data) < new Date(ini.getTime() + 7*864e5));
+    return {ini, dias, reel: todos.some(p => p.tipo === "reel"), n: todos.length};
+  });
+}
+function vHoje() {
+  const now = agoraDate();
+  const prox = S.posts.filter(p => p.data && p.status !== "publicado" && quando(p) >= now).sort((a,b) => quando(a) - quando(b))[0];
+  let cd = "";
+  if (prox) { const ms = quando(prox) - now, d = Math.floor(ms/864e5), h = Math.floor(ms/36e5) % 24; cd = d ? `em ${d}d ${h}h` : `em ${h}h ${Math.floor(ms/6e4)%60}min`; }
+  const fut = S.posts.filter(p => p.data && dt(p.data) >= new Date(now.getFullYear(), now.getMonth(), now.getDate()) && dt(p.data) < new Date(now.getTime() + 28*864e5));
+  const cont = {}; fut.forEach(p => cont[p.pilar || "sem"] = (cont[p.pilar || "sem"] || 0) + 1);
+  const tot = fut.length || 1;
+  const pend = S.posts.filter(p => p.status === "pendente").length, apr = S.posts.filter(p => p.status === "aprovado").length;
+  $("#view").innerHTML = `
+  <div class="grid g3">
+    <div class="card ink" style="grid-column:span 2">
+      <p class="tag">Próximo post</p>
+      ${prox ? `<div class="next" style="margin-top:12px">
+        <button class="open" data-id="${esc(prox.id)}" style="all:unset;cursor:pointer"><img src="${file(prox.midia[0])}" alt="Capa de ${esc(prox.id)}"></button>
+        <div><p class="count">${cd}</p><h3 style="font-size:28px;margin-top:6px">${esc(prox.id)}</h3>
+        <p class="muted">${fmt(prox.data)} às ${prox.hora} · ${prox.tipo} · ${PIL[prox.pilar] || "sem pilar"}</p>
+        <p style="margin-top:10px"><span class="status ${prox.status}">${ST[prox.status]}</span></p>
+        <div class="inline"><button class="btn accent sm open" data-id="${esc(prox.id)}">Revisar e aprovar</button></div></div></div>` : `<p class="muted" style="margin-top:12px">Nada agendado. Prepare um post no Calendário.</p>`}
+    </div>
+    <div class="card"><p class="tag">Fila</p><p class="big" style="margin-top:10px">${pend}</p><p class="muted">pendente(s) de aprovação</p><p style="margin-top:14px;font-weight:600">${apr} aprovado(s) aguardando o horário</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><p class="tag">O que pede sua atenção</p><ul class="alerts" style="margin-top:12px">${alertas().map((a,i) => `<li><button class="alert ${a.c}" data-i="${i}">${a.t}</button></li>`).join("")}</ul></div>
+    <div class="card"><p class="tag">Equilíbrio das próximas 4 semanas</p>
+      <div class="mix">${["dica","bastidores","prova","oferta","sem"].map(k => cont[k] ? `<span class="c-${k}" style="width:${cont[k]/tot*100}%" title="${PIL[k]||"Sem pilar"}"></span>` : "").join("")}</div>
+      <div class="legend">${Object.entries(S.pilares).map(([k,m]) => `<span><i class="c-${k}"></i>${PIL[k]}: <b>${Math.round((cont[k]||0)/tot*100)}%</b> <span class="muted">(meta ${m}%)</span></span>`).join("")}${cont.sem ? `<span><i class="c-sem"></i>Sem pilar: <b>${cont.sem}</b></span>` : ""}</div>
+      <p class="tag" style="margin-top:22px">Ritmo seg · qua · sex</p>
+      <div class="weeks" style="margin-top:10px">${semanas().map(w => `<div class="week"><p style="font-size:13px;font-weight:600;margin:0">${w.ini.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"})}</p>
+        <div class="days">${w.dias.map((d,i) => { const p = d.ps[0]; const c = !p ? "" : p.status === "publicado" ? "pub" : p.status === "aprovado" ? "ap" : "on"; return `<span class="d ${c}" title="${p ? esc(p.id) : "vazio"}">${["S","Q","S"][i]}</span>`; }).join("")}</div>
+        <p style="font-size:12px;margin:8px 0 0" class="${w.reel ? "" : "muted"}">${w.reel ? "Reel ✓" : "Sem Reel"}</p></div>`).join("")}</div>
+    </div>
+  </div>`;
+  const al = alertas();
+  document.querySelectorAll(".alert").forEach(b => b.onclick = () => { const a = al[b.dataset.i]; if (a.id) openPost(a.id); else if (a.go) go(a.go); });
+  bindOpen();
+}
+
+/* ---------- CALENDÁRIO ---------- */
+function chip(p, drag = true) {
+  const x = p.checagem?.erros?.length ? `<span class="x" title="${p.checagem.erros.length} problema(s)">!</span>` : "";
+  return `<button class="chip ${p.status} open" data-id="${esc(p.id)}" ${drag && p.status !== "publicado" ? `draggable="true"` : ""}>
+    ${p.midia[0] && !p.midia[0].endsWith(".mp4") ? `<img src="${file(p.midia[0])}" alt="">` : ""}<span class="t">${esc(p.id)}</span>${x}</button>`;
+}
+function vCal() {
+  const now = agoraDate();
+  if (!mes) mes = new Date(now.getFullYear(), now.getMonth(), 1);
+  const ini = new Date(mes); ini.setDate(1 - ini.getDay());
+  const cells = [];
+  for (let i = 0; i < 42; i++) { const d = new Date(ini); d.setDate(ini.getDate() + i); cells.push(d); }
+  const hoje = iso(now);
+  const semData = S.posts.filter(p => !p.data);
+  $("#view").innerHTML = `
+  <div class="cal-head">
+    <h2>${mes.toLocaleDateString("pt-BR",{month:"long", year:"numeric"}).replace(/^\w/, c => c.toUpperCase())}</h2>
+    <div class="inline" style="margin:0"><button class="btn ghost sm" id="m-ant">← Mês anterior</button><button class="btn ghost sm" id="m-hoje">Hoje</button><button class="btn ghost sm" id="m-prox">Próximo mês →</button></div>
+  </div>
+  <p class="muted" style="margin:-4px 0 14px">Arraste um post para outro dia para reagendar. Se ele estava aprovado, volta para pendente.</p>
+  <div class="cal">${WD.map(w => `<div class="wd">${w}</div>`).join("")}
+  ${cells.map(d => { const k = iso(d); const ps = S.posts.filter(p => p.data === k); const slot = [1,3,5].includes(d.getDay());
+    return `<div class="day ${d.getMonth() !== mes.getMonth() ? "out" : ""} ${k === hoje ? "today" : ""} ${slot && !ps.length && d >= now ? "slot" : ""}" data-date="${k}"><span class="num"><b>${d.getDate()}</b></span>${ps.map(p => chip(p)).join("")}</div>`; }).join("")}
+  </div>
+  <div class="grid g2" style="margin-top:22px">
+    <div><p class="tag">Sem data</p><div class="tray" data-date="">${semData.map(p => chip(p)).join("") || `<span class="muted">Arraste um post aqui para tirar a data.</span>`}</div></div>
+    <div><p class="tag">Pastas novas em posts/ (ainda fora do calendário)</p><div class="tray">${S.novas.map(n => `<div class="chip" style="cursor:default">${n.capa ? `<img src="${file(n.capa)}" alt="">` : ""}<span class="t">${esc(n.pasta)} · ${n.video ? "reel" : n.n + " slide(s)"}</span><button class="btn sm" data-prep="${esc(n.pasta)}" style="margin-left:6px">Preparar</button></div>`).join("") || `<span class="muted">Nenhuma. Crie a pasta com slide-01.png… e legenda.md.</span>`}</div></div>
+  </div>`;
+  $("#m-ant").onclick = () => { mes.setMonth(mes.getMonth() - 1); vCal(); };
+  $("#m-prox").onclick = () => { mes.setMonth(mes.getMonth() + 1); vCal(); };
+  $("#m-hoje").onclick = () => { mes = null; vCal(); };
+  document.querySelectorAll("[data-prep]").forEach(b => b.onclick = () => prepDialog(b.dataset.prep));
+  document.querySelectorAll(".chip[draggable]").forEach(c => c.addEventListener("dragstart", e => e.dataTransfer.setData("text/plain", c.dataset.id)));
+  document.querySelectorAll("[data-date]").forEach(z => {
+    z.addEventListener("dragover", e => { e.preventDefault(); z.classList.add("over"); });
+    z.addEventListener("dragleave", () => z.classList.remove("over"));
+    z.addEventListener("drop", async e => {
+      e.preventDefault(); z.classList.remove("over");
+      const id = e.dataTransfer.getData("text/plain"); if (!id) return;
+      await run(null, () => api("/api/post/salvar", {id, data: z.dataset.date}), r => r.aviso || (z.dataset.date ? `Reagendado para ${fmt(z.dataset.date)}.` : "Data removida."));
+    });
+  });
+  bindOpen();
+}
+
+function prepDialog(pasta) {
+  const n = S.novas.find(x => x.pasta === pasta);
+  $("#dlg-body").innerHTML = `<div style="padding:32px;max-width:560px"><p class="tag">Preparar post</p><h2 id="dlg-t" style="font-size:32px;margin-top:6px">${esc(pasta)}</h2>
+  <p class="muted">${n.video ? "Copia o vídeo" : "Converte os PNG em JPEG"} para media/, lê a legenda.md e põe no calendário como pendente.</p>
+  <div class="row" style="margin-top:16px"><div><label for="p-d">Data</label><input type="date" id="p-d"></div><div><label for="p-h">Hora</label><input type="time" id="p-h" value="18:00"></div>
+  <div><label for="p-p">Pilar</label><select id="p-p"><option value="">—</option>${Object.keys(PIL).map(k => `<option value="${k}">${PIL[k]}</option>`).join("")}</select></div></div>
+  <div class="actions" style="margin-top:20px"><button class="btn accent" id="p-go">Preparar</button></div></div>`;
+  dlg.showModal();
+  $("#p-go").onclick = e => run(e.currentTarget, () => api("/api/post/preparar", {pasta, data: $("#p-d").value, hora: $("#p-h").value, pilar: $("#p-p").value}), "Post no calendário como pendente.").then(r => r && dlg.close());
+}
+
+/* ---------- POST ---------- */
+function phone(p, texto, i = 0) {
+  const m = p.midia, cur = m[i] || "";
+  const isV = cur.endsWith(".mp4");
+  return `<div class="phone"><div class="ph-top"><span class="av">P</span>projectatech<span class="muted" style="font-weight:400;margin-left:auto">Lages-SC</span></div>
+  <div class="ph-media">${isV ? `<video src="${file(cur)}" controls muted playsinline></video>` : `<img src="${file(cur)}" alt="Slide ${i+1} de ${m.length}">`}
+  ${m.length > 1 ? `<span class="ph-n">${i+1}/${m.length}</span>${i > 0 ? `<button class="ph-nav l" data-go="${i-1}" aria-label="Slide anterior">‹</button>` : ""}${i < m.length-1 ? `<button class="ph-nav r" data-go="${i+1}" aria-label="Próximo slide">›</button>` : ""}` : ""}</div>
+  ${m.length > 1 ? `<div class="dots">${m.map((_,k) => `<i class="${k===i?"on":""}"></i>`).join("")}</div>` : `<div style="height:10px"></div>`}
+  <div class="ph-cap"><b>projectatech</b> ${esc(texto)}</div></div>`;
+}
+function checksHtml(c) {
+  const li = [...c.erros.map(e => `<li class="e">✕ ${esc(e)}</li>`), ...c.avisos.map(a => `<li class="w">! ${esc(a)}</li>`)];
+  return li.length ? li.join("") : `<li class="k">✓ Dentro das regras do voice.md</li>`;
+}
+function openPost(id) {
+  const p = S.posts.find(x => x.id === id); if (!p) return;
+  let idx = 0, texto = p.texto, timer;
+  const pub = p.status === "publicado";
+  $("#dlg-body").innerHTML = `<div class="dlg"><div class="left" id="ph"></div><div class="right">
+    <div><p class="tag">${p.tipo} · ${p.midia.length} arquivo(s)</p><h2 id="dlg-t" style="font-size:34px;margin-top:6px">${esc(p.id)}</h2>
+      <p style="margin-top:8px"><span class="status ${p.status}">${ST[p.status]}</span>${p.link ? ` <a href="${esc(p.link)}" target="_blank" rel="noopener">ver no Instagram ↗</a>` : ""}${p.substitui ? `<span class="muted" style="font-size:13px"> · substitui ${esc(p.substitui)}</span>` : ""}</p>
+      ${p.observacao ? `<p class="alert warn" style="margin-top:10px;cursor:default">${esc(p.observacao)}</p>` : ""}</div>
+    <div class="row"><div><label for="f-d">Data</label><input type="date" id="f-d" value="${p.data||""}" ${pub?"disabled":""}></div>
+      <div><label for="f-h">Hora</label><input type="time" id="f-h" value="${p.hora||"18:00"}" ${pub?"disabled":""}></div>
+      <div><label for="f-p">Pilar</label><select id="f-p" ${pub?"disabled":""}><option value="">—</option>${Object.keys(PIL).map(k => `<option value="${k}" ${p.pilar===k?"selected":""}>${PIL[k]}</option>`).join("")}</select></div></div>
+    <div><label for="f-t">Legenda <span class="muted" id="f-c" style="font-weight:400"></span></label><textarea id="f-t" ${pub?"disabled":""}>${esc(texto)}</textarea></div>
+    <div><p class="tag" style="margin-bottom:8px">Checagem automática</p><ul class="checks" id="f-k">${checksHtml(p.checagem)}</ul></div>
+    ${pub ? "" : `<div class="actions">
+      <button class="btn" id="f-s">Salvar</button>
+      ${p.status === "aprovado" ? `<button class="btn ghost" id="f-u">Voltar para pendente</button>` : `<button class="btn accent" id="f-a" ${p.checagem.erros.length ? "disabled title='Corrija os itens em vermelho'" : ""}>Aprovar para ${p.data ? fmt(p.data) + " " + p.hora : "a data"}</button>`}
+      <span class="muted" style="font-size:13px">Aprovar só marca o post. Ele sai no horário depois de enviado ao GitHub.</span></div>
+    <div class="danger"><div style="flex:1;min-width:200px"><b>Publicar agora</b><p class="muted" style="margin:2px 0 0;font-size:13px">Vai direto para o @projectatech. As imagens precisam já estar no GitHub.</p></div>
+      <label class="sr" for="f-cf">Digite PUBLICAR</label><input type="text" id="f-cf" placeholder="digite PUBLICAR" autocomplete="off"><button class="btn sm" id="f-pub" disabled>Publicar</button></div>`}
+  </div></div>`;
+  const drawPhone = () => { $("#ph").innerHTML = phone(p, texto, idx); $("#ph").querySelectorAll("[data-go]").forEach(b => b.onclick = () => { idx = +b.dataset.go; drawPhone(); }); };
+  drawPhone();
+  const cnt = () => $("#f-c").textContent = `${texto.length}/2200 · ${(texto.match(/#\w+/g)||[]).length}/5 hashtags`;
+  cnt();
+  const dirty = () => texto.trim() !== p.texto.trim() || $("#f-d").value !== (p.data||"") || $("#f-h").value !== (p.hora||"18:00") || $("#f-p").value !== (p.pilar||"");
+  $("#f-t").oninput = e => { texto = e.target.value; cnt(); drawPhone(); clearTimeout(timer);
+    timer = setTimeout(async () => { const c = await api("/api/checar", {texto}).catch(() => null); if (c) { $("#f-k").innerHTML = checksHtml(c); if ($("#f-a")) $("#f-a").disabled = c.erros.length > 0; } }, 350); };
+  const salvar = () => api("/api/post/salvar", {id: p.id, data: $("#f-d").value, hora: $("#f-h").value, pilar: $("#f-p").value, texto});
+  $("#f-s")?.addEventListener("click", e => run(e.currentTarget, salvar, r => r.aviso || "Salvo.").then(() => openPost(p.id)));
+  $("#f-a")?.addEventListener("click", e => run(e.currentTarget, async () => { if (dirty()) await salvar(); return api("/api/post/aprovar", {id: p.id}); },
+    "Aprovado. Envie para o GitHub para valer.").then(r => r && openPost(p.id)));
+  $("#f-u")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/post/pendente", {id: p.id}), "Voltou para pendente.").then(() => openPost(p.id)));
+  $("#f-cf")?.addEventListener("input", e => $("#f-pub").disabled = e.target.value !== "PUBLICAR");
+  $("#f-pub")?.addEventListener("click", e => run(e.currentTarget, async () => { if (dirty()) await salvar(); return api("/api/post/publicar", {id: p.id, confirmacao: $("#f-cf").value}); },
+    r => "Publicado: " + (r.link || "ok")).then(r => r && openPost(p.id)));
+  if (!dlg.open) dlg.showModal();
+}
+function bindOpen() { document.querySelectorAll(".open").forEach(b => b.addEventListener("click", () => openPost(b.dataset.id))); }
+
+/* ---------- FEED ---------- */
+function vFeed() {
+  const ord = S.posts.filter(p => p.data).sort((a,b) => quando(b) - quando(a));
+  $("#view").innerHTML = `<div class="feed-wrap">
+    <div class="phone"><div class="profile"><span class="av">P</span><div><b>projectatech</b><p class="muted" style="margin:0;font-size:12px">Projecta Tech · Sites e Sistemas Lages</p></div></div>
+      <div class="pgrid">${ord.map(p => `<button class="open" data-id="${esc(p.id)}" aria-label="${esc(p.id)}">${p.midia[0]?.endsWith(".mp4") ? `<video src="${file(p.midia[0])}" muted style="width:100%;height:100%;object-fit:cover"></video>` : `<img src="${file(p.midia[0])}" alt="">`}<span class="lab ${p.status==="publicado"?"pub":""}">${p.data.slice(8)}/${p.data.slice(5,7)}</span></button>`).join("")}</div></div>
+    <div class="card"><p class="tag">Como o perfil vai ficar</p><h3 style="font-size:28px">A grade com os posts agendados, <em class="s">do mais novo ao mais antigo</em>.</h3>
+      <p class="muted" style="margin-top:12px">É o que alguém vê ao abrir o @projectatech depois do último post agendado. Use para conferir se as capas se alternam bem (claro e escuro, foto e texto) e se o laranja não se repete demais lado a lado.</p>
+      <p class="muted">Mostra só os posts deste calendário. Os publicados à mão antes do painel não aparecem.</p>
+      <p style="margin-top:16px;font-size:14px"><span class="lab">dd/mm</span> agendado &nbsp; <span class="lab pub" style="padding:0 4px;border-radius:4px;background:var(--accent)">dd/mm</span> publicado</p></div></div>`;
+  bindOpen();
+}
+
+/* ---------- COMENTÁRIOS ---------- */
+async function vComent() {
+  if (!S.token.configurado) { $("#view").innerHTML = `<div class="empty">Conecte o Instagram em <b>Conexões</b> para ver os comentários.<div class="inline" style="justify-content:center"><button class="btn" onclick="go('config')">Ir para Conexões</button></div></div>`; return; }
+  $("#view").innerHTML = `<p class="muted">Carregando comentários dos 8 posts mais recentes…</p>`;
+  try {
+    const r = await api("/api/comentarios");
+    const itens = r.itens.filter(i => i.comentarios.length);
+    $("#view").innerHTML = `<p class="muted" style="margin-top:0">Rascunhe a resposta no Claude com <code>/ig-reply</code> ou escreva aqui. Nada é enviado sem você confirmar.</p>
+    <div class="grid">${itens.map(i => `<div class="cm-post"><img src="${esc(i.post.thumbnail_url || i.post.media_url || "")}" alt=""><div>
+      <p style="margin:0;font-size:13px" class="muted">${esc((i.post.caption||"").slice(0,90))}… <a href="${esc(i.post.permalink)}" target="_blank" rel="noopener">abrir ↗</a></p>
+      ${i.comentarios.map(c => `<div class="cm"><b>@${esc(c.username)}</b> ${esc(c.text)} <span class="muted" style="font-size:12px">${new Date(c.timestamp).toLocaleString("pt-BR")}</span>
+        ${(c.replies?.data||[]).map(rp => `<p style="margin:4px 0 0 18px;font-size:14px">↳ <b>@${esc(rp.username)}</b> ${esc(rp.text)}</p>`).join("")}
+        <div><button class="btn ghost sm" data-r="${esc(c.id)}" style="margin-top:6px">Responder</button></div>
+        <div class="reply" id="r-${esc(c.id)}"><label class="sr" for="t-${esc(c.id)}">Resposta</label><textarea id="t-${esc(c.id)}" placeholder="Sua resposta"></textarea>
+        <label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="k-${esc(c.id)}"> Confirmo o envio desta resposta</label>
+        <div><button class="btn sm accent" data-send="${esc(c.id)}">Enviar resposta</button></div></div></div>`).join("")}</div></div>`).join("") || `<div class="empty">Nenhum comentário nos posts recentes.</div>`}</div>`;
+    document.querySelectorAll("[data-r]").forEach(b => b.onclick = () => document.getElementById("r-" + b.dataset.r).classList.toggle("open"));
+    document.querySelectorAll("[data-send]").forEach(b => b.onclick = () => { const id = b.dataset.send;
+      run(b, () => api("/api/comentarios/responder", {id, texto: document.getElementById("t-"+id).value, confirmacao: document.getElementById("k-"+id).checked}), "Resposta enviada.").then(r => r && vComent()); });
+  } catch (e) { $("#view").innerHTML = `<div class="empty">Não deu para buscar os comentários: ${esc(e.message)}</div>`; }
+}
+
+/* ---------- CONEXÕES ---------- */
+function vConfig() {
+  const st = setupSteps(); const cur = st.findIndex(s => !s.ok);
+  const cls = i => st[i].ok ? "done" : i === cur ? "cur" : "";
+  const ic = i => st[i].ok ? "✓" : i + 1;
+  const g = S.git, t = S.token;
+  const repo = (g.remote || "").replace(/\.git$/, "");
+  $("#view").innerHTML = `<div class="steps">
+  <div class="step ${cls(0)}"><span class="ic">${ic(0)}</span><div><h3>Python e Pillow</h3><p class="muted" style="margin:4px 0 0">Python ${esc(S.python)} portátil em PLANO/ferramentas · Pillow ${esc(S.pillow || "não instalado")}. Já está pronto.</p></div></div>
+
+  <div class="step ${cls(1)}"><span class="ic">${ic(1)}</span><div><h3>Repositório no GitHub</h3>
+    ${g.remote ? `<p class="muted" style="margin:4px 0 0">Conectado a <a href="${esc(repo)}" target="_blank" rel="noopener">${esc(repo)}</a>. As imagens ficam públicas em <code>${esc(t.media_base_url)}</code>.</p>` : `
+    <ol><li>Abra <a href="https://github.com/new?name=projecta-instagram&visibility=public" target="_blank" rel="noopener">github.com/new</a> (já vem com o nome <b>projecta-instagram</b>).</li>
+    <li>Deixe <b>Public</b> (o Instagram baixa as imagens pelo link) e <b>não</b> marque README. Clique em Create repository.</li>
+    <li>Copie o endereço da página e cole aqui:</li></ol>`}
+    <div class="inline"><label class="sr" for="gh-url">Endereço do repositório</label><input type="url" id="gh-url" placeholder="https://github.com/seu-usuario/projecta-instagram" value="${esc(repo)}"><button class="btn" id="gh-go">${g.remote ? "Trocar" : "Conectar"}</button></div></div></div>
+
+  <div class="step ${cls(2)}"><span class="ic">${ic(2)}</span><div><h3>Token do Instagram</h3>
+    ${t.configurado ? `<p class="muted" style="margin:4px 0 0">Token salvo em ${t.salvo_em ? new Date(t.salvo_em+"T12:00").toLocaleDateString("pt-BR") : "data desconhecida"}${t.dias_restantes != null ? ` · vence em cerca de <b>${t.dias_restantes} dias</b>` : ""}. Ele fica só no arquivo .env deste computador.</p><p id="conta" class="muted"></p>
+      <div class="inline"><button class="btn ghost sm" id="tk-test">Testar conexão</button><button class="btn ghost sm" id="tk-ren">Renovar token (+60 dias)</button></div>` : `
+    <ol><li>Entre em <a href="https://developers.facebook.com/apps/creation/" target="_blank" rel="noopener">developers.facebook.com → Criar app</a>, caso de uso <b>"Gerenciar mensagens e conteúdo no Instagram"</b>, tipo Empresa.</li>
+    <li>No app: <b>Instagram → Configuração da API com login do Instagram → Gerar tokens de acesso → Adicionar conta</b> e entre com o @projectatech.</li>
+    <li>Permissões: <code>instagram_business_basic</code>, <code>instagram_business_content_publish</code>, <code>instagram_business_manage_comments</code>.</li>
+    <li>Copie o token e cole abaixo. Ele vai direto para o .env e não aparece mais na tela.</li></ol>`}
+    <div class="inline"><label class="sr" for="tk">Token</label><input type="password" id="tk" placeholder="${t.configurado ? "Colar um token novo (opcional)" : "Cole o token aqui"}" autocomplete="off"><button class="btn" id="tk-go">Salvar e testar</button></div></div></div>
+
+  <div class="step ${cls(3)}"><span class="ic">${ic(3)}</span><div><h3>Token também no GitHub</h3>
+    <p class="muted" style="margin:4px 0 0">É o que deixa o robô publicar sozinho no horário, mesmo com este computador desligado. Faça a cada token novo.</p>
+    <ol><li>${g.remote ? `Abra <a href="${esc(repo)}/settings/secrets/actions/new" target="_blank" rel="noopener">Settings → Secrets → New secret</a>` : "No repositório: Settings → Secrets and variables → Actions → New repository secret"}, nome <code>IG_ACCESS_TOKEN</code>, valor = o mesmo token.</li>
+    <li>${g.remote ? `Em <a href="${esc(repo)}/settings/actions" target="_blank" rel="noopener">Settings → Actions → General</a>` : "Em Settings → Actions → General"}, marque <b>Read and write permissions</b> e salve.</li></ol>
+    <label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sec" ${secretOk()?"checked":""}> Já fiz os dois passos</label></div></div>
+
+  <div class="step ${cls(4)}"><span class="ic">${ic(4)}</span><div><h3>Enviar para o GitHub</h3>
+    <p class="muted" style="margin:4px 0 0">${!g.repo ? "Conecte o repositório primeiro." : `${g.alteracoes} alteração(ões) local(is)${g.a_enviar ? `, ${g.a_enviar} commit(s) para enviar` : ""}. ${g.ultimo_commit ? "Último: " + esc(g.ultimo_commit) : ""}`}</p>
+    <p class="muted" style="font-size:13px">Na primeira vez o Windows abre o login do GitHub. Depois disso o envio é direto.</p>
+    <div class="inline"><button class="btn accent" id="gh-push" ${g.remote ? "" : "disabled"}>Enviar agora</button></div></div></div>
+  </div>
+
+  <div class="card" style="margin-top:22px"><p class="tag">Autorizações de clientes</p><h3>Quem pode ser citado nos posts</h3>
+    <p class="muted">A checagem bloqueia a aprovação de qualquer legenda que cite um cliente sem autorização por escrito.</p>
+    <div class="grid" style="gap:8px;margin-top:10px">${Object.entries(S.autorizacoes).map(([n,ok]) => `<label style="font-weight:500;display:flex;gap:10px;align-items:center;margin:0"><input type="checkbox" data-aut="${esc(n)}" ${ok?"checked":""}> ${esc(n)} <span class="status ${ok?"aprovado":"pendente"}">${ok?"autorizado":"sem autorização"}</span></label>`).join("")}</div>
+    <div class="inline"><label class="sr" for="aut-n">Novo cliente</label><input type="text" id="aut-n" placeholder="Nome do cliente, como aparece na legenda"><button class="btn ghost" id="aut-go">Adicionar</button></div></div>`;
+
+  $("#gh-go").onclick = e => run(e.currentTarget, () => api("/api/github/conectar", {url: $("#gh-url").value}), "Repositório conectado.");
+  $("#tk-go").onclick = e => { const tok = $("#tk").value; $("#tk").value = "";
+    run(e.currentTarget, () => api("/api/conexao/token", {token: tok}), r => `Conectado como @${r.conta.username} (${r.conta.account_type}).`); };
+  $("#tk-test")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/conexao/testar", {}), r => `Conectado como @${r.conta.username} · ${r.conta.media_count} posts · conta ${r.conta.account_type}.`));
+  $("#tk-ren")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/conexao/renovar", {}), r => r.lembrete));
+  $("#sec").onchange = e => { try { localStorage.setItem("secretOk", e.target.checked ? "1" : "0"); } catch {} pills(); vConfig(); };
+  $("#gh-push").onclick = e => run(e.currentTarget, () => api("/api/github/enviar", {}), "Enviado para o GitHub.");
+  document.querySelectorAll("[data-aut]").forEach(c => c.onchange = () => run(null, () => api("/api/autorizacoes", {cliente: c.dataset.aut, autorizado: c.checked}), "Autorização atualizada."));
+  $("#aut-go").onclick = e => run(e.currentTarget, () => api("/api/autorizacoes", {cliente: $("#aut-n").value, autorizado: false}), "Cliente adicionado.");
+}
+
+const VIEWS = ["hoje","calendario","feed","comentarios","config"];
+function go(v) { view = v; history.replaceState(null, "", "#" + v); render(); $("#conteudo").focus({preventScroll:true}); window.scrollTo(0,0); }
+document.querySelectorAll(".nav").forEach(b => b.onclick = () => go(b.dataset.view));
+const dlg = $("#dlg");
+dlg.addEventListener("close", () => render());
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+const h0 = location.hash.slice(1).split("/");
+if (VIEWS.includes(h0[0])) view = h0[0];
+load().then(() => { if (h0[1]) openPost(decodeURIComponent(h0[1])); })
+  .catch(e => $("#view").innerHTML = `<div class="empty">O painel não respondeu: ${esc(e.message)}</div>`);
+setInterval(() => { if (!dlg.open && view !== "comentarios") load().catch(() => {}); }, 60000);
+</script>
+</body>
+</html>

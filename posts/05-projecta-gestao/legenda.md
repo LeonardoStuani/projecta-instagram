@@ -1,0 +1,16 @@
+# Projecta Gestão: legenda
+
+```
+Um sistema pronto, ajustado ao seu ramo. ⚙️
+
+O Projecta Gestão é a nossa base de gestão: dashboard, clientes, orçamentos, projetos, financeiro e usuários, já integrados e rodando na nuvem.
+
+Em vez de começar um sistema do zero, sua empresa adquire a base e a gente ajusta para o seu ramo: campos, etapas, modelos de orçamento e relatórios com o vocabulário do seu negócio. Mais rápido de implantar e com custo menor que um projeto sob medida.
+
+✅ Pronto para escritórios técnicos: topografia, engenharia, agrimensura e georreferenciamento. Em operação na Eixo Sul Engenharia.
+🔧 Ajustado na implantação para clínicas, oficinas, prestadores de serviço e comércio.
+
+Quer ver funcionando? Agende uma demonstração de 20 minutos. Peça sua análise gratuita: link na bio.
+
+#Lages #LagesSC #SerraCatarinense #SistemaDeGestao #ProjectaGestao
+```

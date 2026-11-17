@@ -1,0 +1,125 @@
+[
+  {
+    "id": "02-oferta-lages",
+    "tipo": "carrossel",
+    "arquivos": [
+      "02-oferta-lages/slide-01.jpg",
+      "02-oferta-lages/slide-02.jpg",
+      "02-oferta-lages/slide-03.jpg",
+      "02-oferta-lages/slide-04.jpg",
+      "02-oferta-lages/slide-05.jpg"
+    ],
+    "legenda": "media/02-oferta-lages/legenda.txt",
+    "data": "2026-11-18",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "oferta"
+  },
+  {
+    "id": "04-quem-somos",
+    "tipo": "carrossel",
+    "arquivos": [
+      "04-quem-somos/slide-01.jpg",
+      "04-quem-somos/slide-02.jpg",
+      "04-quem-somos/slide-03.jpg",
+      "04-quem-somos/slide-04.jpg",
+      "04-quem-somos/slide-05.jpg",
+      "04-quem-somos/slide-06.jpg"
+    ],
+    "legenda": "media/04-quem-somos/legenda.txt",
+    "data": "2026-11-20",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "bastidores"
+  },
+  {
+    "id": "05-projecta-gestao",
+    "tipo": "carrossel",
+    "arquivos": [
+      "05-projecta-gestao/slide-01.jpg",
+      "05-projecta-gestao/slide-02.jpg",
+      "05-projecta-gestao/slide-03.jpg",
+      "05-projecta-gestao/slide-04.jpg",
+      "05-projecta-gestao/slide-05.jpg",
+      "05-projecta-gestao/slide-06.jpg"
+    ],
+    "legenda": "media/05-projecta-gestao/legenda.txt",
+    "data": "2026-11-23",
+    "hora": "18:00",
+    "status": "pendente",
+    "substitui": "#3 Reel \"Gerencie seu escritório\" (arquivar o antigo depois de publicar)",
+    "pilar": "bastidores"
+  },
+  {
+    "id": "06-antes-depois",
+    "tipo": "carrossel",
+    "arquivos": [
+      "06-antes-depois/slide-01.jpg",
+      "06-antes-depois/slide-02.jpg",
+      "06-antes-depois/slide-03.jpg",
+      "06-antes-depois/slide-04.jpg",
+      "06-antes-depois/slide-05.jpg"
+    ],
+    "legenda": "media/06-antes-depois/legenda.txt",
+    "data": "2026-11-25",
+    "hora": "18:00",
+    "status": "pendente",
+    "substitui": "#8 Antes/depois (arquivar o antigo depois de publicar)",
+    "pilar": "prova"
+  },
+  {
+    "id": "08-dica-planilha",
+    "tipo": "carrossel",
+    "arquivos": [
+      "08-dica-planilha/slide-01.jpg",
+      "08-dica-planilha/slide-02.jpg",
+      "08-dica-planilha/slide-03.jpg",
+      "08-dica-planilha/slide-04.jpg",
+      "08-dica-planilha/slide-05.jpg",
+      "08-dica-planilha/slide-06.jpg",
+      "08-dica-planilha/slide-07.jpg"
+    ],
+    "legenda": "media/08-dica-planilha/legenda.txt",
+    "data": "2026-11-27",
+    "hora": "18:00",
+    "status": "pendente",
+    "substitui": "#25 \"5 desvantagens do CSV\" (arquivar o antigo depois de publicar)",
+    "pilar": "dica"
+  },
+  {
+    "id": "07-por-que-sistema",
+    "tipo": "carrossel",
+    "arquivos": [
+      "07-por-que-sistema/slide-01.jpg",
+      "07-por-que-sistema/slide-02.jpg",
+      "07-por-que-sistema/slide-03.jpg",
+      "07-por-que-sistema/slide-04.jpg",
+      "07-por-que-sistema/slide-05.jpg"
+    ],
+    "legenda": "media/07-por-que-sistema/legenda.txt",
+    "data": "2026-11-30",
+    "hora": "18:00",
+    "status": "pendente",
+    "substitui": "#17 \"Por que ter um sistema de gestão?\" (arquivar o antigo depois de publicar)",
+    "pilar": "dica"
+  },
+  {
+    "id": "03-case-eixo-sul",
+    "tipo": "carrossel",
+    "arquivos": [
+      "03-case-eixo-sul/slide-01.jpg",
+      "03-case-eixo-sul/slide-02.jpg",
+      "03-case-eixo-sul/slide-03.jpg",
+      "03-case-eixo-sul/slide-04.jpg",
+      "03-case-eixo-sul/slide-05.jpg",
+      "03-case-eixo-sul/slide-06.jpg",
+      "03-case-eixo-sul/slide-07.jpg"
+    ],
+    "legenda": "media/03-case-eixo-sul/legenda.txt",
+    "data": "",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "prova",
+    "autorizacao": "Eixo Sul autorizou o uso como case (17/11/2026)"
+  }
+]
