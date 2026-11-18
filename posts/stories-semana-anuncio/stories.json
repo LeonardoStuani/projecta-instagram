@@ -1,0 +1,233 @@
+{
+  "titulo": "Semana do anúncio",
+  "roteiro": "posts/stories-semana-anuncio/roteiro.md",
+  "dias": [
+    {
+      "n": 1,
+      "data": "2026-11-18",
+      "titulo": "O site novo no ar",
+      "pasta": "dia-1-site-novo",
+      "postado": false,
+      "depois": "Para quem votou \"Ainda não\": \"Oi, [nome]! Vi que você respondeu a enquete. Posso dar uma olhada em como a [empresa] aparece no Google hoje? É gratuito e te mando pelo WhatsApp.\"",
+      "quadros": [
+        {
+          "n": 1,
+          "tipo": "gravar",
+          "texto": "Celular na mão com o site aberto. Fala: \"O site novo da Projecta tá no ar. Deixa eu te mostrar rapidinho.\"",
+          "adesivo": "Localização: Lages, SC"
+        },
+        {
+          "n": 2,
+          "img": "02.png",
+          "adesivo": "Link: Ver o site",
+          "link": "https://projectatech.com.br",
+          "sobre": "Print do site novo no celular, como o cliente vê. Mostra que está no ar e o adesivo de link leva direto pro site."
+        },
+        {
+          "n": 3,
+          "img": "03.png",
+          "sobre": "O que o site tem, em 4 itens. Explica por que ele foi feito pensando em quem chega pelo celular."
+        },
+        {
+          "n": 4,
+          "img": "04.png",
+          "adesivo": "Enquete: Tenho / Ainda não",
+          "sobre": "A pergunta do dia. Quem votar \"Ainda não\" é a lista de quem chamar no direct."
+        },
+        {
+          "n": 5,
+          "img": "05.png",
+          "sobre": "Gancho para amanhã, para a pessoa voltar a ver os Stories."
+        }
+      ],
+      "horario": "12h00 (o carrossel da oferta sai às 18h)"
+    },
+    {
+      "n": 2,
+      "data": "2026-11-19",
+      "titulo": "O cliente procura no Google",
+      "pasta": "dia-2-google",
+      "postado": false,
+      "depois": "Para quem votou \"Não sei\": a mesma mensagem do dia 1.",
+      "quadros": [
+        {
+          "n": 1,
+          "tipo": "gravar",
+          "texto": "Só a mão digitando no Google do celular \"[ramo] em Lages\". Texto por cima: \"Todo mundo faz isso antes de contratar.\"",
+          "adesivo": "Localização: Lages, SC"
+        },
+        {
+          "n": 2,
+          "img": "02.png",
+          "sobre": "As 3 coisas que o cliente procura em poucos segundos: o que você faz, onde fica e como falar com você."
+        },
+        {
+          "n": 3,
+          "img": "03.png",
+          "sobre": "A consequência, em fundo escuro: se o site não responde isso, o cliente chama o concorrente."
+        },
+        {
+          "n": 4,
+          "img": "04.png",
+          "adesivo": "Enquete: Acha sim / Não sei",
+          "sobre": "Teste rápido em forma de enquete. \"Não sei\" é a resposta que abre conversa."
+        },
+        {
+          "n": 5,
+          "img": "05.png",
+          "adesivo": "Link: Falar no WhatsApp",
+          "link": "https://wa.me/5549999592640",
+          "sobre": "Convite direto com link do WhatsApp para quem respondeu \"Não sei\"."
+        }
+      ],
+      "horario": "12h00 ou 18h30"
+    },
+    {
+      "n": 3,
+      "data": "2026-11-20",
+      "titulo": "Case Eixo Sul",
+      "pasta": "dia-3-case-eixo-sul",
+      "postado": false,
+      "depois": "Responda cada resposta da caixinha no direct e guarde o texto exato: vira gancho de Reel.",
+      "quadros": [
+        {
+          "n": 1,
+          "tipo": "gravar",
+          "texto": "eixosul.com aberto no notebook ou celular. Fala: \"Lembra da Eixo Sul? Olha como tá hoje.\"",
+          "adesivo": "Menção à Eixo Sul, se tiver Instagram"
+        },
+        {
+          "n": 2,
+          "img": "02.png",
+          "sobre": "Antes e depois da Eixo Sul (case autorizado): sem site e Excel → site e sistema num lugar só."
+        },
+        {
+          "n": 3,
+          "img": "03.png",
+          "sobre": "A ideia do case em uma frase: site para mostrar, sistema para tocar o escritório."
+        },
+        {
+          "n": 4,
+          "img": "04.png",
+          "adesivo": "Caixinha de perguntas",
+          "sobre": "Caixinha: o que a empresa ainda controla em planilha ou caderno. As respostas viram conteúdo."
+        },
+        {
+          "n": 5,
+          "img": "05.png",
+          "sobre": "Promete responder cada um no direct e trazer algumas respostas na segunda, sem nome."
+        }
+      ],
+      "horario": "12h00 (o carrossel quem somos sai às 18h)"
+    },
+    {
+      "n": 4,
+      "data": "2026-11-21",
+      "titulo": "Sábado leve: quanto tempo leva?",
+      "pasta": "dia-4-sabado",
+      "postado": false,
+      "depois": "Guarde as dúvidas da caixinha para segunda.",
+      "quadros": [
+        {
+          "n": 1,
+          "tipo": "gravar",
+          "texto": "Foto ou vídeo da mesa de trabalho, café, código na tela. Sem dados de cliente visíveis. Texto: \"Sábado é dia de código.\""
+        },
+        {
+          "n": 2,
+          "img": "02.png",
+          "sobre": "A pergunta que mais chega: quanto tempo leva para ficar pronto."
+        },
+        {
+          "n": 3,
+          "img": "03.png",
+          "sobre": "Os prazos reais: landing page até 7 dias, website 2 a 4 semanas, sistema com cronograma na proposta."
+        },
+        {
+          "n": 4,
+          "img": "04.png",
+          "adesivo": "Caixinha de perguntas",
+          "sobre": "Caixinha aberta para dúvidas, que você responde na segunda."
+        }
+      ],
+      "horario": "10h00 ou 12h00"
+    },
+    {
+      "n": 5,
+      "data": "2026-11-23",
+      "titulo": "Respostas da caixinha",
+      "pasta": "dia-5-respostas",
+      "postado": false,
+      "depois": "Nunca mostre o nome de quem perguntou sem pedir. Se ninguém perguntou, use as do destaque Dúvidas. Não invente pergunta de seguidor.",
+      "quadros": [
+        {
+          "n": 1,
+          "tipo": "gravar",
+          "texto": "Fala: \"Separei as perguntas que vocês mandaram. Bora.\""
+        },
+        {
+          "n": 2,
+          "img": "modelo.png",
+          "adesivo": "Caixinha → toque na resposta → Compartilhar, com este fundo. Uma pergunta por quadro.",
+          "sobre": "Fundo para responder a caixinha: a pergunta do seguidor em cima, sua resposta embaixo de \"Minha resposta\"."
+        },
+        {
+          "n": 4,
+          "img": "04.png",
+          "adesivo": "Enquete: Landing page / Site completo",
+          "sobre": "Enquete landing page ou site completo: ajuda a entender o que cada pessoa precisa."
+        },
+        {
+          "n": 5,
+          "img": "05.png",
+          "adesivo": "Link: Análise gratuita",
+          "link": "https://projectatech.com.br/analise-gratuita",
+          "sobre": "Para quem não sabe o próprio caso: link para a análise gratuita."
+        }
+      ],
+      "horario": "12h00"
+    },
+    {
+      "n": 6,
+      "data": "2026-11-24",
+      "titulo": "Análise gratuita",
+      "pasta": "dia-6-analise-gratuita",
+      "postado": false,
+      "depois": "Último dia do anúncio. Amanhã: anote votos, respostas, toques no link e conversas no WhatsApp.",
+      "quadros": [
+        {
+          "n": 1,
+          "tipo": "gravar",
+          "texto": "Fala: \"Tô fazendo análise gratuita da presença online de empresas de Lages. Te explico o que eu olho.\"",
+          "adesivo": "Localização: Lages, SC"
+        },
+        {
+          "n": 2,
+          "img": "02.png",
+          "sobre": "O que a análise gratuita olha, em 4 itens. Mostra que é algo concreto."
+        },
+        {
+          "n": 3,
+          "img": "03.png",
+          "sobre": "Como funciona o retorno: pelo WhatsApp, sem compromisso."
+        },
+        {
+          "n": 4,
+          "img": "04.png",
+          "adesivo": "Link: Pedir análise",
+          "link": "https://projectatech.com.br/analise-gratuita",
+          "sobre": "A chamada principal, em laranja, com link para pedir a análise."
+        },
+        {
+          "n": 5,
+          "img": "05.png",
+          "adesivo": "Link: Mandar SITE",
+          "link": "https://wa.me/5549999592640?text=SITE",
+          "sobre": "Alternativa mais fácil: mandar SITE no WhatsApp, com link que já leva a mensagem."
+        }
+      ],
+      "horario": "12h00 ou 18h30"
+    }
+  ],
+  "resumo": "Semana do anúncio pago (18 a 24/11). Quem chega pelo anúncio vê os Stories ao tocar na foto: cada dia termina num toque que vira conversa."
+}

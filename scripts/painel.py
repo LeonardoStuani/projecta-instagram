@@ -151,7 +151,7 @@ def pastas_novas(cal):
     pdir = os.path.join(ROOT, "posts")
     for d in sorted(os.listdir(pdir)):
         full = os.path.join(pdir, d)
-        if not os.path.isdir(full) or d in ids or d in ("destaques", "perfil"):
+        if not os.path.isdir(full) or d in ids or d in ("destaques", "perfil") or d.startswith("stories-"):
             continue
         fs = os.listdir(full)
         slides = sorted(f for f in fs if f.startswith("slide-") and f.endswith(".png"))
@@ -186,6 +186,41 @@ def rodar_viral(_=None):
     return {"ok": True}
 
 
+def _stories_arquivos():
+    base = os.path.join(ROOT, "posts")
+    for d in sorted(os.listdir(base)):
+        f = os.path.join(base, d, "stories.json")
+        if d.startswith("stories-") and os.path.isfile(f):
+            yield d, f
+
+
+def stories_info():
+    """Semanas de Stories (posts/stories-*/stories.json). Postados à mão pelo app: a API não põe adesivos."""
+    out = []
+    for d, f in _stories_arquivos():
+        s = json.load(open(f, encoding="utf-8"))
+        for dia in s.get("dias", []):
+            for q in dia.get("quadros", []):
+                if q.get("img"):
+                    q["img"] = f"posts/{d}/{dia['pasta']}/{q['img']}"
+        out.append({"semana": d, **s})
+    out.sort(key=lambda s: min((x.get("data", "") for x in s.get("dias", [])), default=""))
+    return out
+
+
+def marcar_story(b):
+    for d, f in _stories_arquivos():
+        if d != b.get("semana"):
+            continue
+        s = json.load(open(f, encoding="utf-8"))
+        for dia in s.get("dias", []):
+            if dia.get("n") == b.get("dia"):
+                dia["postado"] = bool(b.get("postado"))
+                json.dump(s, open(f, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+                return {"ok": True}
+    raise SystemExit("Dia de Stories não encontrado.")
+
+
 def estado():
     cal = ig.cal_load()
     posts = []
@@ -201,7 +236,7 @@ def estado():
         pil = None
     return {"agora": datetime.now(ig.TZ).strftime("%Y-%m-%d %H:%M"), "python": py, "pillow": pil,
             "token": token_info(), "git": git_info(), "posts": posts, "novas": pastas_novas(cal),
-            "autorizacoes": aut_load(), "pilares": PILARES, "viral": viral_info(),
+            "autorizacoes": aut_load(), "pilares": PILARES, "viral": viral_info(), "stories": stories_info(),
             "celular": {"ativo": REDE, "ip": LAN_IP, "porta": PORT},
             "workflow": os.path.exists(os.path.join(ROOT, ".github", "workflows", "publicar-agendados.yml"))}
 
@@ -407,6 +442,7 @@ POST_ROUTES = {
     "/api/conexao/token": salvar_token, "/api/conexao/testar": testar, "/api/conexao/renovar": renovar,
     "/api/github/conectar": conectar_github, "/api/github/enviar": enviar_github,
     "/api/autorizacoes": autorizar, "/api/comentarios/responder": responder, "/api/viral/rodar": rodar_viral,
+    "/api/stories/marcar": marcar_story,
 }
 GET_ROUTES = {"/api/estado": lambda: estado(), "/api/comentarios": lambda: comentarios()}
 

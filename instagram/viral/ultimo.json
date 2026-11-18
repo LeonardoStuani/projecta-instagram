@@ -1,18 +1,12 @@
 {
-  "data": "2026-11-17",
-  "videos": 190,
+  "data": "2026-11-18",
+  "videos": 249,
   "canais": [
     {
       "canal": "CAZAR - Vídeo e Marketing",
       "seguidores": 43,
       "mediana": 57,
       "shorts": 23
-    },
-    {
-      "canal": "Destrava Aí",
-      "seguidores": 553,
-      "mediana": 189,
-      "shorts": 25
     },
     {
       "canal": "Bezaleel Lucas",
@@ -25,6 +19,12 @@
       "seguidores": 377,
       "mediana": 33,
       "shorts": 29
+    },
+    {
+      "canal": "Destrava Aí",
+      "seguidores": 553,
+      "mediana": 189,
+      "shorts": 25
     },
     {
       "canal": "Bemestar_shop",
@@ -45,23 +45,35 @@
       "shorts": 10
     },
     {
-      "canal": "brunodocanva",
-      "seguidores": 25500,
-      "mediana": 825,
+      "canal": "CodeToCash",
+      "seguidores": 357,
+      "mediana": 290,
       "shorts": 30
+    },
+    {
+      "canal": "Creative Crew with Brad Hussey",
+      "seguidores": 26900,
+      "mediana": 861,
+      "shorts": 30
+    },
+    {
+      "canal": "premiadas harmonização facial ",
+      "seguidores": 6,
+      "mediana": 8,
+      "shorts": 29
     }
   ],
   "outliers": [
     {
-      "canal": "brunodocanva",
-      "account": "@brunodocanva",
-      "views": 39000,
-      "median": 825,
-      "mult": 47.24409448818898,
-      "hook": "Corrida de desafio de estourar 100 balões",
-      "id": "Jace_F3yCKI",
+      "canal": "CodeToCash",
+      "account": "@CodeToCash-w3y",
+      "views": 50000,
+      "median": 290,
+      "mult": 172.41379310344828,
+      "hook": "Shera Bhai ने Auction में मचा दिया तहलका😂 10 BILLION DOLLAR!",
+      "id": "M-RWdK-tMZ0",
       "anuncio": false,
-      "url": "https://www.youtube.com/shorts/Jace_F3yCKI"
+      "url": "https://www.youtube.com/shorts/M-RWdK-tMZ0"
     },
     {
       "canal": "Bezaleel Lucas",
@@ -119,26 +131,26 @@
       "url": "https://www.youtube.com/shorts/7393pWgXqeM"
     },
     {
-      "canal": "brunodocanva",
-      "account": "@brunodocanva",
-      "views": 13000,
-      "median": 825,
-      "mult": 15.748031496062993,
-      "hook": "Quando você engole um apito e se torna o centro das atenções involuntariamente! 🎵😂",
-      "id": "ycRQAbhlcUo",
+      "canal": "premiadas harmonização facial ",
+      "account": "@premiadasharmonizacaofacial",
+      "views": 119,
+      "median": 8,
+      "mult": 14.875,
+      "hook": "curiosidades pintando por aqui vocêsabia",
+      "id": "b5xPDTM60bY",
       "anuncio": false,
-      "url": "https://www.youtube.com/shorts/ycRQAbhlcUo"
+      "url": "https://www.youtube.com/shorts/b5xPDTM60bY"
     },
     {
-      "canal": "brunodocanva",
-      "account": "@brunodocanva",
-      "views": 12000,
-      "median": 825,
-      "mult": 14.5366444579043,
-      "hook": "O MEDO NÃO PODE TE PARAR!",
-      "id": "oVCJzdFDxZE",
+      "canal": "CodeToCash",
+      "account": "@CodeToCash-w3y",
+      "views": 4000,
+      "median": 290,
+      "mult": 13.793103448275861,
+      "hook": "JCB कैसे काम करती है? 🚜 अंदर की पूरी मशीन देखिए! | How Excavator Works",
+      "id": "X3QgES_X1dE",
       "anuncio": false,
-      "url": "https://www.youtube.com/shorts/oVCJzdFDxZE"
+      "url": "https://www.youtube.com/shorts/X3QgES_X1dE"
     },
     {
       "canal": "CAZAR - Vídeo e Marketing",
@@ -152,15 +164,15 @@
       "url": "https://www.youtube.com/shorts/iKh34cJqWmc"
     },
     {
-      "canal": "brunodocanva",
-      "account": "@brunodocanva",
-      "views": 10000,
-      "median": 825,
-      "mult": 12.113870381586917,
-      "hook": "Bota na sua cabeça motivacional na prática Marque e motive alguém",
-      "id": "OqUVXQPLWnE",
+      "canal": "premiadas harmonização facial ",
+      "account": "@premiadasharmonizacaofacial",
+      "views": 96,
+      "median": 8,
+      "mult": 12.0,
+      "hook": "e as mulheres quando entram na menopausaou até as que",
+      "id": "Sbe57MdspFQ",
       "anuncio": false,
-      "url": "https://www.youtube.com/shorts/OqUVXQPLWnE"
+      "url": "https://www.youtube.com/shorts/Sbe57MdspFQ"
     },
     {
       "canal": "CAZAR - Vídeo e Marketing",
@@ -187,9 +199,9 @@
     {
       "canal": "Sebrae Talks",
       "account": "@SebraeTalks",
-      "views": 242000,
+      "views": 246000,
       "median": 248,
-      "mult": 975.8064516129032,
+      "mult": 991.9354838709677,
       "hook": "Quer descobrir onde sua empresa estáperdendo dinheiro? Esse kit gratuito",
       "id": "lwZuRcqqu8c",
       "anuncio": true,
@@ -209,9 +221,9 @@
     {
       "canal": "Sebrae Talks",
       "account": "@SebraeTalks",
-      "views": 65000,
+      "views": 67000,
       "median": 248,
-      "mult": 262.0967741935484,
+      "mult": 270.16129032258067,
       "hook": "Empresário, você acaba de receber umamissão: investigar para onde",
       "id": "rPRNv3Kd2LQ",
       "anuncio": true,

@@ -192,6 +192,23 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
   .cal .wd{font-size:10px;padding:6px 4px}.day{min-height:80px;padding:3px}.chip img{display:none}.chip{font-size:10px}
   .row{grid-template-columns:1fr}.phone{width:100%;max-width:320px}
 }
+/* stories */
+.sday{scroll-margin-top:20px}
+.sday.hoje{border:2px solid var(--accent)}
+.sday-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.frame .sobre{font-size:12.5px;line-height:1.4;color:var(--ink);background:var(--paper);border-radius:8px;padding:6px 8px;margin:0}
+.frame .sobre b{display:block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.semana-h{margin:26px 0 12px}.semana-h:first-of-type{margin-top:0}.semana-h h2{margin:0;font-size:20px}
+.frames{display:grid;grid-auto-flow:column;grid-auto-columns:170px;gap:14px;overflow-x:auto;padding:14px 2px 6px;scroll-snap-type:x mandatory}
+.frame{scroll-snap-align:start;display:flex;flex-direction:column;gap:6px;min-width:0}
+.frame .n{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted)}
+.frame img{width:170px;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block}
+.frame .rec{width:170px;aspect-ratio:9/16;border-radius:10px;background:var(--ink);color:var(--paper);padding:12px;font-size:12px;line-height:1.35;display:flex;flex-direction:column;gap:8px;overflow:auto}
+.frame .rec b{color:var(--accent);font-size:13px}
+.frame .ad{font-size:12px;line-height:1.3;background:#EFEAFE;color:#4B2FB8;border-radius:8px;padding:5px 7px}
+.frame .lk{display:flex;gap:4px}.frame .lk input{min-width:0;flex:1;font-size:11px;padding:4px 6px;border:1px solid var(--line);border-radius:6px}
+.status.hoje{background:#FDE3D7;color:#9C2F07}.status.prox{background:var(--paper);color:var(--muted)}.status.atrasado{background:var(--warnbg);color:var(--warn)}.status.postado{background:var(--okbg);color:var(--ok)}
+.chip.story{border-left-color:#7A5AF8;cursor:pointer}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -202,6 +219,7 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
     <div class="brand">projecta<span>.</span>insta</div>
     <button class="nav" data-view="hoje" aria-current="page">Hoje</button>
     <button class="nav" data-view="calendario">Calendário</button>
+    <button class="nav" data-view="stories">Stories <span class="n" id="st-n" hidden></span></button>
     <button class="nav" data-view="feed">Prévia do feed</button>
     <button class="nav" data-view="comentarios">Comentários</button>
     <button class="nav" data-view="config">Conexões <span class="n" id="cfg-n" hidden></span></button>
@@ -284,9 +302,66 @@ function pills() {
 
 function render() {
   document.querySelectorAll(".nav").forEach(b => { if (b.dataset.view === view) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const titles = {hoje:"Hoje", calendario:"Calendário", feed:"Prévia do feed", comentarios:"Comentários", config:"Conexões"};
+  const titles = {hoje:"Hoje", calendario:"Calendário", stories:"Stories", feed:"Prévia do feed", comentarios:"Comentários", config:"Conexões"};
   $("#titulo").textContent = titles[view];
-  ({hoje:vHoje, calendario:vCal, feed:vFeed, comentarios:vComent, config:vConfig})[view]();
+  ({hoje:vHoje, calendario:vCal, stories:vStories, feed:vFeed, comentarios:vComent, config:vConfig})[view]();
+  const pend = storyDias().filter(x => x.st === "hoje" || x.st === "atrasado").length;
+  const n = $("#st-n"); n.hidden = !pend; n.textContent = pend;
+}
+
+/* ---------- STORIES ---------- */
+// Postados à mão pelo app (a API não coloca enquete, caixinha nem link). O painel organiza, mostra e marca.
+function storyDias() {
+  const hoje = iso(agoraDate()), out = [];
+  for (const s of S.stories || []) for (const d of s.dias) {
+    const st = d.postado ? "postado" : d.data === hoje ? "hoje" : d.data < hoje ? "atrasado" : "prox";
+    out.push({s, d, st});
+  }
+  return out;
+}
+const STS = {postado:"Postado", hoje:"Hoje", atrasado:"Não postado", prox:"Próximo"};
+function vStories() {
+  const dias = storyDias();
+  if (!dias.length) { $("#view").innerHTML = `<div class="card"><p class="muted">Nenhuma semana de Stories. Peça ao Claude "/ig-story da semana".</p></div>`; return; }
+  $("#view").innerHTML = `
+  <p class="muted" style="margin:0 0 16px">Stories vão pelo <b>app do Instagram</b>, porque a API não coloca enquete, caixinha nem link. Aqui você vê o que postar, salva as imagens (no celular, toque e segure) e marca como postado. Quadro 1 é sempre você gravando.</p>
+  ${dias.map(({s, d, st}, i) => `${i === 0 || dias[i - 1].s !== s ? `<div class="semana-h"><h2>${esc(s.titulo || s.semana)}</h2>${s.resumo ? `<p class="muted" style="margin:4px 0 0">${esc(s.resumo)}</p>` : ""}</div>` : ""}
+  <div class="card sday ${st === "hoje" ? "hoje" : ""}" id="st-${esc(s.semana)}-${d.n}" style="margin-bottom:16px">
+    <div class="sday-h"><div><p class="tag">Dia ${d.n} · ${fmt(d.data)}${d.horario ? ` · postar ${esc(d.horario)}` : ""}</p><h3>${esc(d.titulo)}</h3></div>
+      <div class="inline" style="margin:0;align-items:center"><span class="status ${st}">${STS[st]}</span>
+      <button class="btn sm ${d.postado ? "ghost" : "accent"}" data-mark="${esc(s.semana)}|${d.n}|${d.postado ? 0 : 1}">${d.postado ? "Desmarcar" : "Marcar como postado"}</button></div></div>
+    <div class="frames">${d.quadros.map(q => `<div class="frame"><span class="n">QUADRO ${q.n}</span>
+      ${q.img ? `<a href="${file(q.img)}" target="_blank" rel="noopener" title="Abrir em tamanho real"><img src="${file(q.img)}" alt="Story ${d.n}, quadro ${q.n}" loading="lazy"></a>
+        <a class="btn ghost sm" href="${file(q.img)}" download="story-dia${d.n}-${q.n}.png">Baixar</a>`
+      : `<div class="rec"><b>🎥 Você grava</b>${esc(q.texto)}</div>`}
+      ${q.sobre ? `<p class="sobre"><b>O que é</b>${esc(q.sobre)}</p>` : ""}
+      ${q.adesivo ? `<span class="ad">${esc(q.adesivo)}</span>` : ""}
+      ${q.link ? `<span class="lk"><input readonly value="${esc(q.link)}" aria-label="Link do adesivo"><button class="btn sm" data-copy="${esc(q.link)}">Copiar</button></span>` : ""}
+    </div>`).join("")}</div>
+    ${d.depois ? `<p class="muted" style="margin:8px 0 0;font-size:14px"><b>Depois:</b> ${esc(d.depois)}</p>` : ""}
+  </div>`).join("")}`;
+  document.querySelectorAll("[data-mark]").forEach(b => b.onclick = () => {
+    const [semana, dia, v] = b.dataset.mark.split("|");
+    run(b, () => api("/api/stories/marcar", {semana, dia: +dia, postado: v === "1"}), v === "1" ? "Stories marcados como postados." : "Desmarcado.");
+  });
+  document.querySelectorAll("[data-copy]").forEach(b => b.onclick = async () => {
+    const inp = b.previousElementSibling;
+    try { await navigator.clipboard.writeText(b.dataset.copy); }
+    catch { inp.select(); document.execCommand("copy"); }
+    toast("Link copiado. Cole no adesivo de link do Story.");
+  });
+  const alvo = location.hash.split("/")[1] || (dias.find(x => x.st === "hoje") && `${dias.find(x => x.st === "hoje").s.semana}-${dias.find(x => x.st === "hoje").d.n}`);
+  if (alvo) document.getElementById("st-" + alvo)?.scrollIntoView({block:"start"});
+}
+function storiesCard() {
+  const h = storyDias().find(x => x.d.data === iso(agoraDate()));
+  if (!h) return "";
+  const imgs = h.d.quadros.filter(q => q.img).slice(0, 4);
+  return `<div class="card" style="margin-top:18px"><div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start">
+    <div><p class="tag">Stories de hoje · pelo app</p><h3>${esc(h.d.titulo)}</h3>
+    <p class="muted" style="margin:6px 0 0">${h.d.quadros.length} quadros · quadro 1 você grava · <span class="status ${h.st}">${STS[h.st]}</span></p></div>
+    <button class="btn ${h.d.postado ? "ghost" : "accent"} sm" id="st-go">Abrir Stories de hoje</button></div>
+    <div class="frames" style="grid-auto-columns:96px">${imgs.map(q => `<img src="${file(q.img)}" alt="" style="width:96px;border-radius:8px;border:1px solid var(--line)">`).join("")}</div></div>`;
 }
 
 /* ---------- HOJE ---------- */
@@ -309,6 +384,13 @@ function alertas() {
       out.push({c: e ? "err" : "warn", t:`<b>${esc(p.id)}</b> sai ${fmt(p.data)} e ainda está pendente${e ? ` · ${e} problema(s) para corrigir` : ". Revise e aprove."}`, id:p.id});
     }
   }
+  for (const x of storyDias()) {
+    if (x.st === "hoje") out.push({c:"warn", t:`<b>Stories de hoje:</b> ${esc(x.d.titulo)}. Poste pelo app e marque como postado.`, go:"stories"});
+    else if (x.st === "atrasado") out.push({c:"warn", t:`<b>Stories de ${fmt(x.d.data)}</b> (${esc(x.d.titulo)}) não foram marcados como postados.`, go:"stories"});
+  }
+  // semana de Stories acabando: hora de pedir a próxima ao Claude
+  const ult = storyDias().map(x => x.d.data).sort().pop(), limite = new Date(now); limite.setDate(limite.getDate() + 2);
+  if (!ult || ult <= iso(limite)) out.push({c:"warn", t:`<b>${ult ? `Os Stories prontos acabam em ${fmt(ult)}.` : "Nenhum Story pronto."}</b> Peça ao Claude: "/ig-story da semana" para criar a próxima.`, go:"stories"});
   if (!out.length) out.push({c:"ok", t:"<b>Tudo em ordem.</b> Nenhuma pendência para os próximos 7 dias."});
   return out;
 }
@@ -354,7 +436,9 @@ function vHoje() {
         <p style="font-size:12px;margin:8px 0 0" class="${w.reel ? "" : "muted"}">${w.reel ? "Reel ✓" : "Sem Reel"}</p></div>`).join("")}</div>
     </div>
   </div>
+  ${storiesCard()}
   ${viralCard()}`;
+  $("#st-go")?.addEventListener("click", () => go("stories"));
   $("#vr-go")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/viral/rodar", {}), "Pesquisa iniciada. Leva uns 5 minutos; o painel atualiza sozinho."));
   const al = alertas();
   document.querySelectorAll(".alert").forEach(b => b.onclick = () => { const a = al[b.dataset.i]; if (a.id) openPost(a.id); else if (a.go) go(a.go); });
@@ -395,7 +479,8 @@ function vCal() {
   <p class="muted" style="margin:-4px 0 14px">Arraste um post para outro dia para reagendar. Se ele estava aprovado, volta para pendente.</p>
   <div class="cal">${WD.map(w => `<div class="wd">${w}</div>`).join("")}
   ${cells.map(d => { const k = iso(d); const ps = S.posts.filter(p => p.data === k); const slot = [1,3,5].includes(d.getDay());
-    return `<div class="day ${d.getMonth() !== mes.getMonth() ? "out" : ""} ${k === hoje ? "today" : ""} ${slot && !ps.length && d >= now ? "slot" : ""}" data-date="${k}"><span class="num"><b>${d.getDate()}</b></span>${ps.map(p => chip(p)).join("")}</div>`; }).join("")}
+    const sts = storyDias().filter(x => x.d.data === k);
+    return `<div class="day ${d.getMonth() !== mes.getMonth() ? "out" : ""} ${k === hoje ? "today" : ""} ${slot && !ps.length && d >= now ? "slot" : ""}" data-date="${k}"><span class="num"><b>${d.getDate()}</b></span>${ps.map(p => chip(p)).join("")}${sts.map(x => `<button class="chip story" data-story="${esc(x.s.semana)}-${x.d.n}" title="${esc(x.d.titulo)}"><span class="t">Stories · ${x.d.postado ? "✓ " : ""}${esc(x.d.titulo)}</span></button>`).join("")}</div>`; }).join("")}
   </div>
   <div class="grid g2" style="margin-top:22px">
     <div><p class="tag">Sem data</p><div class="tray" data-date="">${semData.map(p => chip(p)).join("") || `<span class="muted">Arraste um post aqui para tirar a data.</span>`}</div></div>
@@ -405,6 +490,7 @@ function vCal() {
   $("#m-prox").onclick = () => { mes.setMonth(mes.getMonth() + 1); vCal(); };
   $("#m-hoje").onclick = () => { mes = null; vCal(); };
   document.querySelectorAll("[data-prep]").forEach(b => b.onclick = () => prepDialog(b.dataset.prep));
+  document.querySelectorAll("[data-story]").forEach(b => b.onclick = () => { location.hash = "stories/" + b.dataset.story; view = "stories"; render(); });
   document.querySelectorAll(".chip[draggable]").forEach(c => c.addEventListener("dragstart", e => e.dataTransfer.setData("text/plain", c.dataset.id)));
   document.querySelectorAll("[data-date]").forEach(z => {
     z.addEventListener("dragover", e => { e.preventDefault(); z.classList.add("over"); });
@@ -572,7 +658,7 @@ function vConfig() {
   $("#aut-go").onclick = e => run(e.currentTarget, () => api("/api/autorizacoes", {cliente: $("#aut-n").value, autorizado: false}), "Cliente adicionado.");
 }
 
-const VIEWS = ["hoje","calendario","feed","comentarios","config"];
+const VIEWS = ["hoje","calendario","stories","feed","comentarios","config"];
 function celularCard() {
   const c = S.celular || {};
   const noPC = ["127.0.0.1", "localhost"].includes(location.hostname);

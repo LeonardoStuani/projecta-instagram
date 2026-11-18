@@ -95,3 +95,29 @@ After: everyone who votes Yes gets a reply. That is the whole funnel.
 ```
 
 Nothing is posted. The user posts it.
+
+## Projecta: "/ig-story da semana" (modo semanal, gera arquivos para o painel)
+
+When the user asks for the week's stories, produce a ready-to-post week, not
+just text. Everything in Portuguese, following `instagram/voice.md`.
+
+1. **Read first:** `calendario.json` (feed posts of that week: stories should
+   point to them, never repost them bare), the previous `posts/stories-*/stories.json`
+   (do not repeat themes or questions), `instagram/voice.md` (provas, no prices,
+   no invented numbers or testimonials, illustrative screens marked).
+2. **Dates:** start the day after the last existing stories day. Six posting
+   days, Sunday off, Saturday light (4 frames, question box).
+3. **Create** `posts/stories-AAAA-MM-DD/stories.json` (date = first day) with:
+   `titulo`, `resumo`, and `dias[]` each with `n, data, titulo, pasta, horario,
+   postado:false, depois, quadros[]`. Each `quadro`:
+   - frame 1: `{"n":1,"tipo":"gravar","texto":"what Leo films and says","adesivo":"Localização: Lages, SC"}`
+   - image frames: `{"n", "img":"0N.png", "sobre":"what the image says and why it is there (1-2 sentences)", "adesivo"?, "link"?, "tela":{...}}`
+   - `tela` fields: `fundo` ("" | "dark" | "laranja"), `kick`, `titulo` (`*x*` = orange italic),
+     `tam` ("m" long, "g" short), `sub`, `nota`, `lista[]`, `check`, `arquivo`, `modelo:true`
+     (background to answer the question box). One orange (`laranja`) frame per day at most.
+   - the ask (poll, question box or link) on frame 4.
+4. **Render:** `node scripts/stories/renderizar.mjs posts/stories-AAAA-MM-DD`
+   (needs internet for the fonts). Open `previa.png` and every frame with a
+   sticker: text must stay above y≈1050 so the sticker area is free.
+5. The panel (aba Stories) reads the folder by itself. Tell the user to click
+   **Enviar para o GitHub**. Nothing is posted automatically: Leo posts in the app.

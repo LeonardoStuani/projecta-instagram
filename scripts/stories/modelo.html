@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=block" rel="stylesheet">
+<style>
+/* Modelo dos Stories da Projecta (1080x1920). Mesmo visual da semana do anúncio. */
+:root{--paper:#F3F1EA;--ink:#111110;--accent:#F04E12;--muted:#6E6B63;--line:#D9D5CA;--stone:#E7E4DB}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:"Instrument Sans",sans-serif;color:var(--ink);background:var(--paper)}
+#f{position:absolute;inset:0;padding:0 96px;background:var(--paper)}
+#f.dark{background:var(--ink);color:var(--paper)}
+#f.laranja{background:var(--accent);color:var(--ink)}
+.brand{position:absolute;left:96px;top:250px;display:flex;align-items:center;gap:16px;font-weight:600;font-size:26px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dark .brand{color:#A9A59B}.laranja .brand{color:var(--ink)}
+.brand i{width:22px;height:22px;background:var(--accent)}.laranja .brand i{background:var(--ink)}
+.handle{position:absolute;left:96px;top:1560px;font-size:28px;color:var(--muted)}
+.dark .handle{color:#A9A59B}.laranja .handle{color:var(--ink)}
+.box{position:absolute;left:96px;right:96px}
+.box.c{top:330px!important;height:1200px;display:flex;flex-direction:column;justify-content:center}
+.kick{font-weight:700;font-size:28px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:28px}
+.laranja .kick{color:var(--ink)}
+h1{font-family:"Bricolage Grotesque";font-weight:700;font-size:92px;line-height:1;letter-spacing:-.045em}
+h1.m{font-size:76px;line-height:1.04}
+h1.g{font-size:118px;line-height:.96}
+h1 em,.em{font-family:"Instrument Serif";font-style:italic;font-weight:400;color:var(--accent);letter-spacing:-.02em}
+.laranja h1 em{color:var(--paper)}
+.sub{font-size:38px;line-height:1.35;margin-top:34px;color:#3A3833}
+.dark .sub{color:#D8D4C8}.laranja .sub{color:var(--ink)}
+.lista{margin-top:48px;display:flex;flex-direction:column;gap:30px}
+.lista div{display:flex;gap:28px;align-items:flex-start;font-size:42px;line-height:1.22}
+.lista b{flex:none;width:64px;height:64px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-size:30px;margin-top:-6px}
+.dark .lista b{background:var(--accent);color:var(--ink)}
+.nota{font-size:26px;color:var(--muted);margin-top:36px}
+.dark .nota{color:#A9A59B}.laranja .nota{color:var(--ink)}
+.seta{font-size:30px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:14px}
+.dark .seta{color:#A9A59B}
+.seta::after{content:"";flex:1;height:2px;background:currentColor;opacity:.35}
+.arq{font-family:ui-monospace,Consolas,monospace;font-size:46px;background:var(--stone);color:var(--ink);padding:26px 30px;border-radius:14px;margin-bottom:56px;display:inline-block}
+</style>
+</head>
+<body>
+<div id="f"></div>
+<script>
+// Uma "tela" vira um quadro. Campos:
+//   fundo: "" | "dark" | "laranja"     kick: linha laranja em caixa alta
+//   titulo: texto, *assim* vira itálico laranja     tam: "" | "m" (texto longo) | "g" (curto e grande)
+//   sub, nota: texto menor     lista: ["item", ...]     check: true troca os números por ✓
+//   arquivo: nome de arquivo em fonte mono acima do título     modelo: true = fundo para resposta da caixinha
+//   adesivo (do quadro): se existir, o texto fica em cima e o espaço y≈1050–1450 fica livre.
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = s => esc(s).replace(/\*([^*]+)\*/g, "<em>$1</em>");
+const B = '<div class="brand"><i></i>Projecta Tech</div>', H = '<div class="handle">@projectatech</div>';
+window.montar = (t, comAdesivo) => {
+  const f = document.getElementById("f");
+  f.className = t.fundo || "";
+  if (t.modelo) {
+    f.innerHTML = `${B}<div class="box" style="top:330px"><div class="kick">${fmt(t.kick || "Vocês perguntaram")}</div></div><div class="box" style="top:1290px"><div class="seta">${fmt(t.seta || "Minha resposta")}</div></div>${H}`;
+    return;
+  }
+  const lista = (t.lista || []).map((x, i) => `<div><b>${t.check ? "✓" : i + 1}</b><span>${fmt(x)}</span></div>`).join("");
+  f.innerHTML = `${B}<div class="box${comAdesivo ? "" : " c"}" style="top:${t.top || 400}px">
+    ${t.arquivo ? `<div class="arq">${esc(t.arquivo)}</div>` : ""}
+    ${t.kick ? `<div class="kick">${fmt(t.kick)}</div>` : ""}
+    ${t.titulo ? `<h1 class="${t.tam || ""}">${fmt(t.titulo)}</h1>` : ""}
+    ${lista ? `<div class="lista">${lista}</div>` : ""}
+    ${t.sub ? `<div class="sub">${fmt(t.sub)}</div>` : ""}
+    ${t.nota ? `<div class="nota">${fmt(t.nota)}</div>` : ""}
+  </div>${H}`;
+};
+document.fonts.ready.then(() => { window.READY = true; });
+</script>
+</body>
+</html>
