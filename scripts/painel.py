@@ -20,6 +20,9 @@ AUT = os.path.join(ROOT, "instagram", "autorizacoes.json")
 UI = os.path.join(ROOT, "painel", "index.html")
 PORT = int(os.environ.get("PAINEL_PORTA", "8765"))
 LOCK = threading.Lock()
+REDE = "--rede" in sys.argv          # modo celular: aceita aparelhos da rede local, com chave
+LAN_IP = None
+CHAVE = None
 
 PILARES = {"dica": 40, "bastidores": 25, "prova": 20, "oferta": 15}
 CTA = "peça sua análise gratuita: link na bio"
@@ -199,6 +202,7 @@ def estado():
     return {"agora": datetime.now(ig.TZ).strftime("%Y-%m-%d %H:%M"), "python": py, "pillow": pil,
             "token": token_info(), "git": git_info(), "posts": posts, "novas": pastas_novas(cal),
             "autorizacoes": aut_load(), "pilares": PILARES, "viral": viral_info(),
+            "celular": {"ativo": REDE, "ip": LAN_IP, "porta": PORT},
             "workflow": os.path.exists(os.path.join(ROOT, ".github", "workflows", "publicar-agendados.yml"))}
 
 
@@ -407,12 +411,53 @@ POST_ROUTES = {
 GET_ROUTES = {"/api/estado": lambda: estado(), "/api/comentarios": lambda: comentarios()}
 
 
+def ip_local():
+    import socket
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(("10.255.255.255", 1))  # não envia nada; só descobre a interface da rede local
+        return s.getsockname()[0]
+    except OSError:
+        return None
+    finally:
+        s.close()
+
+
+def link_celular():
+    return f"http://{LAN_IP}:{PORT}/?chave={CHAVE}" if REDE and LAN_IP else None
+
+
+def qr_svg():
+    import io
+    import qrcode
+    import qrcode.image.svg
+    img = qrcode.make(link_celular(), image_factory=qrcode.image.svg.SvgPathFillImage, box_size=12, border=2)
+    buf = io.BytesIO()
+    img.save(buf)
+    return buf.getvalue()
+
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, fmt, *a):
         pass
 
+    def _local(self):
+        return self.client_address[0] in ("127.0.0.1", "::1")
+
     def _host_ok(self):
-        return self.headers.get("Host", "") in (f"127.0.0.1:{PORT}", f"localhost:{PORT}")
+        ok = [f"127.0.0.1:{PORT}", f"localhost:{PORT}"] + ([f"{LAN_IP}:{PORT}"] if REDE and LAN_IP else [])
+        return self.headers.get("Host", "") in ok
+
+    def _autorizado(self):
+        """Este PC sempre entra. O celular precisa do cookie com a chave (recebido pelo link do QR code)."""
+        if self._local():
+            return True
+        if not REDE:
+            return False
+        from http.cookies import SimpleCookie
+        c = SimpleCookie(self.headers.get("Cookie", ""))
+        import hmac
+        return "painel_chave" in c and hmac.compare_digest(c["painel_chave"].value, CHAVE)
 
     def _send(self, code, body, ctype="application/json; charset=utf-8"):
         data = body if isinstance(body, bytes) else json.dumps(body, ensure_ascii=False).encode()
@@ -427,6 +472,23 @@ class Handler(BaseHTTPRequestHandler):
         if not self._host_ok():
             return self._send(403, {"erro": "Acesso só pela própria máquina."})
         u = urllib.parse.urlparse(self.path)
+        chave = urllib.parse.parse_qs(u.query).get("chave", [""])[0]
+        if REDE and chave and not self._local():
+            import hmac
+            if hmac.compare_digest(chave, CHAVE):  # troca a chave do link por um cookie e limpa a URL
+                self.send_response(303)
+                self.send_header("Set-Cookie", f"painel_chave={CHAVE}; Max-Age=31536000; Path=/; HttpOnly; SameSite=Lax")
+                self.send_header("Location", "/")
+                self.end_headers()
+                return
+        if not self._autorizado():
+            return self._send(401, "<meta name=viewport content='width=device-width'><body style='font:18px system-ui;padding:24px;background:#F3F1EA'>"
+                              "<h2>Painel da Projecta</h2><p>Acesso bloqueado. No PC, abra <b>Conexões → Abrir no celular</b> e leia o QR code com a câmera.</p>".encode(),
+                              "text/html; charset=utf-8")
+        if u.path == "/api/qr":
+            if not self._local() or not link_celular():
+                return self._send(404, {"erro": "Modo celular desligado."})
+            return self._send(200, qr_svg(), "image/svg+xml")
         if u.path in ("/", "/index.html"):
             return self._send(200, open(UI, "rb").read(), "text/html; charset=utf-8")
         if u.path == "/arquivo":
@@ -443,7 +505,7 @@ class Handler(BaseHTTPRequestHandler):
         self._run(fn)
 
     def do_POST(self):
-        if not self._host_ok() or self.headers.get("X-Painel") != "1":
+        if not self._host_ok() or self.headers.get("X-Painel") != "1" or not self._autorizado():
             return self._send(403, {"erro": "Acesso negado."})
         fn = POST_ROUTES.get(urllib.parse.urlparse(self.path).path)
         if not fn:
@@ -472,6 +534,10 @@ def scrub(msg):
 
 
 def main():
+    try:
+        sys.stdout.reconfigure(line_buffering=True)
+    except AttributeError:
+        pass
     ig.load_env()
     if env_read().get("IG_ACCESS_TOKEN"):  # confere o token ao abrir o painel
         try:
@@ -479,9 +545,33 @@ def main():
             print("Token do Instagram: OK")
         except SystemExit:
             print("Token do Instagram: RECUSADO pela Meta. Abra Conexões no painel.")
-    srv = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
+    global LAN_IP, CHAVE
+    bind = "127.0.0.1"
+    if REDE:
+        import secrets
+        LAN_IP = ip_local()
+        CHAVE = env_read().get("PAINEL_CHAVE")
+        if not CHAVE:
+            CHAVE = secrets.token_urlsafe(24)   # gerada uma vez; o celular continua conectado entre reinícios
+            env_write({"PAINEL_CHAVE": CHAVE})
+        bind = "0.0.0.0"
+    srv = ThreadingHTTPServer((bind, PORT), Handler)
     url = f"http://127.0.0.1:{PORT}"
     print(f"Painel do Instagram rodando em {url}  (Ctrl+C para fechar)")
+    if REDE:
+        if not LAN_IP:
+            print("Modo celular: não achei o IP da rede local. Confira se o PC está conectado.")
+        else:
+            print(f"\nMODO CELULAR LIGADO · mesma rede · leia o QR code com a câmera do celular:\n")
+            try:
+                import qrcode
+                q = qrcode.QRCode(border=1)
+                q.add_data(link_celular())
+                q.print_ascii(invert=True)
+            except Exception:  # noqa: BLE001
+                pass
+            print(f"\nOu digite no celular: {link_celular()}\n(o QR code também aparece em Conexões, no painel do PC)")
+            print("Se não abrir: a rede do PC precisa estar como PRIVADA no Windows e o firewall liberado para o Python.\n")
     if "--sem-navegador" not in sys.argv:
         threading.Timer(0.6, lambda: webbrowser.open(url)).start()
     try:

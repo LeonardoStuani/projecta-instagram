@@ -555,6 +555,8 @@ function vConfig() {
     <div class="inline"><button class="btn accent" id="gh-push" ${g.remote ? "" : "disabled"}>Enviar agora</button></div></div></div>
   </div>
 
+  ${celularCard()}
+
   <div class="card" style="margin-top:22px"><p class="tag">Autorizações de clientes</p><h3>Quem pode ser citado nos posts</h3>
     <p class="muted">A checagem bloqueia a aprovação de qualquer legenda que cite um cliente sem autorização por escrito.</p>
     <div class="grid" style="gap:8px;margin-top:10px">${Object.entries(S.autorizacoes).map(([n,ok]) => `<label style="font-weight:500;display:flex;gap:10px;align-items:center;margin:0"><input type="checkbox" data-aut="${esc(n)}" ${ok?"checked":""}> ${esc(n)} <span class="status ${ok?"aprovado":"pendente"}">${ok?"autorizado":"sem autorização"}</span></label>`).join("")}</div>
@@ -571,11 +573,27 @@ function vConfig() {
 }
 
 const VIEWS = ["hoje","calendario","feed","comentarios","config"];
+function celularCard() {
+  const c = S.celular || {};
+  const noPC = ["127.0.0.1", "localhost"].includes(location.hostname);
+  if (!noPC) return `<div class="card" style="margin-top:22px"><p class="tag">Abrir no celular</p><h3>Você está no celular ✓</h3><p class="muted">Conectado pela rede local. O PC precisa ficar ligado com o painel aberto.</p></div>`;
+  if (!c.ativo) return `<div class="card" style="margin-top:22px"><p class="tag">Abrir no celular</p><h3>Usar o painel pelo celular</h3>
+    <p class="muted">Feche este painel e abra pelo atalho <b>Abrir painel do Instagram (com celular).bat</b>, na pasta PLANO. Um QR code vai aparecer aqui.</p></div>`;
+  return `<div class="card" style="margin-top:22px;display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center">
+    <img src="/api/qr" alt="QR code para abrir o painel no celular" style="width:220px;height:220px;background:#fff;border-radius:12px;padding:8px">
+    <div><p class="tag">Abrir no celular · modo celular ligado</p><h3>Aponte a câmera do celular para o QR code</h3>
+    <ol style="margin:10px 0;padding-left:20px"><li>Celular no Wi-Fi da mesma rede deste PC (endereço do PC: <code>${esc(c.ip || "?")}:${c.porta}</code>).</li>
+    <li>Abra o link do QR code. O celular fica liberado (também depois de reiniciar o painel).</li>
+    <li>Se não abrir: a rede do PC precisa estar como <b>Privada</b> no Windows e o Python liberado no firewall.</li></ol>
+    <p class="muted" style="font-size:13px">O QR code contém uma chave secreta: não compartilhe a foto dele. Fora da sua rede o painel não abre.</p></div></div>`;
+}
+
 function go(v) { view = v; history.replaceState(null, "", "#" + v); render(); $("#conteudo").focus({preventScroll:true}); window.scrollTo(0,0); }
 document.querySelectorAll(".nav").forEach(b => b.onclick = () => go(b.dataset.view));
 const dlg = $("#dlg");
 dlg.addEventListener("close", () => render());
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+window.addEventListener("hashchange", () => { const v = location.hash.slice(1).split("/")[0]; if (VIEWS.includes(v) && v !== view && S) { view = v; render(); } });
 const h0 = location.hash.slice(1).split("/");
 if (VIEWS.includes(h0[0])) view = h0[0];
 load().then(() => { if (h0[1]) openPost(decodeURIComponent(h0[1])); })
