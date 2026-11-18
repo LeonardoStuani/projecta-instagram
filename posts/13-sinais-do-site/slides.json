@@ -1,0 +1,12 @@
+{
+  "pilar": "Diagnóstico rápido",
+  "slides": [
+    {"fundo": "dark", "kick": "Diagnóstico rápido", "palavra": "Sinais.", "gancho": "3 sinais de que seu site perde cliente."},
+    {"num": "1", "titulo": "Demora pra abrir *no celular.*", "texto": "O cliente está no 4G, entre uma coisa e outra. Se a página não aparece, ele volta.", "caixa": {"rotulo": "Teste agora", "texto": "Abra seu site no celular, fora do Wi-Fi."}},
+    {"num": "2", "titulo": "O WhatsApp *está escondido.*", "texto": "Botão no rodapé, número em imagem, formulário antes de tudo.", "caixa": {"rotulo": "Teste agora", "texto": "Conte os toques até abrir o WhatsApp. Mais de 1 é demais."}},
+    {"num": "3", "titulo": "A primeira tela *não diz o que você faz.*", "tam": "m", "texto": "Foto bonita e frase genérica. O cliente não sabe se você atende o que ele precisa.", "caixa": {"rotulo": "Teste agora", "texto": "Mostre a primeira tela pra alguém por 5 segundos. Ela sabe o que você faz e onde fica?"}},
+    {"fundo": "dark", "kick": "O custo", "titulo": "Cada sinal desses é um cliente que volta pro Google e *chama o próximo.*"},
+    {"kick": "Como se resolve", "titulo": "O site certo responde *3 perguntas* na primeira tela:", "tam": "m", "lista": ["O que você faz", "Onde fica", "Como falar com você, em 1 toque"], "nota": "É assim que fizemos o projectatech.com.br e o eixosul.com."},
+    {"fundo": "laranja", "kick": "Agora você", "titulo": "Quantos dos 3 sinais *seu site tem?*", "texto": "Responde com o número nos comentários. Se não tiver certeza, eu olho pra você."}
+  ]
+}

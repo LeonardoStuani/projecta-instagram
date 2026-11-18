@@ -1,0 +1,26 @@
+# Problema invisível: a planilha de uma pessoa só · legenda
+
+Pilar: problema invisível · Estrutura de legenda longa (voice.md)
+
+```
+Na sua empresa tem alguém que é "a pessoa da planilha"?
+
+Aquela que sabe onde está cada orçamento, de onde vem cada número e qual é a versão certa do arquivo. Enquanto ela está lá, tudo funciona. O problema só aparece quando ela tira férias, fica doente ou sai da empresa.
+
+E custa em três frentes:
+→ Tempo: a equipe para o que está fazendo para procurar informação.
+→ Dinheiro: orçamento refeito do zero, cobrança que ninguém lembrou de mandar.
+→ Cliente: a resposta demora e ele fecha com outro.
+
+Faz um teste hoje, leva 1 minuto: peça para outra pessoa da equipe achar o último orçamento que vocês enviaram. Se ela precisar perguntar para alguém, a informação está na cabeça de uma pessoa, não na empresa.
+
+A saída é tirar a informação da cabeça e colocar num sistema de gestão: cada pessoa com o seu acesso, histórico de cada cliente e orçamento, backup automático. Quem precisa, acha.
+
+Foi o que a gente fez na Eixo Sul Engenharia, aqui de Lages: mais de 10 anos e 500+ projetos, e hoje clientes, projetos, orçamentos e financeiro ficam num lugar só.
+
+E aí, na sua empresa, quem é essa pessoa? Conta aqui nos comentários.
+
+Peça sua análise gratuita: link na bio.
+
+#Lages #LagesSC #SerraCatarinense #SistemaDeGestao #GestaoEmpresarial
+```

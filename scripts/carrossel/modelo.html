@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=block" rel="stylesheet">
+<style>
+/* Carrossel da Projecta (1080x1350). Sistema visual travado: mesmo topo, mesmo rodapé, mesmas fontes. */
+:root{--paper:#F3F1EA;--ink:#111110;--accent:#F04E12;--muted:#6E6B63;--stone:#E7E4DB}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{font-family:"Instrument Sans",sans-serif;color:var(--ink);background:var(--paper)}
+#s{position:absolute;inset:0;background:var(--paper)}
+#s.dark{background:var(--ink);color:var(--paper)}
+#s.laranja{background:var(--accent);color:var(--ink)}
+.top{position:absolute;left:88px;right:88px;top:72px;display:flex;justify-content:space-between;font-weight:500;font-size:26px;letter-spacing:.12em;color:var(--muted)}
+.dark .top{color:#A9A59B}.laranja .top{color:var(--ink)}
+.top span:first-child{display:flex;align-items:center;gap:14px;text-transform:uppercase}
+.top i{width:20px;height:20px;background:var(--accent)}.laranja .top i{background:var(--ink)}
+/* rodapé padrão: projectatech.com.br · WhatsApp · Lages-SC + pílula de CTA */
+.rod{position:absolute;left:88px;right:88px;bottom:64px;display:flex;justify-content:space-between;align-items:center;font-size:23px;color:var(--muted);border-top:2px solid rgba(110,107,99,.25);padding-top:26px}
+.dark .rod{color:#A9A59B;border-color:rgba(169,165,155,.25)}.laranja .rod{color:var(--ink);border-color:rgba(17,17,16,.25)}
+.rod b{font-weight:600}
+.pill{font-weight:600;font-size:23px;padding:12px 22px;border-radius:999px;background:var(--ink);color:var(--paper);white-space:nowrap}
+.dark .pill{background:var(--accent);color:var(--ink)}.laranja .pill{background:var(--ink);color:var(--paper)}
+.box{position:absolute;left:88px;right:88px;top:170px;bottom:180px;display:flex;flex-direction:column;justify-content:center}
+.kick{font-weight:700;font-size:28px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:26px}
+.laranja .kick{color:var(--ink)}
+.palavra{font-family:"Bricolage Grotesque";font-weight:800;font-size:178px;line-height:.9;letter-spacing:-.06em;margin-bottom:34px}
+.palavra em,h1 em,.em{font-family:"Instrument Serif";font-style:italic;font-weight:400;color:var(--accent);letter-spacing:-.02em}
+.laranja .palavra em,.laranja h1 em{color:var(--paper)}
+.num{font-family:"Bricolage Grotesque";font-weight:700;font-size:150px;line-height:1;color:var(--accent);margin-bottom:30px}
+h1{font-family:"Bricolage Grotesque";font-weight:700;font-size:84px;line-height:1.02;letter-spacing:-.045em}
+h1.m{font-size:66px;line-height:1.06}
+.gancho{font-family:"Instrument Serif";font-style:italic;font-size:58px;line-height:1.12;letter-spacing:-.01em}
+.dark .gancho{color:#E9E5DA}
+.texto{font-size:38px;line-height:1.36;margin-top:30px;color:#3A3833}
+.dark .texto{color:#D8D4C8}.laranja .texto{color:var(--ink)}
+.lista{margin-top:40px;display:flex;flex-direction:column;gap:26px}
+.lista div{display:flex;gap:26px;align-items:flex-start;font-size:38px;line-height:1.25}
+.lista b{flex:none;width:58px;height:58px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-size:27px;margin-top:-5px}
+.dark .lista b{background:var(--accent);color:var(--ink)}
+.lista div span b.t{all:unset;font-weight:700}
+.caixa{margin-top:44px;background:var(--stone);padding:34px 46px;border-radius:6px}
+.dark .caixa{background:#232321}
+.caixa small{display:block;font-weight:600;font-size:24px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.caixa p{font-weight:600;font-size:38px;line-height:1.25}
+.numeros{display:flex;gap:56px;margin-top:44px}
+.numeros div{display:flex;flex-direction:column}
+.numeros strong{font-family:"Bricolage Grotesque";font-weight:800;font-size:120px;line-height:1;letter-spacing:-.05em;color:var(--accent)}
+.numeros span{font-size:30px;margin-top:8px}
+.nota{font-size:24px;color:var(--muted);margin-top:34px}
+.dark .nota{color:#A9A59B}.laranja .nota{color:var(--ink)}
+</style>
+</head>
+<body>
+<div id="s"></div>
+<script>
+// Um slide = um objeto. Campos (todos opcionais):
+//   fundo "" | "dark" | "laranja"   kick   palavra (palavra-conceito gigante da capa)   gancho (itálico, até 9 palavras)
+//   num   titulo (*x* = itálico laranja)   tam "m"   texto   lista []   caixa {rotulo, texto}   numeros [{n, r}]   nota   pill
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = s => esc(s).replace(/\*\*([^*]+)\*\*/g, '<b class="t">$1</b>').replace(/\*([^*]+)\*/g, "<em>$1</em>");
+window.RODAPE = "projectatech.com.br · WhatsApp (49) 99959-2640 · Lages-SC";
+window.montar = (t, i, total) => {
+  const s = document.getElementById("s");
+  s.className = t.fundo || "";
+  const pill = t.pill || (i === total ? "Análise gratuita" : "Arraste →");
+  s.innerHTML = `<div class="top"><span><i></i>Projecta Tech</span><span>${String(i).padStart(2, "0")} / ${String(total).padStart(2, "0")}</span></div>
+  <div class="box">
+    ${t.kick ? `<div class="kick">${fmt(t.kick)}</div>` : ""}
+    ${t.palavra ? `<div class="palavra">${fmt(t.palavra)}</div>` : ""}
+    ${t.gancho ? `<div class="gancho">${fmt(t.gancho)}</div>` : ""}
+    ${t.num ? `<div class="num">${esc(t.num)}</div>` : ""}
+    ${t.titulo ? `<h1 class="${t.tam || ""}">${fmt(t.titulo)}</h1>` : ""}
+    ${t.texto ? `<div class="texto">${fmt(t.texto)}</div>` : ""}
+    ${t.lista ? `<div class="lista">${t.lista.map((x, k) => `<div><b>${k + 1}</b><span>${fmt(x)}</span></div>`).join("")}</div>` : ""}
+    ${t.numeros ? `<div class="numeros">${t.numeros.map(x => `<div><strong>${esc(x.n)}</strong><span>${fmt(x.r)}</span></div>`).join("")}</div>` : ""}
+    ${t.caixa ? `<div class="caixa"><small>${fmt(t.caixa.rotulo)}</small><p>${fmt(t.caixa.texto)}</p></div>` : ""}
+    ${t.nota ? `<div class="nota">${fmt(t.nota)}</div>` : ""}
+  </div>
+  <div class="rod"><span>${esc(window.RODAPE)}</span><span class="pill">${esc(pill)}</span></div>`;
+  // palavra-conceito: diminui até caber numa linha
+  const p = s.querySelector(".palavra");
+  if (p) { let f = 178; p.style.whiteSpace = "nowrap"; while (p.scrollWidth > p.clientWidth && f > 90) { f -= 4; p.style.fontSize = f + "px"; } }
+};
+document.fonts.ready.then(() => { window.READY = true; });
+</script>
+</body>
+</html>

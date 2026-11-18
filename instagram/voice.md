@@ -50,6 +50,24 @@ Lido por todas as skills /ig-*. Instale com:
 - Prazos do site: proposta em 24h, landing page em até 7 dias, website em 2 a 4 semanas.
 - Performance 90+, mobile first, SEO local, LGPD, suporte direto com quem desenvolveu.
 
+## Estrutura de legenda longa
+
+Para carrossel de autoridade (problema invisível, prova real, diagnóstico). Referência: `instagram/referencias/benchmark-leventech.md` (só princípios, nunca copiar).
+
+1. **Pergunta**: a 1ª linha é uma pergunta direta para o dono da empresa. É o que aparece antes do "mais".
+2. **Sinal invisível**: o problema que existe mas ninguém percebe até dar errado.
+3. **Custo em 3 frentes**: três linhas com →, por exemplo tempo, dinheiro e cliente.
+4. **Verificação simples**: um teste que o leitor faz hoje, em 1 minuto, sem ajuda.
+5. **Solução**: como se resolve, sem jargão e sem preço.
+6. **Prova**: só dado real (Eixo Sul, prazos, o próprio site). O que faltar vai em [colchetes] e não é publicado.
+7. **Pergunta final**: puxa comentário ("quantos dos 3 o seu tem?"). Depois, o CTA padrão e as hashtags.
+
+Entre 800 e 1.800 caracteres. Parágrafos curtos, um emoji no máximo.
+
+## Rodapé padrão das artes
+
+Todo slide de carrossel e todo story: `projectatech.com.br · WhatsApp (49) 99959-2640 · Lages-SC`, com a pílula "Arraste →" (último slide: "Análise gratuita"). Templates: `scripts/carrossel/modelo.html` e `scripts/stories/modelo.html`.
+
 ## A chamada
 
 - **CTA padrão (fim de todo post):** "Peça sua análise gratuita: link na bio."

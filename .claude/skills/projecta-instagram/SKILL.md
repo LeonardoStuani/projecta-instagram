@@ -10,7 +10,8 @@ legendas, plano, humanizador) criam o conteúdo; este fluxo publica.
 
 ## Antes de tudo
 1. Leia `instagram/voice.md` (ou `~/.claude/instagram/voice.md`). Ele manda no tom e nas regras.
-2. Rode `python3 scripts/ig.py plano` para ver o calendário atual.
+2. **Antes de criar qualquer post**, leia `instagram/referencias/benchmark-leventech.md`: princípios de autoridade (sistema visual travado, palavra-conceito na capa, legenda longa estruturada) e onde fazer melhor que a referência (pergunta ao leitor, Lages, tom próximo). Só princípios: nunca copiar texto, arte ou ideia da Leven.
+3. Rode `python3 scripts/ig.py plano` para ver o calendário atual.
 
 ## Regras que não mudam
 - **Nada vai ao ar sem o Leo aprovar aquele post.** Aprovar = `ig.py aprovar <id>` feito por ele,
@@ -24,11 +25,20 @@ legendas, plano, humanizador) criam o conteúdo; este fluxo publica.
 
 ## Fluxo de um post
 1. **Criar**: use /ig-carousel, /ig-reel, /ig-caption e passe tudo por /ig-human.
-   Gere as artes em `posts/<nn>-<nome>/` (slide-01.png… em 1080×1350, ou um .mp4 9:16) com `legenda.md`
-   (a legenda dentro de um bloco ```).
-2. **Preparar**: `python3 scripts/ig.py preparar posts/<pasta> --data AAAA-MM-DD --hora HH:MM`
-   (converte PNG em JPEG, copia para `media/` e põe no calendário como `pendente`).
-3. **Mostrar ao Leo**: as imagens e a legenda. Esperar o OK.
+   Carrossel: escreva `posts/<nn>-<nome>/slides.json` e rode `node scripts/carrossel/renderizar.mjs posts/<nn>-<nome>`
+   (template com o rodapé padrão; gera slide-01.png… em 1080×1350 e previa.png). Reel: um .mp4 9:16.
+   Legenda em `legenda.md` (dentro de um bloco ```), na "Estrutura de legenda longa" do `voice.md`.
+2. **Preparar**: `python3 scripts/ig.py preparar posts/<pasta> --data AAAA-MM-DD --hora HH:MM --pilar dica`
+   (converte PNG em JPEG, copia para `media/`, põe no calendário como `pendente` e imprime o checklist).
+3. **Revisar com o checklist antes de aprovar** (do benchmark). Confira cada item e diga ao Leo o resultado:
+   - [ ] Capa com pessoa ou palavra-conceito grande
+   - [ ] Rodapé padrão presente (projectatech.com.br · WhatsApp · Lages-SC)
+   - [ ] Gancho com até 9 palavras no 1º slide
+   - [ ] Legenda: problema → custo → verificação → solução → prova → pergunta
+   - [ ] 1 CTA só (WhatsApp ou comentário)
+   - [ ] Localização Lages-SC + até 5 hashtags
+   - [ ] Nada inventado: o que faltar vai em [colchetes]
+   Depois mostre ao Leo as imagens e a legenda e espere o OK.
 4. **Aprovar**: `python3 scripts/ig.py aprovar <id>` e depois `git add -A && git commit -m "..." && git push`.
    O GitHub Actions publica sozinho quando a data/hora chegar (verifica de hora em hora).
 5. **Publicar já** (se o Leo pedir): `python3 scripts/ig.py publicar <id>`; mostra a legenda e pede confirmação.

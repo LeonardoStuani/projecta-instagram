@@ -1,0 +1,12 @@
+{
+  "pilar": "Prova real",
+  "slides": [
+    {"fundo": "dark", "kick": "Case real · Lages-SC", "palavra": "Organização.", "gancho": "Como a Eixo Sul saiu do Excel."},
+    {"kick": "Quem é", "titulo": "Eixo Sul Engenharia: topografia, agrimensura e *georreferenciamento.*", "tam": "m", "numeros": [{"n": "10+", "r": "anos em Lages"}, {"n": "500+", "r": "projetos entregues"}]},
+    {"kick": "Antes", "titulo": "Sem site. Clientes *no Excel.*", "texto": "Quem procurava no Google não encontrava o escritório. E cada informação ficava num arquivo diferente."},
+    {"kick": "O que a gente fez", "titulo": "Duas peças, *um objetivo.*", "tam": "m", "lista": ["**Site eixosul.com:** pra ser encontrada e mostrar o trabalho", "**Sistema:** clientes, projetos, orçamentos e financeiro num lugar só"]},
+    {"fundo": "dark", "kick": "Depois", "titulo": "Hoje o escritório roda no *Projecta Gestão.*", "texto": "Feito em cima da rotina deles, com o vocabulário de quem faz topografia."},
+    {"kick": "Teste pra sua empresa", "titulo": "Quanto tempo você leva pra saber quais orçamentos *estão em aberto?*", "tam": "m", "caixa": {"rotulo": "Se a resposta é", "texto": "\"Preciso abrir a planilha e conferir\", você está no antes."}},
+    {"fundo": "laranja", "kick": "Agora você", "titulo": "Sua empresa está no *antes* ou no *depois?*", "texto": "Responde nos comentários.", "nota": "Case autorizado pela Eixo Sul Engenharia."}
+  ]
+}

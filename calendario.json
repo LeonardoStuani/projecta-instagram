@@ -120,6 +120,60 @@
     "observacao": "Confirme que projectatech.com.br está no ar antes de aprovar (o vídeo mostra o domínio). Vídeo sem áudio: para mais alcance, publique pelo app com um áudio em alta."
   },
   {
+    "id": "11-planilha-de-uma-pessoa",
+    "tipo": "carrossel",
+    "arquivos": [
+      "11-planilha-de-uma-pessoa/slide-01.jpg",
+      "11-planilha-de-uma-pessoa/slide-02.jpg",
+      "11-planilha-de-uma-pessoa/slide-03.jpg",
+      "11-planilha-de-uma-pessoa/slide-04.jpg",
+      "11-planilha-de-uma-pessoa/slide-05.jpg",
+      "11-planilha-de-uma-pessoa/slide-06.jpg",
+      "11-planilha-de-uma-pessoa/slide-07.jpg"
+    ],
+    "legenda": "media/11-planilha-de-uma-pessoa/legenda.txt",
+    "data": "2026-12-07",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "dica"
+  },
+  {
+    "id": "12-case-organizacao",
+    "tipo": "carrossel",
+    "arquivos": [
+      "12-case-organizacao/slide-01.jpg",
+      "12-case-organizacao/slide-02.jpg",
+      "12-case-organizacao/slide-03.jpg",
+      "12-case-organizacao/slide-04.jpg",
+      "12-case-organizacao/slide-05.jpg",
+      "12-case-organizacao/slide-06.jpg",
+      "12-case-organizacao/slide-07.jpg"
+    ],
+    "legenda": "media/12-case-organizacao/legenda.txt",
+    "data": "2026-12-09",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "prova"
+  },
+  {
+    "id": "13-sinais-do-site",
+    "tipo": "carrossel",
+    "arquivos": [
+      "13-sinais-do-site/slide-01.jpg",
+      "13-sinais-do-site/slide-02.jpg",
+      "13-sinais-do-site/slide-03.jpg",
+      "13-sinais-do-site/slide-04.jpg",
+      "13-sinais-do-site/slide-05.jpg",
+      "13-sinais-do-site/slide-06.jpg",
+      "13-sinais-do-site/slide-07.jpg"
+    ],
+    "legenda": "media/13-sinais-do-site/legenda.txt",
+    "data": "2026-12-11",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "dica"
+  },
+  {
     "id": "03-case-eixo-sul",
     "tipo": "carrossel",
     "arquivos": [

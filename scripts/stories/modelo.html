@@ -15,7 +15,7 @@ body{font-family:"Instrument Sans",sans-serif;color:var(--ink);background:var(--
 .brand{position:absolute;left:96px;top:250px;display:flex;align-items:center;gap:16px;font-weight:600;font-size:26px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .dark .brand{color:#A9A59B}.laranja .brand{color:var(--ink)}
 .brand i{width:22px;height:22px;background:var(--accent)}.laranja .brand i{background:var(--ink)}
-.handle{position:absolute;left:96px;top:1560px;font-size:28px;color:var(--muted)}
+.handle{position:absolute;left:96px;top:1560px;font-size:26px;color:var(--muted)}
 .dark .handle{color:#A9A59B}.laranja .handle{color:var(--ink)}
 .box{position:absolute;left:96px;right:96px}
 .box.c{top:330px!important;height:1200px;display:flex;flex-direction:column;justify-content:center}
@@ -51,7 +51,7 @@ h1 em,.em{font-family:"Instrument Serif";font-style:italic;font-weight:400;color
 //   adesivo (do quadro): se existir, o texto fica em cima e o espaço y≈1050–1450 fica livre.
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmt = s => esc(s).replace(/\*([^*]+)\*/g, "<em>$1</em>");
-const B = '<div class="brand"><i></i>Projecta Tech</div>', H = '<div class="handle">@projectatech</div>';
+const B = '<div class="brand"><i></i>Projecta Tech</div>', H = '<div class="handle">projectatech.com.br · WhatsApp (49) 99959-2640 · Lages-SC</div>';
 window.montar = (t, comAdesivo) => {
   const f = document.getElementById("f");
   f.className = t.fundo || "";

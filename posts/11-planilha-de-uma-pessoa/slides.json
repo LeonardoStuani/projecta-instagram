@@ -1,0 +1,12 @@
+{
+  "pilar": "Problema invisível",
+  "slides": [
+    {"fundo": "dark", "kick": "Problema invisível", "palavra": "Dependência.", "gancho": "A planilha que só uma pessoa entende."},
+    {"kick": "O sinal", "titulo": "Tudo funciona. Até essa pessoa *tirar férias.*", "texto": "Ninguém acha o último orçamento. Ninguém sabe de onde vem aquele número. E o cliente fica esperando resposta."},
+    {"kick": "O custo", "titulo": "Isso custa em *3 frentes:*", "tam": "m", "lista": ["**Tempo:** a equipe para pra procurar informação", "**Dinheiro:** orçamento refeito, cobrança esquecida", "**Cliente:** a resposta demora e ele chama outro"]},
+    {"fundo": "dark", "kick": "Teste de 1 minuto", "titulo": "Peça pra outra pessoa achar o *último orçamento* enviado.", "tam": "m", "caixa": {"rotulo": "Resultado", "texto": "Se ela precisou perguntar pra alguém, o problema está aí."}},
+    {"kick": "Como se resolve", "titulo": "A informação fica no *sistema*, não na cabeça de alguém.", "tam": "m", "lista": ["Cada pessoa com o seu acesso", "Histórico de cada cliente e orçamento", "Backup automático"]},
+    {"kick": "Prova · Eixo Sul Engenharia", "titulo": "Clientes, projetos, orçamentos e financeiro *num lugar só.*", "tam": "m", "numeros": [{"n": "10+", "r": "anos de escritório"}, {"n": "500+", "r": "projetos"}], "nota": "Case autorizado pela Eixo Sul Engenharia, de Lages."},
+    {"fundo": "laranja", "kick": "Agora você", "titulo": "Na sua empresa, *quem é* essa pessoa?", "texto": "Conta nos comentários. Ou chama no WhatsApp que eu te mostro como tirar isso da cabeça de alguém."}
+  ]
+}

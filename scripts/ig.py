@@ -4,8 +4,9 @@ ig.py — linha de comando do Instagram da Projecta Tech (API oficial da Meta).
 
 Comandos:
   python3 scripts/ig.py conta                      mostra a conta ligada ao token
-  python3 scripts/ig.py preparar <pasta> [--data AAAA-MM-DD --hora HH:MM]
-                                                   converte os slides PNG em JPEG e põe o post no calendário (pendente)
+  python3 scripts/ig.py preparar <pasta> [--data AAAA-MM-DD --hora HH:MM --pilar dica]
+                                                   converte os slides PNG em JPEG, põe o post no calendário (pendente)
+                                                   e mostra o checklist antes de aprovar
   python3 scripts/ig.py plano                      lista o calendário
   python3 scripts/ig.py aprovar <id>               marca um post como aprovado (a automação publica na data)
   python3 scripts/ig.py publicar <id> [--sim]      publica agora (pede confirmação, exceto com --sim)
@@ -180,6 +181,42 @@ def cmd_conta(a):
         sys.exit(f"Atenção: o token responde pela conta @{c.get('username')}, não @{CONTA}.")
 
 
+# Checklist antes de aprovar (instagram/referencias/benchmark-leventech.md).
+# Cada item: (texto, função(legenda) -> True/False, ou None quando precisa olhar a arte).
+RODAPE = "projectatech.com.br · WhatsApp · Lages-SC"
+
+
+def _antes_do_cta(leg):
+    return leg.lower().split("peça sua análise gratuita")[0]
+
+
+CHECKLIST = [
+    ("Capa com pessoa ou palavra-conceito grande", None),
+    (f"Rodapé padrão em todos os slides ({RODAPE})", None),
+    ("Gancho com até 9 palavras no 1º slide", None),
+    ("Legenda: pergunta → sinal → custo → verificação → solução → prova → pergunta",
+     lambda t: len(t) >= 700 and t.strip().split("\n")[0].rstrip().endswith("?") and "?" in _antes_do_cta(t)[-400:]),
+    ("1 CTA só (análise gratuita: link na bio)", lambda t: t.lower().count("link na bio") == 1),
+    ("Localização Lages-SC (no app ou no agendamento) + até 5 hashtags",
+     lambda t: 0 < len([w for w in t.split() if w.startswith("#")]) <= 5),
+    ("Nada inventado: nenhum [colchete] sobrando", lambda t: "[" not in t),
+]
+
+
+def checklist(leg):
+    out = []
+    for item, f in CHECKLIST:
+        out.append((item, None if f is None else bool(f(leg))))
+    return out
+
+
+def imprimir_checklist(leg):
+    print("\nChecklist antes de aprovar (benchmark):")
+    for item, ok in checklist(leg):
+        print(f"  [{'ok' if ok else 'olhe' if ok is None else 'X '}] {item}")
+    print("  'olhe' = confira na arte. 'X' = corrija antes de aprovar.\n")
+
+
 def cmd_preparar(a):
     from PIL import Image  # pip install pillow
     pasta = a[0].rstrip("/")
@@ -209,10 +246,14 @@ def cmd_preparar(a):
     leg_rel = f"media/{pid}/legenda.txt"
     open(os.path.join(ROOT, leg_rel), "w", encoding="utf-8").write(leg)
     c = [e for e in cal_load() if e["id"] != pid]
-    c.append({"id": pid, "tipo": tipo, "arquivos": arquivos, "legenda": leg_rel,
-              "data": opts.get("--data", ""), "hora": opts.get("--hora", "18:00"), "status": "pendente"})
+    novo = {"id": pid, "tipo": tipo, "arquivos": arquivos, "legenda": leg_rel,
+            "data": opts.get("--data", ""), "hora": opts.get("--hora", "18:00"), "status": "pendente"}
+    if opts.get("--pilar"):
+        novo["pilar"] = opts["--pilar"]
+    c.append(novo)
     cal_save(sorted(c, key=lambda e: (e["data"] or "9999", e["hora"])))
     print(f"OK: {pid} ({tipo}, {len(arquivos)} arquivo(s)) entrou no calendário como pendente.")
+    imprimir_checklist(leg)
     print("Faça commit e push para as imagens ficarem públicas antes de aprovar.")
 
 

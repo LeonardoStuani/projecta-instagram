@@ -114,6 +114,10 @@ def checar(texto, entrada=None):
             avisos.append(f'Parece promessa de resultado: "{p}".')
     if not any(b in low for b in BUSCA):
         avisos.append("Sem palavra-chave de busca (site, sistema de gestão, Lages…).")
+    if t.strip() and "?" not in low.split(CTA)[0]:
+        avisos.append("Sem pergunta para o leitor. Feche com uma pergunta que puxe comentário (checklist do benchmark).")
+    if low.count("link na bio") > 1:
+        avisos.append("Mais de um CTA. Deixe só um.")
     if entrada is not None and not entrada.get("data"):
         avisos.append("Sem data no calendário.")
     if entrada is not None and not entrada.get("pilar"):
