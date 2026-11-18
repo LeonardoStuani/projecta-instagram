@@ -20,7 +20,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 h1,h2,h3{font-family:var(--display);letter-spacing:-.03em;line-height:1.05;margin:0;text-wrap:balance}
 em.s{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
 a{color:inherit}
-.tag{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tag{font-size:13px;font-weight:600;letter-spacing:.01em;color:var(--muted)}
 .muted{color:var(--muted)}
 
 /* layout */
@@ -62,7 +62,7 @@ main{padding:32px 40px 80px;min-width:0}
 .card.ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .card.ink .muted,.card.ink .tag{color:var(--fog)}
 .card h3{font-size:22px;margin-top:6px}
-.big{font-family:var(--display);font-weight:700;font-size:56px;letter-spacing:-.05em;line-height:1}
+.big{font-family:var(--display);font-weight:700;font-size:56px;letter-spacing:-.05em;line-height:1;margin-bottom:0}
 
 /* next post */
 .next{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center}
@@ -184,10 +184,11 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
 @media (max-width:1100px){.g3{grid-template-columns:1fr 1fr}.weeks{grid-template-columns:1fr 1fr}.feed-wrap{grid-template-columns:1fr}}
 @media (max-width:860px){
   .app{grid-template-columns:1fr}
-  aside{position:static;height:auto;flex-direction:row;flex-wrap:wrap;padding:12px}
-  .brand{width:100%;margin:0 4px 6px}.side-foot{display:none}
+  aside{position:sticky;top:0;z-index:20;height:auto;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;padding:10px 12px;gap:2px;scrollbar-width:none}
+  aside::-webkit-scrollbar{display:none}
+  .brand{flex:none;margin:0 10px 0 4px;align-self:center}.nav{flex:none;padding:8px 11px}.side-foot{display:none}
   main{padding:20px 16px 60px}.top h1{font-size:32px}
-  .g3,.g2{grid-template-columns:1fr}
+  .g3,.g2{grid-template-columns:1fr}.g3>*,.g2>*{grid-column:auto!important}
   .dlg{grid-template-columns:1fr}.dlg .left{padding:16px}
   .cal .wd{font-size:10px;padding:6px 4px}.day{min-height:80px;padding:3px}.chip img{display:none}.chip{font-size:10px}
   .row{grid-template-columns:1fr}.phone{width:100%;max-width:320px}
@@ -313,12 +314,14 @@ function setupSteps() {
     {k:"envio", ok: g.repo && g.remote && g.alteracoes === 0 && g.a_enviar === 0},
   ];
 }
+const pl = (n, um, varios) => `${n} ${n === 1 ? um : varios}`;
+const nomePost = id => { const t = String(id || "").replace(/^[0-9]+-/, "").replace(/-/g, " "); return t.charAt(0).toUpperCase() + t.slice(1); };
 function pills() {
   const t = S.token, g = S.git;
   const tokCls = t.valido ? "ok" : "err";
   const tokTxt = !t.configurado ? "Instagram desconectado" : !t.valido ? "Token recusado pela Meta" : `@${t.conta || "conectado"} · conectado`;
   const gCls = !g.repo || !g.remote ? "err" : g.alteracoes || g.a_enviar ? "warn" : "ok";
-  const gTxt = !g.repo || !g.remote ? "GitHub não conectado" : g.alteracoes || g.a_enviar ? `${g.alteracoes || g.a_enviar} alteração(ões) não enviada(s)` : "GitHub em dia";
+  const gTxt = !g.repo || !g.remote ? "GitHub não conectado" : g.alteracoes || g.a_enviar ? `${pl(g.alteracoes || g.a_enviar, "alteração não enviada", "alterações não enviadas")}` : "GitHub em dia";
   $("#pills").innerHTML = `<span class="pill"><i class="dot ${tokCls}"></i>${tokTxt}</span><span class="pill"><i class="dot ${gCls}"></i>${gTxt}</span>` +
     (g.repo && g.remote && (g.alteracoes || g.a_enviar) ? `<button class="btn sm accent" id="push">Enviar para o GitHub</button>` : "");
   $("#push")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/github/enviar", {}), "Enviado. O robô do GitHub publica os aprovados no horário."));
@@ -327,6 +330,7 @@ function pills() {
 }
 
 function render() {
+  if (!S) return;  // clique numa aba antes do painel terminar de carregar
   document.querySelectorAll(".nav").forEach(b => { if (b.dataset.view === view) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
   const titles = {hoje:"Hoje", calendario:"Calendário", stories:"Stories", radar:"Radar do Instagram", feed:"Prévia do feed", comentarios:"Comentários", config:"Conexões"};
   $("#titulo").textContent = titles[view];
@@ -401,13 +405,13 @@ function alertas() {
   if (!rd.rodando && (rd.dias == null || rd.dias > 7)) out.push({c:"warn", t:`<b>Radar ${rd.dias == null ? "nunca rodou" : `com ${rd.dias} dias`}.</b> Atualize na aba Radar (leva menos de 1 minuto).`, go:"radar"});
   for (const p of S.posts) {
     if (p.status === "publicado") continue;
-    if (p.status === "erro") out.push({c:"err", t:`<b>${esc(p.id)} deu erro ao publicar.</b> ${esc(p.erro || "")}`, id:p.id});
+    if (p.status === "erro") out.push({c:"err", t:`<b>${esc(nomePost(p.id))} deu erro ao publicar.</b> ${esc(p.erro || "")}`, id:p.id});
     if (!p.data) continue;
     const q = quando(p);
-    if (q < now && p.status !== "publicado") out.push({c:"err", t:`<b>${esc(p.id)}</b> estava marcado para ${fmt(p.data)} e não saiu. Mude a data ou publique.`, id:p.id});
+    if (q < now && p.status !== "publicado") out.push({c:"err", t:`<b>${esc(nomePost(p.id))}</b> estava marcado para ${fmt(p.data)} e não saiu. Mude a data ou publique.`, id:p.id});
     else if (q <= em7 && p.status === "pendente") {
       const e = p.checagem.erros.length;
-      out.push({c: e ? "err" : "warn", t:`<b>${esc(p.id)}</b> sai ${fmt(p.data)} e ainda está pendente${e ? ` · ${e} problema(s) para corrigir` : ". Revise e aprove."}`, id:p.id});
+      out.push({c: e ? "err" : "warn", t:`<b>${esc(nomePost(p.id))}</b> sai ${fmt(p.data)} e ainda está pendente${e ? ` · ${pl(e, "problema para corrigir", "problemas para corrigir")}` : ". Revise e aprove."}`, id:p.id});
     }
   }
   for (const x of storyDias()) {
@@ -443,13 +447,13 @@ function vHoje() {
     <div class="card ink" style="grid-column:span 2">
       <p class="tag">Próximo post</p>
       ${prox ? `<div class="next" style="margin-top:12px">
-        <button class="open" data-id="${esc(prox.id)}" style="all:unset;cursor:pointer"><img src="${file(prox.midia[0])}" alt="Capa de ${esc(prox.id)}"></button>
-        <div><p class="count">${cd}</p><h3 style="font-size:28px;margin-top:6px">${esc(prox.id)}</h3>
+        <button class="open" data-id="${esc(prox.id)}" style="all:unset;cursor:pointer"><img src="${file(prox.midia[0])}" alt="Capa de ${esc(nomePost(prox.id))}"></button>
+        <div><p class="count">${cd}</p><h3 style="font-size:28px;margin-top:6px">${esc(nomePost(prox.id))}</h3>
         <p class="muted">${fmt(prox.data)} às ${prox.hora} · ${prox.tipo} · ${PIL[prox.pilar] || "sem pilar"}</p>
         <p style="margin-top:10px"><span class="status ${prox.status}">${ST[prox.status]}</span></p>
         <div class="inline"><button class="btn accent sm open" data-id="${esc(prox.id)}">Revisar e aprovar</button></div></div></div>` : `<p class="muted" style="margin-top:12px">Nada agendado. Prepare um post no Calendário.</p>`}
     </div>
-    <div class="card"><p class="tag">Fila</p><p class="big" style="margin-top:10px">${pend}</p><p class="muted">pendente(s) de aprovação</p><p style="margin-top:14px;font-weight:600">${apr} aprovado(s) aguardando o horário</p></div>
+    <div class="card" style="display:flex;flex-direction:column"><p class="tag">Fila</p><p class="big" style="margin-top:10px">${pend}</p><p class="muted" style="margin:4px 0 0">${pend === 1 ? "post esperando a sua aprovação" : "posts esperando a sua aprovação"}</p><p style="margin:14px 0 0;font-weight:600">${apr ? pl(apr, "aprovado aguardando o horário", "aprovados aguardando o horário") : "Nenhum aprovado ainda"}</p><div class="inline" style="margin-top:auto;padding-top:18px"><button class="btn ghost sm" id="fila-go">Abrir calendário</button></div></div>
   </div>
   <div class="grid g2" style="margin-top:18px">
     <div class="card"><p class="tag">O que pede sua atenção</p><ul class="alerts" style="margin-top:12px">${alertas().map((a,i) => `<li><button class="alert ${a.c}" data-i="${i}">${a.t}</button></li>`).join("")}</ul></div>
@@ -458,7 +462,7 @@ function vHoje() {
       <div class="legend">${Object.entries(S.pilares).map(([k,m]) => `<span><i class="c-${k}"></i>${PIL[k]}: <b>${Math.round((cont[k]||0)/tot*100)}%</b> <span class="muted">(meta ${m}%)</span></span>`).join("")}${cont.sem ? `<span><i class="c-sem"></i>Sem pilar: <b>${cont.sem}</b></span>` : ""}</div>
       <p class="tag" style="margin-top:22px">Ritmo seg · qua · sex</p>
       <div class="weeks" style="margin-top:10px">${semanas().map(w => `<div class="week"><p style="font-size:13px;font-weight:600;margin:0">${w.ini.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"})}</p>
-        <div class="days">${w.dias.map((d,i) => { const p = d.ps[0]; const c = !p ? "" : p.status === "publicado" ? "pub" : p.status === "aprovado" ? "ap" : "on"; return `<span class="d ${c}" title="${p ? esc(p.id) : "vazio"}">${["S","Q","S"][i]}</span>`; }).join("")}</div>
+        <div class="days">${w.dias.map((d,i) => { const p = d.ps[0]; const c = !p ? "" : p.status === "publicado" ? "pub" : p.status === "aprovado" ? "ap" : "on"; return `<span class="d ${c}" title="${p ? esc(nomePost(p.id)) : "vazio"}">${["S","Q","S"][i]}</span>`; }).join("")}</div>
         <p style="font-size:12px;margin:8px 0 0" class="${w.reel ? "" : "muted"}">${w.reel ? "Reel ✓" : "Sem Reel"}</p></div>`).join("")}</div>
     </div>
   </div>
@@ -466,6 +470,7 @@ function vHoje() {
   ${radarCard()}`;
   $("#st-go")?.addEventListener("click", () => go("stories"));
   $("#rd-card")?.addEventListener("click", () => go("radar"));
+  $("#fila-go")?.addEventListener("click", () => go("calendario"));
   const al = alertas();
   document.querySelectorAll(".alert").forEach(b => b.onclick = () => { const a = al[b.dataset.i]; if (a.id) openPost(a.id); else if (a.go) go(a.go); });
   bindOpen();
@@ -603,9 +608,9 @@ document.addEventListener("pointermove", e => { const tip = $("#tip"); if (tip &
 
 /* ---------- CALENDÁRIO ---------- */
 function chip(p, drag = true) {
-  const x = p.checagem?.erros?.length ? `<span class="x" title="${p.checagem.erros.length} problema(s)">!</span>` : "";
+  const x = p.checagem?.erros?.length ? `<span class="x" title="${pl(p.checagem.erros.length, "problema", "problemas")}">!</span>` : "";
   return `<button class="chip ${p.status} open" data-id="${esc(p.id)}" ${drag && p.status !== "publicado" ? `draggable="true"` : ""}>
-    ${p.midia[0] && !p.midia[0].endsWith(".mp4") ? `<img src="${file(p.midia[0])}" alt="">` : ""}<span class="t">${esc(p.id)}</span>${x}</button>`;
+    ${p.midia[0] && !p.midia[0].endsWith(".mp4") ? `<img src="${file(p.midia[0])}" alt="">` : ""}<span class="t">${esc(nomePost(p.id))}</span>${x}</button>`;
 }
 function vCal() {
   const now = agoraDate();
@@ -678,7 +683,7 @@ function openPost(id) {
   let idx = 0, texto = p.texto, timer;
   const pub = p.status === "publicado";
   $("#dlg-body").innerHTML = `<div class="dlg"><div class="left" id="ph"></div><div class="right">
-    <div><p class="tag">${p.tipo} · ${p.midia.length} arquivo(s)</p><h2 id="dlg-t" style="font-size:34px;margin-top:6px">${esc(p.id)}</h2>
+    <div><p class="tag">${p.tipo} · ${pl(p.midia.length, "arquivo", "arquivos")} · ${esc(p.id)}</p><h2 id="dlg-t" style="font-size:34px;margin-top:6px">${esc(nomePost(p.id))}</h2>
       <p style="margin-top:8px"><span class="status ${p.status}">${ST[p.status]}</span>${p.link ? ` <a href="${esc(p.link)}" target="_blank" rel="noopener">ver no Instagram ↗</a>` : ""}${p.substitui ? `<span class="muted" style="font-size:13px"> · substitui ${esc(p.substitui)}</span>` : ""}</p>
       ${p.observacao ? `<p class="alert warn" style="margin-top:10px;cursor:default">${esc(p.observacao)}</p>` : ""}</div>
     <div class="row"><div><label for="f-d">Data</label><input type="date" id="f-d" value="${p.data||""}" ${pub?"disabled":""}></div>
@@ -717,7 +722,7 @@ function vFeed() {
   const ord = S.posts.filter(p => p.data).sort((a,b) => quando(b) - quando(a));
   $("#view").innerHTML = `<div class="feed-wrap">
     <div class="phone"><div class="profile"><span class="av">P</span><div><b>projectatech</b><p class="muted" style="margin:0;font-size:12px">Projecta Tech · Sites e Sistemas Lages</p></div></div>
-      <div class="pgrid">${ord.map(p => `<button class="open" data-id="${esc(p.id)}" aria-label="${esc(p.id)}">${p.midia[0]?.endsWith(".mp4") ? `<video src="${file(p.midia[0])}" muted style="width:100%;height:100%;object-fit:cover"></video>` : `<img src="${file(p.midia[0])}" alt="">`}<span class="lab ${p.status==="publicado"?"pub":""}">${p.data.slice(8)}/${p.data.slice(5,7)}</span></button>`).join("")}</div></div>
+      <div class="pgrid">${ord.map(p => `<button class="open" data-id="${esc(p.id)}" aria-label="${esc(nomePost(p.id))}">${p.midia[0]?.endsWith(".mp4") ? `<video src="${file(p.midia[0])}" muted style="width:100%;height:100%;object-fit:cover"></video>` : `<img src="${file(p.midia[0])}" alt="">`}<span class="lab ${p.status==="publicado"?"pub":""}">${p.data.slice(8)}/${p.data.slice(5,7)}</span></button>`).join("")}</div></div>
     <div class="card"><p class="tag">Como o perfil vai ficar</p><h3 style="font-size:28px">A grade com os posts agendados, <em class="s">do mais novo ao mais antigo</em>.</h3>
       <p class="muted" style="margin-top:12px">É o que alguém vê ao abrir o @projectatech depois do último post agendado. Use para conferir se as capas se alternam bem (claro e escuro, foto e texto) e se o laranja não se repete demais lado a lado.</p>
       <p class="muted">Mostra só os posts deste calendário. Os publicados à mão antes do painel não aparecem.</p>
@@ -726,11 +731,18 @@ function vFeed() {
 }
 
 /* ---------- COMENTÁRIOS ---------- */
-async function vComent() {
+// A busca leva alguns segundos. Se você trocar de aba antes de terminar, a resposta é descartada
+// (antes ela escrevia os comentários por cima da aba nova). Guarda 2 min em memória para não buscar a cada clique.
+let comentSeq = 0, comentCache = null;
+async function vComent(forcar) {
   if (!S.token.configurado) { $("#view").innerHTML = `<div class="empty">Conecte o Instagram em <b>Conexões</b> para ver os comentários.<div class="inline" style="justify-content:center"><button class="btn" onclick="go('config')">Ir para Conexões</button></div></div>`; return; }
-  $("#view").innerHTML = `<p class="muted">Carregando comentários dos 8 posts mais recentes…</p>`;
+  const meu = ++comentSeq;
+  const fresco = !forcar && comentCache && Date.now() - comentCache.t < 120000;
+  if (!fresco) $("#view").innerHTML = `<p class="muted">Carregando comentários dos 8 posts mais recentes…</p>`;
   try {
-    const r = await api("/api/comentarios");
+    const r = fresco ? comentCache.r : await api("/api/comentarios");
+    if (meu !== comentSeq || view !== "comentarios") return;
+    comentCache = {t: Date.now(), r};
     const itens = r.itens.filter(i => i.comentarios.length);
     $("#view").innerHTML = `<p class="muted" style="margin-top:0">Rascunhe a resposta no Claude com <code>/ig-reply</code> ou escreva aqui. Nada é enviado sem você confirmar.</p>
     <div class="grid">${itens.map(i => `<div class="cm-post"><img src="${esc(i.post.thumbnail_url || i.post.media_url || "")}" alt=""><div>
@@ -743,8 +755,8 @@ async function vComent() {
         <div><button class="btn sm accent" data-send="${esc(c.id)}">Enviar resposta</button></div></div></div>`).join("")}</div></div>`).join("") || `<div class="empty">Nenhum comentário nos posts recentes.</div>`}</div>`;
     document.querySelectorAll("[data-r]").forEach(b => b.onclick = () => document.getElementById("r-" + b.dataset.r).classList.toggle("open"));
     document.querySelectorAll("[data-send]").forEach(b => b.onclick = () => { const id = b.dataset.send;
-      run(b, () => api("/api/comentarios/responder", {id, texto: document.getElementById("t-"+id).value, confirmacao: document.getElementById("k-"+id).checked}), "Resposta enviada.").then(r => r && vComent()); });
-  } catch (e) { $("#view").innerHTML = `<div class="empty">Não deu para buscar os comentários: ${esc(e.message)}</div>`; }
+      run(b, () => api("/api/comentarios/responder", {id, texto: document.getElementById("t-"+id).value, confirmacao: document.getElementById("k-"+id).checked}), "Resposta enviada.").then(r => r && vComent(true)); });
+  } catch (e) { if (meu !== comentSeq || view !== "comentarios") return; $("#view").innerHTML = `<div class="empty">Não deu para buscar os comentários: ${esc(e.message)}</div>`; }
 }
 
 /* ---------- CONEXÕES ---------- */
@@ -780,7 +792,7 @@ function vConfig() {
     <label style="font-weight:400;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sec" ${secretOk()?"checked":""}> Já fiz os dois passos</label></div></div>
 
   <div class="step ${cls(4)}"><span class="ic">${ic(4)}</span><div><h3>Enviar para o GitHub</h3>
-    <p class="muted" style="margin:4px 0 0">${!g.repo ? "Conecte o repositório primeiro." : `${g.alteracoes} alteração(ões) local(is)${g.a_enviar ? `, ${g.a_enviar} commit(s) para enviar` : ""}. ${g.ultimo_commit ? "Último: " + esc(g.ultimo_commit) : ""}`}</p>
+    <p class="muted" style="margin:4px 0 0">${!g.repo ? "Conecte o repositório primeiro." : `${pl(g.alteracoes, "alteração local", "alterações locais")}${g.a_enviar ? `, ${pl(g.a_enviar, "envio pendente", "envios pendentes")}` : ""}. ${g.ultimo_commit ? "Último: " + esc(g.ultimo_commit) : ""}`}</p>
     <p class="muted" style="font-size:13px">Na primeira vez o Windows abre o login do GitHub. Depois disso o envio é direto.</p>
     <div class="inline"><button class="btn accent" id="gh-push" ${g.remote ? "" : "disabled"}>Enviar agora</button></div></div></div>
   </div>
@@ -826,7 +838,7 @@ dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
 window.addEventListener("hashchange", () => { const v = location.hash.slice(1).split("/")[0]; if (VIEWS.includes(v) && v !== view && S) { view = v; render(); } });
 const h0 = location.hash.slice(1).split("/");
 if (VIEWS.includes(h0[0])) view = h0[0];
-load().then(() => { if (h0[1]) openPost(decodeURIComponent(h0[1])); })
+load().then(() => { if (h0[1] && !["stories", "radar"].includes(h0[0])) openPost(decodeURIComponent(h0[1])); })
   .catch(e => $("#view").innerHTML = `<div class="empty">O painel não respondeu: ${esc(e.message)}</div>`);
 setInterval(() => { if (!dlg.open && view !== "comentarios") load().catch(() => {}); }, 60000);
 </script>
