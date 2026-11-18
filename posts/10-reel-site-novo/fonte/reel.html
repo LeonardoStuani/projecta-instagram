@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Reel site novo</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@1&display=block" rel="stylesheet">
+<style>
+:root{--paper:#F3F1EA;--ink:#111110;--accent:#F04E12;--muted:#646057;--line:#D9D5CA;--stone:#E7E4DA}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--paper)}
+body{font-family:"Instrument Sans",sans-serif;color:var(--ink);position:relative}
+#stage{position:absolute;inset:0;overflow:hidden}
+#bg-ink{position:absolute;inset:0;background:var(--ink);transform-origin:50% 100%}
+.brand{position:absolute;left:90px;top:236px;font-family:"Bricolage Grotesque";font-weight:700;font-size:30px;letter-spacing:-.04em;display:flex;align-items:center;gap:14px}
+.brand i{width:12px;height:12px;background:var(--accent);display:inline-block}
+.brand span{font-family:"Instrument Sans";font-weight:600;font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+#card{position:absolute;left:90px;top:300px;width:800px;font-family:"Bricolage Grotesque";font-weight:700;font-size:88px;line-height:.98;letter-spacing:-.045em}
+#card .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+#card .w>span{display:inline-block}
+#card em{font-family:"Instrument Serif";font-style:italic;font-weight:400;color:var(--accent);letter-spacing:-.02em}
+#note{position:absolute;left:92px;top:604px;font-size:22px;font-weight:500;color:var(--muted);letter-spacing:.02em}
+#phone{position:absolute;left:190px;top:650px;width:640px;height:1343px;background:var(--ink);border-radius:72px;padding:18px;box-shadow:0 40px 80px -30px rgba(17,17,16,.55)}
+#screen{position:relative;width:604px;height:1307px;border-radius:56px;overflow:hidden;background:#fff}
+#site{position:absolute;inset:0;background:var(--paper)}
+#tiles{position:absolute;left:0;top:0;width:604px;will-change:transform}
+#tiles img{display:block;width:604px}
+#hdr{position:absolute;left:0;top:0;width:604px;z-index:3}
+#float{position:absolute;width:87px;height:87px;z-index:3}
+#tap{position:absolute;width:120px;height:120px;border-radius:50%;border:6px solid var(--accent);z-index:6;opacity:0;pointer-events:none}
+#tapdot{position:absolute;width:56px;height:56px;border-radius:50%;background:rgba(240,78,18,.35);z-index:6;opacity:0}
+/* busca */
+#search{position:absolute;inset:0;background:#fff;z-index:4;padding:110px 34px 0}
+.sbar{display:flex;align-items:center;gap:18px;height:84px;border-radius:42px;border:2px solid #e3e1da;padding:0 28px;font-size:30px;box-shadow:0 6px 18px -10px rgba(0,0,0,.25)}
+.sbar svg{flex:none}
+#q{white-space:nowrap;overflow:hidden}
+#caret{display:inline-block;width:3px;height:34px;background:var(--ink);vertical-align:-6px;margin-left:2px}
+.res{margin-top:34px;padding:26px 24px;border-radius:24px;transition:none}
+.res .u{font-size:20px;color:#5f6368;display:flex;align-items:center;gap:12px}
+.res .fav{width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--accent);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-weight:700;font-size:20px}
+.res .t{font-size:31px;color:#1a0dab;margin-top:12px;font-weight:500;line-height:1.2}
+.res .d{font-size:22px;color:#4d5156;margin-top:8px;line-height:1.4}
+.ghost .bar{height:20px;border-radius:10px;background:#eceae4;margin-top:14px}
+#hit{background:#fff;border:3px solid transparent}
+.stars{color:#E9A21B;font-size:22px;margin-top:6px}
+/* chat */
+#chat{position:absolute;left:0;right:0;bottom:0;height:1307px;z-index:5;background:#ECE5DD;transform:translateY(100%)}
+#chat .top{height:150px;background:#1F2C33;color:#fff;display:flex;align-items:flex-end;gap:18px;padding:0 30px 26px;font-size:30px;font-weight:600}
+#chat .top .av{width:62px;height:62px;border-radius:50%;background:var(--paper);color:var(--accent);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-weight:700}
+#chat .top small{display:block;font-size:20px;font-weight:400;opacity:.75}
+.bub{position:absolute;right:30px;max-width:470px;background:#D9FDD3;border-radius:22px 6px 22px 22px;padding:20px 24px;font-size:28px;line-height:1.35;box-shadow:0 2px 2px rgba(0,0,0,.08)}
+.bub small{display:block;text-align:right;font-size:18px;color:#667;margin-top:6px}
+.inbar{position:absolute;left:20px;right:20px;bottom:40px;height:84px;border-radius:42px;background:#fff;display:flex;align-items:center;padding:0 30px;color:#8a8a8a;font-size:26px}
+/* final */
+#end{position:absolute;inset:0;z-index:8;color:var(--paper);opacity:0}
+#end .k{position:absolute;left:90px;top:300px;font-size:26px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#A3A097}
+#end .h{position:absolute;left:90px;top:360px;width:820px;font-family:"Bricolage Grotesque";font-weight:700;font-size:118px;line-height:.95;letter-spacing:-.05em}
+#end .h em{font-family:"Instrument Serif";font-style:italic;font-weight:400;color:var(--accent)}
+#end .row{position:absolute;left:90px;top:900px;display:flex;gap:16px;flex-wrap:wrap;width:760px}
+#end .pill{border:2px solid #3a3835;border-radius:99px;padding:14px 26px;font-size:28px;font-weight:500}
+#end .pill.a{background:var(--accent);border-color:var(--accent);color:var(--ink);font-weight:600}
+#end .handle{position:absolute;left:90px;top:1120px;display:flex;align-items:center;gap:22px;font-family:"Bricolage Grotesque";font-weight:700;font-size:46px;letter-spacing:-.03em}
+#end .handle .av{width:96px;height:96px;border-radius:50%;background:var(--paper);color:var(--accent);display:grid;place-items:center;font-size:48px}
+#end .handle small{display:block;font-family:"Instrument Sans";font-weight:500;font-size:24px;color:#A3A097;letter-spacing:0}
+#bar{position:absolute;left:0;top:0;height:8px;background:var(--accent);z-index:4}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg-ink" style="transform:scaleY(0)"></div>
+  <div class="brand" id="brand"><i></i>projecta<span>· Lages, SC</span></div>
+  <div id="card"></div>
+  <div id="note"></div>
+  <div id="phone"><div id="screen">
+    <div id="site"><div id="tiles"></div><img id="hdr" src="assets/header.png" alt=""><img id="float" src="assets/whats-float.png" alt=""><div id="bar"></div></div>
+    <div id="search">
+      <div class="sbar"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5f6368" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span id="q"></span><span id="caret"></span></div>
+      <div class="res ghost"><div class="bar" style="width:40%"></div><div class="bar" style="width:85%;height:26px"></div><div class="bar" style="width:70%"></div></div>
+      <div class="res" id="hit"><div class="u"><span class="fav">P</span>projectatech.com.br</div><div class="t">Projecta Tech · Sites e sistemas em Lages, SC</div><div class="d">Landing pages, websites, sistemas internos e SaaS sob medida. Proposta em 24h.</div></div>
+      <div class="res ghost"><div class="bar" style="width:35%"></div><div class="bar" style="width:78%;height:26px"></div><div class="bar" style="width:88%"></div><div class="bar" style="width:60%"></div></div>
+    </div>
+    <div id="chat"><div class="top"><span class="av">P</span><div>Projecta Tech<small>online</small></div></div>
+      <div class="bub" style="top:220px">Olá! Vim pelo site e quero um orçamento.<small>agora ✓✓</small></div>
+      <div class="inbar">Mensagem</div></div>
+    <div id="tapdot"></div><div id="tap"></div>
+  </div></div>
+  <div id="end"><p class="k">Próximo passo</p><p class="h">Análise gratuita no <em>link da bio.</em></p>
+    <div class="row"><span class="pill a">Proposta em 24h</span><span class="pill">Sites</span><span class="pill">Sistemas</span><span class="pill">Lages e Serra Catarinense</span></div>
+    <div class="handle"><span class="av">P</span><div>@projectatech<small>Estúdio de software · Lages, SC</small></div></div></div>
+</div>
+<script>
+// ---------- dados da captura ----------
+let SITE = null;
+const K = 604 / 390;           // px CSS do site -> px na tela do celular
+const HDR = 64;
+async function setup() {
+  SITE = await (await fetch("assets/site.json")).json();
+  const tiles = document.getElementById("tiles");
+  for (const f of SITE.fatias) { const im = new Image(); im.src = "assets/" + f.nome; tiles.appendChild(im); }
+  const fb = SITE.floatBox;
+  Object.assign(document.getElementById("float").style, { left: fb.x * K + "px", top: fb.y * K + "px", width: fb.width * K + "px", height: fb.height * K + "px" });
+  await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })));
+  await document.fonts.ready;
+  window.READY = true;
+}
+setup();
+
+// ---------- utilidades ----------
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const easeOut = x => 1 - Math.pow(1 - x, 3);
+const easeIO = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const lerp = (a, b, x) => a + (b - a) * x;
+const $ = id => document.getElementById(id);
+
+// ---------- roteiro (segundos) ----------
+const M = () => SITE.marcas;
+const CARDS = [
+  [0.0, 2.2, "Seu cliente te achou no <em>Google.</em>"],
+  [2.2, 4.4, "Esse é o site que ele <em>abre.</em>"],
+  [4.4, 6.5, "Abre em menos de <em>2 segundos.</em>"],
+  [6.5, 9.4, "Serviços e prazos já na <em>primeira tela.</em>"],
+  [9.4, 12.0, "Case real: <em>Eixo Sul,</em> aqui de Lages."],
+  [12.0, 14.2, "Sistema pronto, rodando na <em>Eixo Sul.</em>"],
+  [14.2, 17.1, "Orçamento? <em>1 toque</em> e cai no WhatsApp."],
+  [17.1, 20.0, "Proposta em <em>24h,</em> feita pro seu negócio."],
+  [22.6, 25.5, "Seu próximo cliente te acha no <em>Google.</em>"],
+];
+const DUR = 25.5;
+let lastCard = -1;
+
+function setCard(t) {
+  const i = CARDS.findIndex(c => t >= c[0] && t < c[1]);
+  const card = $("card");
+  if (i !== lastCard) {
+    lastCard = i;
+    if (i < 0) { card.innerHTML = ""; return; }
+    // quebra em palavras preservando <em>
+    const tmp = document.createElement("div"); tmp.innerHTML = CARDS[i][2];
+    const out = [];
+    tmp.childNodes.forEach(n => {
+      if (n.nodeType === 3) n.textContent.split(/(\s+)/).forEach(w => out.push(w.trim() ? `<span class="w"><span>${w}</span></span>` : " "));
+      else n.textContent.split(/(\s+)/).forEach(w => out.push(w.trim() ? `<span class="w"><span><em>${w}</em></span></span>` : " "));
+    });
+    card.innerHTML = out.join("");
+  }
+  if (i < 0) return;
+  const [a, b] = CARDS[i];
+  card.querySelectorAll(".w>span").forEach((s, k) => {
+    const p = easeOut(prog(t, a + k * 0.045, a + k * 0.045 + 0.38));
+    const o = i === CARDS.length - 1 || i === 7 ? 0 : prog(t, b - 0.18, b);   // some no fim
+    s.style.transform = `translateY(${(1 - p) * 110 + o * -110}%)`;
+  });
+}
+
+function tapAt(t, t0, x, y) {
+  const p = prog(t, t0, t0 + 0.45);
+  const on = t >= t0 && t < t0 + 0.6;
+  $("tap").style.opacity = on ? (1 - p) : 0;
+  $("tap").style.left = x - 60 + "px"; $("tap").style.top = y - 60 + "px";
+  $("tap").style.transform = `scale(${0.4 + p * 0.9})`;
+  $("tapdot").style.opacity = on && p < .7 ? 1 : 0;
+  $("tapdot").style.left = x - 28 + "px"; $("tapdot").style.top = y - 28 + "px";
+}
+
+function scrollTo(y) { $("tiles").style.transform = `translateY(${-y * K}px)`; }
+
+function render(t) {
+  t = clamp(t, 0, DUR - 1e-6);
+  setCard(t);
+  const m = M();
+
+  // --- busca (0-2.2 e 22.6-fim) ---
+  const Q = "criação de site em Lages";
+  const inSearch = t < 2.55 || t >= 22.6;
+  const sOff = t < 2.55 ? easeIO(prog(t, 2.2, 2.55)) : 1 - easeOut(prog(t, 22.6, 23.0));
+  $("search").style.transform = `translateX(${-sOff * 100}%)`;
+  $("search").style.display = inSearch ? "block" : "none";
+  const t0 = t < 2.55 ? 0.15 : 23.0;
+  const typed = Math.round(prog(t, t0, t0 + 1.0) * Q.length);
+  $("q").textContent = Q.slice(0, typed);
+  $("caret").style.opacity = (Math.floor(t * 2.5) % 2 === 0 || typed < Q.length) ? 1 : 0;
+  const hl = prog(t, t0 + 1.15, t0 + 1.35);
+  $("hit").style.borderColor = `rgba(240,78,18,${hl})`;
+  $("hit").style.background = `rgba(240,78,18,${hl * 0.06})`;
+  if (t < 2.55) tapAt(t, 1.7, 302, 560); else tapAt(t, 24.6, 302, 560);
+
+  // --- rolagem do site ---
+  let y = 0;
+  const seg = [
+    [2.2, 0, 4.4, 0], [4.4, 0, 6.5, 140], [6.6, 140, 7.4, m.servicos - HDR], [7.4, m.servicos - HDR, 9.3, m.servicos + 380],
+    [9.4, m.servicos + 380, 10.1, m.caseEixo - HDR], [10.1, m.caseEixo - HDR, 11.9, m.caseEixo + 420],
+    [12.0, m.caseEixo + 420, 12.7, m.gestao - HDR], [12.7, m.gestao - HDR, 14.1, m.gestao + 260],
+    [14.2, m.gestao + 260, 15.0, m.comecarBotao - 470], [17.1, m.comecarBotao - 470, 17.9, m.cta - HDR], [17.9, m.cta - HDR, 20, m.cta + 80],
+  ];
+  y = seg[0][1];
+  for (const [a, ya, b, yb] of seg) { if (t >= a) y = lerp(ya, yb, easeIO(prog(t, a, b))); }
+  scrollTo(y);
+
+  // barra de carregamento (abre rápido)
+  const lb = prog(t, 2.35, 3.05);
+  $("bar").style.width = lb * 100 + "%";
+  $("bar").style.opacity = t > 2.3 && t < 3.3 ? 1 - prog(t, 3.05, 3.3) : 0;
+
+  // toque no WhatsApp e conversa
+  if (t >= 14.2 && t < 17.1) {
+    const fb = SITE.floatBox;
+    tapAt(t, 15.15, (fb.x + fb.width / 2) * K, (fb.y + fb.height / 2) * K);
+  } else if (!inSearch) tapAt(t, -9, 0, 0);
+  const ch = t < 15.5 ? 0 : t < 16.9 ? easeOut(prog(t, 15.5, 15.95)) : 1 - easeIO(prog(t, 16.9, 17.3));
+  $("chat").style.transform = `translateY(${(1 - ch) * 100}%)`;
+  $("chat").querySelector(".bub").style.opacity = prog(t, 15.9, 16.1);
+
+  // nota de tela ilustrativa
+  $("note").textContent = t >= 9.4 && t < 14.2 ? "Site real no ar · tela do sistema ilustrativa, dados fictícios" : t >= 4.4 && t < 6.5 ? "" : "";
+
+  // final escuro (20-22.6)
+  const inEnd = easeIO(prog(t, 19.95, 20.4)), outEnd = easeIO(prog(t, 22.35, 22.75));
+  const e = t < 22.35 ? inEnd : 1 - outEnd;
+  $("bg-ink").style.transform = `scaleY(${e})`;
+  $("end").style.opacity = t < 22.35 ? prog(t, 20.15, 20.45) : 1 - prog(t, 22.35, 22.55);
+  $("end").querySelector(".h").style.transform = `translateY(${(1 - easeOut(prog(t, 20.15, 20.6))) * 60}px)`;
+  $("phone").style.opacity = 1 - e;
+  $("brand").style.opacity = 1 - e;
+  $("phone").style.transform = `translateY(${t < 0.5 ? (1 - easeOut(prog(t, 0, 0.5))) * 120 : 0}px)`;
+}
+window.render = render;
+</script>
+</body>
+</html>

@@ -296,6 +296,8 @@ function alertas() {
   if (!t.configurado) out.push({c:"err", t:"<b>Instagram desconectado.</b> Conecte o token para publicar e ver comentários.", go:"config"});
   else if (!t.valido) out.push({c:"err", t:"<b>A conexão com o Instagram falhou.</b> Abra Conexões e clique em Testar conexão.", go:"config"});
   if (!S.git.repo || !S.git.remote) out.push({c:"err", t:"<b>GitHub não conectado.</b> Sem ele, os aprovados não saem sozinhos.", go:"config"});
+  const v = S.viral || {};
+  if (!v.rodando && (v.dias == null || v.dias > 30)) out.push({c:"warn", t:`<b>Pesquisa de virais ${v.dias == null ? "nunca rodou" : `com ${v.dias} dias`}.</b> Rode a pesquisa mensal no card "Referências virais".`});
   for (const p of S.posts) {
     if (p.status === "publicado") continue;
     if (p.status === "erro") out.push({c:"err", t:`<b>${esc(p.id)} deu erro ao publicar.</b> ${esc(p.erro || "")}`, id:p.id});
@@ -351,10 +353,24 @@ function vHoje() {
         <div class="days">${w.dias.map((d,i) => { const p = d.ps[0]; const c = !p ? "" : p.status === "publicado" ? "pub" : p.status === "aprovado" ? "ap" : "on"; return `<span class="d ${c}" title="${p ? esc(p.id) : "vazio"}">${["S","Q","S"][i]}</span>`; }).join("")}</div>
         <p style="font-size:12px;margin:8px 0 0" class="${w.reel ? "" : "muted"}">${w.reel ? "Reel ✓" : "Sem Reel"}</p></div>`).join("")}</div>
     </div>
-  </div>`;
+  </div>
+  ${viralCard()}`;
+  $("#vr-go")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/viral/rodar", {}), "Pesquisa iniciada. Leva uns 5 minutos; o painel atualiza sozinho."));
   const al = alertas();
   document.querySelectorAll(".alert").forEach(b => b.onclick = () => { const a = al[b.dataset.i]; if (a.id) openPost(a.id); else if (a.go) go(a.go); });
   bindOpen();
+}
+
+function viralCard() {
+  const v = S.viral || {};
+  const quando = v.data ? new Date(v.data + "T12:00").toLocaleDateString("pt-BR") : "nunca";
+  return `<div class="card" style="margin-top:18px"><div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start">
+    <div><p class="tag">Referências virais · monitoramento mensal</p>
+      <h3>O que está funcionando no seu nicho</h3>
+      <p class="muted" style="margin:6px 0 0">Última pesquisa: <b>${quando}</b>${v.videos ? ` · ${v.videos} vídeos de ${v.canais} canais` : ""}. Ranking pelo quanto cada vídeo superou a média do próprio canal. A leitura completa e os ganchos da Projecta ficam em <code>instagram/swipe.md</code>.</p></div>
+    <button class="btn ${v.dias == null || v.dias > 30 ? "accent" : "ghost"} sm" id="vr-go" ${v.rodando ? "disabled" : ""}>${v.rodando ? "Pesquisando…" : "Rodar pesquisa viral"}</button></div>
+    ${(v.destaques || []).length ? `<ul class="alerts" style="margin-top:14px">${v.destaques.map(o => `<li><a class="alert ok" style="text-decoration:none;display:block" href="${esc(o.url)}" target="_blank" rel="noopener"><b>${o.mult.toFixed(1).replace(".", ",")}×</b> · ${esc(o.hook.slice(0, 90))} <span style="opacity:.75">· ${esc(o.canal)} ↗</span></a></li>`).join("")}</ul>` : ""}
+  </div>`;
 }
 
 /* ---------- CALENDÁRIO ---------- */

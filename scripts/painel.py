@@ -159,6 +159,30 @@ def pastas_novas(cal):
     return out
 
 
+VIRAL_PROC = {"p": None}
+
+
+def viral_info():
+    p = os.path.join(ROOT, "instagram", "viral", "ultimo.json")
+    rodando = VIRAL_PROC["p"] is not None and VIRAL_PROC["p"].poll() is None
+    if not os.path.exists(p):
+        return {"data": None, "dias": None, "rodando": rodando, "destaques": []}
+    d = json.load(open(p, encoding="utf-8"))
+    dias = (date.today() - datetime.strptime(d["data"], "%Y-%m-%d").date()).days
+    org = [o for o in d.get("outliers", []) if not o.get("anuncio")][:4]
+    return {"data": d["data"], "dias": dias, "rodando": rodando, "videos": d.get("videos"),
+            "canais": len(d.get("canais", [])), "destaques": org}
+
+
+def rodar_viral(_=None):
+    if VIRAL_PROC["p"] is not None and VIRAL_PROC["p"].poll() is None:
+        raise SystemExit("A pesquisa já está rodando.")
+    log = open(os.path.join(ROOT, "instagram", "viral", "ultimo.log"), "w", encoding="utf-8")
+    VIRAL_PROC["p"] = subprocess.Popen([sys.executable, os.path.join(ROOT, "scripts", "viral.py")], cwd=ROOT,
+                                       stdout=log, stderr=subprocess.STDOUT, env={**os.environ, "PYTHONUTF8": "1"})
+    return {"ok": True}
+
+
 def estado():
     cal = ig.cal_load()
     posts = []
@@ -174,7 +198,7 @@ def estado():
         pil = None
     return {"agora": datetime.now(ig.TZ).strftime("%Y-%m-%d %H:%M"), "python": py, "pillow": pil,
             "token": token_info(), "git": git_info(), "posts": posts, "novas": pastas_novas(cal),
-            "autorizacoes": aut_load(), "pilares": PILARES,
+            "autorizacoes": aut_load(), "pilares": PILARES, "viral": viral_info(),
             "workflow": os.path.exists(os.path.join(ROOT, ".github", "workflows", "publicar-agendados.yml"))}
 
 
@@ -378,7 +402,7 @@ POST_ROUTES = {
     "/api/post/publicar": publicar, "/api/post/preparar": preparar, "/api/checar": checar_texto,
     "/api/conexao/token": salvar_token, "/api/conexao/testar": testar, "/api/conexao/renovar": renovar,
     "/api/github/conectar": conectar_github, "/api/github/enviar": enviar_github,
-    "/api/autorizacoes": autorizar, "/api/comentarios/responder": responder,
+    "/api/autorizacoes": autorizar, "/api/comentarios/responder": responder, "/api/viral/rodar": rodar_viral,
 }
 GET_ROUTES = {"/api/estado": lambda: estado(), "/api/comentarios": lambda: comentarios()}
 

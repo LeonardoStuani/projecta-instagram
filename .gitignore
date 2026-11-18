@@ -2,3 +2,5 @@
 __pycache__/
 *.pyc
 .DS_Store
+posts/*/fonte/assets/
+posts/*/fonte/frames/

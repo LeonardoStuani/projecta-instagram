@@ -104,6 +104,19 @@
     "pilar": "dica"
   },
   {
+    "id": "10-reel-site-novo",
+    "tipo": "reel",
+    "arquivos": [
+      "10-reel-site-novo/reel-site-novo.mp4"
+    ],
+    "legenda": "media/10-reel-site-novo/legenda.txt",
+    "data": "2026-12-02",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "bastidores",
+    "observacao": "Confirme que projectatech.com.br está no ar antes de aprovar (o vídeo mostra o domínio). Vídeo sem áudio: para mais alcance, publique pelo app com um áudio em alta."
+  },
+  {
     "id": "03-case-eixo-sul",
     "tipo": "carrossel",
     "arquivos": [
