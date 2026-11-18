@@ -14,13 +14,15 @@ Painel: dois cliques em `PLANO\Abrir painel do Instagram.bat`. Nada é publicado
 2. **Ajuste do plano**: arraste posts no Calendário do painel se algo precisar mudar de dia.
 3. **Aprove os posts da semana** (Calendário → abrir post → Aprovar). Depois clique em **Enviar para o GitHub**. O robô publica cada um no horário.
 
-## Todo mês · primeira segunda · 30 minutos · MONITORAMENTO DE VIRAIS
-1. **Painel → Hoje → "Rodar pesquisa viral"** (ou `python scripts/viral.py`). Leva uns 5 minutos. Pesquisa Shorts públicos dos seus temas, mede quanto cada vídeo superou a média do próprio canal e separa os destaques. Os destaques acima de 200× a média são marcados como "provável anúncio".
-2. Peça ao Claude: **"lê o instagram/viral/ultimo.json e atualiza o swipe.md"**. Ele compara com o mês anterior, diz o que entrou e o que saiu, e reescreve os ganchos na versão da Projecta com nota do `hookscore`.
-3. Opcional, e melhor que tudo: abra a sua aba **Salvos** do Instagram e mande ao Claude 5 Reels de que você gostou, com views e seguidores do perfil. Eles entram no mesmo ranking.
-4. O `/ig-plan` do mês seguinte já parte do `swipe.md` novo.
+## Toda segunda · 5 minutos · RADAR DO INSTAGRAM
+1. **Painel → Radar → "Atualizar radar"** (ou `python scripts/radar.py`). Leva menos de 1 minuto e usa só a API oficial do Instagram. Mostra:
+   - seus posts: o que deu certo, o que não deu, por formato, pilar e dia;
+   - as contas do nicho que você escolheu: os posts que mais superaram a média da própria conta, filtrados pelo seu ramo;
+   - temas e ganchos que funcionaram.
+2. Peça ao Claude: **"lê o instagram/radar/ultimo.json e me dá 5 ganchos na voz da Projecta"**. O `/ig-plan` da semana parte daí.
+3. Viu um post bom do nicho no app? Anote em `instagram/radar/manual.json` (formato na aba Radar) ou mande para o Claude anotar.
 
-O painel avisa em **Hoje** quando a última pesquisa passa de 30 dias.
+O painel avisa em **Hoje** quando o radar passa de 7 dias. A pesquisa antiga do YouTube (`scripts/viral.py`) continua disponível, mas fica escondida no Radar porque trazia muita coisa fora do ramo.
 
 ## Regras que valem sempre
 - Sem preços. No máximo 5 hashtags (#Lages #LagesSC #SerraCatarinense + 2). CTA: "Peça sua análise gratuita: link na bio."

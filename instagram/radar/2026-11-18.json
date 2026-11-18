@@ -1,0 +1,545 @@
+{
+  "data": "2026-11-18",
+  "gerado_em": "2026-11-18 15:27",
+  "conta": {
+    "username": "projectatech",
+    "seguidores": 16,
+    "posts": 17
+  },
+  "permissoes": {
+    "insights": false,
+    "contas_nicho": false
+  },
+  "avisos": [
+    "Seus posts: sem alcance/salvos/compartilhamentos/views (falta a permissão instagram_manage_insights). Por enquanto o radar usa curtidas + comentários.",
+    "Contas do nicho: o token não tem a permissão instagram_manage_insights (Business Discovery)."
+  ],
+  "meus": [
+    {
+      "id": "17939094771097507",
+      "data": "2025-12-07",
+      "hora": "19:33",
+      "tipo": "Imagem",
+      "gancho": "Cada minuto conta nos seus negócios. ⏱️",
+      "legenda": "Cada minuto conta nos seus negócios. ⏱️\n\nNossa missão? Acabar com o retrabalho e simplificar processos.\n\nProjecta: agilidade e precisão para você focar no que importa.\n\n#Projecta #GestãoSimplificada",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/DR-V_xGDhFC/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "dom"
+    },
+    {
+      "id": "17914150038099956",
+      "data": "2025-12-09",
+      "hora": "00:51",
+      "tipo": "Imagem",
+      "gancho": "🚀 Um sistema pode mudar tudo!",
+      "legenda": "🚀 Um sistema pode mudar tudo!\n\nOrganização, agilidade e controle em um só lugar.\nO Projecta transforma o jeito que você gerencia seus projetos, clientes e processos simples, rápido e inteligente.\n\n💡 Tecnologia feita para quem quer evoluir!\n\n#Projecta #SoftwareDeGestão #SistemaParaEmpresas #Tecnologia",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/DSBfL4iji33/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "ter"
+    },
+    {
+      "id": "18061497545637043",
+      "data": "2025-12-12",
+      "hora": "15:00",
+      "tipo": "Imagem",
+      "gancho": "Produtividade começa com organização.",
+      "legenda": "Produtividade começa com organização.\nO Projecta oferece um dashboard completo para visualizar seus projetos, acompanhar métricas essenciais e tomar decisões com mais segurança.\n\nTudo em um sistema simples, intuitivo e feito para empresas que desejam crescer com eficiência. 🚀\n\nQuer transformar sua rotina de trabalho?\nFale com a gente e conheça o Projecta.\n\n#gestaodeprojetos #topografia #agrimensura #engenharia #projecta\n#sistema",
+      "likes": 3,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/DSKus0HDolV/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 3,
+      "taxa": 18.75,
+      "mult": 1.5,
+      "dia_semana": "sex"
+    },
+    {
+      "id": "18096480064846508",
+      "data": "2025-12-12",
+      "hora": "14:50",
+      "tipo": "Imagem",
+      "gancho": "📊 O que um bom sistema de gestão pode fazer por você?",
+      "legenda": "📊 O que um bom sistema de gestão pode fazer por você?\n\nAgilidade, clareza e menos retrabalho.\nCom o Projecta, você organiza processos, acompanha cada etapa dos projetos e ganha tempo para focar no que realmente importa: crescer.\n\nSe você busca mais eficiência no dia a dia, esse sistema é pra você. 🚀\n\n#gestaodeprojetos #topografia #agrimensura #engenharia #projecta",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/DSKtkV-jthT/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização",
+        "Google e ser encontrado"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "sex"
+    },
+    {
+      "id": "18000727778846687",
+      "data": "2025-12-13",
+      "hora": "18:06",
+      "tipo": "Reel",
+      "gancho": "Tudo o que sua empresa precisa em um único sistema.",
+      "legenda": "Tudo o que sua empresa precisa em um único sistema.\nRegistro de clientes, criação de orçamentos, acompanhamento detalhado de projetos e gestão financeira — tudo organizado, simples e no mesmo lugar.\n\nIsso é o Projecta. 🚀. #projecta #gestaodeprojetos #topografia #engenharia #produtividade",
+      "likes": 4,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/reel/DSNoorbDsTa/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização",
+        "Oferta e proposta"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 4,
+      "taxa": 25.0,
+      "mult": 2.0,
+      "dia_semana": "sáb"
+    },
+    {
+      "id": "18108166957728626",
+      "data": "2025-12-14",
+      "hora": "20:48",
+      "tipo": "Imagem",
+      "gancho": "✅ Quando a gestão é clara, o trabalho flui.",
+      "legenda": "✅ Quando a gestão é clara, o trabalho flui.\n\nCom o Projecta, clientes, projetos,orçamentos e financeiro ficam organizados em um único sistema simples, visual limpo e eficiente.\n\nMais controle.\nMenos estresse. 🚀\n\n#projecta #gestaodeprojetos #produtividade #organizacao #engenharia",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/DSQgKl_jt5W/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização",
+        "Oferta e proposta"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "dom"
+    },
+    {
+      "id": "18333460591212844",
+      "data": "2025-12-14",
+      "hora": "20:45",
+      "tipo": "Imagem",
+      "gancho": "‼️ Quando tudo fica espalhado, o trabalho pesa. 🤯Planilhas, papéis e informações soltas consomem tempo, energia e geram retrabalho todos os dias.",
+      "legenda": "‼️ Quando tudo fica espalhado, o trabalho pesa. 🤯Planilhas, papéis e informações soltas consomem tempo, energia e geram retrabalho todos os dias.\n\nOrganização não é luxo. É necessidade.\n\n#gestao #produtividade #desorganizacao #planilhas #rotinaprofissional",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/DSQfzxeDuUh/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "dom"
+    },
+    {
+      "id": "18122170486535726",
+      "data": "2025-12-17",
+      "hora": "14:36",
+      "tipo": "Carrossel",
+      "gancho": "🚀 Controle total da sua empresa, onde você estiver",
+      "legenda": "🚀 Controle total da sua empresa, onde você estiver\n\nCom o PROJECTA, você organiza projetos, clientes, orçamentos e financeiro em um só lugar\n\nSimples, rápido e online.\n\nMenos planilhas.\nMais clareza.\nMais resultado.\n\n📈 Transforme a forma como você gerencia seu negócio.\n\n👉 Fale com a gente e conheça o PROJECTA.\n\n#projecta \n#gestaoempresarial \n#softwaredegestao \n#produtividade \n#negócios",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/DSXj989joQK/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização",
+        "Prova, case e bastidor",
+        "Oferta e proposta"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "qua"
+    },
+    {
+      "id": "18121061977553128",
+      "data": "2025-12-24",
+      "hora": "20:00",
+      "tipo": "Imagem",
+      "gancho": "🎄 Feliz Natal!",
+      "legenda": "🎄 Feliz Natal!\n\nDesejamos a todos um Natal repleto de paz, alegria e momentos especiais.\nQue essa data renove as energias e prepare o caminho para um novo ano cheio de conquistas. ✨\n\n#feliznatal #projecta #boasfestas #tecnología #gratidão",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/DSqKlcWjkpJ/",
+      "temas": [
+        "Outros"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "qua"
+    },
+    {
+      "id": "18090367391056651",
+      "data": "2025-12-30",
+      "hora": "15:53",
+      "tipo": "Reel",
+      "gancho": "Planilhas, papéis e falta de controle?",
+      "legenda": "Planilhas, papéis e falta de controle?\nO Projecta organiza sua empresa e te devolve tempo.\n\nSiga o perfil para ver na prática.\n\n#projecta #gestaodeprojetos #produtividade #engenharia #topografia",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/reel/DS5KasNDljI/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "ter"
+    },
+    {
+      "id": "18065250452213355",
+      "data": "2026-01-01",
+      "hora": "02:55",
+      "tipo": "Imagem",
+      "gancho": "✨ Bem-vindo, 2026! ✨",
+      "legenda": "✨ Bem-vindo, 2026! ✨\n\nUm novo ano começa, trazendo novas oportunidades, novos projetos e mais crescimento.\nQue 2026 seja marcado por organização, eficiência e grandes resultados. 🚀\n\nSeguimos juntos com o Projecta, transformando gestão em clareza e evolução constante.\n\n#Feliz2026 #Projecta #GestaoEmpresarial #NovoAno Tecnologia",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/DS87nZkjkk4/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização",
+        "Prova, case e bastidor"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "qui"
+    },
+    {
+      "id": "17871222780592189",
+      "data": "2026-03-29",
+      "hora": "03:04",
+      "tipo": "Reel",
+      "gancho": "🚀 Sistema atualizado com sucesso!",
+      "legenda": "🚀 Sistema atualizado com sucesso!\n\nApresentamos a versão 2.0 do Projecta\n\n✨ Novo visual\n⚡ Performance otimizada\n📊 Mais controle sobre seus projetos\n🔐 Segurança reforçada\n\nTudo pensado para levar a gestão da sua empresa para outro nível.\n\n💡 Chega de planilhas e retrabalho — centralize tudo em um só lugar.\n\n👉 E você, ainda controla sua empresa como hoje?\n\n#projecta #sistemadegestao #tecnología #inovacao #gestaoempresarial",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/reel/DWc9v7SDWVb/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "dom"
+    },
+    {
+      "id": "18174711166391970",
+      "data": "2026-04-25",
+      "hora": "18:14",
+      "tipo": "Reel",
+      "gancho": "@projectatech",
+      "legenda": "@projectatech\n\nhttps://site.projecta-demo.com.br",
+      "likes": 1,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/reel/DXkHUrNDvQR/",
+      "temas": [
+        "Site e landing page"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 1,
+      "taxa": 6.25,
+      "mult": 0.5,
+      "dia_semana": "sáb"
+    },
+    {
+      "id": "18064925792386225",
+      "data": "2026-05-01",
+      "hora": "19:00",
+      "tipo": "Imagem",
+      "gancho": "Hoje celebramos a força, a dedicação e o talento de quem faz o mundo acontecer.",
+      "legenda": "Hoje celebramos a força, a dedicação e o talento de quem faz o mundo acontecer. \n\nA todos os profissionais que, com seu esforço diário, transformam sonhos em realidade e constroem um futuro melhor: o nosso reconhecimento e respeito. \nParabéns a todos os trabalhadores!\n\n#DiaDoTrabalhador #Trabalho #Sucesso #Homenagem Projecta 1deMaio Dedicação",
+      "likes": 1,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/DXzpVqIjuhw/",
+      "temas": [
+        "Outros"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 1,
+      "taxa": 6.25,
+      "mult": 0.5,
+      "dia_semana": "sex"
+    },
+    {
+      "id": "18018524771751004",
+      "data": "2026-11-17",
+      "hora": "19:58",
+      "tipo": "Reel",
+      "gancho": "Seu cliente procura você no Google. O que ele encontra? 👀",
+      "legenda": "Seu cliente procura você no Google. O que ele encontra? 👀\n\nA Projecta Tech é um estúdio de software de Lages – SC. Criamos sites, landing pages, sistemas de gestão e SaaS para empresas.\n\n→ Landing page no ar em até 7 dias\n→ Proposta em 24h, com escopo, prazo e valor fechados\n→ 100% código sob medida, nada de template\n→ Projecta Gestão: um sistema pronto, ajustado ao seu ramo\n\nPeça sua análise gratuita: link na bio.\n\n#CriacaoDeSites #Lages #LagesSC #SerraCatarinense #SistemaDeGestao",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/reel/Df2vHm-tlOi/",
+      "temas": [
+        "Site e landing page",
+        "Sistema e gestão",
+        "Google e ser encontrado",
+        "Oferta e proposta"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "ter"
+    },
+    {
+      "id": "18110271638524570",
+      "data": "2026-11-17",
+      "hora": "19:22",
+      "tipo": "Carrossel",
+      "gancho": "Nova fase por aqui: site novo no ar! ✨ projectatech.com.br",
+      "legenda": "Nova fase por aqui: site novo no ar! ✨ projectatech.com.br\n\nA Projecta Tech é um estúdio de software de Lages – SC que cria sites, landing pages, sistemas de gestão e SaaS para empresas da Serra Catarinense.\n\nQuatro frentes, um único parceiro:\n→ Landing pages, para vender e captar clientes\n→ Websites com SEO local, para ser encontrado no Google\n→ Sistemas internos, para organizar clientes, orçamentos e financeiro\n→ SaaS, como o nosso Projecta Gestão\n\nProposta em 24h, landing page no ar em até 7 dias e 100% código sob medida. \n\nPeça sua análise gratuita: link na bio.\n\n#CriacaoDeSites #Lages #La",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/Df2rCcKFJmX/",
+      "temas": [
+        "Site e landing page",
+        "Sistema e gestão",
+        "Planilha e organização",
+        "Google e ser encontrado",
+        "Oferta e proposta"
+      ],
+      "pilar": null,
+      "post": null,
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "ter"
+    },
+    {
+      "id": "17883050442543272",
+      "data": "2026-11-18",
+      "hora": "11:15",
+      "tipo": "Carrossel",
+      "gancho": "Tem empresa em Lages e ainda não tem site? 👀",
+      "legenda": "Tem empresa em Lages e ainda não tem site? 👀\n\nSeu cliente procura no Google e, sem site, quem aparece é o concorrente.\n\nA landing page da Projecta fica no ar em até 7 dias, com botão de WhatsApp e mapa, Google Meu Negócio otimizado, domínio, hospedagem e SSL. Alterações? É só pedir pelo WhatsApp.\n\nVocê recebe a proposta em 24h, com escopo, prazo e valor fechados.\n\n🎁 Bônus: análise gratuita da sua presença online, com os 3 pontos que mais estão custando clientes.\n\nPeça sua análise gratuita: link na bio. Ou manda \"SITE\" no WhatsApp.\n\n#Lages #LagesSC #SerraCatarinense #CriacaoDeSites #MarketingLo",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/Df4YAURlSTk/",
+      "temas": [
+        "Site e landing page",
+        "Google e ser encontrado",
+        "WhatsApp e atendimento",
+        "Oferta e proposta"
+      ],
+      "pilar": "oferta",
+      "post": "02-oferta-lages",
+      "interacoes": 2,
+      "taxa": 12.5,
+      "mult": 1.0,
+      "dia_semana": "qua"
+    }
+  ],
+  "melhores": [
+    "18000727778846687",
+    "18061497545637043",
+    "17883050442543272"
+  ],
+  "piores": [
+    "18174711166391970",
+    "18064925792386225",
+    "17939094771097507"
+  ],
+  "por_formato": [
+    {
+      "nome": "Reel",
+      "n": 5,
+      "media": 2.2
+    },
+    {
+      "nome": "Carrossel",
+      "n": 3,
+      "media": 2.0
+    },
+    {
+      "nome": "Imagem",
+      "n": 9,
+      "media": 2.0
+    }
+  ],
+  "por_pilar": [
+    {
+      "nome": "sem",
+      "n": 16,
+      "media": 2.06
+    },
+    {
+      "nome": "oferta",
+      "n": 1,
+      "media": 2.0
+    }
+  ],
+  "por_dia": [
+    {
+      "nome": "sáb",
+      "n": 2,
+      "media": 2.5
+    },
+    {
+      "nome": "qua",
+      "n": 3,
+      "media": 2.0
+    },
+    {
+      "nome": "ter",
+      "n": 4,
+      "media": 2.0
+    },
+    {
+      "nome": "sex",
+      "n": 3,
+      "media": 2.0
+    },
+    {
+      "nome": "dom",
+      "n": 4,
+      "media": 2.0
+    },
+    {
+      "nome": "qui",
+      "n": 1,
+      "media": 2.0
+    }
+  ],
+  "temas_meus": [
+    {
+      "nome": "Oferta e proposta",
+      "n": 6,
+      "media": 2.33
+    },
+    {
+      "nome": "Planilha e organização",
+      "n": 12,
+      "media": 2.25
+    },
+    {
+      "nome": "Sistema e gestão",
+      "n": 13,
+      "media": 2.23
+    },
+    {
+      "nome": "Google e ser encontrado",
+      "n": 4,
+      "media": 2.0
+    },
+    {
+      "nome": "WhatsApp e atendimento",
+      "n": 1,
+      "media": 2.0
+    },
+    {
+      "nome": "Prova, case e bastidor",
+      "n": 2,
+      "media": 2.0
+    },
+    {
+      "nome": "Site e landing page",
+      "n": 4,
+      "media": 1.75
+    },
+    {
+      "nome": "Outros",
+      "n": 2,
+      "media": 1.5
+    }
+  ],
+  "referencias": [],
+  "temas_nicho": [],
+  "formatos_nicho": [],
+  "ganchos": [
+    {
+      "texto": "Tudo o que sua empresa precisa em um único sistema.",
+      "mult": 2.0,
+      "conta": "projectatech",
+      "fonte": "seu",
+      "link": "https://www.instagram.com/reel/DSNoorbDsTa/"
+    },
+    {
+      "texto": "Produtividade começa com organização.",
+      "mult": 1.5,
+      "conta": "projectatech",
+      "fonte": "seu",
+      "link": "https://www.instagram.com/p/DSKus0HDolV/"
+    },
+    {
+      "texto": "Tem empresa em Lages e ainda não tem site? 👀",
+      "mult": 1.0,
+      "conta": "projectatech",
+      "fonte": "seu",
+      "link": "https://www.instagram.com/p/Df4YAURlSTk/"
+    },
+    {
+      "texto": "Seu cliente procura você no Google. O que ele encontra? 👀",
+      "mult": 1.0,
+      "conta": "projectatech",
+      "fonte": "seu",
+      "link": "https://www.instagram.com/reel/Df2vHm-tlOi/"
+    },
+    {
+      "texto": "Nova fase por aqui: site novo no ar! ✨ projectatech.com.br",
+      "mult": 1.0,
+      "conta": "projectatech",
+      "fonte": "seu",
+      "link": "https://www.instagram.com/p/Df2rCcKFJmX/"
+    }
+  ],
+  "contas": [
+    {
+      "conta": "leventech",
+      "erro": "sem permissão no token"
+    }
+  ]
+}

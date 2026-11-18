@@ -209,6 +209,30 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
 .frame .lk{display:flex;gap:4px}.frame .lk input{min-width:0;flex:1;font-size:11px;padding:4px 6px;border:1px solid var(--line);border-radius:6px}
 .status.hoje{background:#FDE3D7;color:#9C2F07}.status.prox{background:var(--paper);color:var(--muted)}.status.atrasado{background:var(--warnbg);color:var(--warn)}.status.postado{background:var(--okbg);color:var(--ok)}
 .chip.story{border-left-color:#7A5AF8;cursor:pointer}
+/* radar */
+.grid>.card{min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.kpi{background:var(--paper);border-radius:12px;padding:14px 16px}.kpi b{display:block;font-size:28px;font-family:"Bricolage Grotesque",sans-serif;letter-spacing:-.02em;margin-top:4px}
+.kpi span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.kpi small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.chart{width:100%;height:auto;display:block;margin-top:12px;overflow:visible}
+.chart text{font-size:11px;fill:var(--muted)}
+.chart .bar{fill:#C9C4B8}.chart .bar.top{fill:var(--accent)}.chart .bar:hover{opacity:.8}
+.chart .med{stroke:var(--ink);stroke-width:1;stroke-dasharray:4 4;opacity:.55}
+.hb{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.hb .r{display:grid;grid-template-columns:minmax(90px,38%) 1fr auto;gap:10px;align-items:center;font-size:13px}
+.hb .t{background:var(--paper);border-radius:4px;height:14px;overflow:hidden}.hb .t i{display:block;height:100%;background:var(--accent);border-radius:0 4px 4px 0}
+.hb .v{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+.rlist{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:8px}
+.rlist li{display:grid;grid-template-columns:62px 1fr;gap:12px;align-items:start;background:var(--paper);border-radius:10px;padding:10px 12px}
+.rlist .m{font-family:"Bricolage Grotesque",sans-serif;font-size:20px;font-weight:700;color:var(--accent)}
+.rlist .m.low{color:var(--muted)}
+.rlist p{margin:0;font-size:14px;line-height:1.35}.rlist small{color:var(--muted);font-size:12px}
+.rlist a{color:inherit}
+.fchips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.fchip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;font:inherit;font-size:13px;cursor:pointer}
+.fchip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tag-tema{display:inline-block;font-size:11px;background:#EFEAFE;color:#4B2FB8;border-radius:6px;padding:1px 6px;margin-right:4px}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:6px 9px;border-radius:8px;max-width:280px;z-index:99;opacity:0;transition:opacity .1s}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -220,6 +244,7 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
     <button class="nav" data-view="hoje" aria-current="page">Hoje</button>
     <button class="nav" data-view="calendario">Calendário</button>
     <button class="nav" data-view="stories">Stories <span class="n" id="st-n" hidden></span></button>
+    <button class="nav" data-view="radar">Radar</button>
     <button class="nav" data-view="feed">Prévia do feed</button>
     <button class="nav" data-view="comentarios">Comentários</button>
     <button class="nav" data-view="config">Conexões <span class="n" id="cfg-n" hidden></span></button>
@@ -236,6 +261,7 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
 
 <dialog id="dlg" aria-labelledby="dlg-t"><div style="position:relative"><button class="x-close" aria-label="Fechar" onclick="dlg.close()">×</button><div id="dlg-body"></div></div></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="tip" aria-hidden="true"></div>
 
 <script>
 const $ = (s, el = document) => el.querySelector(s);
@@ -302,9 +328,9 @@ function pills() {
 
 function render() {
   document.querySelectorAll(".nav").forEach(b => { if (b.dataset.view === view) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const titles = {hoje:"Hoje", calendario:"Calendário", stories:"Stories", feed:"Prévia do feed", comentarios:"Comentários", config:"Conexões"};
+  const titles = {hoje:"Hoje", calendario:"Calendário", stories:"Stories", radar:"Radar do Instagram", feed:"Prévia do feed", comentarios:"Comentários", config:"Conexões"};
   $("#titulo").textContent = titles[view];
-  ({hoje:vHoje, calendario:vCal, stories:vStories, feed:vFeed, comentarios:vComent, config:vConfig})[view]();
+  ({hoje:vHoje, calendario:vCal, stories:vStories, radar:vRadar, feed:vFeed, comentarios:vComent, config:vConfig})[view]();
   const pend = storyDias().filter(x => x.st === "hoje" || x.st === "atrasado").length;
   const n = $("#st-n"); n.hidden = !pend; n.textContent = pend;
 }
@@ -371,8 +397,8 @@ function alertas() {
   if (!t.configurado) out.push({c:"err", t:"<b>Instagram desconectado.</b> Conecte o token para publicar e ver comentários.", go:"config"});
   else if (!t.valido) out.push({c:"err", t:"<b>A conexão com o Instagram falhou.</b> Abra Conexões e clique em Testar conexão.", go:"config"});
   if (!S.git.repo || !S.git.remote) out.push({c:"err", t:"<b>GitHub não conectado.</b> Sem ele, os aprovados não saem sozinhos.", go:"config"});
-  const v = S.viral || {};
-  if (!v.rodando && (v.dias == null || v.dias > 30)) out.push({c:"warn", t:`<b>Pesquisa de virais ${v.dias == null ? "nunca rodou" : `com ${v.dias} dias`}.</b> Rode a pesquisa mensal no card "Referências virais".`});
+  const rd = S.radar || {};
+  if (!rd.rodando && (rd.dias == null || rd.dias > 7)) out.push({c:"warn", t:`<b>Radar ${rd.dias == null ? "nunca rodou" : `com ${rd.dias} dias`}.</b> Atualize na aba Radar (leva menos de 1 minuto).`, go:"radar"});
   for (const p of S.posts) {
     if (p.status === "publicado") continue;
     if (p.status === "erro") out.push({c:"err", t:`<b>${esc(p.id)} deu erro ao publicar.</b> ${esc(p.erro || "")}`, id:p.id});
@@ -437,25 +463,143 @@ function vHoje() {
     </div>
   </div>
   ${storiesCard()}
-  ${viralCard()}`;
+  ${radarCard()}`;
   $("#st-go")?.addEventListener("click", () => go("stories"));
-  $("#vr-go")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/viral/rodar", {}), "Pesquisa iniciada. Leva uns 5 minutos; o painel atualiza sozinho."));
+  $("#rd-card")?.addEventListener("click", () => go("radar"));
   const al = alertas();
   document.querySelectorAll(".alert").forEach(b => b.onclick = () => { const a = al[b.dataset.i]; if (a.id) openPost(a.id); else if (a.go) go(a.go); });
   bindOpen();
 }
 
-function viralCard() {
-  const v = S.viral || {};
-  const quando = v.data ? new Date(v.data + "T12:00").toLocaleDateString("pt-BR") : "nunca";
+/* ---------- RADAR ---------- */
+// Só Instagram, só API oficial, só o que é do seu ramo. YouTube fica escondido por padrão.
+const nf = (n, d = 0) => n == null ? "—" : Number(n).toLocaleString("pt-BR", {maximumFractionDigits: d, minimumFractionDigits: d});
+const fd = d => d ? `${d.slice(8,10)}/${d.slice(5,7)}/${d.slice(2,4)}` : "";
+const mx = m => m == null ? "—" : nf(m, 1) + "×";
+let RF = {fonte: new Set(["instagram", "manual"]), tema: ""};
+function radarCard() {
+  const R = S.radar || {};
+  const refs = (R.referencias || []).filter(r => r.fonte !== "youtube").slice(0, 3);
+  const top = (R.meus || []).filter(x => (R.melhores || []).includes(x.id)).slice(0, 1)[0];
   return `<div class="card" style="margin-top:18px"><div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start">
-    <div><p class="tag">Referências virais · monitoramento mensal</p>
-      <h3>O que está funcionando no seu nicho</h3>
-      <p class="muted" style="margin:6px 0 0">Última pesquisa: <b>${quando}</b>${v.videos ? ` · ${v.videos} vídeos de ${v.canais} canais` : ""}. Ranking pelo quanto cada vídeo superou a média do próprio canal. A leitura completa e os ganchos da Projecta ficam em <code>instagram/swipe.md</code>.</p></div>
-    <button class="btn ${v.dias == null || v.dias > 30 ? "accent" : "ghost"} sm" id="vr-go" ${v.rodando ? "disabled" : ""}>${v.rodando ? "Pesquisando…" : "Rodar pesquisa viral"}</button></div>
-    ${(v.destaques || []).length ? `<ul class="alerts" style="margin-top:14px">${v.destaques.map(o => `<li><a class="alert ok" style="text-decoration:none;display:block" href="${esc(o.url)}" target="_blank" rel="noopener"><b>${o.mult.toFixed(1).replace(".", ",")}×</b> · ${esc(o.hook.slice(0, 90))} <span style="opacity:.75">· ${esc(o.canal)} ↗</span></a></li>`).join("")}</ul>` : ""}
-  </div>`;
+    <div><p class="tag">Radar do Instagram · seus posts e o nicho</p><h3>O que está funcionando</h3>
+    <p class="muted" style="margin:6px 0 0">${R.data ? `Atualizado em ${fmt(R.data)} · ${(R.meus || []).length} posts seus · ${(R.referencias || []).filter(r => r.fonte !== "youtube").length} referências do nicho` : "Ainda não rodou."}</p></div>
+    <button class="btn ${R.dias == null || R.dias > 7 ? "accent" : "ghost"} sm" id="rd-card">Abrir Radar</button></div>
+    <ul class="rlist">${top ? `<li><span class="m">${mx(top.mult)}</span><div><p><b>Seu melhor post:</b> ${esc(top.gancho)}</p><small>${top.tipo} · ${fd(top.data)}</small></div></li>` : ""}
+    ${refs.map(r => `<li><span class="m">${mx(r.mult)}</span><div><p>${esc(r.gancho)}</p><small>@${esc(r.conta)} · ${r.tipo}</small></div></li>`).join("")}</ul></div>`;
 }
+function hbars(rows, {suf = "", dec = 1} = {}) {
+  const max = Math.max(...rows.map(r => r.media || 0), 0.0001);
+  return rows.length ? `<div class="hb">${rows.map(r => `<div class="r" data-tip="${esc(r.nome)}: média ${nf(r.media, dec)}${suf} em ${r.n} post(s)"><span>${esc(r.nome === "sem" ? "Sem pilar" : PIL[r.nome] || r.nome)}</span>
+    <span class="t"><i style="width:${(r.media || 0) / max * 100}%"></i></span><span class="v">${nf(r.media, dec)}${suf} · ${r.n}</span></div>`).join("")}</div>` : `<p class="muted" style="margin-top:10px">Sem dados ainda.</p>`;
+}
+function postsChart(meus) {
+  if (!meus.length) return `<p class="muted">Nenhum post publicado ainda.</p>`;
+  const W = 760, H = 220, pad = {l: 34, r: 8, t: 10, b: 26}, iw = W - pad.l - pad.r, ih = H - pad.t - pad.b;
+  const max = Math.max(...meus.map(x => x.interacoes), 1), bw = iw / meus.length, y = v => pad.t + ih - v / max * ih;
+  const med = [...meus.map(x => x.interacoes)].sort((a, b) => a - b)[Math.floor(meus.length / 2)];
+  const ticks = [0, Math.ceil(max / 2), max];
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Interações por post, em ordem de data">
+    ${ticks.map(t => `<text x="${pad.l - 6}" y="${y(t) + 4}" text-anchor="end">${t}</text>`).join("")}
+    <line x1="${pad.l}" x2="${W - pad.r}" y1="${y(0)}" y2="${y(0)}" stroke="var(--line)"/>
+    ${meus.map((x, i) => { const h = Math.max(x.interacoes / max * ih, 2), bx = pad.l + i * bw + 1, w = Math.max(bw - 2, 2);
+      return `<a href="${esc(x.link)}" target="_blank" rel="noopener"><rect class="bar ${x.mult >= 1.5 ? "top" : ""}" x="${bx}" y="${y(0) - h}" width="${w}" height="${h}" rx="${Math.min(4, w / 2)}"
+        data-tip="${fd(x.data)} · ${x.tipo}&#10;${esc(x.gancho.slice(0, 80))}&#10;${x.likes} curtidas · ${x.comentarios} coment.${x.alcance != null ? ` · alcance ${x.alcance}` : ""}${x.salvos != null ? ` · ${x.salvos} salvos` : ""}&#10;${mx(x.mult)} a mediana"/></a>`; }).join("")}
+    <line class="med" x1="${pad.l}" x2="${W - pad.r}" y1="${y(med)}" y2="${y(med)}"/><text x="${W - pad.r}" y="${y(med) - 5}" text-anchor="end">mediana ${med}</text>
+    ${meus.map((x, i) => i % Math.ceil(meus.length / 8) === 0 ? `<text x="${pad.l + i * bw + bw / 2}" y="${H - 6}" text-anchor="middle">${x.data.slice(5, 7)}/${x.data.slice(2, 4)}</text>` : "").join("")}
+  </svg><p class="muted" style="font-size:12px;margin:4px 0 0"><span style="display:inline-block;width:10px;height:10px;background:var(--accent);border-radius:2px"></span> 1,5× a mediana ou mais · <span style="display:inline-block;width:10px;height:10px;background:#C9C4B8;border-radius:2px"></span> abaixo disso · passe o mouse (ou toque) numa barra para ver o post</p>`;
+}
+function postItem(x) {
+  return `<li><span class="m ${x.mult < 1 ? "low" : ""}">${mx(x.mult)}</span><div><p><a href="${esc(x.link)}" target="_blank" rel="noopener">${esc(x.gancho || "(sem legenda)")}</a></p>
+    <small>${x.tipo} · ${fd(x.data)} · ${x.likes} curtidas · ${x.comentarios} coment.${x.alcance != null ? ` · alcance ${nf(x.alcance)}` : ""}${x.salvos != null ? ` · ${x.salvos} salvos` : ""}${x.compart != null ? ` · ${x.compart} compart.` : ""}</small></div></li>`;
+}
+function vRadar() {
+  const R = S.radar || {};
+  const bar = `<div class="card"><div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start">
+    <div><p class="tag">Só Instagram · só API oficial · filtrado pelo seu ramo</p><h3>Radar do Instagram</h3>
+    <p class="muted" style="margin:6px 0 0">${R.gerado_em ? `Atualizado em ${esc(R.gerado_em)}.` : "Ainda não rodou."} O × é quanto o post superou a mediana da própria conta: 3× = três vezes mais interação que o normal daquela conta.</p></div>
+    <button class="btn ${R.dias == null || R.dias > 7 ? "accent" : "ghost"} sm" id="rd-go" ${R.rodando ? "disabled" : ""}>${R.rodando ? "Atualizando…" : "Atualizar radar"}</button></div></div>`;
+  if (!R.data) { $("#view").innerHTML = bar; bindRadar(); return; }
+  const P = R.permissoes || {}, meus = R.meus || [], C = R.conta || {};
+  const perm = (!P.insights || !P.contas_nicho) ? `<div class="card" style="margin-top:18px;background:var(--warnbg)"><p class="tag" style="color:var(--warn)">Falta 1 permissão no token</p>
+    <h3 style="margin-top:4px">Libere <code>instagram_manage_insights</code> para o radar ficar completo</h3>
+    <p style="margin:8px 0 0">Sem ela, a API não entrega <b>alcance, salvamentos, compartilhamentos e visualizações</b> dos seus posts, nem os posts das <b>contas do nicho</b> (Business Discovery). Hoje o radar usa só curtidas e comentários.</p>
+    <ol style="margin:10px 0 0;padding-left:20px;line-height:1.6"><li>Meta Business Suite → Configurações do negócio → Usuários do sistema → o seu usuário → <b>Gerar novo token</b>.</li>
+    <li>Escolha o mesmo app e marque também <b>instagram_manage_insights</b> (mantenha as que já estavam).</li>
+    <li>Cole o token novo em <b>Conexões</b> aqui no painel e atualize o secret <code>IG_ACCESS_TOKEN</code> no GitHub.</li></ol>
+    <p class="muted" style="margin:8px 0 0;font-size:13px">A busca por hashtag é outra história: a Meta só libera depois de uma revisão do app. Por isso o radar usa as contas que você escolher.</p></div>` : "";
+  const totInt = meus.reduce((a, x) => a + x.interacoes, 0), fmtTop = (R.por_formato || [])[0];
+  const melhores = meus.filter(x => (R.melhores || []).includes(x.id) && x.mult > 1).sort((a, b) => b.mult - a.mult), piores = meus.filter(x => (R.piores || []).includes(x.id) && x.mult < 1).sort((a, b) => a.mult - b.mult);
+  const temas = [...new Set((R.referencias || []).flatMap(r => r.temas))];
+  $("#view").innerHTML = `${bar}${perm}
+  <div class="card" style="margin-top:18px"><p class="tag">@${esc(C.username || "projectatech")} · resumo</p><div class="kpis" style="margin-top:12px">
+    <div class="kpi"><span>Seguidores</span><b>${nf(C.seguidores)}</b></div>
+    <div class="kpi"><span>Posts analisados</span><b>${meus.length}</b></div>
+    <div class="kpi"><span>Interações / post</span><b>${nf(meus.length ? totInt / meus.length : 0, 1)}</b><small>curtidas + coment.${P.insights ? " + salvos + compart." : ""}</small></div>
+    <div class="kpi"><span>Taxa média</span><b>${nf(meus.length && C.seguidores ? totInt / meus.length / C.seguidores * 100 : null, 1)}%</b><small>interações ÷ seguidores</small></div>
+    <div class="kpi"><span>Melhor formato</span><b style="font-size:22px">${fmtTop ? esc(fmtTop.nome) : "—"}</b><small>${fmtTop ? `${nf(fmtTop.media, 1)} interações em média` : ""}</small></div>
+  </div></div>
+  <div class="card" style="margin-top:18px"><p class="tag">Seus posts · interações por post, em ordem de data</p>${postsChart(meus)}</div>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><p class="tag">Deram certo</p><ul class="rlist">${melhores.map(postItem).join("") || `<li><span></span><p class="muted">Poucos posts ainda.</p></li>`}</ul></div>
+    <div class="card"><p class="tag">Não deram certo</p><ul class="rlist">${piores.map(postItem).join("") || `<li><span></span><p class="muted">Poucos posts ainda.</p></li>`}</ul></div>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card"><p class="tag">Por formato · interações médias</p>${hbars(R.por_formato || [])}</div>
+    <div class="card"><p class="tag">Por pilar · interações médias</p>${hbars((R.por_pilar || []))}</div>
+    <div class="card"><p class="tag">Por dia da semana</p>${hbars(R.por_dia || [])}</div>
+  </div>
+  <div class="card" style="margin-top:18px"><p class="tag">Referências do nicho · mais virais primeiro</p>
+    <div class="fchips">${[["instagram", "Instagram (contas do nicho)"], ["manual", "Coleta manual"], ["youtube", "YouTube"]].map(([k, l]) => `<button class="fchip" data-fonte="${k}" aria-pressed="${RF.fonte.has(k)}">${l}</button>`).join("")}
+      <select id="rf-tema" class="fchip" aria-label="Filtrar por tema"><option value="">Todos os temas</option>${temas.map(t => `<option ${RF.tema === t ? "selected" : ""}>${esc(t)}</option>`).join("")}</select></div>
+    <ul class="rlist" id="rf-list"></ul></div>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><p class="tag">Temas que mais funcionam no nicho · × médio</p>${hbars(R.temas_nicho || [], {suf: "×"})}
+      <p class="tag" style="margin-top:22px">Formatos no nicho · × médio</p>${hbars(R.formatos_nicho || [], {suf: "×"})}</div>
+    <div class="card"><p class="tag">Seus temas · interações médias</p>${hbars(R.temas_meus || [])}</div>
+  </div>
+  <div class="card" style="margin-top:18px"><p class="tag">Ganchos que funcionaram · para adaptar, nunca copiar</p>
+    <ul class="rlist">${(R.ganchos || []).slice(0, 15).map(g => `<li><span class="m">${mx(g.mult)}</span><div><p>${esc(g.texto)}</p><small>${g.fonte === "seu" ? "seu post" : "@" + esc(g.conta)} · <button class="btn ghost sm" style="padding:2px 8px" data-gcopy="${esc(g.texto)}">Copiar</button> ${g.link ? `<a href="${esc(g.link)}" target="_blank" rel="noopener">ver ↗</a>` : ""}</small></div></li>`).join("") || `<li><span></span><p class="muted">Nenhum gancho acima de 1,5× ainda.</p></li>`}</ul>
+    <p class="muted" style="font-size:13px;margin:10px 0 0">Peça ao Claude: "lê o instagram/radar/ultimo.json e me dá 5 ganchos na voz da Projecta". Ele adapta a estrutura e confere com o <code>/ig-reel hookscore</code>.</p></div>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><p class="tag">Contas do nicho monitoradas</p>
+      <p class="muted" style="margin:6px 0 0;font-size:14px">Uma por linha, só o @. Precisam ser contas profissionais públicas (empresa ou criador). Escolha quem faz o que você faz, ou fala com o mesmo cliente.</p>
+      <textarea id="rd-contas" rows="6" style="width:100%;margin-top:10px;font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px">${esc((R.contas_conf || []).join("\n"))}</textarea>
+      <div class="inline"><button class="btn sm" id="rd-save">Salvar contas</button></div>
+      ${(R.contas || []).length ? `<ul class="rlist">${R.contas.map(c => `<li><span class="m low" style="font-size:14px">${c.erro ? "!" : nf(c.seguidores)}</span><div><p>@${esc(c.conta)}</p><small>${c.erro ? esc(c.erro) : `${c.posts} posts lidos · ${c.relevantes} do nicho · mediana ${nf(c.mediana)} interações`}</small></div></li>`).join("")}</ul>` : ""}</div>
+    <div class="card"><p class="tag">Coleta manual (enquanto a permissão não sai)</p>
+      <p style="margin:6px 0 0;font-size:14px;line-height:1.5">Posts que você ou o Cowork virem no app entram em <code>instagram/radar/manual.json</code>. Uma lista assim:</p>
+      <pre style="background:var(--paper);padding:10px;border-radius:8px;font-size:12px;overflow:auto;margin-top:8px">[{"conta": "leventech", "seguidores": 10400,
+  "data": "2026-09-10", "tipo": "Reel",
+  "likes": 65, "comentarios": 1, "views": null,
+  "gancho": "primeira linha da legenda",
+  "legenda": "texto da legenda",
+  "link": "https://www.instagram.com/p/..."}]</pre>
+      <p class="muted" style="font-size:13px;margin:8px 0 0">Só números vistos no app, nunca estimados. Com 3 ou mais posts da mesma conta, o radar calcula o ×.</p></div>
+  </div>`;
+  const lista = () => {
+    const rs = (R.referencias || []).filter(r => RF.fonte.has(r.fonte) && (!RF.tema || r.temas.includes(RF.tema))).slice(0, 30);
+    $("#rf-list").innerHTML = rs.map(r => `<li><span class="m">${mx(r.mult)}</span><div><p>${r.link ? `<a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.gancho || "(sem legenda)")}</a>` : esc(r.gancho)}</p>
+      <small>${r.temas.map(t => `<span class="tag-tema">${esc(t)}</span>`).join("")}${r.fonte === "youtube" ? "YouTube · " : "@"}${esc(r.conta || "?")} · ${esc(r.tipo)}${r.data ? " · " + fd(r.data) : ""}${r.likes != null ? ` · ${nf(r.likes)} curtidas` : ""}${r.comentarios != null ? ` · ${nf(r.comentarios)} coment.` : ""}${r.views ? ` · ${nf(r.views)} views` : ""}</small></div></li>`).join("")
+      || `<li><span></span><p class="muted">${(R.referencias || []).length ? "Nada com esse filtro." : P.contas_nicho ? "Nenhum post do nicho nas contas monitoradas. Adicione mais contas ao lado." : "As contas do nicho entram quando a permissão do token for liberada. Enquanto isso, use a coleta manual."}</p></li>`;
+  };
+  lista();
+  document.querySelectorAll("[data-fonte]").forEach(b => b.onclick = () => { const k = b.dataset.fonte; RF.fonte.has(k) ? RF.fonte.delete(k) : RF.fonte.add(k); b.setAttribute("aria-pressed", RF.fonte.has(k)); lista(); });
+  $("#rf-tema").onchange = e => { RF.tema = e.target.value; lista(); };
+  document.querySelectorAll("[data-gcopy]").forEach(b => b.onclick = async () => { try { await navigator.clipboard.writeText(b.dataset.gcopy); } catch {} toast("Gancho copiado. Adapte, não copie."); });
+  $("#rd-save").onclick = e => run(e.currentTarget, () => api("/api/radar/contas", {contas: $("#rd-contas").value.split(/[\s,]+/)}), "Contas salvas. Clique em Atualizar radar.");
+  bindRadar();
+}
+function bindRadar() {
+  $("#rd-go")?.addEventListener("click", e => run(e.currentTarget, async () => {
+    await api("/api/radar/rodar", {});
+    for (let i = 0; i < 60; i++) { await new Promise(r => setTimeout(r, 3000)); await load(); if (!S.radar?.rodando) break; }
+  }, "Radar atualizado."));
+}
+// dica flutuante dos gráficos (mouse e toque)
+document.addEventListener("pointerover", e => { const el = e.target.closest?.("[data-tip]"); const tip = $("#tip"); if (!tip) return;
+  if (!el) { tip.style.opacity = 0; return; } tip.textContent = el.dataset.tip; tip.style.whiteSpace = "pre-line"; tip.style.opacity = 1; });
+document.addEventListener("pointermove", e => { const tip = $("#tip"); if (tip && tip.style.opacity === "1") { tip.style.left = Math.min(e.clientX + 14, innerWidth - 290) + "px"; tip.style.top = (e.clientY + 14) + "px"; } });
 
 /* ---------- CALENDÁRIO ---------- */
 function chip(p, drag = true) {
@@ -658,7 +802,7 @@ function vConfig() {
   $("#aut-go").onclick = e => run(e.currentTarget, () => api("/api/autorizacoes", {cliente: $("#aut-n").value, autorizado: false}), "Cliente adicionado.");
 }
 
-const VIEWS = ["hoje","calendario","stories","feed","comentarios","config"];
+const VIEWS = ["hoje","calendario","stories","radar","feed","comentarios","config"];
 function celularCard() {
   const c = S.celular || {};
   const noPC = ["127.0.0.1", "localhost"].includes(location.hostname);

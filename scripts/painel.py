@@ -190,6 +190,49 @@ def rodar_viral(_=None):
     return {"ok": True}
 
 
+RADAR_PROC = {"p": None}
+RADAR_DIR = os.path.join(ROOT, "instagram", "radar")
+
+
+def radar_info():
+    p = os.path.join(RADAR_DIR, "ultimo.json")
+    rodando = RADAR_PROC["p"] is not None and RADAR_PROC["p"].poll() is None
+    conf_p = os.path.join(RADAR_DIR, "contas.json")
+    conf = json.load(open(conf_p, encoding="utf-8")) if os.path.exists(conf_p) else {"contas": []}
+    if not os.path.exists(p):
+        return {"data": None, "dias": None, "rodando": rodando, "contas_conf": conf.get("contas", [])}
+    d = json.load(open(p, encoding="utf-8"))
+    d["dias"] = (date.today() - datetime.strptime(d["data"], "%Y-%m-%d").date()).days
+    d["rodando"] = rodando
+    d["contas_conf"] = conf.get("contas", [])
+    return d
+
+
+def rodar_radar(_=None):
+    if RADAR_PROC["p"] is not None and RADAR_PROC["p"].poll() is None:
+        raise SystemExit("O radar já está rodando.")
+    os.makedirs(RADAR_DIR, exist_ok=True)
+    log = open(os.path.join(RADAR_DIR, "ultimo.log"), "w", encoding="utf-8")
+    RADAR_PROC["p"] = subprocess.Popen([sys.executable, os.path.join(ROOT, "scripts", "radar.py")], cwd=ROOT,
+                                       stdout=log, stderr=subprocess.STDOUT, env={**os.environ, "PYTHONUTF8": "1"})
+    return {"ok": True}
+
+
+def radar_contas(b):
+    """Salva a lista de contas do nicho (só @ de contas profissionais públicas)."""
+    contas = []
+    for c in b.get("contas", []):
+        c = str(c).strip().lstrip("@").lower()
+        if re.fullmatch(r"[a-z0-9._]{1,30}", c) and c not in contas:
+            contas.append(c)
+    os.makedirs(RADAR_DIR, exist_ok=True)
+    p = os.path.join(RADAR_DIR, "contas.json")
+    conf = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+    conf["contas"] = contas[:40]
+    json.dump(conf, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    return {"ok": True, "contas": conf["contas"]}
+
+
 def _stories_arquivos():
     base = os.path.join(ROOT, "posts")
     for d in sorted(os.listdir(base)):
@@ -240,7 +283,7 @@ def estado():
         pil = None
     return {"agora": datetime.now(ig.TZ).strftime("%Y-%m-%d %H:%M"), "python": py, "pillow": pil,
             "token": token_info(), "git": git_info(), "posts": posts, "novas": pastas_novas(cal),
-            "autorizacoes": aut_load(), "pilares": PILARES, "viral": viral_info(), "stories": stories_info(),
+            "autorizacoes": aut_load(), "pilares": PILARES, "viral": viral_info(), "radar": radar_info(), "stories": stories_info(),
             "celular": {"ativo": REDE, "ip": LAN_IP, "porta": PORT},
             "workflow": os.path.exists(os.path.join(ROOT, ".github", "workflows", "publicar-agendados.yml"))}
 
@@ -445,7 +488,7 @@ POST_ROUTES = {
     "/api/post/publicar": publicar, "/api/post/preparar": preparar, "/api/checar": checar_texto,
     "/api/conexao/token": salvar_token, "/api/conexao/testar": testar, "/api/conexao/renovar": renovar,
     "/api/github/conectar": conectar_github, "/api/github/enviar": enviar_github,
-    "/api/autorizacoes": autorizar, "/api/comentarios/responder": responder, "/api/viral/rodar": rodar_viral,
+    "/api/autorizacoes": autorizar, "/api/comentarios/responder": responder, "/api/viral/rodar": rodar_viral, "/api/radar/rodar": rodar_radar, "/api/radar/contas": radar_contas,
     "/api/stories/marcar": marcar_story,
 }
 GET_ROUTES = {"/api/estado": lambda: estado(), "/api/comentarios": lambda: comentarios()}
