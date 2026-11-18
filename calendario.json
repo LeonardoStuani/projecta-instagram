@@ -12,8 +12,11 @@
     "legenda": "media/02-oferta-lages/legenda.txt",
     "data": "2026-11-18",
     "hora": "18:00",
-    "status": "aprovado",
-    "pilar": "oferta"
+    "status": "publicado",
+    "pilar": "oferta",
+    "media_id": "17883050442543272",
+    "link": "https://www.instagram.com/p/Df4YAURlSTk/",
+    "publicado_em": "2026-11-18 08:15"
   },
   {
     "id": "04-quem-somos",

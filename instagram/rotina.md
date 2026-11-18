@@ -7,6 +7,7 @@ Painel: dois cliques em `PLANO\Abrir painel do Instagram.bat`. Nada é publicado
 2. **Comentários** (aba Comentários do painel, ou `ig comentarios`). Peça ao Claude: "/ig-reply nos comentários de hoje". Ele rascunha, você aprova cada resposta.
 3. **5 comentários de valor em perfis de empresas locais.** Peça "/ig-comment para estes 5 posts" (cole os links). O Claude só escreve o texto, e você posta pelo app. Nada de "ótimo post!": comente algo útil sobre o negócio da pessoa.
 4. **Quem pedir a análise gratuita** (DM ou comentário com "SITE"): peça "/ig-dm para quem pediu análise". Você envia pelo app e marca a conversa no WhatsApp: https://wa.me/5549999592640
+5. **Stories (dias úteis), de 4 a 5 quadros.** Quadro 1 com você (rosto ou mão), enquete, caixinha ou link no quadro 4. Pelo app, porque a API não põe adesivo. Roteiro pronto em `posts/stories-semana-anuncio/roteiro.md`. Para as próximas semanas, peça "/ig-story da semana". Responda no direct quem votou ou respondeu, nunca quem não interagiu.
 
 ## Toda segunda · 20 minutos
 1. **"/ig-audit da semana passada"**: o que teve mais alcance, salvamentos e cliques no perfil.

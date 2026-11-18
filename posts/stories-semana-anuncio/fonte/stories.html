@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=block" rel="stylesheet">
+<style>
+:root{--paper:#F3F1EA;--ink:#111110;--accent:#F04E12;--muted:#6E6B63;--line:#D9D5CA;--stone:#E7E4DB}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:"Instrument Sans",sans-serif;color:var(--ink);background:var(--paper)}
+#f{position:absolute;inset:0;padding:0 96px}
+#f.dark{background:var(--ink);color:var(--paper)}
+#f.laranja{background:var(--accent);color:var(--ink)}
+.brand{position:absolute;left:96px;top:250px;display:flex;align-items:center;gap:16px;font-weight:600;font-size:26px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dark .brand{color:#A9A59B}.laranja .brand{color:var(--ink)}
+.brand i{width:22px;height:22px;background:var(--accent)}.laranja .brand i{background:var(--ink)}
+.handle{position:absolute;left:96px;top:1560px;font-size:28px;color:var(--muted)}
+.dark .handle{color:#A9A59B}.laranja .handle{color:var(--ink)}
+.box{position:absolute;left:96px;right:96px}
+.kick{font-weight:700;font-size:28px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:28px}
+.laranja .kick{color:var(--ink)}
+h1{font-family:"Bricolage Grotesque";font-weight:700;font-size:92px;line-height:1;letter-spacing:-.045em}
+h1.m{font-size:76px;line-height:1.04}
+h1.g{font-size:118px;line-height:.96}
+h1 em,.em{font-family:"Instrument Serif";font-style:italic;font-weight:400;color:var(--accent);letter-spacing:-.02em}
+.laranja h1 em{color:var(--paper)}
+.sub{font-size:38px;line-height:1.35;margin-top:34px;color:#3A3833}
+.dark .sub{color:#D8D4C8}
+.lista{margin-top:48px;display:flex;flex-direction:column;gap:30px}
+.lista div{display:flex;gap:28px;align-items:flex-start;font-size:42px;line-height:1.22}
+.lista b{flex:none;width:64px;height:64px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-size:30px;margin-top:-6px}
+.dark .lista b{background:var(--accent);color:var(--ink)}
+.lista.check b{font-size:30px}
+.nota{font-size:26px;color:var(--muted);margin-top:36px}
+.dark .nota{color:#A9A59B}
+.seta{font-size:30px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:14px}
+.dark .seta{color:#A9A59B}
+.seta::after{content:"";flex:1;height:2px;background:currentColor;opacity:.35}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
+.split>div{padding:40px 38px;min-height:430px}
+.split .a{background:var(--stone)}.split .d{background:var(--ink);color:var(--paper)}
+.split h3{font-family:"Instrument Sans";font-weight:700;font-size:30px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:26px}
+.split .d h3{color:var(--accent)}
+.split p{font-size:36px;line-height:1.3;margin-bottom:14px}
+.phone{position:absolute;left:50%;transform:translateX(-50%);top:520px;width:500px;height:1000px;border-radius:64px;background:var(--ink);padding:18px;box-shadow:24px 24px 0 0 var(--accent)}
+.phone div{width:100%;height:100%;border-radius:48px;overflow:hidden;background:#fff center top/cover no-repeat}
+.box.c{top:330px!important;height:1200px;display:flex;flex-direction:column;justify-content:center}
+.big{font-family:"Bricolage Grotesque";font-weight:800;font-size:200px;line-height:.9;letter-spacing:-.06em}
+</style>
+</head>
+<body>
+<div id="f"></div>
+<script>
+// Cada quadro: classe de fundo + HTML. Área segura do Instagram: texto entre y=250 e y=1600.
+// Quadros com "STICKER" deixam o espaço do adesivo vazio (y≈1050–1450): o Leo põe o adesivo no app.
+const B = '<div class="brand"><i></i>Projecta Tech</div>';
+const H = '<div class="handle">@projectatech</div>';
+const Q = {
+ // DIA 1 · site novo no ar
+ "d1-02": ["", `${B}<div class="box" style="top:330px"><div class="kick">No ar desde hoje</div><h1 class="m">projectatech<em>.com.br</em></h1></div><div class="phone"><div style="background-image:url(site-celular.png)"></div></div>`],
+ "d1-03": ["", `${B}<div class="box" style="top:380px"><div class="kick">O que tem nele</div><h1>Pensado para quem chega <em>pelo celular.</em></h1>
+   <div class="lista check"><div><b>✓</b>Serviços e prazos logo na primeira tela</div><div><b>✓</b>Um case real, aqui de Lages</div><div><b>✓</b>Botão direto para o WhatsApp</div><div><b>✓</b>Pedido de análise gratuita</div></div></div>${H}`],
+ "d1-04": ["", `${B}<div class="box" style="top:400px"><div class="kick">Responde aí</div><h1 class="g">Sua empresa tem site <em>hoje?</em></h1></div>${H}`],
+ "d1-05": ["dark", `${B}<div class="box" style="top:420px"><div class="kick">Amanhã</div><h1>O que um site precisa ter pro cliente <em>te chamar</em> no WhatsApp.</h1><div class="sub">Fica de olho aqui nos stories.</div></div>${H}`],
+
+ // DIA 2 · o cliente procura no Google
+ "d2-02": ["", `${B}<div class="box" style="top:380px"><div class="kick">O que o cliente procura</div><h1 class="m">Em poucos segundos ele quer saber <em>3 coisas:</em></h1>
+   <div class="lista"><div><b>1</b>O que você faz</div><div><b>2</b>Onde fica</div><div><b>3</b>Como falar com você</div></div></div>${H}`],
+ "d2-03": ["dark", `${B}<div class="box" style="top:470px"><h1>Se o site não responde isso no celular, ele volta pro Google e <em>chama o próximo.</em></h1></div>${H}`],
+ "d2-04": ["", `${B}<div class="box" style="top:380px"><div class="kick">Teste rápido</div><h1 class="m">Se alguém procurar sua empresa no Google agora, acha o WhatsApp em <em>1 clique?</em></h1></div>${H}`],
+ "d2-05": ["laranja", `${B}<div class="box" style="top:420px"><h1>Respondeu “não sei”? Me chama que eu <em>olho pra você.</em></h1><div class="sub" style="color:var(--ink)">Sem compromisso.</div></div>${H}`],
+
+ // DIA 3 · case Eixo Sul
+ "d3-02": ["", `${B}<div class="box" style="top:370px"><div class="kick">Case · Eixo Sul Engenharia</div><h1 class="m">Topografia em Lages, <em>500+ projetos.</em></h1>
+   <div class="split"><div class="a"><h3>Antes</h3><p>Sem site</p><p>Clientes no Excel</p></div><div class="d"><h3>Depois</h3><p>Site eixosul.com</p><p>Clientes, projetos, orçamentos e financeiro num sistema só</p></div></div></div>${H}`],
+ "d3-03": ["dark", `${B}<div class="box" style="top:470px"><h1>Um site pra <em>mostrar o trabalho.</em> Um sistema pra <em>tocar o escritório.</em></h1><div class="nota">Case autorizado pela Eixo Sul Engenharia.</div></div>${H}`],
+ "d3-04": ["", `${B}<div class="box" style="top:380px"><div class="kick">Caixinha</div><h1 class="m">O que sua empresa ainda controla em <em>planilha ou caderno?</em></h1></div>${H}`],
+ "d3-05": ["dark", `${B}<div class="box" style="top:470px"><h1>Respondo cada um <em>no direct.</em></h1><div class="sub">Segunda eu trago algumas respostas aqui, sem nome.</div></div>${H}`],
+
+ // DIA 4 · sábado, leve
+ "d4-02": ["", `${B}<div class="box" style="top:420px"><div class="kick">Pergunta que mais recebo</div><h1 class="g">Quanto tempo leva pra <em>ficar pronto?</em></h1></div>${H}`],
+ "d4-03": ["dark", `${B}<div class="box" style="top:380px"><div class="kick">Resposta curta</div>
+   <div class="lista"><div><b>1</b><span><span class="em" style="font-size:52px">Landing page</span><br>no ar em até 7 dias</span></div><div><b>2</b><span><span class="em" style="font-size:52px">Website</span><br>de 2 a 4 semanas</span></div><div><b>3</b><span><span class="em" style="font-size:52px">Sistema</span><br>cronograma vem na proposta</span></div></div>
+   <div class="sub" style="margin-top:56px">E a proposta sai em até 24h.</div></div>${H}`],
+ "d4-04": ["", `${B}<div class="box" style="top:400px"><div class="kick">Caixinha</div><h1 class="g">Qual sua dúvida sobre <em>site ou sistema?</em></h1><div class="sub">Respondo segunda.</div></div>${H}`],
+
+ // DIA 5 · respostas da caixinha
+ "d5-modelo": ["dark", `${B}<div class="box" style="top:330px"><div class="kick">Vocês perguntaram</div></div><div class="box" style="top:1290px"><div class="seta">Minha resposta</div></div>${H}`],
+ "d5-04": ["", `${B}<div class="box" style="top:380px"><div class="kick">Pra sua empresa, faz mais sentido</div><h1 class="m">Começar com uma <em>landing page</em> ou já ir de <em>site completo?</em></h1></div>${H}`],
+ "d5-05": ["laranja", `${B}<div class="box" style="top:400px"><h1>Não sabe qual é o seu caso? <em>A gente indica.</em></h1><div class="sub" style="color:var(--ink)">Peça sua análise gratuita.</div></div>${H}`],
+
+ // DIA 6 · análise gratuita
+ "d6-02": ["", `${B}<div class="box" style="top:380px"><div class="kick">Análise gratuita</div><h1 class="m">O que eu olho na <em>sua empresa:</em></h1>
+   <div class="lista"><div><b>1</b>Como ela aparece no Google</div><div><b>2</b>Se o site abre bem no celular</div><div><b>3</b>Se o cliente acha o WhatsApp rápido</div><div><b>4</b>O que falta pra virar contato</div></div></div>${H}`],
+ "d6-03": ["dark", `${B}<div class="box" style="top:470px"><h1>Você recebe o retorno <em>pelo WhatsApp</em>, com o que ajustar.</h1><div class="sub">Sem compromisso de contratar.</div></div>${H}`],
+ "d6-04": ["laranja", `${B}<div class="box" style="top:400px"><div class="kick">É de graça</div><h1 class="g">Peça a <em>sua.</em></h1></div>${H}`],
+ "d6-05": ["dark", `${B}<div class="box" style="top:420px"><div class="kick">Mais fácil ainda</div><h1>Manda <em>SITE</em> no WhatsApp que eu começo por aí.</h1></div>${H}`],
+};
+window.QUADROS = Object.keys(Q);
+// quadros sem adesivo: conteúdo centralizado na área segura
+const CENTRO = ["d1-03", "d1-05", "d2-02", "d2-03", "d3-02", "d3-03", "d3-05", "d4-02", "d4-03", "d6-02", "d6-03"];
+window.mostrar = (id) => {
+  const [cls, html] = Q[id]; const f = document.getElementById("f"); f.className = cls; f.innerHTML = html;
+  if (CENTRO.includes(id)) f.querySelector(".box").classList.add("c");
+};
+document.fonts.ready.then(() => { window.READY = true; });
+</script>
+</body>
+</html>

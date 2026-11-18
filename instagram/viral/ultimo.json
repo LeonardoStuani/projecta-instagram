@@ -1,18 +1,12 @@
 {
   "data": "2026-11-17",
-  "videos": 193,
+  "videos": 190,
   "canais": [
     {
       "canal": "CAZAR - Vídeo e Marketing",
       "seguidores": 43,
       "mediana": 57,
       "shorts": 23
-    },
-    {
-      "canal": "GUE - Guiché Único da Empresa",
-      "seguidores": 4830,
-      "mediana": 765,
-      "shorts": 13
     },
     {
       "canal": "Destrava Aí",
@@ -39,106 +33,35 @@
       "shorts": 14
     },
     {
-      "canal": "Omie",
-      "seguidores": 66600,
-      "mediana": 330,
+      "canal": "Sebrae Talks",
+      "seguidores": 286000,
+      "mediana": 248,
       "shorts": 30
     },
     {
-      "canal": "STi3 Sistemas",
-      "seguidores": 24300,
-      "mediana": 56,
+      "canal": "Impulsefy",
+      "seguidores": 22,
+      "mediana": 34,
+      "shorts": 10
+    },
+    {
+      "canal": "brunodocanva",
+      "seguidores": 25500,
+      "mediana": 825,
       "shorts": 30
     }
   ],
   "outliers": [
     {
-      "canal": "Omie",
-      "account": "@omieoficial",
-      "views": 5700000,
-      "median": 330,
-      "mult": 17246.59606656581,
-      "hook": "A grande dúvida que chega nas salas de reuniões hoje",
-      "id": "-OQ9tiHNKiQ",
-      "url": "https://www.youtube.com/shorts/-OQ9tiHNKiQ",
-      "anuncio": true
-    },
-    {
-      "canal": "Omie",
-      "account": "@omieoficial",
-      "views": 5300000,
-      "median": 330,
-      "mult": 16036.308623298033,
-      "hook": "Cinco mitos sobre migração de regime que podem custar caro",
-      "id": "uEGcXOnok_Y",
-      "url": "https://www.youtube.com/shorts/uEGcXOnok_Y",
-      "anuncio": true
-    },
-    {
-      "canal": "Omie",
-      "account": "@omieoficial",
-      "views": 4800000,
-      "median": 330,
-      "mult": 14523.449319213312,
-      "hook": "[música] Ele apresentou o Omie",
-      "id": "j-hUdSBLJu4",
-      "url": "https://www.youtube.com/shorts/j-hUdSBLJu4",
-      "anuncio": true
-    },
-    {
-      "canal": "Omie",
-      "account": "@omieoficial",
-      "views": 2700000,
-      "median": 330,
-      "mult": 8169.440242057489,
-      "hook": "Oi, tudo bem? Meu nome é Ana Clara, eu sou gerente de compras",
-      "id": "HkCTPOQcbLs",
-      "url": "https://www.youtube.com/shorts/HkCTPOQcbLs",
-      "anuncio": true
-    },
-    {
-      "canal": "Omie",
-      "account": "@omieoficial",
-      "views": 2100000,
-      "median": 330,
-      "mult": 6354.009077155824,
-      "hook": "Meu amigo Pedro Nery, ele falando assim,O meu amigo Pedro Neri costumava dizer: Você,",
-      "id": "DEnAPeVVoSc",
-      "url": "https://www.youtube.com/shorts/DEnAPeVVoSc",
-      "anuncio": true
-    },
-    {
-      "canal": "Omie",
-      "account": "@omieoficial",
-      "views": 1300000,
-      "median": 330,
-      "mult": 3933.434190620272,
-      "hook": "Olá, tudo bem com vocês? Eu sou Cristiano Cerqueira, contador,",
-      "id": "i2cZgzbYaBU",
-      "url": "https://www.youtube.com/shorts/i2cZgzbYaBU",
-      "anuncio": true
-    },
-    {
-      "canal": "Omie",
-      "account": "@omieoficial",
-      "views": 894000,
-      "median": 330,
-      "mult": 2704.9924357034797,
-      "hook": "Muitas empresas no início de operação, elas têm muitos",
-      "id": "W3VmWwvhLG0",
-      "url": "https://www.youtube.com/shorts/W3VmWwvhLG0",
-      "anuncio": true
-    },
-    {
-      "canal": "Omie",
-      "account": "@omieoficial",
-      "views": 681000,
-      "median": 330,
-      "mult": 2060.514372163389,
-      "hook": "A Francine não costuma falar muito",
-      "id": "WlPyggs-8oQ",
-      "url": "https://www.youtube.com/shorts/WlPyggs-8oQ",
-      "anuncio": true
+      "canal": "brunodocanva",
+      "account": "@brunodocanva",
+      "views": 39000,
+      "median": 825,
+      "mult": 47.24409448818898,
+      "hook": "Corrida de desafio de estourar 100 balões",
+      "id": "Jace_F3yCKI",
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/Jace_F3yCKI"
     },
     {
       "canal": "Bezaleel Lucas",
@@ -148,8 +71,8 @@
       "mult": 41.666666666666664,
       "hook": "Nossa, tem um restaurante italiano. Ah.",
       "id": "WFbERPK0qFU",
-      "url": "https://www.youtube.com/shorts/WFbERPK0qFU",
-      "anuncio": false
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/WFbERPK0qFU"
     },
     {
       "canal": "Bezaleel Lucas",
@@ -157,10 +80,10 @@
       "views": 1200,
       "median": 36,
       "mult": 33.333333333333336,
-      "hook": "E agora a gente está aqui em Porto Velho, chegamos",
+      "hook": "E agora a gente está aqui em PortoVelho, chegamos",
       "id": "f4VqC-js4SU",
-      "url": "https://www.youtube.com/shorts/f4VqC-js4SU",
-      "anuncio": false
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/f4VqC-js4SU"
     },
     {
       "canal": "Cleiton Oliveira - Marketing e Performance ",
@@ -168,10 +91,10 @@
       "views": 1100,
       "median": 33,
       "mult": 33.333333333333336,
-      "hook": "Vamos colocar aqui, ó, chat: \"Desenvolva",
+      "hook": "Vamos colocar aqui, ó, chat:\"Desenvolva",
       "id": "cbxTH0hAqKM",
-      "url": "https://www.youtube.com/shorts/cbxTH0hAqKM",
-      "anuncio": false
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/cbxTH0hAqKM"
     },
     {
       "canal": "CAZAR - Vídeo e Marketing",
@@ -181,8 +104,118 @@
       "mult": 19.29824561403509,
       "hook": "Vídeo para profissionais de Arquitetura",
       "id": "WcZrFecLv4A",
-      "url": "https://www.youtube.com/shorts/WcZrFecLv4A",
-      "anuncio": false
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/WcZrFecLv4A"
+    },
+    {
+      "canal": "CAZAR - Vídeo e Marketing",
+      "account": "@cazarvideo",
+      "views": 1000,
+      "median": 57,
+      "mult": 17.54385964912281,
+      "hook": "Colheita de soja 2024",
+      "id": "7393pWgXqeM",
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/7393pWgXqeM"
+    },
+    {
+      "canal": "brunodocanva",
+      "account": "@brunodocanva",
+      "views": 13000,
+      "median": 825,
+      "mult": 15.748031496062993,
+      "hook": "Quando você engole um apito e se torna o centro das atenções involuntariamente! 🎵😂",
+      "id": "ycRQAbhlcUo",
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/ycRQAbhlcUo"
+    },
+    {
+      "canal": "brunodocanva",
+      "account": "@brunodocanva",
+      "views": 12000,
+      "median": 825,
+      "mult": 14.5366444579043,
+      "hook": "O MEDO NÃO PODE TE PARAR!",
+      "id": "oVCJzdFDxZE",
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/oVCJzdFDxZE"
+    },
+    {
+      "canal": "CAZAR - Vídeo e Marketing",
+      "account": "@cazarvideo",
+      "views": 715,
+      "median": 57,
+      "mult": 12.543859649122806,
+      "hook": "Vídeo para empresa de limpeza",
+      "id": "iKh34cJqWmc",
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/iKh34cJqWmc"
+    },
+    {
+      "canal": "brunodocanva",
+      "account": "@brunodocanva",
+      "views": 10000,
+      "median": 825,
+      "mult": 12.113870381586917,
+      "hook": "Bota na sua cabeça motivacional na prática Marque e motive alguém",
+      "id": "OqUVXQPLWnE",
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/OqUVXQPLWnE"
+    },
+    {
+      "canal": "CAZAR - Vídeo e Marketing",
+      "account": "@cazarvideo",
+      "views": 683,
+      "median": 57,
+      "mult": 11.982456140350877,
+      "hook": "Campo Verde - MT",
+      "id": "5Vy_FzM70W4",
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/5Vy_FzM70W4"
+    },
+    {
+      "canal": "Cleiton Oliveira - Marketing e Performance ",
+      "account": "@cleitonmarketingperformance",
+      "views": 323,
+      "median": 33,
+      "mult": 9.787878787878787,
+      "hook": "Então se a gente começar aqui porexemplopelo explorar",
+      "id": "9BNrwCT2_pU",
+      "anuncio": false,
+      "url": "https://www.youtube.com/shorts/9BNrwCT2_pU"
+    },
+    {
+      "canal": "Sebrae Talks",
+      "account": "@SebraeTalks",
+      "views": 242000,
+      "median": 248,
+      "mult": 975.8064516129032,
+      "hook": "Quer descobrir onde sua empresa estáperdendo dinheiro? Esse kit gratuito",
+      "id": "lwZuRcqqu8c",
+      "anuncio": true,
+      "url": "https://www.youtube.com/shorts/lwZuRcqqu8c"
+    },
+    {
+      "canal": "Sebrae Talks",
+      "account": "@SebraeTalks",
+      "views": 74000,
+      "median": 248,
+      "mult": 298.38709677419354,
+      "hook": "Responder clientes, organizar estoques, [música] fazer planejamento, pagar, dar baixa,postar nas redes",
+      "id": "7jC6-oc4nzs",
+      "anuncio": true,
+      "url": "https://www.youtube.com/shorts/7jC6-oc4nzs"
+    },
+    {
+      "canal": "Sebrae Talks",
+      "account": "@SebraeTalks",
+      "views": 65000,
+      "median": 248,
+      "mult": 262.0967741935484,
+      "hook": "Empresário, você acaba de receber umamissão: investigar para onde",
+      "id": "rPRNv3Kd2LQ",
+      "anuncio": true,
+      "url": "https://www.youtube.com/shorts/rPRNv3Kd2LQ"
     }
   ]
 }
