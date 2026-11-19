@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Reel · 3 sinais</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../scripts/video/base.css">
+<style>
+.leg{position:absolute;left:72px;right:72px;top:250px;z-index:4}
+.leg p{position:absolute;left:0;right:0;font-family:var(--display);font-weight:700;font-size:86px;line-height:.98;letter-spacing:-.045em}
+.leg .sub{top:auto;font-family:var(--sans);font-weight:500;font-size:44px;letter-spacing:-.01em;color:#CFCBC0;line-height:1.2}
+.n{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent);margin-right:.18em}
+
+/* celular */
+.fone{position:absolute;left:290px;top:760px;width:500px;height:1010px;border-radius:64px;background:#222120;padding:16px;
+  box-shadow:0 60px 120px -30px #000,inset 0 0 0 2px #3a3936}
+.tela{position:relative;width:100%;height:100%;border-radius:50px;background:#fff;overflow:hidden;color:var(--ink)}
+.barra{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;font-size:22px;font-weight:700}
+.url{margin:0 22px;height:56px;border-radius:28px;background:#EEECE6;display:flex;align-items:center;padding:0 24px;font-size:22px;color:#555;gap:10px}
+.prog{height:6px;background:var(--accent);width:0;margin-top:10px}
+.cam{position:absolute;inset:150px 0 0 0}
+
+/* sinal 1: carregando */
+.carreg{display:grid;place-items:center;height:100%;align-content:center;gap:28px}
+.spin{width:90px;height:90px;border-radius:50%;border:8px solid #E5E2DA;border-top-color:var(--accent)}
+.relogio{font-family:var(--display);font-weight:700;font-size:64px;color:#B9B4A8;font-variant-numeric:tabular-nums}
+
+/* sinal 2: toques */
+.site2{position:absolute;inset:150px 0 0 0;opacity:0}
+.topo2{display:flex;justify-content:space-between;align-items:center;padding:22px 30px;border-bottom:1px solid #eee}
+.logo2{width:120px;height:26px;border-radius:6px;background:#D8D4CA}
+.hamb{width:44px;height:30px;display:flex;flex-direction:column;justify-content:space-between}.hamb i{height:5px;background:#111;border-radius:3px}
+.bloco{margin:26px 30px;border-radius:18px;background:#F1EFE9}
+.menu2{position:absolute;inset:78px 0 auto 0;background:#fff;box-shadow:0 20px 40px -20px #0004;padding:10px 30px;opacity:0}
+.menu2 div{padding:22px 0;border-bottom:1px solid #eee;font-size:28px;font-weight:600}
+.form2{position:absolute;inset:0;background:#fff;padding:40px 30px;opacity:0}
+.form2 .campo{height:70px;border-radius:14px;border:2px solid #DDD;margin-bottom:20px}
+.form2 .zap{margin-top:30px;font-size:24px;color:#1F7A4D;font-weight:700;text-decoration:underline}
+.toque{position:absolute;width:110px;height:110px;margin:-55px;border-radius:50%;background:rgba(240,78,18,.35);border:4px solid var(--accent);opacity:0;z-index:6}
+.contador{position:absolute;left:72px;top:640px;white-space:nowrap;z-index:7;background:var(--accent);color:var(--ink);font-family:var(--display);font-weight:700;
+  font-size:56px;border-radius:999px;padding:14px 30px;opacity:0;letter-spacing:-.03em}
+
+/* sinal 3: 5 segundos */
+.site3{position:absolute;inset:150px 0 0 0;opacity:0;padding:70px 40px}
+.site3 h4{font-family:var(--display);font-size:56px;letter-spacing:-.04em;line-height:1;color:#333}
+.site3 p{font-size:28px;color:#888;margin-top:22px;line-height:1.35}
+.site3 .img3{height:300px;border-radius:20px;background:linear-gradient(135deg,#DCD8CE,#EFEDE7);margin-top:50px}
+.anel{position:absolute;left:72px;top:640px;width:170px;height:170px;z-index:7;opacity:0}
+.anel svg{width:100%;height:100%;transform:rotate(-90deg)}
+.anel b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:76px;color:var(--paper)}
+
+/* final */
+.fim{position:absolute;left:72px;right:72px;top:620px;z-index:4;opacity:0}
+.fim p{font-family:var(--display);font-weight:700;font-size:96px;line-height:.98;letter-spacing:-.05em}
+.fim .cta{margin-top:56px;font-family:var(--sans);font-weight:600;font-size:50px;letter-spacing:-.01em;line-height:1.2}
+</style>
+</head>
+<body>
+<div class="palco">
+  <div class="mundo" id="mundo">
+    <div class="fone" id="fone"><div class="tela">
+      <div class="barra"><span id="hora">18:00</span><span>4G ▮▮▯</span></div>
+      <div class="url">🔒 <span>seusite.com.br</span></div>
+      <div class="prog" id="prog"></div>
+      <div class="cam" id="carreg"><div class="carreg"><div class="spin" id="spin"></div><div class="relogio" id="relogio">0,0 s</div></div></div>
+      <div class="site2" id="site2">
+        <div class="topo2"><div class="logo2"></div><div class="hamb"><i></i><i></i><i></i></div></div>
+        <div class="bloco" style="height:320px"></div><div class="bloco" style="height:180px"></div><div class="bloco" style="height:180px"></div>
+        <div class="menu2" id="menu2"><div>Início</div><div>Sobre</div><div>Serviços</div><div>Contato</div></div>
+        <div class="form2" id="form2"><div class="campo"></div><div class="campo"></div><div class="campo" style="height:160px"></div><div class="zap">ou fale no WhatsApp</div></div>
+      </div>
+      <div class="site3" id="site3"><h4>Bem-vindo ao nosso site</h4><p>Soluções inovadoras e de qualidade para você e sua empresa.</p><div class="img3"></div></div>
+    </div></div>
+    <div class="toque" id="toque"></div>
+  </div>
+
+  <div class="marca">projecta<i>.</i>tech</div>
+  <div class="ilus">telas ilustrativas</div>
+
+  <div class="leg">
+    <p id="l0">3 sinais de que o seu site *perde cliente*</p>
+    <p id="l1"><span class="n">1.</span>Abra no 4G.</p>
+    <p class="sub" id="s1" style="top:110px">Demorou? O cliente já foi embora.</p>
+    <p id="l2"><span class="n">2.</span>Conte os toques até o WhatsApp.</p>
+    <p class="sub" id="s2" style="top:200px">Mais de um é demais.</p>
+    <p id="l3"><span class="n">3.</span>Mostre a 1ª tela por 5 segundos.</p>
+    <p class="sub" id="s3" style="top:200px">Ninguém entendeu o que você faz? O cliente também não.</p>
+  </div>
+  <div class="contador" id="contador">0 toques</div>
+  <div class="anel" id="anel"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="#333" stroke-width="7"/><circle id="arco" cx="50" cy="50" r="44" fill="none" stroke="#F04E12" stroke-width="7" stroke-linecap="round" stroke-dasharray="276.5" stroke-dashoffset="0"/></svg><b id="seg">5</b></div>
+
+  <div class="fim" id="fim">
+    <p>Quantos dos 3 o <em>seu</em> site tem?</p>
+    <p class="cta">Comenta o número.<br>Peça sua análise gratuita: link na bio.</p>
+  </div>
+  <div class="rodape" id="rod">projectatech.com.br · WhatsApp (49) 99959-2640 · Lages-SC</div>
+  <div class="grao"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+window.montar = (tl) => {
+  const $ = (s) => document.querySelector(s);
+  const w0 = palavras($("#l0"));
+  const entra = (el, t) => tl.fromTo(el, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: .55 }, t);
+  const sai = (el, t) => tl.to(el, { y: -50, opacity: 0, duration: .35, ease: "power2.in" }, t);
+  gsap.set(["#l1", "#s1", "#l2", "#s2", "#l3", "#s3"], { opacity: 0 });
+  gsap.set("#rod", { opacity: 0 });
+  gsap.set("#mundo", { scale: 1.2, y: 420, transformOrigin: "50% 66%" });
+
+  // 0–3,2 s: gancho, palavra por palavra; o celular sobe
+  tl.fromTo(w0, { y: 90, opacity: 0, rotate: 4 }, { y: 0, opacity: 1, rotate: 0, duration: .5, stagger: .07 }, .1)
+    .to("#mundo", { y: 170, scale: 1.12, duration: 2.6, ease: "power2.inOut" }, .2);
+  sai("#l0", 3.0);
+
+  // 3,2–9 s: sinal 1, carregando no 4G
+  entra("#l1", 3.2); entra("#s1", 4.6);
+  tl.to("#mundo", { scale: 1.28, y: 110, duration: 5, ease: "sine.inOut" }, 3.2)
+    .to("#spin", { rotate: 360 * 9, duration: 5.6, ease: "none" }, 3.2)
+    .to("#prog", { width: "34%", duration: 5.2, ease: "power1.out" }, 3.3);
+  const rel = { v: 0 };
+  tl.to(rel, { v: 6.4, duration: 5.2, ease: "none", onUpdate: () => ($("#relogio").textContent = rel.v.toFixed(1).replace(".", ",") + " s") }, 3.3);
+  tl.to("#carreg", { x: -520, duration: .45, ease: "power3.in" }, 8.5);
+  sai("#l1", 8.7); sai("#s1", 8.7);
+
+  // 9–15 s: sinal 2, toques até o WhatsApp
+  entra("#l2", 9.0); entra("#s2", 12.6);
+  tl.set("#prog", { width: "100%" }, 8.9)
+    .to("#site2", { opacity: 1, duration: .3 }, 8.95)
+    .to("#mundo", { scale: 1.16, x: 0, y: 150, duration: 1.2, ease: "power2.inOut" }, 9.0)
+    .to("#contador", { opacity: 1, scale: 1, duration: .3 }, 9.6);
+  const toques = [[700, 1015, 10.0], [520, 1230, 10.9], [470, 1150, 11.8], [480, 1600, 12.7]];
+  toques.forEach(([x, y, t], i) => {
+    tl.set("#toque", { left: x, top: y, scale: .5, opacity: 0 }, t)
+      .to("#toque", { scale: 1, opacity: 1, duration: .16, ease: "power2.out" }, t)
+      .to("#toque", { scale: 1.5, opacity: 0, duration: .4, ease: "power2.out" }, t + .16)
+      .call(() => ($("#contador").textContent = `${i + 1} ${i ? "toques" : "toque"}`), null, t + .05)
+      .fromTo("#contador", { scale: 1.25 }, { scale: 1, duration: .3 }, t + .05);
+  });
+  tl.to("#menu2", { opacity: 1, duration: .2 }, 10.15)
+    .to("#form2", { opacity: 1, duration: .2 }, 11.05)
+    .to("#contador", { backgroundColor: "#F8DDD8", color: "#B42318", duration: .3 }, 13.0);
+  sai("#l2", 14.6); sai("#s2", 14.6);
+  tl.to("#contador", { opacity: 0, duration: .3 }, 14.6);
+
+  // 15–21 s: sinal 3, teste dos 5 segundos
+  entra("#l3", 15.0); entra("#s3", 17.8);
+  tl.to("#site2", { opacity: 0, duration: .25 }, 14.9)
+    .to("#site3", { opacity: 1, duration: .35 }, 15.0)
+    .to("#mundo", { scale: 1.26, x: 0, y: 140, duration: 5.6, ease: "sine.inOut" }, 15.0)
+    .to("#anel", { opacity: 1, duration: .3 }, 15.4)
+    .to("#arco", { strokeDashoffset: 276.5, duration: 5, ease: "none" }, 15.5);
+  for (let s = 4; s >= 0; s--) tl.call(() => ($("#seg").textContent = s), null, 15.5 + (5 - s));
+  sai("#l3", 20.6); sai("#s3", 20.6);
+  tl.to("#anel", { opacity: 0, duration: .3 }, 20.6);
+
+  // 21–26 s: pergunta + CTA; a câmera se afasta e o celular desce
+  tl.to("#mundo", { scale: .9, y: 1500, x: 0, duration: 1.3, ease: "power3.in" }, 20.8)
+    .fromTo("#fim", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: .6 }, 21.4)
+    .to("#rod", { opacity: 1, duration: .5 }, 22.2)
+    .to({}, { duration: 3.8 }, 22.2);
+};
+</script>
+<script src="../../../scripts/video/kit.js"></script>
+</body>
+</html>

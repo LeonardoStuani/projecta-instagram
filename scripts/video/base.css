@@ -1,0 +1,16 @@
+/* Base visual dos vídeos (mesma marca dos carrosséis e stories) */
+:root{--paper:#F3F1EA;--stone:#E7E4DA;--ink:#111110;--muted:#8C877C;--accent:#F04E12;--ok:#1F7A4D;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;--sans:"Instrument Sans",system-ui,sans-serif;--serif:"Instrument Serif",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+body{font-family:var(--sans);color:var(--paper);-webkit-font-smoothing:antialiased}
+.palco{position:relative;width:1080px;height:1920px;overflow:hidden}
+.mundo{position:absolute;inset:0;transform-origin:50% 50%;will-change:transform}
+.grao{position:absolute;inset:0;pointer-events:none;opacity:.07;
+  background-image:radial-gradient(#fff 1px,transparent 1px);background-size:6px 6px}
+em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+.w{display:inline-block;will-change:transform,opacity}
+.marca{position:absolute;left:72px;top:84px;font-family:var(--display);font-weight:700;font-size:34px;letter-spacing:-.04em;z-index:5}
+.marca i{color:var(--accent);font-style:normal}
+.ilus{position:absolute;right:72px;top:92px;font-size:22px;letter-spacing:.04em;color:var(--muted);z-index:5}
+.rodape{position:absolute;left:0;right:0;bottom:96px;text-align:center;font-size:26px;color:var(--muted);z-index:5}

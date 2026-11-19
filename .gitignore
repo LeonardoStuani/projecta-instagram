@@ -4,3 +4,5 @@ __pycache__/
 .DS_Store
 posts/*/fonte/assets/
 posts/*/fonte/frames/
+posts/*/fonte/prev/
+*-preview-*.png

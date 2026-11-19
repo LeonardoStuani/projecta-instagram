@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Story animado</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Story animado (substitui o "quadro 1, você grava"). Uso: story.html?m=<motivo>&t=<frase>&tema=claro|escuro */
+body.claro,body.claro .palco{background:var(--paper);color:var(--ink)}
+body.claro .marca{color:var(--ink)}
+.frase{position:absolute;left:80px;right:80px;top:300px;font-family:var(--display);font-weight:700;font-size:92px;line-height:1;letter-spacing:-.045em;z-index:4}
+.cena{position:absolute;left:0;right:0;top:860px;height:900px}
+.arroba{position:absolute;left:0;right:0;bottom:120px;text-align:center;font-size:30px;color:var(--muted);z-index:4}
+/* planilha / arquivos / copiar */
+.folha{position:absolute;width:560px;height:420px;border-radius:18px;background:#fff;box-shadow:0 30px 60px -30px #0006;overflow:hidden;
+  background-image:linear-gradient(#ECE8DF 2px,transparent 2px),linear-gradient(90deg,#ECE8DF 2px,transparent 2px);background-size:100% 52px,112px 100%}
+.folha b{position:absolute;left:0;right:0;bottom:0;height:56px;background:#F1EEE6;border-top:2px solid #DDD8CC;font:600 24px var(--sans);color:#4a473f;display:flex;align-items:center;padding:0 20px}
+.arq{position:absolute;left:190px;width:700px;height:120px;border-radius:22px;background:#fff;box-shadow:0 20px 40px -24px #0006;display:flex;align-items:center;gap:26px;padding:0 30px;
+  font:600 38px var(--sans);color:var(--ink)}
+.arq i{width:64px;height:78px;border-radius:10px;background:#1F7A4D;flex:none;position:relative}
+.arq i::after{content:"X";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font:700 34px var(--sans)}
+.bloco{position:absolute;width:224px;height:104px;border-radius:8px;background:rgba(240,78,18,.25);border:4px solid var(--accent)}
+.cursor{position:absolute;width:0;height:0;border-left:26px solid var(--ink);border-top:16px solid transparent;border-bottom:16px solid transparent;transform:rotate(-30deg)}
+/* café */
+.xic{position:absolute;left:150px;top:300px;width:300px;height:260px;border-radius:0 0 120px 120px;background:var(--paper)}
+.xic::after{content:"";position:absolute;right:-80px;top:50px;width:90px;height:110px;border:22px solid var(--paper);border-left:0;border-radius:0 60px 60px 0}
+.vapor{position:absolute;width:16px;height:120px;border-radius:10px;background:var(--paper);opacity:.0}
+.cod{position:absolute;left:560px;top:180px;width:420px;display:flex;flex-direction:column;gap:22px}
+.cod i{display:block;height:18px;border-radius:9px;background:#3a3936}
+.cod i.a{background:var(--accent)}
+/* caixinha */
+.cx{position:absolute;left:110px;width:700px;border-radius:36px;background:#fff;color:var(--ink);padding:34px 40px;box-shadow:0 30px 60px -30px #000a;font:600 40px/1.25 var(--sans)}
+.cx small{display:block;font:600 24px var(--sans);color:#8C877C;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase}
+/* celular */
+.fone{position:absolute;left:300px;top:0;width:480px;height:900px;border-radius:60px;background:#222120;padding:16px;box-shadow:0 50px 100px -30px #000}
+.fone .tela{width:100%;height:100%;border-radius:46px;overflow:hidden;background:#fff;position:relative}
+.fone img{width:100%;display:block}
+.item{display:flex;justify-content:space-between;align-items:center;margin:0 26px;padding:28px 0;border-bottom:2px solid #eee;font:600 32px var(--sans);color:var(--ink)}
+.item span{width:56px;height:56px;border-radius:50%;background:#DCEFE3;color:#1F7A4D;display:grid;place-items:center;font-size:32px}
+/* lupa */
+.lista{position:absolute;left:150px;top:60px;display:flex;flex-direction:column;gap:40px}
+.lista div{font:700 64px var(--display);letter-spacing:-.04em;display:flex;align-items:center;gap:30px}
+.lista div span{width:76px;height:76px;border-radius:50%;border:5px solid #555;display:grid;place-items:center;font-size:44px;color:var(--accent)}
+.lupa{position:absolute;width:260px;height:260px;border-radius:50%;border:22px solid var(--accent);left:560px;top:60px}
+.lupa::after{content:"";position:absolute;width:30px;height:140px;background:var(--accent);border-radius:15px;right:-70px;bottom:-110px;transform:rotate(-45deg)}
+</style>
+</head>
+<body>
+<div class="palco">
+  <div class="mundo" id="mundo"><div class="cena" id="cena"></div></div>
+  <div class="marca">projecta<i>.</i>tech</div>
+  <p class="frase" id="frase"></p>
+  <div class="arroba">@projectatech</div>
+  <div class="grao"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+const M = {
+  planilha(tl, c) {
+    const nomes = ["Clientes", "Clientes_novo", "Pedidos 2026", "FINAL_v3"];
+    c.innerHTML = nomes.map((n, i) => `<div class="folha" style="left:${260 + i * 26}px;top:${120 + i * 70}px"><b>${n}</b></div>`).join("");
+    tl.from("#cena .folha", { y: 260, opacity: 0, rotate: (i) => [-6, 4, -3, 5][i], duration: .7, stagger: .35, ease: "back.out(1.4)" }, .5)
+      .to("#cena .folha", { x: (i) => (i - 1.5) * 70, rotate: (i) => (i - 1.5) * 5, duration: 1.4, ease: "power2.inOut" }, 2.6);
+  },
+  copiar(tl, c) {
+    c.innerHTML = `<div class="folha" style="left:40px;top:140px;width:470px"><b>Planilha A</b></div><div class="folha" style="left:570px;top:140px;width:470px"><b>Planilha B</b></div>
+      <div class="bloco" id="bl"></div><div class="cursor" id="cur"></div>`;
+    for (let k = 0; k < 3; k++) {
+      const t = .7 + k * 1.6;
+      tl.set("#bl", { left: 150, top: 200 + k * 104, opacity: 1 }, t).set("#cur", { left: 330, top: 280 + k * 104 }, t)
+        .to(["#bl", "#cur"], { x: 530, duration: .8, ease: "power2.inOut" }, t + .3)
+        .to("#bl", { opacity: 0, duration: .2 }, t + 1.15).set(["#bl", "#cur"], { x: 0 }, t + 1.4);
+    }
+  },
+  arquivos(tl, c) {
+    const nomes = ["planilha.xlsx", "planilha_final.xlsx", "planilha_FINAL_v2.xlsx", "FINAL_v3_agora_vai.xlsx"];
+    c.innerHTML = nomes.map((n, i) => `<div class="arq" style="top:${40 + i * 150}px"><i></i>${n}</div>`).join("");
+    tl.from("#cena .arq", { x: 900, opacity: 0, duration: .55, stagger: .55, ease: "back.out(1.3)" }, .6)
+      .to("#cena .arq:last-child", { scale: 1.06, backgroundColor: "#FDE3D7", duration: .4, yoyo: true, repeat: 1 }, 3.4);
+  },
+  cafe(tl, c) {
+    c.innerHTML = `<div class="xic"></div>${[0, 1, 2].map((i) => `<div class="vapor" style="left:${220 + i * 70}px;top:150px"></div>`).join("")}
+      <div class="cod">${[60, 85, 40, 75, 55, 90, 35].map((w, i) => `<i class="${i % 3 === 1 ? "a" : ""}" style="width:${w}%"></i>`).join("")}</div>`;
+    tl.from(".xic", { y: 200, opacity: 0, duration: .7 }, .4)
+      .fromTo(".vapor", { y: 60, opacity: 0, scaleY: .5 }, { y: -80, opacity: .5, scaleY: 1, duration: 1.6, stagger: .3, repeat: 2, ease: "sine.out" }, .8)
+      .from(".cod i", { scaleX: 0, transformOrigin: "0 50%", duration: .35, stagger: .3, ease: "power2.out" }, .9);
+  },
+  caixinha(tl, c) {
+    // Sem texto de pergunta: as perguntas reais entram nos próximos quadros. Aqui só o "envelope" da caixinha.
+    const barras = (a, b) => `<i style="display:block;height:22px;border-radius:11px;background:#E4E0D6;width:${a}%;margin-top:14px"></i><i style="display:block;height:22px;border-radius:11px;background:#E4E0D6;width:${b}%;margin-top:14px"></i>`;
+    c.innerHTML = [[90, 60], [80, 45], [95, 70]].map(([a, b], i) => `<div class="cx" style="top:${20 + i * 250}px;${i % 2 ? "left:250px;" : ""}"><small>Pergunta ${i + 1}</small>${barras(a, b)}</div>`).join("");
+    tl.from("#cena .cx", { scale: .6, opacity: 0, y: 60, duration: .55, stagger: .7, ease: "back.out(1.8)" }, .6);
+  },
+  sistema(tl, c) {
+    c.innerHTML = `<div class="fone"><div class="tela"><div style="height:110px"></div>${["Cadastro do cliente", "Pedido com prazo", "Aviso no WhatsApp", "Relatório pronto"].map((t) => `<div class="item">${t}<span>✓</span></div>`).join("")}</div></div>`;
+    tl.from(".fone", { y: 300, opacity: 0, duration: .8 }, .4)
+      .from(".item", { x: 60, opacity: 0, duration: .45, stagger: .5 }, 1.2)
+      .from(".item span", { scale: 0, duration: .35, stagger: .5, ease: "back.out(2)" }, 1.5);
+  },
+  site(tl, c, q) {
+    c.innerHTML = `<div class="fone"><div class="tela" style="background:#0c1f17"><img id="shot" src="${q.get("img")}" alt=""></div></div>`;
+    tl.from(".fone", { y: 300, opacity: 0, duration: .8 }, .4).to("#shot", { y: -170, duration: 3.8, ease: "sine.inOut" }, 1.6);
+  },
+  lupa(tl, c) {
+    c.innerHTML = `<div class="lista"><div><span>✓</span>Google</div><div><span>✓</span>Site</div><div><span>✓</span>WhatsApp</div></div><div class="lupa" id="lupa"></div>`;
+    tl.from(".lista div", { x: -80, opacity: 0, duration: .5, stagger: .45 }, .6).from(".lista span", { scale: 0, duration: .3, stagger: .45, ease: "back.out(2)" }, .9)
+      .from("#lupa", { scale: 0, opacity: 0, duration: .6, ease: "back.out(1.6)" }, .8)
+      .to("#lupa", { x: -330, y: 120, duration: 1.4, ease: "sine.inOut" }, 1.6).to("#lupa", { y: 230, x: -300, duration: 1.2, ease: "sine.inOut" }, 3.0).to("#lupa", { x: 40, y: 160, duration: 1.1, ease: "power2.inOut" }, 4.3);
+  },
+};
+
+window.montar = (tl, q) => {
+  const tema = q.get("tema") || "escuro";
+  document.body.className = tema === "claro" ? "claro" : "";
+  const f = document.getElementById("frase");
+  f.textContent = q.get("t") || "Frase do story";
+  const ws = palavras(f);
+  tl.fromTo(ws, { y: 80, opacity: 0, rotate: 3 }, { y: 0, opacity: 1, rotate: 0, duration: .45, stagger: .06 }, .15);
+  (M[q.get("m")] || M.planilha)(tl, document.getElementById("cena"), q);
+  tl.fromTo("#mundo", { scale: 1.06 }, { scale: 1, duration: 6, ease: "sine.out" }, 0);
+  tl.to({}, { duration: .1 }, 6.4);  // 6,5 s no total
+};
+</script>
+<script src="kit.js"></script>
+</body>
+</html>

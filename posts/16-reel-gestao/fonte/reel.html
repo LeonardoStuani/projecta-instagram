@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Reel · Projecta Gestão (narrado)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../scripts/video/base.css">
+<style>
+/* Telas reais (capturadas em 2880x1800, dados de demonstração). A câmera é o transform de cada .cena. */
+body{background:#0B0B0D}
+.fundo{position:absolute;inset:-200px;background:
+  radial-gradient(900px 700px at 80% 10%,#F04E1226,transparent 60%),
+  radial-gradient(800px 800px at 10% 90%,#1D4ED833,transparent 60%),#0B0B0D}
+.gradeF{position:absolute;inset:-200px;opacity:.25;background-image:linear-gradient(#ffffff10 2px,transparent 2px),linear-gradient(90deg,#ffffff10 2px,transparent 2px);background-size:90px 90px}
+
+/* janela da câmera */
+.jan{position:absolute;left:40px;top:300px;width:1000px;height:1120px;border-radius:44px;overflow:hidden;background:#EEF2F7;
+  box-shadow:0 80px 160px -40px #000,0 0 0 2px #ffffff22;z-index:3}
+.cena{position:absolute;left:0;top:0;width:2880px;height:1800px;transform-origin:0 0;opacity:0}
+.cena img{position:absolute;left:0;top:0;width:2880px;height:1800px;display:block}
+.pill{position:absolute;display:grid;place-items:center;border-radius:999px;font:800 26px/1 "Instrument Sans",sans-serif;letter-spacing:.04em}
+.cursor{position:absolute;width:64px;height:80px;z-index:2;filter:drop-shadow(0 8px 10px #0007);transform-origin:8px 6px}
+.anel{position:absolute;border:8px solid #F04E12;border-radius:999px;opacity:0;box-shadow:0 0 0 12px #F04E1233}
+.varre{position:absolute;left:300px;width:2300px;height:84px;background:#F04E121f;border-left:10px solid #F04E12;opacity:0}
+
+/* planilha do gancho */
+.plan{position:absolute;left:-40px;top:220px;width:1160px;display:grid;grid-template-columns:repeat(6,1fr);gap:0;z-index:2}
+.plan i{height:74px;border:1.5px solid #2a2a2e;background:#141417;color:#6d6d74;font:600 24px/74px "Instrument Sans",sans-serif;font-style:normal;padding-left:14px;white-space:nowrap;overflow:hidden}
+.plan i.r{color:#ff5a4f;background:#2a1414}
+.plan i.h{background:#1c1c20;color:#9a9aa2;font-weight:700}
+
+/* textos */
+.titulo{position:absolute;left:64px;right:64px;top:170px;font-family:var(--display);font-weight:800;font-size:64px;line-height:1;letter-spacing:-.045em;z-index:6;color:#fff}
+.titulo em{font-size:1.05em}
+.leg{position:absolute;left:40px;right:40px;top:1500px;height:260px;z-index:8;display:flex;align-items:center;justify-content:center}
+.chunk{position:absolute;left:0;right:0;text-align:center;font-family:var(--display);font-weight:800;font-size:88px;line-height:1.05;letter-spacing:-.045em;color:#fff;opacity:0;
+  text-shadow:0 6px 24px #000c}
+.chunk b{display:inline-block;font-weight:800;padding:0 .12em;border-radius:.18em;margin:0 .02em}
+.chunk b.on{background:var(--hl,#F04E12);color:#fff;text-shadow:none}
+.selo{position:absolute;left:72px;top:96px;display:flex;gap:14px;align-items:center;z-index:6;font:700 26px "Instrument Sans";color:#bbb;letter-spacing:.02em}
+.selo span{width:14px;height:14px;border-radius:50%;background:#ff3b30;box-shadow:0 0 0 6px #ff3b3033}
+.rod{position:absolute;left:0;right:0;bottom:70px;text-align:center;font-size:24px;color:#8a8a92;z-index:6}
+
+/* marca e CTA */
+.marcaG{position:absolute;left:0;right:0;top:640px;text-align:center;z-index:7;opacity:0}
+.marcaG h2{font-family:var(--display);font-weight:800;font-size:150px;letter-spacing:-.06em;line-height:.9;color:#fff}
+.marcaG h2 em{display:block;font-size:.8em}
+.marcaG p{margin-top:36px;font-size:40px;color:#c9c9cf}
+.cta{position:absolute;inset:0;background:#F04E12;z-index:7;clip-path:circle(0% at 50% 60%)}
+.cta h2{position:absolute;left:72px;right:72px;top:420px;font-family:var(--display);font-weight:800;font-size:132px;line-height:.92;letter-spacing:-.055em;color:#111}
+.cta .bio{position:absolute;left:72px;top:1000px;font-family:var(--display);font-weight:800;font-size:96px;letter-spacing:-.04em;color:#fff;display:flex;gap:26px;align-items:center}
+.cta .seta{display:inline-block}
+.cta .arroba{position:absolute;left:72px;top:1140px;font-size:40px;font-weight:600;color:#111}
+.mini{position:absolute;width:520px;height:325px;border-radius:24px;overflow:hidden;box-shadow:0 40px 80px -20px #000;opacity:0;z-index:4}
+.mini img{width:100%;height:100%;object-fit:cover;display:block}
+</style>
+</head>
+<body>
+<div class="palco">
+  <div class="mundo" id="mundo">
+    <div class="fundo"></div><div class="gradeF" id="gradeF"></div>
+    <div class="plan" id="plan"></div>
+    <div class="mini" id="m1"><img src="telas/clients.png" alt=""></div>
+    <div class="mini" id="m2"><img src="telas/projects.png" alt=""></div>
+    <div class="mini" id="m3"><img src="telas/financeiro-grafico.png" alt=""></div>
+    <div class="jan" id="jan">
+      <div class="cena" id="c-dash"><img src="telas/dashboard.png" alt=""></div>
+      <div class="cena" id="c-orc"><img src="telas/budgets.png" alt="">
+        <div class="pill" id="pAprov" style="left:1866px;top:1578px;width:226px;height:52px;background:#DCFCE7;color:#15803D;border:2px solid #BBF7D0">APROVADO</div>
+        <div class="pill" id="pProj" style="left:1866px;top:1578px;width:226px;height:52px;background:#DBEAFE;color:#1D4ED8;border:2px solid #BFDBFE;opacity:0">PROJETO</div>
+        <div class="anel" id="anelOrc" style="left:1856px;top:1560px;width:246px;height:90px"></div>
+        <svg class="cursor" id="cur" style="left:2300px;top:1900px" viewBox="0 0 32 40"><path d="M3 2 L3 32 L11 25 L16 37 L21 35 L16 23 L27 23 Z" fill="#111" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="cena" id="c-proj"><img src="telas/projeto.png" alt="">
+        <div style="position:absolute;left:540px;top:398px;width:1030px;height:22px;background:#F1F5F9;border-radius:11px;overflow:hidden">
+          <div id="barra" style="height:100%;width:0;background:#0F172A;border-radius:11px"></div></div>
+        <div class="anel" id="anelSt" style="left:2010px;top:1452px;width:150px;height:72px"></div>
+        <div class="anel" id="anelPr" style="left:2150px;top:1452px;width:200px;height:72px"></div>
+      </div>
+      <div class="cena" id="c-fin"><img src="telas/financeiro-grafico.png" alt="">
+        <div class="anel" id="anelEn" style="left:2120px;top:1315px;width:180px;height:64px"></div>
+        <div class="anel" id="anelSa" style="left:2290px;top:1315px;width:140px;height:64px"></div>
+        <div class="anel" id="anelMes" style="left:575px;top:480px;width:470px;height:80px"></div>
+      </div>
+      <div class="cena" id="c-aud"><img src="telas/auditoria.png" alt=""><div class="varre" id="varre" style="top:600px"></div></div>
+    </div>
+  </div>
+  <div class="selo" id="selo"><span></span>TELAS REAIS DO SISTEMA</div>
+  <p class="titulo" id="titulo"></p>
+  <div class="leg" id="leg"></div>
+  <div class="marcaG" id="marcaG"><h2>Projecta <em>Gestão</em></h2><p>Feito para escritório técnico · Lages, SC</p></div>
+  <div class="cta" id="cta"><h2>Agende uma demonstração gratuita.</h2><div class="bio">Link na bio <span class="seta" id="seta">↓</span></div><div class="arroba">@projectatech</div></div>
+  <div class="rod" id="rod">Dados de demonstração · animação ilustrativa</div>
+  <div class="grao"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="legendas.js"></script>
+<script>
+const LEG = window.LEG;
+const W = 1000, H = 1120;
+// câmera: centraliza o ponto (x,y) da tela original na janela, com zoom z
+// início da palavra n (contando do 1) que contém "w", na fala f
+const at = (f, w) => LEG.find((x) => x.fala === f && x.w.toLowerCase().startsWith(w)).s;
+const cam = (x, y, z, dx = 0, dy = 0) => ({ x: W / 2 - x * z + dx, y: H / 2 - y * z + dy, scale: z });
+
+function legendas(tl) {
+  // agrupa em blocos de até 3 palavras, quebrando na pontuação
+  const blocos = []; let b = [];
+  LEG.forEach((w, i) => {
+    b.push(w);
+    const prox = LEG[i + 1];
+    if (b.length === 3 || /[,.?!:]$/.test(w.w) || !prox || prox.fala !== w.fala) { blocos.push(b); b = []; }
+  });
+  const box = document.getElementById("leg");
+  blocos.forEach((bl, k) => {
+    const el = document.createElement("div");
+    el.className = "chunk";
+    el.innerHTML = bl.map((w) => `<b>${w.w.replace(/[,.?!:]$/, "")}</b>`).join(" ");
+    box.appendChild(el);
+    const ini = bl[0].s - 0.04, fim = (blocos[k + 1] && blocos[k + 1][0].s - 0.04 < bl.at(-1).e + 0.5) ? blocos[k + 1][0].s - 0.04 : bl.at(-1).e + 0.25;
+    tl.fromTo(el, { opacity: 0, y: 40, scale: .86 }, { opacity: 1, y: 0, scale: 1, duration: .16, ease: "back.out(2.4)" }, ini)
+      .set(el, { opacity: 0 }, fim);
+    [...el.children].forEach((c, j) => {
+      tl.set(c, { className: "on" }, bl[j].s).set(c, { className: "" }, bl[j].e)
+        .fromTo(c, { scale: 1.12 }, { scale: 1, duration: .18, ease: "power2.out" }, bl[j].s);
+    });
+  });
+}
+
+window.montar = (tl) => {
+  // ---------- 0–3,1 s: gancho, a planilha ----------
+  const plan = document.getElementById("plan");
+  const txt = ["A","B","C","D","E","F"].map((l) => `<i class="h">${l}</i>`).join("") +
+    Array.from({ length: 6 * 21 }, (_, i) => {
+      const r = [7, 15, 22, 34, 41, 53, 60, 71, 88, 95, 104, 117];
+      const v = ["Cliente", "Obra 23", "FINAL_v3", "pago?", "12/03", "R$ ?", "ver c/ Ana", "prazo", "OK", "atrasou", "copiar", "aba 4"][i % 12];
+      return r.includes(i) ? `<i class="r">#REF!</i>` : `<i>${i % 3 ? "" : v}</i>`;
+    }).join("");
+  plan.innerHTML = txt;
+  const celulas = plan.querySelectorAll("i");
+  const titulo = document.getElementById("titulo");
+  titulo.innerHTML = `Ainda controla obra em <em>planilha?</em>`;
+  tl.from(celulas, { opacity: 0, duration: .25, stagger: { each: .006, from: "random" } }, 0)
+    .fromTo("#plan", { scale: 1.25, rotate: -4 }, { scale: 1, rotate: 0, duration: 3, ease: "power1.inOut" }, 0)
+    .from(titulo, { y: 60, opacity: 0, duration: .5, ease: "back.out(1.8)" }, .25)
+    .to(plan.querySelectorAll(".r"), { backgroundColor: "#ff3b30", color: "#fff", duration: .12, stagger: .12, yoyo: true, repeat: 1 }, 1.3)
+    .to("#plan", { x: "+=8", duration: .05, repeat: 9, yoyo: true, ease: "none" }, 2.45)
+    // explode na virada da batida
+    .to(celulas, { x: () => gsap.utils.random(-900, 900), y: () => gsap.utils.random(-1400, 1400), rotate: () => gsap.utils.random(-180, 180),
+      opacity: 0, duration: .7, ease: "power3.in", stagger: { each: .001, from: "center" } }, 2.95)
+    .to(titulo, { opacity: 0, y: -40, duration: .25 }, 2.95)
+
+  // ---------- 3,1 s: "Olha isso" — a janela entra com força ----------
+    .set("#c-dash", { opacity: 1, ...cam(1440, 900, W / 2880) }, 0)
+    .fromTo("#jan", { scale: 2.4, rotateX: 35, rotateZ: -8, opacity: 0, y: 300 }, { scale: 1, rotateX: 0, rotateZ: 0, opacity: 1, y: 0, duration: .75, ease: "expo.out" }, 3.08)
+    .fromTo("#mundo", { scale: 1.08 }, { scale: 1, duration: .6, ease: "power2.out" }, 3.1)
+    .from("#selo", { opacity: 0, x: -30, duration: .4 }, 3.3)
+    .from("#rod", { opacity: 0, duration: .4 }, 3.5)
+
+  // ---------- 4,2–7,3 s: dashboard — cliente, orçamento, projeto ----------
+    .to("#c-dash", { ...cam(831, 470, 1.25), duration: .45, ease: "power3.inOut" }, at(3, "cliente") - .2)
+    .to("#c-dash", { ...cam(1411, 470, 1.25), duration: .35, ease: "power3.inOut" }, at(3, "orçamento") - .15)
+    .to("#c-dash", { ...cam(1990, 470, 1.25), duration: .35, ease: "power3.inOut" }, at(3, "projeto") - .15)
+    .to("#c-dash", { ...cam(1600, 900, 0.62), duration: .6, ease: "power3.inOut" }, at(3, "tudo") - .1)
+
+  // ---------- 7,35–9,6 s: orçamento aprovado vira projeto ----------
+    .to("#c-dash", { y: "-=900", opacity: 0, duration: .3, ease: "power2.in" }, 7.2)
+    .fromTo("#c-orc", { opacity: 1, ...cam(1950, 1100, 0.55, 0, 900) }, { immediateRender: false, ...cam(1950, 1100, 0.55), duration: .45, ease: "power3.out" }, 7.3)
+    .to("#c-orc", { ...cam(1950, 1420, 1.15), duration: .8, ease: "power3.inOut" }, 7.8)
+    .to("#cur", { left: 1960, top: 1596, duration: .55, ease: "power2.inOut" }, 8.15)
+    .to("#cur", { scale: .85, duration: .08, yoyo: true, repeat: 1 }, 8.72)
+    .to("#pAprov", { scale: 0, opacity: 0, duration: .18, ease: "back.in(2)" }, 8.78)
+    .fromTo("#pProj", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: .35, ease: "back.out(3)" }, 8.92)
+    .fromTo("#anelOrc", { scale: .6, opacity: 1 }, { immediateRender: false, scale: 1.6, opacity: 0, duration: .7, ease: "power2.out" }, 8.92)
+
+  // ---------- 9,9–12,5 s: dentro do projeto ----------
+    .to("#c-orc", { x: "-=1100", opacity: 0, duration: .3, ease: "power2.in" }, 9.75)
+    .fromTo("#c-proj", { opacity: 1, ...cam(1060, 420, 0.95, 1100, 0) }, { immediateRender: false, ...cam(1060, 420, 0.95), duration: .4, ease: "power3.out" }, 9.85)
+    .fromTo("#barra", { width: "0%" }, { width: "72%", duration: 1.1, ease: "power2.out" }, 10.0)
+    .to("#c-proj", { ...cam(1960, 1330, 1.05), duration: .8, ease: "power3.inOut" }, 10.9)
+    .fromTo("#anelSt", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(2)" }, at(5, "status") - .05)
+    .fromTo("#anelPr", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(2)" }, at(5, "prazo") - .05)
+
+  // ---------- 12,8–16,4 s: financeiro ----------
+    .to("#c-proj", { y: "+=1100", opacity: 0, duration: .3, ease: "power2.in" }, 12.65)
+    .fromTo("#c-fin", { opacity: 1, ...cam(2282, 1060, 0.7, 0, -1100), rotate: -8 }, { immediateRender: false, ...cam(2282, 1060, 0.7), rotate: 0, duration: .45, ease: "power3.out" }, 12.75)
+    .to("#c-fin", { ...cam(2282, 1150, 1.05), duration: 1.2, ease: "power2.inOut" }, 13.2)
+    .fromTo("#anelEn", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(2)" }, at(6, "entra") - .05)
+    .fromTo("#anelSa", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(2)" }, at(6, "sai") - .05)
+    .to("#c-fin", { ...cam(820, 520, 1.05), duration: .6, ease: "power3.inOut" }, 15.25)
+    .fromTo("#anelMes", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(2)" }, 15.6)
+
+  // ---------- 16,6–19,2 s: auditoria ----------
+    .to("#c-fin", { opacity: 0, duration: .25, ease: "power2.in" }, 16.45)
+    .fromTo("#c-aud", { opacity: 1, ...cam(1300, 950, 0.45) }, { immediateRender: false, ...cam(1350, 860, 0.62), duration: .5, ease: "power3.out" }, 16.55)
+    .set("#varre", { opacity: 1 }, 17.0)
+    .fromTo("#varre", { top: 600 }, { top: 1340, duration: 1.8, ease: "steps(8)" }, 17.0)
+
+  // ---------- 19,5–23,7 s: marca ----------
+    .to("#jan", { scale: .5, y: -380, rotateZ: -6, opacity: 0, duration: .5, ease: "power3.in" }, 19.25)
+    .to(["#selo", "#rod"], { opacity: 0, duration: .3 }, 19.3)
+    .fromTo("#m1", { opacity: 0, x: -200, y: 260, rotate: -14, left: 40, top: 160 }, { opacity: .9, x: 0, y: 0, rotate: -10, duration: .6, ease: "expo.out" }, 19.45)
+    .fromTo("#m2", { opacity: 0, x: 200, y: 200, rotate: 12, left: 540, top: 300 }, { opacity: .9, x: 0, y: 0, rotate: 8, duration: .6, ease: "expo.out" }, 19.55)
+    .fromTo("#m3", { opacity: 0, y: 300, rotate: 6, left: 300, top: 1180 }, { opacity: .9, y: 0, rotate: -4, duration: .6, ease: "expo.out" }, 19.65)
+    .fromTo("#marcaG", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: .5, ease: "expo.out" }, 19.5)
+    .to(["#m1", "#m2", "#m3"], { y: "-=60", duration: 4, ease: "none" }, 19.9)
+
+  // ---------- 23,9 s: CTA ----------
+    .to("#cta", { clipPath: "circle(150% at 50% 60%)", duration: .6, ease: "power3.in" }, 23.75)
+    .set("#leg", { "--hl": "#111" }, 23.9)
+    .from(".cta h2", { y: 80, opacity: 0, duration: .5, ease: "back.out(1.6)" }, 24.1)
+    .from(".cta .bio", { y: 60, opacity: 0, duration: .45, ease: "back.out(1.6)" }, 25.7)
+    .to("#seta", { y: 26, duration: .3, yoyo: true, repeat: 5, ease: "sine.inOut" }, 26.0)
+    .from(".cta .arroba", { opacity: 0, duration: .4 }, 26.1)
+    .to({}, { duration: .1 }, 27.5);
+
+  legendas(tl);
+};
+</script>
+<script src="../../../scripts/video/kit.js"></script>
+</body>
+</html>

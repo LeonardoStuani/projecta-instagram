@@ -15,32 +15,61 @@
           "n": 1,
           "tipo": "gravar",
           "texto": "Mostre uma planilha sua cheia de abas (sem dado de cliente) ou um caderno de anotações. Fala: \"Toda empresa que eu visito começa assim. E tá tudo bem.\"",
-          "adesivo": "Localização: Lages, SC"
+          "adesivo": "Localização: Lages, SC",
+          "animado": {
+            "m": "planilha",
+            "t": "Toda empresa que eu visito começa assim. *E tá tudo bem.*",
+            "tema": "claro"
+          },
+          "video": "posts/stories-2026-11-25/dia-1-q1.mp4"
         },
         {
           "n": 2,
           "img": "02.png",
           "sobre": "Três sinais de que a planilha já não dá conta. Cada item é uma dor que o dono reconhece na hora, para ele pensar \"isso acontece aqui\".",
-          "tela": {"kick": "3 sinais", "titulo": "A planilha já não dá conta *quando:*", "tam": "m", "lista": ["Cada um tem uma versão diferente do arquivo", "Orçamento se perde no meio do WhatsApp", "Pra saber como foi o mês, alguém monta relatório na mão"]}
+          "tela": {
+            "kick": "3 sinais",
+            "titulo": "A planilha já não dá conta *quando:*",
+            "tam": "m",
+            "lista": [
+              "Cada um tem uma versão diferente do arquivo",
+              "Orçamento se perde no meio do WhatsApp",
+              "Pra saber como foi o mês, alguém monta relatório na mão"
+            ]
+          }
         },
         {
           "n": 3,
           "img": "03.png",
           "sobre": "Frase de impacto em fundo escuro. Liga a dor do quadro 2 ao prejuízo, sem prometer número.",
-          "tela": {"fundo": "dark", "titulo": "O orçamento que se perde no WhatsApp é o *mais caro* da empresa.", "sub": "Porque ninguém percebe que ele sumiu."}
+          "tela": {
+            "fundo": "dark",
+            "titulo": "O orçamento que se perde no WhatsApp é o *mais caro* da empresa.",
+            "sub": "Porque ninguém percebe que ele sumiu."
+          }
         },
         {
           "n": 4,
           "img": "04.png",
           "adesivo": "Enquete: Planilha / Caderno / Sistema",
           "sobre": "A pergunta da semana. Resposta de um toque, e cada voto em \"Planilha\" ou \"Caderno\" é alguém para chamar no direct.",
-          "tela": {"kick": "Responde aí", "titulo": "Hoje sua empresa *se organiza* em quê?", "tam": "g"}
+          "tela": {
+            "kick": "Responde aí",
+            "titulo": "Hoje sua empresa *se organiza* em quê?",
+            "tam": "g"
+          }
         },
         {
           "n": 5,
           "img": "05.png",
           "sobre": "Chama para o post do feed das 18h. Não é repost: diz o que a pessoa vai ver lá.",
-          "tela": {"fundo": "dark", "kick": "Hoje às 18h no feed", "titulo": "O antes e depois da *Eixo Sul*: do Excel para um sistema só.", "sub": "Escritório de topografia aqui de Lages.", "nota": "Case autorizado pela Eixo Sul Engenharia."}
+          "tela": {
+            "fundo": "dark",
+            "kick": "Hoje às 18h no feed",
+            "titulo": "O antes e depois da *Eixo Sul*: do Excel para um sistema só.",
+            "sub": "Escritório de topografia aqui de Lages.",
+            "nota": "Case autorizado pela Eixo Sul Engenharia."
+          }
         }
       ]
     },
@@ -57,26 +86,50 @@
           "n": 1,
           "tipo": "gravar",
           "texto": "Só a mão no mouse/teclado copiando dados de uma planilha para outra (dados fictícios). Texto por cima: \"Quanto tempo vai nisso por semana?\"",
-          "adesivo": "Localização: Lages, SC"
+          "adesivo": "Localização: Lages, SC",
+          "animado": {
+            "m": "copiar",
+            "t": "Quanto tempo vai nisso *por semana?*",
+            "tema": "claro"
+          },
+          "video": "posts/stories-2026-11-25/dia-2-q1.mp4"
         },
         {
           "n": 2,
           "img": "02.png",
           "sobre": "Lista de tarefas repetidas que todo mundo faz na planilha. Serve para a pessoa somar mentalmente o próprio tempo.",
-          "tela": {"kick": "Conta comigo", "titulo": "Toda semana alguém *faz isso:*", "tam": "m", "lista": ["Copia o mesmo dado em dois lugares", "Confere fórmula que quebrou", "Procura o orçamento certo", "Monta o relatório do mês"]}
+          "tela": {
+            "kick": "Conta comigo",
+            "titulo": "Toda semana alguém *faz isso:*",
+            "tam": "m",
+            "lista": [
+              "Copia o mesmo dado em dois lugares",
+              "Confere fórmula que quebrou",
+              "Procura o orçamento certo",
+              "Monta o relatório do mês"
+            ]
+          }
         },
         {
           "n": 3,
           "img": "03.png",
           "sobre": "A virada: tudo isso é trabalho que um sistema faz sozinho. Mensagem central da semana.",
-          "tela": {"fundo": "dark", "titulo": "Tudo isso é trabalho que um sistema *faz sozinho.*", "sub": "Digita uma vez, aparece em todo lugar."}
+          "tela": {
+            "fundo": "dark",
+            "titulo": "Tudo isso é trabalho que um sistema *faz sozinho.*",
+            "sub": "Digita uma vez, aparece em todo lugar."
+          }
         },
         {
           "n": 4,
           "img": "04.png",
           "adesivo": "Enquete: Menos de 1h / 1 a 3h / Mais de 3h",
           "sobre": "Enquete com 3 opções. Quem marca \"Mais de 3h\" está dizendo que tem o problema: é a lista do direct de hoje.",
-          "tela": {"kick": "Responde aí", "titulo": "Quanto tempo por semana vai *em planilha* aí?", "tam": "m"}
+          "tela": {
+            "kick": "Responde aí",
+            "titulo": "Quanto tempo por semana vai *em planilha* aí?",
+            "tam": "m"
+          }
         },
         {
           "n": 5,
@@ -84,7 +137,11 @@
           "adesivo": "Link: Falar no WhatsApp",
           "link": "https://wa.me/5549999592640",
           "sobre": "Fecha com convite direto e o link do WhatsApp. Laranja para destacar que é a chamada.",
-          "tela": {"fundo": "laranja", "titulo": "Mais de 3h? Me chama que eu mostro *o que dá pra automatizar.*", "sub": "Sem compromisso."}
+          "tela": {
+            "fundo": "laranja",
+            "titulo": "Mais de 3h? Me chama que eu mostro *o que dá pra automatizar.*",
+            "sub": "Sem compromisso."
+          }
         }
       ]
     },
@@ -101,32 +158,61 @@
           "n": 1,
           "tipo": "gravar",
           "texto": "Rosto, tom de brincadeira. Fala: \"Levanta a mão quem já teve um arquivo chamado FINAL_v3.\"",
-          "adesivo": "Localização: Lages, SC"
+          "adesivo": "Localização: Lages, SC",
+          "animado": {
+            "m": "arquivos",
+            "t": "Levanta a mão quem já teve um arquivo chamado *FINAL_v3.*",
+            "tema": "claro"
+          },
+          "video": "posts/stories-2026-11-25/dia-3-q1.mp4"
         },
         {
           "n": 2,
           "img": "02.png",
           "sobre": "Humor que todo mundo reconhece: o nome de arquivo \"FINAL_v3 (2)\". Faz rir e prende para o próximo quadro.",
-          "tela": {"arquivo": "clientes_FINAL_v3 (2).xlsx", "titulo": "Se você já viu um arquivo assim, *esse story é pra você.*", "tam": "m"}
+          "tela": {
+            "arquivo": "clientes_FINAL_v3 (2).xlsx",
+            "titulo": "Se você já viu um arquivo assim, *esse story é pra você.*",
+            "tam": "m"
+          }
         },
         {
           "n": 3,
           "img": "03.png",
           "sobre": "Três dos cinco riscos do carrossel, em fundo escuro. O resto fica para o post das 18h, para dar motivo de ir ver.",
-          "tela": {"fundo": "dark", "kick": "O que pode dar errado", "titulo": "Planilha tem *3 riscos* que ninguém vê:", "tam": "m", "lista": ["Arquivo apagado e sem volta", "Fórmula quebrada que ninguém percebe", "Cada um com uma versão"]}
+          "tela": {
+            "fundo": "dark",
+            "kick": "O que pode dar errado",
+            "titulo": "Planilha tem *3 riscos* que ninguém vê:",
+            "tam": "m",
+            "lista": [
+              "Arquivo apagado e sem volta",
+              "Fórmula quebrada que ninguém percebe",
+              "Cada um com uma versão"
+            ]
+          }
         },
         {
           "n": 4,
           "img": "04.png",
           "adesivo": "Enquete: Já aconteceu / Ainda não",
           "sobre": "Pergunta pessoal e fácil de responder. Quem já perdeu dado sente a dor e é o melhor contato para conversar.",
-          "tela": {"kick": "Responde aí", "titulo": "Você já perdeu dado *de planilha?*", "tam": "g"}
+          "tela": {
+            "kick": "Responde aí",
+            "titulo": "Você já perdeu dado *de planilha?*",
+            "tam": "g"
+          }
         },
         {
           "n": 5,
           "img": "05.png",
           "sobre": "Chama para o carrossel das 18h e pede para salvar e mandar para alguém, o que ajuda o alcance do post.",
-          "tela": {"fundo": "dark", "kick": "Hoje às 18h no feed", "titulo": "Os *5 riscos* completos. Salva e manda pra quem ainda vive no Excel.", "tam": "m"}
+          "tela": {
+            "fundo": "dark",
+            "kick": "Hoje às 18h no feed",
+            "titulo": "Os *5 riscos* completos. Salva e manda pra quem ainda vive no Excel.",
+            "tam": "m"
+          }
         }
       ]
     },
@@ -142,26 +228,45 @@
         {
           "n": 1,
           "tipo": "gravar",
-          "texto": "Foto ou vídeo do café, mesa ou notebook. Sem dado de cliente na tela. Texto: \"Sábado de café e código.\""
+          "texto": "Foto ou vídeo do café, mesa ou notebook. Sem dado de cliente na tela. Texto: \"Sábado de café e código.\"",
+          "animado": {
+            "m": "cafe",
+            "t": "Sábado de café *e código.*"
+          },
+          "video": "posts/stories-2026-11-25/dia-4-q1.mp4"
         },
         {
           "n": 2,
           "img": "02.png",
           "sobre": "A dúvida mais comum de quem pensa em sair da planilha: perder o que já tem. O quadro faz a pergunta.",
-          "tela": {"kick": "Pergunta que mais recebo", "titulo": "E as planilhas que *eu já tenho?*", "tam": "g"}
+          "tela": {
+            "kick": "Pergunta que mais recebo",
+            "titulo": "E as planilhas que *eu já tenho?*",
+            "tam": "g"
+          }
         },
         {
           "n": 3,
           "img": "03.png",
           "sobre": "A resposta: a gente importa o que a empresa já tem. Tira o medo de começar do zero.",
-          "tela": {"fundo": "dark", "kick": "Resposta curta", "titulo": "A gente *importa* o que você já tem.", "sub": "Ninguém começa do zero. E o sistema segue o jeito que sua empresa já trabalha."}
+          "tela": {
+            "fundo": "dark",
+            "kick": "Resposta curta",
+            "titulo": "A gente *importa* o que você já tem.",
+            "sub": "Ninguém começa do zero. E o sistema segue o jeito que sua empresa já trabalha."
+          }
         },
         {
           "n": 4,
           "img": "04.png",
           "adesivo": "Caixinha de perguntas",
           "sobre": "Caixinha aberta. As respostas viram o conteúdo de segunda e ganchos de Reel, nas palavras do próprio cliente.",
-          "tela": {"kick": "Caixinha", "titulo": "O que você queria que um sistema *fizesse por você?*", "tam": "m", "sub": "Respondo segunda."}
+          "tela": {
+            "kick": "Caixinha",
+            "titulo": "O que você queria que um sistema *fizesse por você?*",
+            "tam": "m",
+            "sub": "Respondo segunda."
+          }
         }
       ]
     },
@@ -177,27 +282,48 @@
         {
           "n": 1,
           "tipo": "gravar",
-          "texto": "Fala: \"Vocês mandaram o que queriam que um sistema fizesse. Separei algumas.\""
+          "texto": "Fala: \"Vocês mandaram o que queriam que um sistema fizesse. Separei algumas.\"",
+          "animado": {
+            "m": "caixinha",
+            "t": "Vocês mandaram o que querem que um sistema faça. *Separei algumas.*"
+          },
+          "video": "posts/stories-2026-11-25/dia-5-q1.mp4"
         },
         {
           "n": 2,
           "img": "modelo.png",
           "adesivo": "Caixinha → toque na resposta → Compartilhar, com este fundo. Uma pergunta por quadro.",
           "sobre": "Fundo para responder a caixinha de sábado. A pergunta do seguidor fica em cima, e você escreve ou grava a resposta embaixo de \"Minha resposta\".",
-          "tela": {"fundo": "dark", "modelo": true, "kick": "Vocês pediram"}
+          "tela": {
+            "fundo": "dark",
+            "modelo": true,
+            "kick": "Vocês pediram"
+          }
         },
         {
           "n": 3,
           "img": "03.png",
           "sobre": "Apresenta os dois caminhos sem preço: Projecta Gestão (base pronta ajustada ao ramo) ou sistema sob medida.",
-          "tela": {"kick": "Dois caminhos", "titulo": "Base pronta *ou* sob medida?", "tam": "m", "lista": ["*Projecta Gestão*: base pronta, ajustada ao seu ramo. Mais rápido de implantar.", "*Sob medida*: feito do zero em cima da sua rotina."]}
+          "tela": {
+            "kick": "Dois caminhos",
+            "titulo": "Base pronta *ou* sob medida?",
+            "tam": "m",
+            "lista": [
+              "*Projecta Gestão*: base pronta, ajustada ao seu ramo. Mais rápido de implantar.",
+              "*Sob medida*: feito do zero em cima da sua rotina."
+            ]
+          }
         },
         {
           "n": 4,
           "img": "04.png",
           "adesivo": "Enquete: Base pronta / Sob medida / Não sei",
           "sobre": "Enquete que já qualifica o contato. \"Não sei\" é a melhor resposta: é a deixa para oferecer a análise.",
-          "tela": {"kick": "Pra sua empresa", "titulo": "Qual caminho *faz mais sentido?*", "tam": "g"}
+          "tela": {
+            "kick": "Pra sua empresa",
+            "titulo": "Qual caminho *faz mais sentido?*",
+            "tam": "g"
+          }
         },
         {
           "n": 5,
@@ -205,7 +331,11 @@
           "adesivo": "Link: Ver uma demonstração",
           "link": "https://wa.me/5549999592640?text=Quero%20ver%20a%20demonstra%C3%A7%C3%A3o%20do%20Projecta%20Gest%C3%A3o",
           "sobre": "Oferta de demonstração de 20 minutos, com link do WhatsApp que já chega com a mensagem escrita.",
-          "tela": {"fundo": "laranja", "titulo": "Quer ver funcionando? *20 minutos* de demonstração.", "sub": "Toca no link que a mensagem já vai pronta."}
+          "tela": {
+            "fundo": "laranja",
+            "titulo": "Quer ver funcionando? *20 minutos* de demonstração.",
+            "sub": "Toca no link que a mensagem já vai pronta."
+          }
         }
       ]
     },
@@ -222,19 +352,39 @@
           "n": 1,
           "tipo": "gravar",
           "texto": "Fala: \"Muita gente acha que trocar a planilha por sistema é complicado. Deixa eu te mostrar como funciona.\"",
-          "adesivo": "Localização: Lages, SC"
+          "adesivo": "Localização: Lages, SC",
+          "animado": {
+            "m": "sistema",
+            "t": "Trocar a planilha por sistema é complicado? *Deixa eu te mostrar.*",
+            "tema": "claro"
+          },
+          "video": "posts/stories-2026-11-25/dia-6-q1.mp4"
         },
         {
           "n": 2,
           "img": "02.png",
           "sobre": "O passo a passo em 4 etapas, todas verdadeiras no processo da Projecta (conversa, proposta em 24h, ajuste, importação e treinamento).",
-          "tela": {"kick": "Como funciona", "titulo": "Da planilha pro sistema em *4 passos:*", "tam": "m", "lista": ["Conversa para entender sua rotina", "Proposta em até 24h", "Ajuste ao jeito da sua empresa", "Importação das planilhas e treinamento"]}
+          "tela": {
+            "kick": "Como funciona",
+            "titulo": "Da planilha pro sistema em *4 passos:*",
+            "tam": "m",
+            "lista": [
+              "Conversa para entender sua rotina",
+              "Proposta em até 24h",
+              "Ajuste ao jeito da sua empresa",
+              "Importação das planilhas e treinamento"
+            ]
+          }
         },
         {
           "n": 3,
           "img": "03.png",
           "sobre": "Diferencial: suporte com quem desenvolveu. Responde ao medo de ficar sozinho depois da entrega.",
-          "tela": {"fundo": "dark", "titulo": "E depois? Suporte direto com *quem desenvolveu.*", "sub": "Alterações pelo WhatsApp. É só pedir."}
+          "tela": {
+            "fundo": "dark",
+            "titulo": "E depois? Suporte direto com *quem desenvolveu.*",
+            "sub": "Alterações pelo WhatsApp. É só pedir."
+          }
         },
         {
           "n": 4,
@@ -242,13 +392,23 @@
           "adesivo": "Link: Pedir análise",
           "link": "https://projectatech.com.br/analise-gratuita",
           "sobre": "A chamada principal da semana, no quadro 4, onde ainda tem gente assistindo. Leva para a página da análise gratuita.",
-          "tela": {"fundo": "laranja", "kick": "Primeiro passo", "titulo": "Peça sua *análise gratuita.*", "tam": "g"}
+          "tela": {
+            "fundo": "laranja",
+            "kick": "Primeiro passo",
+            "titulo": "Peça sua *análise gratuita.*",
+            "tam": "g"
+          }
         },
         {
           "n": 5,
           "img": "05.png",
           "sobre": "Gancho para o Reel de amanhã, para a pessoa voltar ao perfil.",
-          "tela": {"fundo": "dark", "kick": "Amanhã às 18h", "titulo": "Vídeo novo no feed: *o site novo* por dentro.", "sub": "Fica de olho."}
+          "tela": {
+            "fundo": "dark",
+            "kick": "Amanhã às 18h",
+            "titulo": "Vídeo novo no feed: *o site novo* por dentro.",
+            "sub": "Fica de olho."
+          }
         }
       ]
     }

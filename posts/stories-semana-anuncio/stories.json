@@ -94,7 +94,13 @@
           "n": 1,
           "tipo": "gravar",
           "texto": "eixosul.com aberto no notebook ou celular. Fala: \"Lembra da Eixo Sul? Olha como tá hoje.\"",
-          "adesivo": "Menção à Eixo Sul, se tiver Instagram"
+          "adesivo": "Menção à Eixo Sul, se tiver Instagram",
+          "animado": {
+            "m": "site",
+            "t": "Lembra da Eixo Sul? Olha como *tá hoje.*",
+            "img": "assets/eixosul-celular.png"
+          },
+          "video": "posts/stories-semana-anuncio/dia-3-q1.mp4"
         },
         {
           "n": 2,
@@ -131,7 +137,12 @@
         {
           "n": 1,
           "tipo": "gravar",
-          "texto": "Foto ou vídeo da mesa de trabalho, café, código na tela. Sem dados de cliente visíveis. Texto: \"Sábado é dia de código.\""
+          "texto": "Foto ou vídeo da mesa de trabalho, café, código na tela. Sem dados de cliente visíveis. Texto: \"Sábado é dia de código.\"",
+          "animado": {
+            "m": "cafe",
+            "t": "Sábado é dia de *código.*"
+          },
+          "video": "posts/stories-semana-anuncio/dia-4-q1.mp4"
         },
         {
           "n": 2,
@@ -163,7 +174,12 @@
         {
           "n": 1,
           "tipo": "gravar",
-          "texto": "Fala: \"Separei as perguntas que vocês mandaram. Bora.\""
+          "texto": "Fala: \"Separei as perguntas que vocês mandaram. Bora.\"",
+          "animado": {
+            "m": "caixinha",
+            "t": "Separei as perguntas que vocês mandaram. *Bora.*"
+          },
+          "video": "posts/stories-semana-anuncio/dia-5-q1.mp4"
         },
         {
           "n": 2,
@@ -199,7 +215,12 @@
           "n": 1,
           "tipo": "gravar",
           "texto": "Fala: \"Tô fazendo análise gratuita da presença online de empresas de Lages. Te explico o que eu olho.\"",
-          "adesivo": "Localização: Lages, SC"
+          "adesivo": "Localização: Lages, SC",
+          "animado": {
+            "m": "lupa",
+            "t": "Tô fazendo análise gratuita de empresas de Lages. *Te mostro o que eu olho.*"
+          },
+          "video": "posts/stories-semana-anuncio/dia-6-q1.mp4"
         },
         {
           "n": 2,

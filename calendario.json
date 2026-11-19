@@ -107,6 +107,19 @@
     "pilar": "dica"
   },
   {
+    "id": "16-reel-gestao",
+    "tipo": "reel",
+    "arquivos": [
+      "16-reel-gestao/reel-projecta-gestao.mp4"
+    ],
+    "legenda": "media/16-reel-gestao/legenda.txt",
+    "data": "2026-12-01",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "oferta",
+    "observacao": "Reel narrado, com voz, legenda, batida e efeitos já no vídeo: publique com o áudio original (não troque por música do app). Telas reais da base de demonstração, com nomes trocados. A troca APROVADO→PROJETO é animação ilustrativa e o rodapé avisa."
+  },
+  {
     "id": "10-reel-site-novo",
     "tipo": "reel",
     "arquivos": [
@@ -118,6 +131,19 @@
     "status": "pendente",
     "pilar": "bastidores",
     "observacao": "Confirme que projectatech.com.br está no ar antes de aprovar (o vídeo mostra o domínio). Vídeo sem áudio: para mais alcance, publique pelo app com um áudio em alta."
+  },
+  {
+    "id": "14-reel-3-sinais",
+    "tipo": "reel",
+    "arquivos": [
+      "14-reel-3-sinais/reel-3-sinais.mp4"
+    ],
+    "legenda": "media/14-reel-3-sinais/legenda.txt",
+    "data": "2026-12-04",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "dica",
+    "observacao": "Reel animado (sem gravar). Vídeo sem áudio: se puder, publique pelo app com um áudio em alta. Mesmo tema do carrossel 13, uma semana antes."
   },
   {
     "id": "11-planilha-de-uma-pessoa",
@@ -172,6 +198,19 @@
     "hora": "18:00",
     "status": "pendente",
     "pilar": "dica"
+  },
+  {
+    "id": "15-reel-planilha",
+    "tipo": "reel",
+    "arquivos": [
+      "15-reel-planilha/reel-planilha.mp4"
+    ],
+    "legenda": "media/15-reel-planilha/legenda.txt",
+    "data": "2026-12-14",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "dica",
+    "observacao": "Reel animado (sem gravar). Vídeo sem áudio: se puder, publique pelo app com um áudio em alta. Mesmo tema do carrossel 11, uma semana depois."
   },
   {
     "id": "03-case-eixo-sul",

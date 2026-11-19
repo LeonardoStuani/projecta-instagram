@@ -26,7 +26,14 @@ legendas, plano, humanizador) criam o conteúdo; este fluxo publica.
 ## Fluxo de um post
 1. **Criar**: use /ig-carousel, /ig-reel, /ig-caption e passe tudo por /ig-human.
    Carrossel: escreva `posts/<nn>-<nome>/slides.json` e rode `node scripts/carrossel/renderizar.mjs posts/<nn>-<nome>`
-   (template com o rodapé padrão; gera slide-01.png… em 1080×1350 e previa.png). Reel: um .mp4 9:16.
+   (template com o rodapé padrão; gera slide-01.png… em 1080×1350 e previa.png).
+   Reel sem gravar (o Leo não tem tempo de filmar): siga /bang-motion (um mundo contínuo, câmera que se move, nada de slideshow,
+   no máximo 2 níveis de texto por cena). Escreva `posts/<nn>-reel-<nome>/fonte/reel.html` em 1080×1920 com GSAP
+   (copie um dos reels 14 ou 15; `window.montar(tl, q)` + `scripts/video/kit.js` + `base.css`) e rode
+   `node scripts/video/renderizar.mjs posts/<pasta>/fonte/reel.html posts/<pasta>/reel-<nome>.mp4 [--preview 2,8,15]`
+   (Playwright + Edge capturam 30 fps; ffmpeg do Python portátil monta o MP4 H.264 com trilha muda).
+   Confira as prévias (`python scripts/video/folha.py` monta a folha de contato) antes de mostrar ao Leo.
+   Telas fictícias marcadas "Ilustrativo". Vídeo sai sem áudio: avise no `observacao` para publicar com áudio em alta pelo app.
    Legenda em `legenda.md` (dentro de um bloco ```), na "Estrutura de legenda longa" do `voice.md`.
 2. **Preparar**: `python3 scripts/ig.py preparar posts/<pasta> --data AAAA-MM-DD --hora HH:MM --pilar dica`
    (converte PNG em JPEG, copia para `media/`, põe no calendário como `pendente` e imprime o checklist).

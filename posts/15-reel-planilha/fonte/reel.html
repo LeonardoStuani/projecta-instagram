@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Reel · planilha de uma pessoa</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../scripts/video/base.css">
+<style>
+html,body{background:var(--paper)}
+body{color:var(--ink)}
+.marca{color:var(--ink)}
+.ilus{color:#8C877C}
+.leg{position:absolute;left:72px;right:72px;top:250px;z-index:4}
+.leg p{position:absolute;left:0;right:0;font-family:var(--display);font-weight:700;font-size:88px;line-height:.98;letter-spacing:-.045em}
+.leg .sub{font-family:var(--sans);font-weight:500;font-size:46px;letter-spacing:-.01em;color:#4a473f;line-height:1.2}
+.faixa{position:absolute;left:0;right:0;top:0;height:640px;z-index:3;background:linear-gradient(var(--paper) 78%,transparent)}
+
+/* planilha */
+.folha{position:absolute;left:50%;top:1060px;width:1240px;margin-left:-620px;background:#fff;border:2px solid #CFCAbe;border-radius:14px;overflow:hidden;
+  box-shadow:0 40px 80px -40px #0005;transform-origin:50% 0}
+.grade{display:grid;grid-template-columns:60px repeat(8,1fr)}
+.grade div{height:74px;border-right:1px solid #E6E2D8;border-bottom:1px solid #E6E2D8;display:flex;align-items:center;padding:0 12px;font-size:22px;white-space:nowrap;overflow:hidden}
+.grade .h{background:#F1EEE6;color:#8C877C;font-weight:600;justify-content:center;font-size:24px}
+.grade .c i{display:block;height:12px;border-radius:6px;background:#DDD8CC}
+.grade .c b{display:none;color:#B42318;font-weight:700;font-size:22px}
+.abas{display:flex;gap:6px;padding:10px 10px 0;background:#F1EEE6;border-top:1px solid #DDD8CC;overflow:hidden}
+.aba{padding:16px 24px;font-size:28px!important;border-radius:10px 10px 0 0;background:#E4E0D6;font-size:24px;font-weight:600;white-space:nowrap;color:#4a473f}
+.aba.on{background:#fff;color:var(--ink)}
+
+/* pessoa */
+.pessoa{position:absolute;left:440px;top:1080px;width:200px;height:200px;border-radius:50%;background:var(--ink);z-index:5;display:grid;place-items:center;
+  box-shadow:0 0 0 14px rgba(240,78,18,.25)}
+.pessoa svg{width:110px;height:110px}
+.pessoa span{position:absolute;top:220px;left:50%;translate:-50% 0;white-space:nowrap;font-weight:700;font-size:30px;background:var(--accent);color:var(--ink);padding:8px 18px;border-radius:999px}
+.fios{position:absolute;inset:0;z-index:4;pointer-events:none}
+.fios path{stroke:var(--accent);stroke-width:5;fill:none;stroke-dasharray:900;stroke-dashoffset:900}
+
+/* sistema */
+.sis{position:absolute;left:72px;right:72px;top:700px;z-index:5;display:flex;flex-direction:column;gap:26px}
+.card{background:#fff;border-radius:28px;padding:34px 40px;box-shadow:0 30px 60px -36px #0006;display:flex;justify-content:space-between;align-items:center}
+.card h5{font-family:var(--display);font-size:52px;letter-spacing:-.04em}
+.card p{font-size:28px;color:#6b675e;margin-top:6px}
+.card .ok{width:86px;height:86px;border-radius:50%;background:#DCEFE3;display:grid;place-items:center;color:var(--ok);font-size:48px;font-weight:700}
+
+.fim{position:absolute;left:72px;right:72px;top:700px;z-index:6;opacity:0}
+.fim p{font-family:var(--display);font-weight:700;font-size:100px;line-height:.98;letter-spacing:-.05em}
+.fim .cta{margin-top:56px;font-family:var(--sans);font-weight:600;font-size:52px;letter-spacing:-.01em;line-height:1.2}
+.rodape{color:#6b675e}
+</style>
+</head>
+<body>
+<div class="palco">
+  <div class="mundo" id="mundo">
+    <div class="folha" id="folha"><div class="grade" id="grade"></div>
+      <div class="abas" id="abas"><span class="aba on">Clientes</span><span class="aba">Clientes_novo</span><span class="aba">Pedidos FINAL</span><span class="aba">FINAL_v3</span><span class="aba">NÃO MEXER</span></div>
+    </div>
+    <svg class="fios" id="fios" viewBox="0 0 1080 1920"></svg>
+    <div class="pessoa" id="pessoa"><svg viewBox="0 0 24 24" fill="none" stroke="#F3F1EA" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span>só uma pessoa sabe</span></div>
+  </div>
+  <div class="faixa"></div>
+  <div class="marca">projecta<i>.</i>tech</div>
+  <div class="ilus">telas ilustrativas</div>
+  <div class="leg">
+    <p id="l0">Sua empresa roda numa *planilha?*</p>
+    <p id="l1">Cheia de abas.</p>
+    <p class="sub" id="s1" style="top:100px">E só uma pessoa sabe mexer.</p>
+    <p id="l2">Aí essa pessoa tira férias…</p>
+    <p class="sub" id="s2" style="top:190px">…e ninguém acha mais nada.</p>
+    <p id="l3">Um sistema guarda o *processo.*</p>
+    <p class="sub" id="s3" style="top:190px">Não a memória de uma pessoa.</p>
+  </div>
+  <div class="sis" id="sis">
+    <div class="card"><div><h5>Clientes</h5><p>todo mundo vê a mesma lista</p></div><div class="ok">✓</div></div>
+    <div class="card"><div><h5>Pedidos</h5><p>cada etapa com dono e prazo</p></div><div class="ok">✓</div></div>
+    <div class="card"><div><h5>Relatórios</h5><p>prontos, sem copiar e colar</p></div><div class="ok">✓</div></div>
+  </div>
+  <div class="fim" id="fim">
+    <p>Sua planilha já virou <em>um problema</em>?</p>
+    <p class="cta">Peça sua análise gratuita: link na bio.</p>
+  </div>
+  <div class="rodape" id="rod">projectatech.com.br · WhatsApp (49) 99959-2640 · Lages-SC</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+window.montar = (tl) => {
+  const $ = (s) => document.querySelector(s);
+  // monta a grade (8 colunas x 13 linhas), com larguras de "texto" fixas para o vídeo sair igual sempre
+  const g = $("#grade"), L = "ABCDEFGH";
+  g.innerHTML = `<div class="h"></div>` + [...L].map((c) => `<div class="h">${c}</div>`).join("");
+  for (let r = 1; r <= 13; r++) {
+    g.innerHTML += `<div class="h">${r}</div>` + [...L].map((_, c) => `<div class="c"><i style="width:${30 + ((r * 7 + c * 13) % 60)}%"></i><b>#REF!</b></div>`).join("");
+  }
+  const cels = [...g.querySelectorAll(".c")];
+  // fios da pessoa até as abas
+  const fios = [[540, 1180, 300, 2030], [540, 1180, 520, 2030], [540, 1180, 760, 2030], [540, 1180, 960, 2030]];
+  $("#fios").innerHTML = fios.map(([a, b, c, d]) => `<path d="M${a} ${b} C ${a} ${b + 380}, ${c} ${d - 380}, ${c} ${d}"/>`).join("");
+
+  const w0 = palavras($("#l0")); palavras($("#l3"));
+  const entra = (el, t) => tl.fromTo(el, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: .55 }, t);
+  const sai = (el, t) => tl.to(el, { y: -50, opacity: 0, duration: .35, ease: "power2.in" }, t);
+  gsap.set(["#l1", "#s1", "#l2", "#s2", "#l3", "#s3", "#rod"], { opacity: 0 });
+  gsap.set("#pessoa", { scale: 0, opacity: 0 });
+  gsap.set("#sis .card", { y: 120, opacity: 0 });
+  gsap.set(".aba", { y: 70 });
+  gsap.set("#mundo", { scale: 2.6, x: 380, y: -360, transformOrigin: "50% 60%" });
+
+  // 0–3 s: gancho; câmera sai de uma célula e revela a planilha
+  tl.fromTo(w0, { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: .5, stagger: .07 }, .1)
+    .to("#mundo", { scale: 1, x: 0, y: -260, duration: 2.8, ease: "power3.inOut" }, .2);
+  sai("#l0", 3.0);
+
+  // 3–8 s: abas aparecem; a pessoa liga tudo
+  entra("#l1", 3.2);
+  tl.to(".aba", { y: 0, duration: .45, stagger: .22, ease: "back.out(1.6)" }, 3.3)
+    .to("#mundo", { y: -470, scale: 1.04, duration: 1.6, ease: "power2.inOut" }, 3.3);
+  entra("#s1", 5.0);
+  tl.to("#pessoa", { scale: 1, opacity: 1, duration: .5, ease: "back.out(1.8)" }, 5.1)
+    .to("#fios path", { strokeDashoffset: 0, duration: .9, stagger: .12, ease: "power2.out" }, 5.4);
+  sai("#l1", 7.7); sai("#s1", 7.7);
+
+  // 8–13 s: a pessoa sai; a planilha quebra
+  entra("#l2", 8.0);
+  tl.to("#pessoa", { scale: .6, opacity: 0, y: -80, duration: .7, ease: "power2.in" }, 8.9)
+    .to("#fios path", { opacity: 0, duration: .5 }, 8.9)
+    .to("#mundo", { y: -230, scale: 1.1, rotation: -1.5, duration: 4, ease: "sine.inOut" }, 8.6);
+  const ordem = cels.map((c, i) => ({ c, k: ((i * 37) % 104) })).sort((a, b) => a.k - b.k).slice(0, 60).map((o) => o.c);
+  ordem.forEach((c, i) => {
+    const t = 9.6 + i * .045;
+    tl.set(c.querySelector("i"), { display: "none" }, t).set(c.querySelector("b"), { display: "block" }, t)
+      .fromTo(c, { backgroundColor: "#F8DDD8" }, { backgroundColor: "#FBEDEA", duration: .4, immediateRender: false }, t);
+  });
+  entra("#s2", 10.6);
+  sai("#l2", 12.7); sai("#s2", 12.7);
+
+  // 13–18 s: vira sistema
+  entra("#l3", 13.0);
+  tl.to("#folha", { opacity: 0, scale: .9, duration: .6, ease: "power2.in" }, 13.0)
+    .to("#mundo", { rotation: 0, duration: .6 }, 13.0)
+    .to("#sis .card", { y: 0, opacity: 1, duration: .6, stagger: .25, ease: "back.out(1.4)" }, 13.6)
+    .from("#sis .ok", { scale: 0, duration: .4, stagger: .25, ease: "back.out(2)" }, 14.0);
+  entra("#s3", 15.0);
+  sai("#l3", 17.6); sai("#s3", 17.6);
+  tl.to("#sis", { opacity: 0, y: -60, duration: .4, ease: "power2.in" }, 17.6);
+
+  // 18–22,5 s: CTA
+  tl.fromTo("#fim", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: .6 }, 18.1)
+    .to("#rod", { opacity: 1, duration: .5 }, 18.8)
+    .to({}, { duration: 3.7 }, 18.8);
+};
+</script>
+<script src="../../../scripts/video/kit.js"></script>
+</body>
+</html>

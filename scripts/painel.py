@@ -553,6 +553,9 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", ctype)
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Content-Length", str(len(data)))
+        if ctype.startswith("video/"):
+            self.send_header("Accept-Ranges", "bytes")
         self.end_headers()
         self.wfile.write(data)
 
@@ -586,7 +589,27 @@ class Handler(BaseHTTPRequestHandler):
             if not any(full.startswith(a) for a in allowed) or not os.path.isfile(full):
                 return self._send(404, {"erro": "Arquivo não encontrado."})
             ctype = mimetypes.guess_type(full)[0] or "application/octet-stream"
-            return self._send(200, open(full, "rb").read(), ctype)
+            data = open(full, "rb").read()
+            m = re.match(r"bytes=(\d*)-(\d*)$", self.headers.get("Range") or "")
+            if m and (m.group(1) or m.group(2)):  # vídeo no iPhone só toca com resposta parcial (206)
+                n = len(data)
+                ini, fim = (int(m.group(1)), int(m.group(2) or n - 1)) if m.group(1) else (n - int(m.group(2)), n - 1)
+                ini, fim = max(0, ini), min(fim, n - 1)
+                if ini > fim:
+                    self.send_response(416)
+                    self.send_header("Content-Range", f"bytes */{n}")
+                    self.end_headers()
+                    return
+                self.send_response(206)
+                self.send_header("Content-Type", ctype)
+                self.send_header("Content-Range", f"bytes {ini}-{fim}/{n}")
+                self.send_header("Content-Length", str(fim - ini + 1))
+                self.send_header("Accept-Ranges", "bytes")
+                self.send_header("Cache-Control", "no-store")
+                self.end_headers()
+                self.wfile.write(data[ini:fim + 1])
+                return
+            return self._send(200, data, ctype)
         fn = GET_ROUTES.get(u.path)
         if not fn:
             return self._send(404, {"erro": "Rota não existe."})

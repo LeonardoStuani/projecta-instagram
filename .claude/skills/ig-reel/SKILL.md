@@ -22,6 +22,12 @@ python3 hookscore.py --hook "one line"      # score a single one
 python3 beats.py script.txt --target 30     # timed beat sheet before you shoot
 ```
 
+## Projecta: no filming
+
+Leo does not film. For @projectatech, every reel is an animated video built with the
+bang-motion rules and rendered by `scripts/video/renderizar.mjs` (see the projecta-instagram
+skill, "Fluxo de um post"). Write the script below as on-screen text, not as speech.
+
 ## Before you write
 
 1. Read `~/.claude/instagram/voice.md` if it exists. That is the user's voice

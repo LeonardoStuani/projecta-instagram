@@ -110,14 +110,20 @@ just text. Everything in Portuguese, following `instagram/voice.md`.
 3. **Create** `posts/stories-AAAA-MM-DD/stories.json` (date = first day) with:
    `titulo`, `resumo`, and `dias[]` each with `n, data, titulo, pasta, horario,
    postado:false, depois, quadros[]`. Each `quadro`:
-   - frame 1: `{"n":1,"tipo":"gravar","texto":"what Leo films and says","adesivo":"Localização: Lages, SC"}`
+   - frame 1: `{"n":1,"tipo":"gravar","texto":"what Leo would film and say","adesivo":"Localização: Lages, SC",
+     "animado":{"m":"<motivo>","t":"<frase curta, *x* = laranja>","tema":"escuro|claro","img"?:"..."}}`.
+     Leo has no time to film, so frame 1 is always also an animated video. Motifs in
+     `scripts/video/story.html`: planilha, copiar, arquivos, cafe, caixinha (empty cards only, never
+     invent questions), sistema, site (needs `img`, a real screenshot), lupa. Vary motifs across the week.
    - image frames: `{"n", "img":"0N.png", "sobre":"what the image says and why it is there (1-2 sentences)", "adesivo"?, "link"?, "tela":{...}}`
    - `tela` fields: `fundo` ("" | "dark" | "laranja"), `kick`, `titulo` (`*x*` = orange italic),
      `tam` ("m" long, "g" short), `sub`, `nota`, `lista[]`, `check`, `arquivo`, `modelo:true`
      (background to answer the question box). One orange (`laranja`) frame per day at most.
    - the ask (poll, question box or link) on frame 4.
 4. **Render:** `node scripts/stories/renderizar.mjs posts/stories-AAAA-MM-DD`
-   (needs internet for the fonts). Open `previa.png` and every frame with a
+   (needs internet for the fonts). Then `node scripts/video/stories.mjs posts/stories-AAAA-MM-DD`
+   renders each `animado` to `dia-N-q1.mp4` (6,5 s) and writes `"video"` into stories.json; the panel
+   shows it with a download button. Open `previa.png` and every frame with a
    sticker: text must stay above y≈1050 so the sticker area is free.
 5. The panel (aba Stories) reads the folder by itself. Tell the user to click
    **Enviar para o GitHub**. Nothing is posted automatically: Leo posts in the app.
