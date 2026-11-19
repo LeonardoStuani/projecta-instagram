@@ -24,14 +24,15 @@ Peça sua análise gratuita: link na bio.
 ## Como foi feito
 - **Telas:** reais, capturadas do projecta-demo.com.br (base de demonstração). Os nomes e e-mails foram trocados por genéricos ("Sua Empresa", "Cliente 5").
 - **Animação ilustrativa:** a troca de status de APROVADO para PROJETO e a barra de progresso enchendo. O próprio vídeo avisa isso no rodapé.
-- **Voz:** sintética, Kokoro "Alex", gerada no computador.
+- **Voz:** sintética, Microsoft Antonio (pt-BR-AntonioNeural, via `edge-tts`, gratuita e online). É a voz padrão dos Reels.
 - **Música:** batida original sintetizada, sem direitos de terceiros.
 - **Efeitos:** whoosh, clique e impacto, também sintetizados.
 - **Volume:** -15 LUFS.
 
 Para refazer:
+0. `python scripts/video/voz.py posts/16-reel-gestao` gera as falas com o Antonio.
 1. `python scripts/video/trilha.py posts/16-reel-gestao` monta a voz, a música, os efeitos e a legenda, a partir de `fonte/roteiro.json`.
 2. `node scripts/video/renderizar.mjs posts/16-reel-gestao/fonte/reel.html posts/16-reel-gestao/fonte/prev/mudo.mp4` renderiza o vídeo sem som.
 3. Junte o vídeo e o áudio com ffmpeg, usando `loudnorm=I=-14`.
 
-Para trocar a voz ou o texto: edite `fonte/roteiro.json` e gere de novo as falas em `fonte/voz/l1..l9.wav` com `hyperframes tts -v pm_alex -l pt-br -s 1.12`.
+Para trocar o texto: edite `fonte/roteiro.json` e rode os passos 0 a 3. O `voz.py` acelera sozinho a fala que não couber no tempo.

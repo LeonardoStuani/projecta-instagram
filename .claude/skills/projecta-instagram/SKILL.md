@@ -33,7 +33,15 @@ legendas, plano, humanizador) criam o conteúdo; este fluxo publica.
    `node scripts/video/renderizar.mjs posts/<pasta>/fonte/reel.html posts/<pasta>/reel-<nome>.mp4 [--preview 2,8,15]`
    (Playwright + Edge capturam 30 fps; ffmpeg do Python portátil monta o MP4 H.264 com trilha muda).
    Confira as prévias (`python scripts/video/folha.py` monta a folha de contato) antes de mostrar ao Leo.
-   Telas fictícias marcadas "Ilustrativo". Vídeo sai sem áudio: avise no `observacao` para publicar com áudio em alta pelo app.
+   Telas fictícias marcadas "Ilustrativo".
+   **Padrão desde 19/11/2026: Reel narrado** (modelo: `posts/16-reel-gestao`). Voz padrão: **Antonio**
+   (`pt-BR-AntonioNeural`, Microsoft, via edge-tts), aprovada pelo Leo. Não use Kokoro/`hyperframes tts`: o sotaque não é brasileiro.
+   a) Escreva `fonte/roteiro.json` (`voz`, `bpm`, `drop`, `fim`, `corte_batida`, `falas` com `t` e `texto`, `sfx`);
+   b) `python scripts/video/voz.py posts/<pasta>` gera `fonte/voz/lN.wav` e acelera a fala que não couber (se avisar "NÃO CABE", afaste os `t`);
+   c) `python scripts/video/trilha.py posts/<pasta>` mixa voz + batida original + efeitos e gera `fonte/legendas.js` (palavra a palavra);
+   d) renderize o `reel.html` (sincronize com `at(fala, "palavra")`) para `fonte/prev/mudo.mp4` e junte com
+      `ffmpeg -i mudo.mp4 -i fonte/audio/mix.wav -c:v copy -c:a aac -b:a 192k -af loudnorm=I=-14:TP=-1.5:LRA=11 -shortest -movflags +faststart reel-<nome>.mp4`.
+   O `preparar` grava `voz` no calendário e o painel mostra "Narração: Antonio". Publicar com o áudio original.
    Legenda em `legenda.md` (dentro de um bloco ```), na "Estrutura de legenda longa" do `voice.md`.
 2. **Preparar**: `python3 scripts/ig.py preparar posts/<pasta> --data AAAA-MM-DD --hora HH:MM --pilar dica`
    (converte PNG em JPEG, copia para `media/`, põe no calendário como `pendente` e imprime o checklist).

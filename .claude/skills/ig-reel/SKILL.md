@@ -26,7 +26,10 @@ python3 beats.py script.txt --target 30     # timed beat sheet before you shoot
 
 Leo does not film. For @projectatech, every reel is an animated video built with the
 bang-motion rules and rendered by `scripts/video/renderizar.mjs` (see the projecta-instagram
-skill, "Fluxo de um post"). Write the script below as on-screen text, not as speech.
+skill, "Fluxo de um post"). Since 2026-11-19 every reel is **narrated**: write the script as
+short spoken lines (`fonte/roteiro.json`), voiced by the default Brazilian voice **Antonio**
+(`pt-BR-AntonioNeural`, `scripts/video/voz.py`), with word-by-word captions from
+`scripts/video/trilha.py`. Do not use Kokoro voices (foreign accent). Model: `posts/16-reel-gestao`.
 
 ## Before you write
 

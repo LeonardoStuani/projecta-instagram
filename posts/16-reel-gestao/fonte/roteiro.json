@@ -1,30 +1,96 @@
 {
+  "voz": "pt-BR-AntonioNeural",
   "bpm": 124,
   "drop": 3.1,
   "fim": 27.6,
   "corte_batida": 23.6,
   "falas": [
-    { "t": 0.3, "texto": "Seu escritório ainda controla obra em planilha?" },
-    { "t": 3.1, "texto": "Olha isso." },
-    { "t": 4.2, "texto": "Cliente, orçamento e projeto. Tudo numa tela só." },
-    { "t": 7.35, "texto": "Orçamento aprovado? Ele vira projeto." },
-    { "t": 9.9, "texto": "Cada etapa tem responsável, status e prazo." },
-    { "t": 12.8, "texto": "No financeiro, você vê o que entra, o que sai, e o fluxo do mês." },
-    { "t": 16.6, "texto": "E tudo fica registrado: quem fez, e quando." },
-    { "t": 19.5, "texto": "Isso é o Projecta Gestão. Feito pra escritório técnico, aqui de Lages." },
-    { "t": 23.9, "texto": "Quer ver com os seus projetos? Link na bio." }
+    {
+      "t": 0.3,
+      "texto": "Seu escritório ainda controla obra em planilha?"
+    },
+    {
+      "t": 3.1,
+      "texto": "Olha isso."
+    },
+    {
+      "t": 3.95,
+      "texto": "Cliente, orçamento e projeto. Tudo numa tela só."
+    },
+    {
+      "t": 7.35,
+      "texto": "Orçamento aprovado? Ele vira projeto."
+    },
+    {
+      "t": 9.9,
+      "texto": "Cada etapa tem responsável, status e prazo."
+    },
+    {
+      "t": 12.8,
+      "texto": "No financeiro, você vê o que entra, o que sai, e o fluxo do mês."
+    },
+    {
+      "t": 16.6,
+      "texto": "E tudo fica registrado: quem fez, e quando."
+    },
+    {
+      "t": 19.5,
+      "texto": "Isso é o Projecta Gestão. Feito pra escritório técnico, aqui de Lages."
+    },
+    {
+      "t": 23.9,
+      "texto": "Quer ver com os seus projetos? Link na bio."
+    }
   ],
   "sfx": [
-    { "t": 3.1, "tipo": "subida", "g": 0.6 },
-    { "t": 3.1, "tipo": "impacto", "g": 0.8 },
-    { "t": 4.15, "tipo": "whoosh" },
-    { "t": 7.3, "tipo": "whoosh" },
-    { "t": 8.75, "tipo": "clique", "g": 0.8 },
-    { "t": 9.85, "tipo": "whoosh" },
-    { "t": 12.75, "tipo": "whoosh" },
-    { "t": 16.55, "tipo": "whoosh" },
-    { "t": 19.45, "tipo": "impacto", "g": 0.5 },
-    { "t": 23.85, "tipo": "whoosh" },
-    { "t": 25.9, "tipo": "ding", "g": 0.45 }
+    {
+      "t": 3.1,
+      "tipo": "subida",
+      "g": 0.6
+    },
+    {
+      "t": 3.1,
+      "tipo": "impacto",
+      "g": 0.8
+    },
+    {
+      "t": 4.15,
+      "tipo": "whoosh"
+    },
+    {
+      "t": 7.3,
+      "tipo": "whoosh"
+    },
+    {
+      "t": 8.75,
+      "tipo": "clique",
+      "g": 0.8
+    },
+    {
+      "t": 9.85,
+      "tipo": "whoosh"
+    },
+    {
+      "t": 12.75,
+      "tipo": "whoosh"
+    },
+    {
+      "t": 16.55,
+      "tipo": "whoosh"
+    },
+    {
+      "t": 19.45,
+      "tipo": "impacto",
+      "g": 0.5
+    },
+    {
+      "t": 23.85,
+      "tipo": "whoosh"
+    },
+    {
+      "t": 25.9,
+      "tipo": "ding",
+      "g": 0.45
+    }
   ]
 }

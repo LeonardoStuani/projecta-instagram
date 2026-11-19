@@ -117,7 +117,8 @@
     "hora": "18:00",
     "status": "pendente",
     "pilar": "oferta",
-    "observacao": "Reel narrado, com voz, legenda, batida e efeitos já no vídeo: publique com o áudio original (não troque por música do app). Telas reais da base de demonstração, com nomes trocados. A troca APROVADO→PROJETO é animação ilustrativa e o rodapé avisa."
+    "observacao": "Voz, legenda, batida e efeitos já estão no vídeo: não troque o áudio por música do app. Telas reais da base de demonstração, com nomes trocados. A troca APROVADO→PROJETO é animação ilustrativa e o rodapé avisa.",
+    "voz": "pt-BR-AntonioNeural"
   },
   {
     "id": "10-reel-site-novo",

@@ -250,6 +250,9 @@ def cmd_preparar(a):
             "data": opts.get("--data", ""), "hora": opts.get("--hora", "18:00"), "status": "pendente"}
     if opts.get("--pilar"):
         novo["pilar"] = opts["--pilar"]
+    rot = os.path.join(src, "fonte", "roteiro.json")
+    if tipo == "reel" and os.path.exists(rot):  # Reel narrado: registra a voz (padrão: Antonio)
+        novo["voz"] = json.load(open(rot, encoding="utf-8")).get("voz", "pt-BR-AntonioNeural")
     c.append(novo)
     cal_save(sorted(c, key=lambda e: (e["data"] or "9999", e["hora"])))
     print(f"OK: {pid} ({tipo}, {len(arquivos)} arquivo(s)) entrou no calendário como pendente.")

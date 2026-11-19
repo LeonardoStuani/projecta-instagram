@@ -721,6 +721,7 @@ function openPost(id) {
   $("#dlg-body").innerHTML = `<div class="dlg"><div class="left" id="ph"></div><div class="right">
     <div><p class="tag">${p.tipo} · ${pl(p.midia.length, "arquivo", "arquivos")} · ${esc(p.id)}</p><h2 id="dlg-t" style="font-size:34px;margin-top:6px">${esc(nomePost(p.id))}</h2>
       <p style="margin-top:8px"><span class="status ${p.status}">${ST[p.status]}</span>${p.link ? ` <a href="${esc(p.link)}" target="_blank" rel="noopener">ver no Instagram ↗</a>` : ""}${p.substitui ? `<span class="muted" style="font-size:13px"> · substitui ${esc(p.substitui)}</span>` : ""}</p>
+      ${p.voz ? `<p class="muted" style="font-size:13px;margin-top:8px">🎙️ Narração: <b>${esc(p.voz.replace(/^pt-BR-|Neural$/g, ""))}</b> (voz padrão pt-BR) · publique com o áudio original</p>` : ""}
       ${p.observacao ? `<p class="alert warn" style="margin-top:10px;cursor:default">${esc(p.observacao)}</p>` : ""}</div>
     <div class="row"><div><label for="f-d">Data</label><input type="date" id="f-d" value="${p.data||""}" ${pub?"disabled":""}></div>
       <div><label for="f-h">Hora</label><input type="time" id="f-h" value="${p.hora||"18:00"}" ${pub?"disabled":""}></div>
