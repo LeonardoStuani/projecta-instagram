@@ -2,7 +2,7 @@
 """
 ig.py — linha de comando do Instagram da Projecta Tech (API oficial da Meta).
 
-Comandos:
+Comandos (para um cliente da agência, comece com --cliente <slug>, ex.: ig.py --cliente eixosul plano):
   python3 scripts/ig.py conta                      mostra a conta ligada ao token
   python3 scripts/ig.py preparar <pasta> [--data AAAA-MM-DD --hora HH:MM --pilar dica]
                                                    converte os slides PNG em JPEG, põe o post no calendário (pendente)
@@ -24,7 +24,7 @@ Variáveis de ambiente (arquivo .env na raiz ou secrets do GitHub):
 
 Só usa a biblioteca padrão do Python, exceto `preparar`, que usa Pillow (pip install pillow).
 """
-import json, os, sys, time, uuid, urllib.request, urllib.parse, urllib.error
+import contextlib, json, os, sys, time, uuid, urllib.request, urllib.parse, urllib.error
 from datetime import datetime, timezone, timedelta
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,6 +32,33 @@ CAL = os.path.join(ROOT, "calendario.json")
 MEDIA = os.path.join(ROOT, "media")
 TZ = timezone(timedelta(hours=-3))  # America/Sao_Paulo (sem horário de verão)
 CONTA = "projectatech"
+
+# Contexto do cliente atual. Vazio = @projectatech (raiz do repositório e .env), exatamente como antes.
+# Para um cliente da agência: {"root": clientes/<slug>, "IG_ACCESS_TOKEN": ..., "IG_USER_ID": ..., ...}.
+CTX = {}
+
+
+@contextlib.contextmanager
+def usar(ctx):
+    """Troca o contexto (pasta + credenciais) durante um bloco e restaura depois."""
+    global CTX
+    antigo, CTX = CTX, dict(ctx or {})
+    try:
+        yield
+    finally:
+        CTX = antigo
+
+
+def _root():
+    return CTX.get("root") or ROOT
+
+
+def _cal():
+    return os.path.join(_root(), "calendario.json")
+
+
+def _media():
+    return os.path.join(_root(), "media")
 
 
 def load_env():
@@ -45,18 +72,24 @@ def load_env():
 
 
 def env(k, default=None, required=True):
-    v = os.environ.get(k, default)
+    v = CTX.get(k) if k in CTX else os.environ.get(k, default)
+    v = v or default
     if required and not v:
         sys.exit(f"Falta a variável {k}. Veja o LEIA-ME (seção Token).")
     return v
 
 
 def ver():
-    return os.environ.get("IG_API_VERSION", "v23.0")
+    return CTX.get("IG_API_VERSION") or os.environ.get("IG_API_VERSION", "v23.0")
 
 
 def host():
-    return os.environ.get("IG_API_HOST", "https://graph.facebook.com").rstrip("/")
+    """Token do Login do Instagram (começa com IG) usa graph.instagram.com; o do Login unificado (EAA), graph.facebook.com."""
+    h = CTX.get("IG_API_HOST") or os.environ.get("IG_API_HOST")
+    if not h:
+        tok = env("IG_ACCESS_TOKEN", required=False) or ""
+        h = "https://graph.instagram.com" if tok.startswith("IG") else "https://graph.facebook.com"
+    return h.rstrip("/")
 
 
 def api(method, path, params=None, headers=None, data=None):
@@ -93,11 +126,11 @@ def conta():
 
 # ---------------- calendário ----------------
 def cal_load():
-    return json.load(open(CAL, encoding="utf-8")) if os.path.exists(CAL) else []
+    return json.load(open(_cal(), encoding="utf-8")) if os.path.exists(_cal()) else []
 
 
 def cal_save(c):
-    json.dump(c, open(CAL, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    json.dump(c, open(_cal(), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
 
 def find(c, pid):
@@ -108,7 +141,7 @@ def find(c, pid):
 
 
 def legenda(e):
-    return open(os.path.join(ROOT, e["legenda"]), encoding="utf-8").read().strip()
+    return open(os.path.join(_root(), e["legenda"]), encoding="utf-8").read().strip()
 
 
 # ---------------- publicação ----------------
@@ -137,7 +170,7 @@ def publish_entry(e):
         c = api("POST", f"{uid}/media", {"media_type": "REELS", "upload_type": "resumable",
                                          "caption": cap, "share_to_feed": "true"})
         cid = c["id"]
-        path = os.path.join(MEDIA, files[0])
+        path = os.path.join(_media(), files[0])
         blob = open(path, "rb").read()
         req = urllib.request.Request(
             f"https://rupload.facebook.com/ig-api-upload/{ver()}/{cid}", data=blob, method="POST",
@@ -221,9 +254,9 @@ def cmd_preparar(a):
     from PIL import Image  # pip install pillow
     pasta = a[0].rstrip("/")
     opts = dict(zip(a[1::2], a[2::2]))
-    src = os.path.join(ROOT, pasta) if not os.path.isabs(pasta) else pasta
+    src = os.path.join(_root(), pasta) if not os.path.isabs(pasta) else pasta
     pid = os.path.basename(src)
-    out = os.path.join(MEDIA, pid)
+    out = os.path.join(_media(), pid)
     os.makedirs(out, exist_ok=True)
     pngs = sorted(f for f in os.listdir(src) if f.startswith("slide-") and f.endswith(".png"))
     mp4 = sorted(f for f in os.listdir(src) if f.endswith(".mp4"))
@@ -244,7 +277,7 @@ def cmd_preparar(a):
     if "```" in leg:
         leg = leg.split("```")[1].strip()
     leg_rel = f"media/{pid}/legenda.txt"
-    open(os.path.join(ROOT, leg_rel), "w", encoding="utf-8").write(leg)
+    open(os.path.join(_root(), leg_rel), "w", encoding="utf-8").write(leg)
     c = [e for e in cal_load() if e["id"] != pid]
     novo = {"id": pid, "tipo": tipo, "arquivos": arquivos, "legenda": leg_rel,
             "data": opts.get("--data", ""), "hora": opts.get("--hora", "18:00"), "status": "pendente"}
@@ -329,6 +362,13 @@ CMDS = {"conta": cmd_conta, "preparar": cmd_preparar, "plano": cmd_plano, "aprov
 
 if __name__ == "__main__":
     load_env()
-    if len(sys.argv) < 2 or sys.argv[1] not in CMDS:
+    args = sys.argv[1:]
+    ctx = {}
+    if len(args) >= 2 and args[0] == "--cliente":   # ig.py --cliente <slug> <comando> …
+        import clientes
+        ctx = clientes.contexto(args[1])
+        args = args[2:]
+    if not args or args[0] not in CMDS:
         print(__doc__); sys.exit(1)
-    CMDS[sys.argv[1]](sys.argv[2:])
+    with usar(ctx):
+        CMDS[args[0]](args[1:])

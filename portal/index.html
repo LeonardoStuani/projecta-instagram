@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111110">
+<title>Portal do Instagram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F1EA; --stone:#E7E4DA; --ink:#111110; --muted:#646057; --fog:#A3A097; --line:#D9D5CA;
+  --accent:#F04E12; --ok:#1F7A4D; --okbg:#DCEFE3; --warn:#9A6200; --warnbg:#F6E7C4; --err:#B42318; --errbg:#F8DDD8; --blue:#2349A0; --bluebg:#E3EAFB;
+  --r:16px; --display:"Bricolage Grotesque",system-ui,sans-serif; --sans:"Instrument Sans",system-ui,sans-serif; --serif:"Instrument Serif",Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.05;margin:0}
+button,input,textarea,select{font:inherit;color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.muted{color:var(--muted)}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+header{background:var(--ink);color:var(--paper);padding:20px 0 26px;border-radius:0 0 26px 26px}
+.marca{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.03em;color:var(--fog)}
+.marca span{color:var(--accent)}
+header h1{font-size:34px;margin-top:14px}
+header h1 em{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.01em;color:var(--accent)}
+header p{margin:6px 0 0;color:var(--fog);font-size:15px}
+.resumo{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.resumo span{background:#1f1e1b;border-radius:99px;padding:5px 12px;font-size:13px;color:var(--paper)}
+.resumo b{color:var(--accent)}
+main{padding-top:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:16px}
+.tag{font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--muted);margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:99px;padding:13px 20px;font-weight:600;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;text-decoration:none;min-height:48px;transition:transform .15s,background-color .2s}
+.btn:active{transform:scale(.97)}
+.btn.accent{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.btn.full{width:100%}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:focus-visible,input:focus-visible,textarea:focus-visible,.tab:focus-visible,.tipo:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.status{white-space:nowrap;display:inline-flex;align-items:center;font-size:12px;font-weight:600;border-radius:99px;padding:3px 10px}
+.status.aguardando_cliente{background:var(--warnbg);color:var(--warn)}.status.ajuste{background:var(--bluebg);color:var(--blue)}
+.status.aprovado_cliente{background:var(--okbg);color:var(--ok)}.status.aprovado{background:var(--okbg);color:var(--ok)}
+.status.publicado{background:#FDE3D7;color:#9C2F07}.status.erro{background:var(--stone);color:var(--muted)}
+.status.novo{background:var(--warnbg);color:var(--warn)}.status.em_producao{background:var(--bluebg);color:var(--blue)}.status.concluido{background:var(--okbg);color:var(--ok)}.status.recusado{background:var(--stone);color:var(--muted)}
+/* prévia do post */
+.ph{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;margin-top:12px}
+.ph-top{display:flex;align-items:center;gap:8px;padding:10px 12px;font-weight:600;font-size:14px}
+.av{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--accent);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:14px;flex:none}
+.ph-media{position:relative;background:var(--stone);aspect-ratio:4/5}
+.ph-media img,.ph-media video{width:100%;height:100%;object-fit:cover;display:block}
+.ph-media.reel{aspect-ratio:9/16;max-height:70vh}
+.ph-n{position:absolute;top:10px;right:10px;background:#000a;color:#fff;font-size:12px;border-radius:99px;padding:2px 9px}
+.ph-nav{all:unset;position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:#fffe;display:grid;place-items:center;font-size:22px;cursor:pointer;box-shadow:0 2px 8px #0002}
+.ph-nav.l{left:8px}.ph-nav.r{right:8px}
+.dots{display:flex;gap:4px;justify-content:center;padding:8px}.dots i{width:6px;height:6px;border-radius:50%;background:var(--line)}.dots i.on{background:#3897f0}
+.ph-cap{padding:4px 12px 14px;font-size:14px;white-space:pre-line;overflow-wrap:anywhere}
+.ph-cap.fechada{max-height:5.2em;overflow:hidden;position:relative}
+.ph-cap.fechada::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2em;background:linear-gradient(#fff0,#fff)}
+.mais{all:unset;cursor:pointer;color:var(--muted);font-size:13px;font-weight:600;padding:0 12px 12px;display:block}
+.recado{background:var(--paper);border-radius:12px;padding:10px 12px;font-size:14px;margin-top:12px}
+.acoes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.ajuste{display:none;margin-top:12px}
+.ajuste.on{display:block}
+textarea,input[type=text],input[type=date]{width:100%;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;font-size:16px}
+textarea{min-height:110px;resize:vertical;line-height:1.5}
+label{display:block;font-size:14px;font-weight:600;margin:14px 0 6px}
+/* abas */
+.tabs{position:fixed;left:0;right:0;bottom:0;background:#fffffff2;backdrop-filter:blur(10px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:6px 6px calc(6px + env(safe-area-inset-bottom));z-index:10}
+.tab{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:600;color:var(--muted);padding:6px 2px;border-radius:12px;position:relative;text-align:center}
+.tab .ic{font-size:20px;line-height:1}
+.tab[aria-current=page]{color:var(--ink);background:var(--paper)}
+.tab .n{position:absolute;top:2px;right:calc(50% - 22px);background:var(--accent);color:var(--ink);font-size:11px;border-radius:99px;padding:0 6px;min-width:18px}
+@media (min-width:760px){
+  body{padding-bottom:40px}
+  .tabs{position:static;max-width:640px;margin:-22px auto 0;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 6px 20px #0001}
+}
+/* pedido */
+.tipos{display:flex;flex-wrap:wrap;gap:8px}
+.tipo{all:unset;cursor:pointer;border:1.5px solid var(--line);border-radius:99px;padding:9px 14px;font-weight:600;font-size:14px;background:#fff}
+.tipo[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:2px dashed var(--line);border-radius:14px;padding:22px;text-align:center;cursor:pointer;background:#fffa}
+.drop b{font-family:var(--display);font-size:18px}
+.prevs{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.prev{position:relative;width:84px;height:84px;border-radius:10px;overflow:hidden;background:var(--stone);display:grid;place-items:center;font-size:12px;font-weight:600;text-align:center;padding:4px}
+.prev img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.prev button{all:unset;cursor:pointer;position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;background:#000b;color:#fff;display:grid;place-items:center;font-size:14px;z-index:1}
+.lista{display:flex;flex-direction:column;gap:10px}
+.item{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center}
+.item .th{width:64px;height:80px;border-radius:8px;background:var(--stone);overflow:hidden}
+.item .th img,.item .th video{width:100%;height:100%;object-fit:cover}
+.item p{margin:0}
+.conv{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.conv p{margin:0;padding:8px 12px;border-radius:12px;font-size:14px;max-width:85%}
+.conv .meu{background:var(--paper);align-self:flex-end}.conv .deles{background:#FDE3D7;align-self:flex-start}
+.conv small{display:block;color:var(--muted);font-size:11px}
+.anexos{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.anexos img{width:56px;height:56px;border-radius:8px;object-fit:cover}
+.vazio{text-align:center;padding:34px 16px;color:var(--muted);border:1.5px dashed var(--line);border-radius:var(--r)}
+.vazio h3{color:var(--ink);font-size:22px;margin-bottom:6px}
+.conectar{background:var(--ink);color:var(--paper);border:0}
+.conectar .tag{color:var(--fog)}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:14px;font-weight:600;opacity:0;transition:.25s;z-index:20;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}.toast.err{background:var(--err)}
+.barra{height:6px;border-radius:99px;background:var(--stone);overflow:hidden;margin-top:10px}.barra i{display:block;height:100%;background:var(--accent);width:0;transition:width .2s}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="marca">projecta<span>.</span>insta · portal do cliente</div>
+  <h1 id="ola">Olá</h1>
+  <p id="sub">Carregando…</p>
+  <div class="resumo" id="resumo"></div>
+</div></header>
+<nav class="tabs" aria-label="Seções do portal">
+  <button class="tab" data-v="aprovar" aria-current="page"><span class="ic" aria-hidden="true">✓</span>Aprovar<span class="n" id="n-ap" hidden></span></button>
+  <button class="tab" data-v="agenda"><span class="ic" aria-hidden="true">▦</span>Agenda</button>
+  <button class="tab" data-v="enviar"><span class="ic" aria-hidden="true">＋</span>Enviar</button>
+  <button class="tab" data-v="pedidos"><span class="ic" aria-hidden="true">✉</span>Pedidos<span class="n" id="n-pd" hidden></span></button>
+</nav>
+<main class="wrap" id="view" tabindex="-1"></main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const SLUG = location.pathname.split("/")[2] || "";
+const arq = p => `/portal/arquivo?c=${encodeURIComponent(SLUG)}&p=${encodeURIComponent(p)}`;
+const ST = {aguardando_cliente:"Esperando você", ajuste:"Ajustando", aprovado_cliente:"Aprovado por você", aprovado:"Agendado", publicado:"Publicado", erro:"Em revisão"};
+const PST = {novo:"Recebido", em_producao:"Em produção", concluido:"Concluído", recusado:"Não vamos fazer"};
+const dt = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y, m-1, d); };
+const fmt = s => s ? dt(s).toLocaleDateString("pt-BR", {weekday:"long", day:"2-digit", month:"long"}) : "sem data";
+const curto = s => s ? dt(s).toLocaleDateString("pt-BR", {weekday:"short", day:"2-digit", month:"2-digit"}) : "";
+const hm = q => q ? `${q.slice(8,10)}/${q.slice(5,7)} ${q.slice(11)}` : "";
+let S = null, view = "aprovar", tipo = "post", arquivos = [];
+
+async function api(path, body, raw) {
+  const sep = path.includes("?") ? "&" : "?";
+  const opt = body === undefined ? {} : {method:"POST", headers:{"X-Painel":"1", ...(raw ? {"Content-Type":"application/octet-stream"} : {"Content-Type":"application/json"})}, body: raw ? body : JSON.stringify(body)};
+  const r = await fetch(`${path}${sep}c=${encodeURIComponent(SLUG)}`, opt);
+  const j = await r.json().catch(() => ({erro:"O servidor não respondeu."}));
+  if (!r.ok) throw new Error(j.erro || "Erro");
+  return j;
+}
+function toast(m, err) { const t = $("#toast"); t.textContent = m; t.className = "toast on" + (err ? " err" : ""); clearTimeout(t._h); t._h = setTimeout(() => t.className = "toast", err ? 6000 : 3000); }
+async function run(btn, fn, ok) {
+  const old = btn?.innerHTML; if (btn) { btn.disabled = true; btn.textContent = "Aguarde…"; }
+  try { const r = await fn(); if (ok) toast(ok); await load(); return r || true; }
+  catch (e) { toast(e.message, true); }
+  finally { if (btn && document.body.contains(btn)) { btn.disabled = false; btn.innerHTML = old; } }
+}
+async function load() {
+  S = await api("/api/portal/estado");
+  const c = S.cliente, ap = S.posts.filter(p => p.status === "aguardando_cliente").length;
+  document.title = `${c.nome} · Portal do Instagram`;
+  const h = new Date().getHours();
+  $("#ola").innerHTML = `${h < 12 ? "Bom dia" : h < 18 ? "Boa tarde" : "Boa noite"}, <em>${esc(c.nome)}</em>`;
+  $("#sub").textContent = `@${c.arroba || "?"} · aqui você aprova os posts antes de irem ao ar e manda fotos e ideias para a agência.`;
+  const ag = S.posts.filter(p => ["aprovado", "aprovado_cliente"].includes(p.status)).length;
+  $("#resumo").innerHTML = `<span><b>${ap}</b> para aprovar</span><span><b>${ag}</b> agendado${ag === 1 ? "" : "s"}</span><span>${S.conexao.conectado ? "Instagram conectado ✓" : "Instagram não conectado"}</span>`;
+  const na = $("#n-ap"); na.hidden = !ap; na.textContent = ap;
+  const np = S.pedidos.filter(x => (x.conversa || []).length && x.conversa.at(-1).quem !== "cliente" && x.status !== "concluido").length;
+  const nb = $("#n-pd"); nb.hidden = !np; nb.textContent = np;
+  render();
+}
+function render() {
+  document.querySelectorAll(".tab").forEach(b => b.dataset.v === view ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
+  ({aprovar: vAprovar, agenda: vAgenda, enviar: vEnviar, pedidos: vPedidos})[view]();
+}
+function go(v) { view = v; history.replaceState(null, "", "#" + v); render(); $("#view").focus({preventScroll: true}); window.scrollTo({top: 0}); }
+
+function conectarCard() {
+  if (S.conexao.conectado) return "";
+  if (!S.oauth) return "";
+  return `<div class="card conectar"><p class="tag">Primeiro passo</p><h2 style="font-size:24px;margin-top:6px">Conecte o seu Instagram</h2>
+    <p style="margin:8px 0 14px;color:var(--fog);font-size:15px">É o que permite à agência publicar os posts que você aprovar. Você entra com o seu login do Instagram e pode desligar quando quiser. A agência nunca vê a sua senha.</p>
+    <a class="btn accent full" href="/conectar/${encodeURIComponent(SLUG)}">Conectar meu Instagram</a></div>`;
+}
+function phone(p, i, aberta) {
+  const m = p.midia, cur = m[i] || "", v = /\.mp4$/i.test(cur);
+  return `<div class="ph"><div class="ph-top"><span class="av">${esc((S.cliente.nome || "?").charAt(0).toUpperCase())}</span>${esc(S.cliente.arroba || "")}<span class="muted" style="font-weight:400;margin-left:auto;font-size:13px">${esc(S.cliente.cidade || "")}</span></div>
+    <div class="ph-media ${v ? "reel" : ""}">${v ? `<video src="${arq(cur)}" controls playsinline preload="metadata"></video>` : `<img src="${arq(cur)}" alt="Imagem ${i+1} de ${m.length}">`}
+    ${m.length > 1 ? `<span class="ph-n">${i+1}/${m.length}</span>${i > 0 ? `<button class="ph-nav l" data-go="${i-1}" aria-label="Imagem anterior">‹</button>` : ""}${i < m.length-1 ? `<button class="ph-nav r" data-go="${i+1}" aria-label="Próxima imagem">›</button>` : ""}` : ""}</div>
+    ${m.length > 1 ? `<div class="dots">${m.map((_, k) => `<i class="${k === i ? "on" : ""}"></i>`).join("")}</div>` : `<div style="height:8px"></div>`}
+    <div class="ph-cap ${aberta ? "" : "fechada"}"><b>${esc(S.cliente.arroba || "")}</b> ${esc(p.texto)}</div>${aberta ? "" : `<button class="mais">ver legenda inteira</button>`}</div>`;
+}
+function montarPhone(el, p) {
+  let i = 0, aberta = false;
+  const draw = () => { el.innerHTML = phone(p, i, aberta);
+    el.querySelectorAll("[data-go]").forEach(b => b.onclick = () => { i = +b.dataset.go; draw(); });
+    el.querySelector(".mais")?.addEventListener("click", () => { aberta = true; draw(); }); };
+  draw();
+}
+const recado = p => [...(p.historico || [])].reverse().find(h => h.acao === "enviou" && h.quem === "agência")?.texto;
+
+function vAprovar() {
+  const ps = S.posts.filter(p => p.status === "aguardando_cliente").sort((a, b) => (a.data || "9").localeCompare(b.data || "9"));
+  $("#view").innerHTML = conectarCard() + (ps.length ? ps.map(p => `<article class="card" id="p-${esc(p.id)}">
+    <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><p class="tag">${p.tipo === "reel" ? "Reel" : p.tipo === "carrossel" ? "Carrossel" : "Post"} · sugerido para</p><h3 style="font-size:22px;margin-top:4px">${fmt(p.data)}${p.hora ? `, ${esc(p.hora)}` : ""}</h3></div><span class="status aguardando_cliente">Esperando você</span></div>
+    ${recado(p) && recado(p) !== "Enviado para aprovação." ? `<p class="recado"><b>Recado da agência:</b> ${esc(recado(p))}</p>` : ""}
+    ${p.voz ? `<p class="recado">🔊 Este vídeo tem narração: ligue o som.</p>` : ""}
+    <div class="phone-slot"></div>
+    <div class="acoes"><button class="btn ok" data-ok="${esc(p.id)}">Aprovar</button><button class="btn ghost" data-aj="${esc(p.id)}">Pedir ajuste</button></div>
+    <div class="ajuste" id="aj-${esc(p.id)}"><label for="tx-${esc(p.id)}">O que você quer mudar?</label><textarea id="tx-${esc(p.id)}" placeholder="Ex.: trocar a foto da capa, corrigir o endereço, mudar o dia"></textarea>
+      <button class="btn accent full" style="margin-top:10px" data-env="${esc(p.id)}">Enviar pedido de ajuste</button></div></article>`).join("")
+    : `<div class="vazio"><h3>Nada para aprovar agora</h3><p style="margin:0">Quando a agência mandar um post, ele aparece aqui. Quer sugerir algo? Use <b>Enviar</b>.</p><p style="margin:14px 0 0"><button class="btn" onclick="go('enviar')">Enviar foto ou ideia</button></p></div>`);
+  ps.forEach(p => montarPhone($(`#p-${CSS.escape(p.id)} .phone-slot`), p));
+  document.querySelectorAll("[data-ok]").forEach(b => b.onclick = () => run(b, () => api("/api/portal/aprovar", {id: b.dataset.ok}), "Aprovado! A agência agenda e avisa."));
+  document.querySelectorAll("[data-aj]").forEach(b => b.onclick = () => { const el = $("#aj-" + CSS.escape(b.dataset.aj)); el.classList.toggle("on"); el.querySelector("textarea").focus(); });
+  document.querySelectorAll("[data-env]").forEach(b => b.onclick = () => run(b, () => api("/api/portal/ajuste", {id: b.dataset.env, texto: $("#tx-" + CSS.escape(b.dataset.env)).value}), "Pedido de ajuste enviado."));
+}
+
+function thumb(p) {
+  const m = p.midia[0] || "";
+  return /\.mp4$/i.test(m) ? `<video src="${arq(m)}#t=0.5" muted playsinline preload="metadata"></video>` : m ? `<img src="${arq(m)}" alt="" loading="lazy">` : "";
+}
+function vAgenda() {
+  const fut = S.posts.filter(p => p.status !== "publicado").sort((a, b) => (a.data || "9").localeCompare(b.data || "9"));
+  const pub = S.posts.filter(p => p.status === "publicado").sort((a, b) => (b.data || "").localeCompare(a.data || "")).slice(0, 12);
+  const item = p => `<li class="item"><div class="th">${thumb(p)}</div><div><p style="font-weight:600">${p.data ? curto(p.data) + (p.hora ? " · " + esc(p.hora) : "") : "sem data"}</p>
+    <p class="muted" style="font-size:14px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${esc(p.texto.split("\n")[0])}</p>
+    <p style="margin-top:4px"><span class="status ${p.status}">${ST[p.status]}</span>${p.link ? ` <a href="${esc(p.link)}" target="_blank" rel="noopener" style="font-size:13px;color:var(--ink);font-weight:600">ver no Instagram ↗</a>` : ""}</p></div></li>`;
+  $("#view").innerHTML = `<div class="card"><p class="tag">Próximos posts</p><ul class="lista" style="list-style:none;padding:0;margin:12px 0 0">${fut.map(item).join("") || `<li class="muted">Nada agendado ainda.</li>`}</ul></div>
+    ${pub.length ? `<div class="card"><p class="tag">Já publicados</p><ul class="lista" style="list-style:none;padding:0;margin:12px 0 0">${pub.map(item).join("")}</ul></div>` : ""}
+    <p class="muted" style="font-size:13px;text-align:center">Posts "Aprovado por você" ainda vão ser agendados pela agência. "Agendado" sai sozinho no horário.</p>`;
+}
+
+function vEnviar() {
+  const tipos = S.tipos_pedido;
+  $("#view").innerHTML = `<form class="card" id="fp"><p class="tag">Novo pedido para a agência</p><h2 style="font-size:26px;margin-top:6px">Mande uma foto, arte ou ideia</h2>
+    <p class="muted" style="margin:6px 0 0;font-size:15px">A agência transforma em post, manda aqui para você aprovar e agenda.</p>
+    <label>O que você quer?</label><div class="tipos" role="group" aria-label="Tipo de pedido">${Object.entries(tipos).map(([k, v]) => `<button type="button" class="tipo" data-t="${k}" aria-pressed="${k === tipo}">${esc(v)}</button>`).join("")}</div>
+    <label for="f-tx">Conte o que precisa</label><textarea id="f-tx" placeholder="Ex.: terminamos o levantamento da fazenda em Bom Retiro, queria um post com essas fotos falando do georreferenciamento"></textarea>
+    <label for="f-dt">Para quando? <span class="muted" style="font-weight:400">(opcional)</span></label><input type="date" id="f-dt">
+    <label>Fotos, vídeos ou arte <span class="muted" style="font-weight:400">(até 15, 80 MB cada)</span></label>
+    <label class="drop" for="f-arq" style="margin:0"><b>Escolher arquivos</b><span class="muted" style="font-size:14px">fotos da galeria, vídeos ou PDF</span></label>
+    <input type="file" id="f-arq" class="sr" multiple accept="image/*,video/*,.pdf,.heic">
+    <div class="prevs" id="prevs"></div>
+    <div class="barra" id="barra" hidden><i></i></div>
+    <button class="btn accent full" type="submit" id="f-go" style="margin-top:16px">Enviar para a agência</button>
+    <p class="muted" style="font-size:12px;margin:10px 0 0;text-align:center">Mande só fotos que você tem direito de usar. Se aparecerem pessoas, confirme que elas autorizaram.</p></form>`;
+  const prevs = () => { $("#prevs").innerHTML = arquivos.map((f, i) => `<div class="prev">${f.type.startsWith("image/") && !/heic/i.test(f.type) ? `<img src="${URL.createObjectURL(f)}" alt="">` : esc(f.name.split(".").pop().toUpperCase())}<button type="button" data-rm="${i}" aria-label="Remover ${esc(f.name)}">×</button></div>`).join("");
+    document.querySelectorAll("[data-rm]").forEach(b => b.onclick = () => { arquivos.splice(+b.dataset.rm, 1); prevs(); }); };
+  prevs();
+  document.querySelectorAll(".tipo").forEach(b => b.onclick = () => { tipo = b.dataset.t; document.querySelectorAll(".tipo").forEach(x => x.setAttribute("aria-pressed", x.dataset.t === tipo)); });
+  $("#f-arq").onchange = e => { for (const f of e.target.files) { if (f.size > 80 * 1024 * 1024) { toast(`${f.name} passa de 80 MB.`, true); continue; } if (arquivos.length < 15) arquivos.push(f); } e.target.value = ""; prevs(); };
+  $("#fp").onsubmit = async e => { e.preventDefault();
+    const btn = $("#f-go"), barra = $("#barra");
+    btn.disabled = true; btn.textContent = "Enviando…";
+    try {
+      const r = await api("/api/portal/pedido", {tipo, texto: $("#f-tx").value, data: $("#f-dt").value, com_arquivos: arquivos.length > 0});
+      barra.hidden = !arquivos.length;
+      for (let i = 0; i < arquivos.length; i++) {
+        const f = arquivos[i];
+        await api(`/api/portal/arquivo?pedido=${encodeURIComponent(r.id)}&nome=${encodeURIComponent(f.name)}`, f, true);
+        barra.firstElementChild.style.width = `${(i + 1) / arquivos.length * 100}%`;
+      }
+      arquivos = []; toast("Pedido enviado! A agência responde por aqui."); view = "pedidos"; await load();
+    } catch (err) { toast(err.message, true); btn.disabled = false; btn.textContent = "Enviar para a agência"; }
+  };
+}
+
+function vPedidos() {
+  const ps = S.pedidos;
+  $("#view").innerHTML = ps.length ? ps.map(x => `<div class="card"><div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+      <p class="tag">${esc(S.tipos_pedido[x.tipo] || x.tipo)} · ${hm(x.criado_em)}${x.data_desejada ? ` · para ${curto(x.data_desejada)}` : ""}</p><span class="status ${x.status}">${PST[x.status]}</span></div>
+    <p style="margin:8px 0 0;white-space:pre-line">${esc(x.texto) || `<span class="muted">(só anexos)</span>`}</p>
+    ${x.arquivos.length ? `<div class="anexos">${x.arquivos.map(a => /\.(jpe?g|png|webp)$/i.test(a) ? `<img src="${arq(a)}" alt="" loading="lazy">` : `<span class="status erro">${esc(a.split(".").pop().toUpperCase())}</span>`).join("")}</div>` : ""}
+    ${(x.conversa || []).length ? `<div class="conv">${x.conversa.map(m => `<p class="${m.quem === "cliente" ? "meu" : "deles"}">${m.quem === "cliente" ? "" : "<b>Agência</b> "}${esc(m.texto)}<small>${hm(m.quando)}</small></p>`).join("")}</div>` : ""}
+    ${x.status !== "concluido" && x.status !== "recusado" ? `<div style="display:flex;gap:8px;margin-top:12px"><label class="sr" for="m-${esc(x.id)}">Mensagem</label><input type="text" id="m-${esc(x.id)}" placeholder="Escrever para a agência"><button class="btn" data-msg="${esc(x.id)}" style="flex:none">Enviar</button></div>` : ""}
+  </div>`).join("") : `<div class="vazio"><h3>Nenhum pedido ainda</h3><p style="margin:0">Mande uma foto ou ideia e acompanhe por aqui.</p><p style="margin:14px 0 0"><button class="btn" onclick="go('enviar')">Enviar foto ou ideia</button></p></div>`;
+  document.querySelectorAll("[data-msg]").forEach(b => b.onclick = () => run(b, () => api("/api/portal/mensagem", {id: b.dataset.msg, texto: $("#m-" + CSS.escape(b.dataset.msg)).value}), "Mensagem enviada."));
+}
+
+document.querySelectorAll(".tab").forEach(b => b.onclick = () => go(b.dataset.v));
+const h0 = location.hash.slice(1);
+if (["aprovar", "agenda", "enviar", "pedidos"].includes(h0)) view = h0;
+load().catch(e => { $("#view").innerHTML = `<div class="vazio"><h3>Não foi possível abrir</h3><p style="margin:0">${esc(e.message)}</p></div>`; });
+setInterval(() => { if (view !== "enviar" && !document.querySelector(".ajuste.on")) load().catch(() => {}); }, 90000);
+</script>
+</body>
+</html>

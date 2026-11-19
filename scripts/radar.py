@@ -26,7 +26,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import ig  # noqa: E402
 
 ROOT = ig.ROOT
-DIR = os.path.join(ROOT, "instagram", "radar")
+# RADAR_CLIENTE=<slug>: radar do nicho de um cliente da agência (pasta clientes/<slug>/radar).
+CLIENTE = os.environ.get("RADAR_CLIENTE", "")
+DIR = os.path.join(ROOT, "clientes", CLIENTE, "radar") if CLIENTE else os.path.join(ROOT, "instagram", "radar")
 CONF = os.path.join(DIR, "contas.json")
 MANUAL = os.path.join(DIR, "manual.json")
 YT = os.path.join(ROOT, "instagram", "viral", "ultimo.json")
@@ -228,23 +230,42 @@ def agrupar(itens, chave, valor):
 
 
 def main():
+    global TEMAS
     ig.load_env()
     os.makedirs(DIR, exist_ok=True)
     if not os.path.exists(CONF):
-        json.dump(CONF_PADRAO, open(CONF, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        json.dump({"contas": [], "palavras": [], "temas": {}} if CLIENTE else CONF_PADRAO,
+                  open(CONF, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     conf = json.load(open(CONF, encoding="utf-8"))
-    palavras = [norm(p).strip() for p in conf.get("palavras", CONF_PADRAO["palavras"])]
+    palavras = [norm(p).strip() for p in (conf.get("palavras") or ([] if CLIENTE else CONF_PADRAO["palavras"]))]
+    if conf.get("temas"):   # temas do ramo do cliente: {"Nome do tema": ["palavra", ...]}
+        TEMAS = {k: [norm(x).strip() for x in v] for k, v in conf["temas"].items()}
     aviso = []
+    if CLIENTE and not palavras:
+        aviso.append("Cadastre as palavras do ramo do cliente (Radar → Contas e palavras) para filtrar as referências.")
 
-    uid = ig.user_id()
-    c, err = api(uid, {"fields": "username,followers_count,media_count"})
-    seguidores = (c or {}).get("followers_count") or 0
-    meus, insights_ok = meus_posts(uid, seguidores, aviso)
+    uid = ig.user_id()   # conta da agência: é ela que consulta as contas do nicho (business_discovery)
+    if CLIENTE:
+        import clientes
+        ctx = clientes.contexto(CLIENTE)
+        if ctx.get("IG_ACCESS_TOKEN"):
+            with ig.usar(ctx):
+                cuid = ig.user_id()
+                c, err = api(cuid, {"fields": "username,followers_count,media_count"})
+                seguidores = (c or {}).get("followers_count") or 0
+                meus, insights_ok = meus_posts(cuid, seguidores, aviso)
+        else:
+            c, seguidores, meus, insights_ok = {"username": clientes.carregar(CLIENTE).get("arroba")}, 0, [], True
+            aviso.append("Instagram do cliente ainda não conectado: o radar mostra só as referências do nicho.")
+    else:
+        c, err = api(uid, {"fields": "username,followers_count,media_count"})
+        seguidores = (c or {}).get("followers_count") or 0
+        meus, insights_ok = meus_posts(uid, seguidores, aviso)
     if not insights_ok:
         aviso.append("Seus posts: sem alcance/salvos/compartilhamentos/views (falta a permissão instagram_manage_insights). "
                      "Por enquanto o radar usa curtidas + comentários.")
     refs_ig, contas, disc_ok = contas_nicho(uid, conf.get("contas", []), palavras, aviso)
-    refs = refs_ig + manuais(palavras) + youtube(palavras)
+    refs = refs_ig + manuais(palavras) + ([] if CLIENTE else youtube(palavras))
     refs.sort(key=lambda r: -(r.get("mult") or 0))
 
     dias = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"]
@@ -252,7 +273,7 @@ def main():
         x["dia_semana"] = dias[datetime.strptime(x["data"], "%Y-%m-%d").weekday()]
     ganchos = [{"texto": r["gancho"], "mult": r.get("mult"), "conta": r["conta"], "fonte": r["fonte"], "link": r.get("link")}
                for r in refs if r.get("gancho") and (r.get("mult") or 0) >= 1.5][:40]
-    ganchos += [{"texto": x["gancho"], "mult": x.get("mult"), "conta": "projectatech", "fonte": "seu", "link": x["link"]}
+    ganchos += [{"texto": x["gancho"], "mult": x.get("mult"), "conta": (c or {}).get("username") or "projectatech", "fonte": "seu", "link": x["link"]}
                 for x in sorted(meus, key=lambda x: -(x.get("mult") or 0))[:5] if x.get("gancho")]
 
     ordem = sorted(meus, key=lambda x: -(x.get("mult") or 0))

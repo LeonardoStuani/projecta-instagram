@@ -8,6 +8,9 @@ description: Opera o Instagram @projectatech da Projecta Tech pelo terminal - pr
 Este repositório é a central do @projectatech. As skills /ig-* (escrita, ganchos,
 legendas, plano, humanizador) criam o conteúdo; este fluxo publica.
 
+> Pedido sobre um **cliente da agência** (não o @projectatech)? Use a skill `agencia`: outra pasta
+> (`clientes/<slug>/`), outra voz e outro CTA.
+
 ## Antes de tudo
 1. Leia `instagram/voice.md` (ou `~/.claude/instagram/voice.md`). Ele manda no tom e nas regras.
 2. **Antes de criar qualquer post**, leia `instagram/referencias/benchmark-leventech.md`: princípios de autoridade (sistema visual travado, palavra-conceito na capa, legenda longa estruturada) e onde fazer melhor que a referência (pergunta ao leitor, Lages, tom próximo). Só princípios: nunca copiar texto, arte ou ideia da Leven.

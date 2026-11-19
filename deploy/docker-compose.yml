@@ -1,0 +1,26 @@
+# Uso (na VPS, dentro da pasta deploy/):  DOMINIO=painel.seudominio.com.br docker compose up -d
+services:
+  painel:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ..:/app                     # repositório (clientes/, segredos/ e .env ficam aqui, fora do git)
+    environment:
+      PAINEL_URL_PUBLICA: https://${DOMINIO:?defina DOMINIO}
+    expose: ["8765"]
+
+  caddy:                            # HTTPS automático (Let's Encrypt) na frente do painel
+    image: caddy:2.8
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    environment:
+      DOMINIO: ${DOMINIO}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [painel]
+
+volumes:
+  caddy_data:
+  caddy_config:

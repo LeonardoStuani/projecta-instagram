@@ -263,6 +263,51 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
 .fchip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
 .tag-tema{display:inline-block;font-size:11px;background:#EFEAFE;color:#4B2FB8;border-radius:6px;padding:1px 6px;margin-right:4px}
 #tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:6px 9px;border-radius:8px;max-width:280px;z-index:99;opacity:0;transition:opacity .1s}
+/* agência: troca de conta, clientes, pedidos */
+.conta-sel{margin:-8px 8px 16px;grid-column:1/-1}
+.conta-sel label{color:var(--fog);font-size:12px;font-weight:600;margin-bottom:6px}
+.conta-sel select{background:#1d1c1a;color:var(--paper);border:1.5px solid #3a3833;font-weight:600;cursor:pointer}
+.conta-sel select option{color:var(--ink);background:#fff}
+body.modo-cliente .conta-sel select{border-color:var(--accent)}
+.nav[hidden]{display:none}
+.status.aguardando_cliente{background:#E3EAFB;color:#2349A0}.status.ajuste{background:var(--errbg);color:var(--err)}.status.aprovado_cliente{background:#E5F4EA;color:#17603C;box-shadow:inset 0 0 0 1px #9FD3B4}
+.chip.aguardando_cliente{border-left-color:#3B6FD8}.chip.ajuste{border-left-color:var(--err)}.chip.aprovado_cliente{border-left-color:#7BC59B}
+.fluxo{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:12px}
+.etapa{all:unset;box-sizing:border-box;cursor:pointer;border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:2px;background:var(--paper)}
+.etapa b{font-family:var(--display);font-size:34px;letter-spacing:-.04em;line-height:1;font-weight:700}
+.etapa span{font-weight:600}.etapa small{color:var(--muted);font-size:12px}
+.etapa:hover{border-color:var(--ink)}.etapa:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.etapa.aguardando_cliente b{color:#2349A0}.etapa.ajuste b{color:var(--err)}.etapa.aprovado_cliente b,.etapa.aprovado b{color:var(--ok)}
+.pedir{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:8px}
+.pedir li{display:flex;gap:8px;align-items:center;justify-content:space-between;background:var(--paper);border-radius:10px;padding:6px 6px 6px 12px}
+.pedir code{background:none;padding:0;font-size:13px;overflow-wrap:anywhere}
+.clis{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.cli{display:flex;flex-direction:column}
+.cli-top{display:flex;gap:12px;align-items:center}
+.cli h3{font-size:22px;margin:0}
+.big-av{width:48px;height:48px;font-size:20px}
+.mini{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.mini span{display:flex;flex-direction:column;background:var(--paper);border-radius:10px;padding:6px 10px;font-size:12px;color:var(--muted);min-width:64px}
+.mini b{font-family:var(--display);font-size:20px;color:var(--ink);line-height:1.1}
+.mini .on.ajuste b{color:var(--err)}.mini .on.aprovado_cliente b,.mini .on.aprovado b{color:var(--ok)}.mini .on.aguardando_cliente b{color:#2349A0}
+.cli.novo{border-style:dashed;background:#fffc}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row2 .full{grid-column:1/-1}
+.passos{margin:10px 0 0;padding-left:20px;line-height:1.7}
+.ped-top{display:flex;gap:16px;justify-content:space-between;align-items:flex-start}
+.pst{width:auto;min-width:150px;font-weight:600}
+.ped.novo{border-left:4px solid var(--accent)}.ped.concluido,.ped.recusado{opacity:.72}
+.anexos{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.anx{width:92px;height:92px;border-radius:10px;overflow:hidden;background:var(--stone);display:grid;place-items:center;font-weight:600;font-size:13px;color:var(--ink);text-decoration:none}
+.anx img{width:100%;height:100%;object-fit:cover}
+.conversa{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.conversa p{margin:0;padding:8px 12px;border-radius:12px;font-size:14px;max-width:80%}
+.conversa .dele{background:var(--paper);align-self:flex-start}.conversa .nossa{background:#FDE3D7;align-self:flex-end}
+.conversa small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.hist{font-size:14px}.hist summary{cursor:pointer;font-weight:600;font-size:13px;color:var(--muted)}
+.hist ul{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:6px}
+.hist li{border-left:2px solid var(--line);padding-left:10px}.hist li.dele{border-left-color:var(--accent)}
+.hist small{color:var(--muted)}
+@media (max-width:860px){.fluxo{grid-template-columns:repeat(2,minmax(0,1fr))}.row2{grid-template-columns:1fr}.ped-top{flex-direction:column}.pst{width:100%}.conta-sel{margin:4px 0 10px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -273,15 +318,18 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
     <div class="brand">projecta<span>.</span>insta</div>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav-lista"><span id="menu-atual">Hoje</span><i class="menu-dot" id="menu-dot" hidden></i><span class="menu-ic" aria-hidden="true"></span><span class="sr">Abrir menu</span></button>
     <nav class="nav-lista" id="nav-lista" aria-label="Seções do painel">
+    <div class="conta-sel"><label for="cli-sel">Conta</label><select id="cli-sel"><option>Projecta Tech</option></select></div>
     <button class="nav" data-view="hoje" aria-current="page">Hoje</button>
     <button class="nav" data-view="calendario">Calendário</button>
+    <button class="nav" data-view="pedidos" hidden>Pedidos <span class="n" id="pd-n" hidden></span></button>
     <button class="nav" data-view="stories">Stories <span class="n" id="st-n" hidden></span></button>
     <button class="nav" data-view="radar">Radar</button>
     <button class="nav" data-view="feed">Prévia do feed</button>
     <button class="nav" data-view="comentarios">Comentários</button>
     <button class="nav" data-view="config">Conexões <span class="n" id="cfg-n" hidden></span></button>
+    <button class="nav" data-view="clientes">Clientes <span class="n" id="cl-n" hidden></span></button>
     </nav>
-    <div class="side-foot">Nada vai ao ar sem a sua aprovação.<br>Rodando só neste computador.</div>
+    <div class="side-foot" id="side-foot">Nada vai ao ar sem a sua aprovação.<br>Rodando só neste computador.</div>
   </aside>
   <main id="conteudo" tabindex="-1">
     <div class="top">
@@ -299,15 +347,18 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
 <script>
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const file = p => "/arquivo?p=" + encodeURIComponent(p);
+const file = p => "/arquivo?p=" + encodeURIComponent(p) + (CLI ? "&cliente=" + encodeURIComponent(CLI) : "");
+const comCli = path => CLI ? path + (path.includes("?") ? "&" : "?") + "cliente=" + encodeURIComponent(CLI) : path;
 const PIL = {dica:"Dica", bastidores:"Bastidores", prova:"Prova / antes-depois", oferta:"Oferta"};
-const ST = {pendente:"Pendente", aprovado:"Aprovado", publicado:"Publicado", erro:"Erro"};
+const ST = {pendente:"Pendente", aprovado:"Aprovado", publicado:"Publicado", erro:"Erro", aguardando_cliente:"Com o cliente", ajuste:"Ajuste pedido", aprovado_cliente:"Cliente aprovou"};
+const stLbl = s => CLI && s === "pendente" ? "Rascunho" : CLI && s === "aprovado" ? "Agendado" : ST[s] || s;
 const WD = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
 let S = null, view = "hoje", mes = null;
+let CLI = (() => { try { return localStorage.getItem("cli") || ""; } catch { return ""; } })();   // "" = @projectatech
 
 async function api(path, body) {
   const opt = body === undefined ? {} : {method:"POST", headers:{"Content-Type":"application/json","X-Painel":"1"}, body:JSON.stringify(body)};
-  const r = await fetch(path, opt);
+  const r = await fetch(comCli(path), opt);
   const j = await r.json().catch(() => ({erro:"Resposta inválida do painel."}));
   if (!r.ok) throw new Error(j.erro || "Erro");
   return j;
@@ -331,8 +382,8 @@ const quando = p => { const x = dt(p.data); const [h,m] = (p.hora||"18:00").spli
 
 async function load() {
   S = await api("/api/estado");
-  $("#agora").textContent = "Brasília · " + new Date(S.agora.replace(" ","T")).toLocaleString("pt-BR", {weekday:"long", day:"2-digit", month:"long", hour:"2-digit", minute:"2-digit"});
-  pills(); render();
+  $("#agora").textContent = (CLI ? S.cliente.nome + " · " : "") + "Brasília · " + new Date(S.agora.replace(" ","T")).toLocaleString("pt-BR", {weekday:"long", day:"2-digit", month:"long", hour:"2-digit", minute:"2-digit"});
+  switcher(); CLI ? pillsCli() : pills(); render();
 }
 
 function secretOk() { try { return localStorage.getItem("secretOk") === "1"; } catch { return false; } }
@@ -364,13 +415,15 @@ function pills() {
 function render() {
   if (!S) return;  // clique numa aba antes do painel terminar de carregar
   document.querySelectorAll(".nav").forEach(b => { if (b.dataset.view === view) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  const titles = {hoje:"Hoje", calendario:"Calendário", stories:"Stories", radar:"Radar do Instagram", feed:"Prévia do feed", comentarios:"Comentários", config:"Conexões"};
+  $(`.nav[data-view="stories"]`).hidden = !!CLI; $(`.nav[data-view="pedidos"]`).hidden = !CLI;
+  if ((CLI && view === "stories") || (!CLI && view === "pedidos")) view = "hoje";
+  const titles = {hoje:"Hoje", calendario:"Calendário", stories:"Stories", radar:"Radar do Instagram", feed:"Prévia do feed", comentarios:"Comentários", config: CLI ? "Conexões do cliente" : "Conexões", clientes:"Clientes da agência", pedidos:"Pedidos do cliente"};
   $("#titulo").textContent = titles[view];
   $("#menu-atual").textContent = $(`.nav[data-view="${view}"]`).firstChild.textContent.trim();
-  ({hoje:vHoje, calendario:vCal, stories:vStories, radar:vRadar, feed:vFeed, comentarios:vComent, config:vConfig})[view]();
+  ({hoje: CLI ? vHojeCli : vHoje, calendario:vCal, stories:vStories, radar:vRadar, feed:vFeed, comentarios:vComent, config: CLI ? vConfigCli : vConfig, clientes:vClientes, pedidos:vPedidos})[view]();
   const pend = storyDias().filter(x => x.st === "hoje" || x.st === "atrasado").length;
   const n = $("#st-n"); n.hidden = !pend; n.textContent = pend;
-  $("#menu-dot").hidden = $("#st-n").hidden && $("#cfg-n").hidden;
+  $("#menu-dot").hidden = $("#st-n").hidden && $("#cfg-n").hidden && $("#pd-n").hidden && $("#cl-n").hidden;
 }
 
 /* ---------- STORIES ---------- */
@@ -486,7 +539,7 @@ function vHoje() {
         <button class="open" data-id="${esc(prox.id)}" style="all:unset;cursor:pointer"><img src="${file(prox.midia[0])}" alt="Capa de ${esc(nomePost(prox.id))}"></button>
         <div><p class="count">${cd}</p><h3 style="font-size:28px;margin-top:6px">${esc(nomePost(prox.id))}</h3>
         <p class="muted">${fmt(prox.data)} às ${prox.hora} · ${prox.tipo} · ${PIL[prox.pilar] || "sem pilar"}</p>
-        <p style="margin-top:10px"><span class="status ${prox.status}">${ST[prox.status]}</span></p>
+        <p style="margin-top:10px"><span class="status ${prox.status}">${stLbl(prox.status)}</span></p>
         <div class="inline"><button class="btn accent sm open" data-id="${esc(prox.id)}">Revisar e aprovar</button></div></div></div>` : `<p class="muted" style="margin-top:12px">Nada agendado. Prepare um post no Calendário.</p>`}
     </div>
     <div class="card" style="display:flex;flex-direction:column"><p class="tag">Fila</p><p class="big" style="margin-top:10px">${pend}</p><p class="muted" style="margin:4px 0 0">${pend === 1 ? "post esperando a sua aprovação" : "posts esperando a sua aprovação"}</p><p style="margin:14px 0 0;font-weight:600">${apr ? pl(apr, "aprovado aguardando o horário", "aprovados aguardando o horário") : "Nenhum aprovado ainda"}</p><div class="inline" style="margin-top:auto;padding-top:18px"><button class="btn ghost sm" id="fila-go">Abrir calendário</button></div></div>
@@ -560,7 +613,13 @@ function vRadar() {
     <div><p class="tag">Só Instagram · só API oficial · filtrado pelo seu ramo</p><h3>Radar do Instagram</h3>
     <p class="muted" style="margin:6px 0 0">${R.gerado_em ? `Atualizado em ${esc(R.gerado_em)}.` : "Ainda não rodou."} O × é quanto o post superou a mediana da própria conta: 3× = três vezes mais interação que o normal daquela conta.</p></div>
     <button class="btn ${R.dias == null || R.dias > 7 ? "accent" : "ghost"} sm" id="rd-go" ${R.rodando ? "disabled" : ""}>${R.rodando ? "Atualizando…" : "Atualizar radar"}</button></div></div>`;
-  if (!R.data) { $("#view").innerHTML = bar; bindRadar(); return; }
+  const confCli = CLI ? `<div class="card" style="margin-top:18px"><p class="tag">Ramo de ${esc(S.cliente.nome)}</p><h3>Contas e palavras do nicho</h3>
+    <div class="row2" style="margin-top:12px"><div><label for="rd-contas">Contas de referência (@, uma por linha)</label><textarea id="rd-contas" rows="6" style="min-height:140px">${esc((R.contas_conf || []).join("\n"))}</textarea></div>
+    <div><label for="rd-pal">Palavras do ramo (separe por vírgula)</label><textarea id="rd-pal" rows="6" style="min-height:140px" placeholder="topografia, georreferenciamento, incra, drone, terreno, escritura">${esc((R.palavras_conf || []).join(", "))}</textarea></div></div>
+    <p class="muted" style="font-size:13px;margin:8px 0 0">A consulta às contas do nicho usa a conexão da agência (@projectatech). Escolha empresas do mesmo ramo, de outras cidades, que postam bem.</p>
+    <div class="inline"><button class="btn sm" id="rd-save">Salvar</button></div></div>` : "";
+  const salvarConf = () => $("#rd-save")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/radar/contas", {contas: $("#rd-contas").value.split(/[\s,]+/), ...($("#rd-pal") ? {palavras: $("#rd-pal").value} : {})}), "Salvo. Clique em Atualizar radar."));
+  if (!R.data) { $("#view").innerHTML = bar + confCli; salvarConf(); bindRadar(); return; }
   const P = R.permissoes || {}, meus = R.meus || [], C = R.conta || {};
   const perm = (!P.insights || !P.contas_nicho) ? `<div class="card" style="margin-top:18px;background:var(--warnbg)"><p class="tag" style="color:var(--warn)">Falta 1 permissão no token</p>
     <h3 style="margin-top:4px">Libere <code>instagram_manage_insights</code> para o radar ficar completo</h3>
@@ -601,11 +660,12 @@ function vRadar() {
   </div>
   <div class="card" style="margin-top:18px"><p class="tag">Ganchos que funcionaram · para adaptar, nunca copiar</p>
     <ul class="rlist">${(R.ganchos || []).slice(0, 15).map(g => `<li><span class="m">${mx(g.mult)}</span><div><p>${esc(g.texto)}</p><small>${g.fonte === "seu" ? "seu post" : "@" + esc(g.conta)} · <button class="btn ghost sm" style="padding:2px 8px" data-gcopy="${esc(g.texto)}">Copiar</button> ${g.link ? `<a href="${esc(g.link)}" target="_blank" rel="noopener">ver ↗</a>` : ""}</small></div></li>`).join("") || `<li><span></span><p class="muted">Nenhum gancho acima de 1,5× ainda.</p></li>`}</ul>
-    <p class="muted" style="font-size:13px;margin:10px 0 0">Peça ao Claude: "lê o instagram/radar/ultimo.json e me dá 5 ganchos na voz da Projecta". Ele adapta a estrutura e confere com o <code>/ig-reel hookscore</code>.</p></div>
+    <p class="muted" style="font-size:13px;margin:10px 0 0">Peça ao Claude: ${CLI ? `"/agencia ${esc(S.cliente.slug)} 5 ganchos do radar"` : `"lê o instagram/radar/ultimo.json e me dá 5 ganchos na voz da Projecta"`}. Ele adapta a estrutura e confere com o <code>/ig-reel hookscore</code>.</p></div>
   <div class="grid g2" style="margin-top:18px">
     <div class="card"><p class="tag">Contas do nicho monitoradas</p>
       <p class="muted" style="margin:6px 0 0;font-size:14px">Uma por linha, só o @. Precisam ser contas profissionais públicas (empresa ou criador). Escolha quem faz o que você faz, ou fala com o mesmo cliente.</p>
       <textarea id="rd-contas" rows="6" style="width:100%;margin-top:10px;font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px">${esc((R.contas_conf || []).join("\n"))}</textarea>
+      ${CLI ? `<label for="rd-pal" style="margin-top:12px">Palavras do ramo</label><textarea id="rd-pal" rows="3" style="min-height:80px">${esc((R.palavras_conf || []).join(", "))}</textarea>` : ""}
       <div class="inline"><button class="btn sm" id="rd-save">Salvar contas</button></div>
       ${(R.contas || []).length ? `<ul class="rlist">${R.contas.map(c => `<li><span class="m low" style="font-size:14px">${c.erro ? "!" : nf(c.seguidores)}</span><div><p>@${esc(c.conta)}</p><small>${c.erro ? esc(c.erro) : `${c.posts} posts lidos · ${c.relevantes} do nicho · mediana ${nf(c.mediana)} interações`}</small></div></li>`).join("")}</ul>` : ""}</div>
     <div class="card"><p class="tag">Coleta manual (enquanto a permissão não sai)</p>
@@ -628,7 +688,8 @@ function vRadar() {
   document.querySelectorAll("[data-fonte]").forEach(b => b.onclick = () => { const k = b.dataset.fonte; RF.fonte.has(k) ? RF.fonte.delete(k) : RF.fonte.add(k); b.setAttribute("aria-pressed", RF.fonte.has(k)); lista(); });
   $("#rf-tema").onchange = e => { RF.tema = e.target.value; lista(); };
   document.querySelectorAll("[data-gcopy]").forEach(b => b.onclick = async () => { try { await navigator.clipboard.writeText(b.dataset.gcopy); } catch {} toast("Gancho copiado. Adapte, não copie."); });
-  $("#rd-save").onclick = e => run(e.currentTarget, () => api("/api/radar/contas", {contas: $("#rd-contas").value.split(/[\s,]+/)}), "Contas salvas. Clique em Atualizar radar.");
+  if (CLI) { $("#rd-pal-wrap")?.remove(); }
+  salvarConf();
   bindRadar();
 }
 function bindRadar() {
@@ -704,11 +765,11 @@ function prepDialog(pasta) {
 function phone(p, texto, i = 0) {
   const m = p.midia, cur = m[i] || "";
   const isV = cur.endsWith(".mp4");
-  return `<div class="phone"><div class="ph-top"><span class="av">P</span>projectatech<span class="muted" style="font-weight:400;margin-left:auto">Lages-SC</span></div>
+  return `<div class="phone"><div class="ph-top"><span class="av">${esc(inicial())}</span>${esc(contaAtual())}<span class="muted" style="font-weight:400;margin-left:auto">${esc(cidadeAtual())}</span></div>
   <div class="ph-media">${isV ? `<video src="${file(cur)}" controls muted playsinline></video>` : `<img src="${file(cur)}" alt="Slide ${i+1} de ${m.length}">`}
   ${m.length > 1 ? `<span class="ph-n">${i+1}/${m.length}</span>${i > 0 ? `<button class="ph-nav l" data-go="${i-1}" aria-label="Slide anterior">‹</button>` : ""}${i < m.length-1 ? `<button class="ph-nav r" data-go="${i+1}" aria-label="Próximo slide">›</button>` : ""}` : ""}</div>
   ${m.length > 1 ? `<div class="dots">${m.map((_,k) => `<i class="${k===i?"on":""}"></i>`).join("")}</div>` : `<div style="height:10px"></div>`}
-  <div class="ph-cap"><b>projectatech</b> ${esc(texto)}</div></div>`;
+  <div class="ph-cap"><b>${esc(contaAtual())}</b> ${esc(texto)}</div></div>`;
 }
 function checksHtml(c) {
   const li = [...c.erros.map(e => `<li class="e">✕ ${esc(e)}</li>`), ...c.avisos.map(a => `<li class="w">! ${esc(a)}</li>`)];
@@ -720,7 +781,7 @@ function openPost(id) {
   const pub = p.status === "publicado";
   $("#dlg-body").innerHTML = `<div class="dlg"><div class="left" id="ph"></div><div class="right">
     <div><p class="tag">${p.tipo} · ${pl(p.midia.length, "arquivo", "arquivos")} · ${esc(p.id)}</p><h2 id="dlg-t" style="font-size:34px;margin-top:6px">${esc(nomePost(p.id))}</h2>
-      <p style="margin-top:8px"><span class="status ${p.status}">${ST[p.status]}</span>${p.link ? ` <a href="${esc(p.link)}" target="_blank" rel="noopener">ver no Instagram ↗</a>` : ""}${p.substitui ? `<span class="muted" style="font-size:13px"> · substitui ${esc(p.substitui)}</span>` : ""}</p>
+      <p style="margin-top:8px"><span class="status ${p.status}">${stLbl(p.status)}</span>${p.link ? ` <a href="${esc(p.link)}" target="_blank" rel="noopener">ver no Instagram ↗</a>` : ""}${p.substitui ? `<span class="muted" style="font-size:13px"> · substitui ${esc(p.substitui)}</span>` : ""}</p>
       ${p.voz ? `<p class="muted" style="font-size:13px;margin-top:8px">🎙️ Narração: <b>${esc(p.voz.replace(/^pt-BR-|Neural$/g, ""))}</b> (voz padrão pt-BR) · publique com o áudio original</p>` : ""}
       ${p.observacao ? `<p class="alert warn" style="margin-top:10px;cursor:default">${esc(p.observacao)}</p>` : ""}</div>
     <div class="row"><div><label for="f-d">Data</label><input type="date" id="f-d" value="${p.data||""}" ${pub?"disabled":""}></div>
@@ -728,7 +789,7 @@ function openPost(id) {
       <div><label for="f-p">Pilar</label><select id="f-p" ${pub?"disabled":""}><option value="">—</option>${Object.keys(PIL).map(k => `<option value="${k}" ${p.pilar===k?"selected":""}>${PIL[k]}</option>`).join("")}</select></div></div>
     <div><label for="f-t">Legenda <span class="muted" id="f-c" style="font-weight:400"></span></label><textarea id="f-t" ${pub?"disabled":""}>${esc(texto)}</textarea></div>
     <div><p class="tag" style="margin-bottom:8px">Checagem automática</p><ul class="checks" id="f-k">${checksHtml(p.checagem)}</ul></div>
-    ${pub ? "" : `<div class="actions">
+    ${pub ? histHtml(p) : CLI ? acoesCli(p) : `<div class="actions">
       <button class="btn" id="f-s">Salvar</button>
       ${p.status === "aprovado" ? `<button class="btn ghost" id="f-u">Voltar para pendente</button>` : `<button class="btn accent" id="f-a" ${p.checagem.erros.length ? "disabled title='Corrija os itens em vermelho'" : ""}>Aprovar para ${p.data ? fmt(p.data) + " " + p.hora : "a data"}</button>`}
       <span class="muted" style="font-size:13px">Aprovar só marca o post. Ele sai no horário depois de enviado ao GitHub.</span></div>
@@ -741,16 +802,39 @@ function openPost(id) {
   cnt();
   const dirty = () => texto.trim() !== p.texto.trim() || $("#f-d").value !== (p.data||"") || $("#f-h").value !== (p.hora||"18:00") || $("#f-p").value !== (p.pilar||"");
   $("#f-t").oninput = e => { texto = e.target.value; cnt(); drawPhone(); clearTimeout(timer);
-    timer = setTimeout(async () => { const c = await api("/api/checar", {texto}).catch(() => null); if (c) { $("#f-k").innerHTML = checksHtml(c); if ($("#f-a")) $("#f-a").disabled = c.erros.length > 0; } }, 350); };
+    timer = setTimeout(async () => { const c = await api("/api/checar", {texto}).catch(() => null); if (c) { $("#f-k").innerHTML = checksHtml(c); if ($("#f-a")) $("#f-a").disabled = c.erros.length > 0; if ($("#f-env")) $("#f-env").disabled = c.erros.length > 0; } }, 350); };
   const salvar = () => api("/api/post/salvar", {id: p.id, data: $("#f-d").value, hora: $("#f-h").value, pilar: $("#f-p").value, texto});
   $("#f-s")?.addEventListener("click", e => run(e.currentTarget, salvar, r => r.aviso || "Salvo.").then(() => openPost(p.id)));
   $("#f-a")?.addEventListener("click", e => run(e.currentTarget, async () => { if (dirty()) await salvar(); return api("/api/post/aprovar", {id: p.id}); },
-    "Aprovado. Envie para o GitHub para valer.").then(r => r && openPost(p.id)));
+    CLI ? "Agendado. O painel publica no horário." : "Aprovado. Envie para o GitHub para valer.").then(r => r && openPost(p.id)));
+  $("#f-env")?.addEventListener("click", e => run(e.currentTarget, async () => { if (dirty()) await salvar(); return api("/api/post/enviar-cliente", {id: p.id, nota: $("#f-nota")?.value || ""}); },
+    "Enviado. Avise o cliente no WhatsApp que tem post para aprovar.").then(r => r && openPost(p.id)));
+  $("#f-apc")?.addEventListener("click", e => confirm("Registrar que o cliente aprovou fora do portal (WhatsApp, ligação)?") && run(e.currentTarget, () => api("/api/portal/aprovar?c=" + encodeURIComponent(CLI), {id: p.id, texto: "Aprovado fora do portal."}), "Aprovação registrada.").then(r => r && openPost(p.id)));
   $("#f-u")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/post/pendente", {id: p.id}), "Voltou para pendente.").then(() => openPost(p.id)));
   $("#f-cf")?.addEventListener("input", e => $("#f-pub").disabled = e.target.value !== "PUBLICAR");
   $("#f-pub")?.addEventListener("click", e => run(e.currentTarget, async () => { if (dirty()) await salvar(); return api("/api/post/publicar", {id: p.id, confirmacao: $("#f-cf").value}); },
     r => "Publicado: " + (r.link || "ok")).then(r => r && openPost(p.id)));
   if (!dlg.open) dlg.showModal();
+}
+function histHtml(p) {
+  const h = p.historico || [];
+  return h.length ? `<details class="hist" ${p.status === "ajuste" ? "open" : ""}><summary>Histórico com o cliente (${h.length})</summary><ul>${[...h].reverse().map(x => `<li class="${x.quem.startsWith("cliente") ? "dele" : ""}"><b>${esc(x.quem)}</b> ${esc(x.acao)}${x.texto ? `: ${esc(x.texto)}` : ""} <small>${esc(x.quando.slice(8,10) + "/" + x.quando.slice(5,7) + " " + x.quando.slice(11))}</small></li>`).join("")}</ul></details>` : "";
+}
+function acoesCli(p) {
+  const s = p.status, err = p.checagem.erros.length, nota = ultimaFala(p, "cliente");
+  let bt = "";
+  if (["pendente", "ajuste", "erro"].includes(s)) bt = `<button class="btn accent" id="f-env" ${err ? "disabled title='Corrija os itens em vermelho'" : ""}>Enviar para ${esc(S.cliente.nome)} aprovar</button>`;
+  else if (s === "aguardando_cliente") bt = `<span class="status aguardando_cliente">Esperando o cliente no portal</span><button class="btn ghost sm" id="f-apc">Cliente aprovou por fora</button>`;
+  else if (s === "aprovado_cliente") bt = `<button class="btn accent" id="f-a" ${err ? "disabled" : ""}>Agendar para ${p.data ? fmt(p.data) + " " + p.hora : "a data"}</button><button class="btn ghost sm" id="f-u">Voltar para rascunho</button>`;
+  else if (s === "aprovado") bt = `<button class="btn ghost" id="f-u">Desagendar</button>`;
+  const dica = {pendente:"Enviar coloca o post no portal do cliente. Se editar depois, ele volta para rascunho.", ajuste:"Ajuste, salve e envie de novo.", erro:"Corrija e envie de novo.",
+    aguardando_cliente:"Se editar agora, o post sai do portal e volta para rascunho.", aprovado_cliente:"Agendar libera a publicação automática no horário.", aprovado:"Sai sozinho no horário (o painel precisa estar aberto)."}[s] || "";
+  return `${s === "ajuste" && nota ? `<p class="alert err" style="cursor:default;margin:0"><b>O cliente pediu:</b> ${esc(nota)}</p>` : ""}
+    ${["pendente", "ajuste", "erro"].includes(s) ? `<div><label for="f-nota">Recado junto do post <span class="muted" style="font-weight:400">(opcional, o cliente vê)</span></label><input type="text" id="f-nota" placeholder="Ex.: usei a foto da obra de outubro"></div>` : ""}
+    <div class="actions"><button class="btn" id="f-s">Salvar</button>${bt}<span class="muted" style="font-size:13px">${dica}</span></div>
+    ${histHtml(p)}
+    ${["aprovado_cliente", "aprovado"].includes(s) ? `<div class="danger"><div style="flex:1;min-width:200px"><b>Publicar agora</b><p class="muted" style="margin:2px 0 0;font-size:13px">Vai direto para o @${esc(contaAtual())}. Só posts que o cliente aprovou.</p></div>
+      <label class="sr" for="f-cf">Digite PUBLICAR</label><input type="text" id="f-cf" placeholder="digite PUBLICAR" autocomplete="off"><button class="btn sm" id="f-pub" disabled>Publicar</button></div>` : ""}`;
 }
 function bindOpen() { document.querySelectorAll(".open").forEach(b => b.addEventListener("click", () => openPost(b.dataset.id))); }
 
@@ -758,10 +842,10 @@ function bindOpen() { document.querySelectorAll(".open").forEach(b => b.addEvent
 function vFeed() {
   const ord = S.posts.filter(p => p.data).sort((a,b) => quando(b) - quando(a));
   $("#view").innerHTML = `<div class="feed-wrap">
-    <div class="phone"><div class="profile"><span class="av">P</span><div><b>projectatech</b><p class="muted" style="margin:0;font-size:12px">Projecta Tech · Sites e Sistemas Lages</p></div></div>
+    <div class="phone"><div class="profile"><span class="av">${esc(inicial())}</span><div><b>${esc(contaAtual())}</b><p class="muted" style="margin:0;font-size:12px">${CLI ? esc(S.cliente.nome + (S.cliente.ramo ? " · " + S.cliente.ramo : "")) : "Projecta Tech · Sites e Sistemas Lages"}</p></div></div>
       <div class="pgrid">${ord.map(p => `<button class="open" data-id="${esc(p.id)}" aria-label="${esc(nomePost(p.id))}">${p.midia[0]?.endsWith(".mp4") ? `<video src="${file(p.midia[0])}" muted style="width:100%;height:100%;object-fit:cover"></video>` : `<img src="${file(p.midia[0])}" alt="">`}<span class="lab ${p.status==="publicado"?"pub":""}">${p.data.slice(8)}/${p.data.slice(5,7)}</span></button>`).join("")}</div></div>
     <div class="card"><p class="tag">Como o perfil vai ficar</p><h3 style="font-size:28px">A grade com os posts agendados, <em class="s">do mais novo ao mais antigo</em>.</h3>
-      <p class="muted" style="margin-top:12px">É o que alguém vê ao abrir o @projectatech depois do último post agendado. Use para conferir se as capas se alternam bem (claro e escuro, foto e texto) e se o laranja não se repete demais lado a lado.</p>
+      <p class="muted" style="margin-top:12px">É o que alguém vê ao abrir o @${esc(contaAtual())} depois do último post agendado. Use para conferir se as capas se alternam bem (claro e escuro, foto e texto) e se o laranja não se repete demais lado a lado.</p>
       <p class="muted">Mostra só os posts deste calendário. Os publicados à mão antes do painel não aparecem.</p>
       <p style="margin-top:16px;font-size:14px"><span class="lab">dd/mm</span> agendado &nbsp; <span class="lab pub" style="padding:0 4px;border-radius:4px;background:var(--accent)">dd/mm</span> publicado</p></div></div>`;
   bindOpen();
@@ -773,7 +857,7 @@ function vFeed() {
 // Uma busca em andamento é reaproveitada: se o painel redesenhar no meio, não recomeça do zero.
 let comentSeq = 0, comentCache = null, comentBusca = null;
 async function vComent(forcar) {
-  if (!S.token.configurado) { $("#view").innerHTML = `<div class="empty">Conecte o Instagram em <b>Conexões</b> para ver os comentários.<div class="inline" style="justify-content:center"><button class="btn" onclick="go('config')">Ir para Conexões</button></div></div>`; return; }
+  if (CLI ? !S.conexao.conectado : !S.token.configurado) { $("#view").innerHTML = `<div class="empty">Conecte o Instagram em <b>Conexões</b> para ver os comentários.<div class="inline" style="justify-content:center"><button class="btn" onclick="go('config')">Ir para Conexões</button></div></div>`; return; }
   const meu = ++comentSeq;
   const fresco = !forcar && comentCache && Date.now() - comentCache.t < 120000;
   if (!fresco) $("#view").innerHTML = `<p class="muted">Carregando comentários dos 8 posts mais recentes…</p>`;
@@ -853,7 +937,190 @@ function vConfig() {
   $("#aut-go").onclick = e => run(e.currentTarget, () => api("/api/autorizacoes", {cliente: $("#aut-n").value, autorizado: false}), "Cliente adicionado.");
 }
 
-const VIEWS = ["hoje","calendario","stories","radar","feed","comentarios","config"];
+/* ---------- AGÊNCIA: troca de conta, clientes, pedidos ---------- */
+const TIPOS = {post:"Post no feed", story:"Story", reel:"Reel", sugestao:"Sugestão de assunto", outro:"Outro"};
+const PST = {novo:"Novo", em_producao:"Em produção", concluido:"Concluído", recusado:"Recusado"};
+const contaAtual = () => CLI ? (S.cliente?.arroba || CLI) : "projectatech";
+const cidadeAtual = () => CLI ? (S.cliente?.cidade || "") : "Lages-SC";
+const inicial = () => (CLI ? (S.cliente?.nome || CLI) : "P").trim().charAt(0).toUpperCase();
+const ultimaFala = (p, quem) => [...(p.historico || [])].reverse().find(h => h.quem.startsWith(quem) && h.texto)?.texto || "";
+async function copiar(t, msg) { try { await navigator.clipboard.writeText(t); toast(msg || "Copiado."); } catch { prompt("Copie:", t); } }
+
+function setCli(v) {
+  CLI = !v || v === "projectatech" ? "" : v;
+  try { localStorage.setItem("cli", CLI); } catch {}
+  S = null; mes = null; comentCache = null;
+  if ((CLI && view === "stories") || (!CLI && view === "pedidos") || view === "clientes") view = "hoje";
+  history.replaceState(null, "", "#" + view);
+  $("#view").innerHTML = `<p class="muted">Abrindo…</p>`;
+  load().catch(e => { toast(e.message, true); setCli(""); });
+}
+function switcher() {
+  const sel = $("#cli-sel"), cs = S.clientes || [];
+  sel.innerHTML = cs.map(c => { const n = c.casa ? 0 : (c.pedidos_novos || 0) + (c.status?.ajuste || 0) + (c.status?.aprovado_cliente || 0);
+    return `<option value="${esc(c.slug)}" ${(CLI || "projectatech") === c.slug ? "selected" : ""}>${esc(c.nome)}${n ? ` · ${n}` : ""}</option>`; }).join("")
+    + `<option value="__novo">+ Novo cliente…</option>`;
+  sel.onchange = () => { if (sel.value === "__novo") { sel.value = CLI || "projectatech"; menu(false); go("clientes"); setTimeout(() => $("#nc-nome")?.focus(), 50); } else setCli(sel.value); };
+  const tot = cs.reduce((a, c) => a + (c.casa ? 0 : (c.pedidos_novos || 0) + (c.status?.ajuste || 0) + (c.status?.aprovado_cliente || 0)), 0);
+  const n = $("#cl-n"); n.hidden = !tot; n.textContent = tot;
+  document.body.classList.toggle("modo-cliente", !!CLI);
+  $("#side-foot").innerHTML = CLI ? `Nada vai ao ar sem o OK do cliente<br>e o seu agendamento.` : `Nada vai ao ar sem a sua aprovação.<br>${S.nuvem?.ativo ? "Rodando na nuvem." : "Rodando só neste computador."}`;
+}
+function pillsCli() {
+  const k = S.conexao, ag = S.posts.filter(p => p.status === "aguardando_cliente").length;
+  $("#pills").innerHTML = `<span class="pill"><i class="dot ${k.conectado ? "ok" : "err"}"></i>${k.conectado ? `@${esc(k.username || contaAtual())} · conectado` : "Instagram do cliente desconectado"}</span>`
+    + `<span class="pill"><i class="dot ${ag ? "warn" : "ok"}"></i>${ag ? pl(ag, "post com o cliente", "posts com o cliente") : "Nada esperando o cliente"}</span>`
+    + `<button class="btn sm ghost" id="pt-copy">Copiar link do portal</button>`;
+  $("#pt-copy").onclick = () => copiar(S.portal, "Link do portal copiado. Mande só para o cliente.");
+  const n = $("#cfg-n"); n.hidden = k.conectado; n.textContent = 1;
+  const np = S.pedidos.filter(x => x.status === "novo").length, pn = $("#pd-n"); pn.hidden = !np; pn.textContent = np;
+}
+
+function vHojeCli() {
+  const now = agoraDate(), P = S.posts, k = S.conexao, c = S.cliente;
+  const by = s => P.filter(p => p.status === s);
+  const prox = P.filter(p => p.status === "aprovado" && p.data && quando(p) >= now).sort((a,b) => quando(a) - quando(b))[0];
+  let cd = "";
+  if (prox) { const ms = quando(prox) - now, d = Math.floor(ms/864e5), h = Math.floor(ms/36e5) % 24; cd = d ? `em ${d}d ${h}h` : `em ${h}h ${Math.floor(ms/6e4)%60}min`; }
+  const al = [];
+  if (!k.conectado) al.push({c:"err", t:"<b>Instagram do cliente não conectado.</b> Sem isso nada é publicado. Abra Conexões.", go:"config"});
+  if (!S.voice_ok) al.push({c:"warn", t:`<b>Voz da marca em branco.</b> Preencha <code>clientes/${esc(c.slug)}/voice.md</code> antes de pedir conteúdo ao Claude.`, go:"config"});
+  by("ajuste").forEach(p => al.push({c:"err", t:`<b>Ajuste pedido em ${esc(nomePost(p.id))}:</b> “${esc(ultimaFala(p, "cliente").slice(0, 140))}”`, id:p.id}));
+  by("aprovado_cliente").forEach(p => al.push({c:"ok", t:`<b>O cliente aprovou ${esc(nomePost(p.id))}.</b> Confira e agende.`, id:p.id}));
+  by("erro").forEach(p => al.push({c:"err", t:`<b>${esc(nomePost(p.id))} deu erro ao publicar.</b> ${esc(p.erro || "")}`, id:p.id}));
+  S.pedidos.filter(x => x.status === "novo").forEach(x => al.push({c:"warn", t:`<b>Pedido novo · ${esc(TIPOS[x.tipo] || x.tipo)}:</b> ${esc((x.texto || "com anexos").slice(0, 120))}`, go:"pedidos"}));
+  P.filter(p => p.status === "aguardando_cliente" && p.data && quando(p) < new Date(now.getTime() + 2*864e5)).forEach(p =>
+    al.push({c:"warn", t:`<b>${esc(nomePost(p.id))}</b> sai ${fmt(p.data)} e o cliente ainda não aprovou. Vale lembrar no WhatsApp.`, id:p.id}));
+  if (!al.length) al.push({c:"ok", t:"<b>Tudo em ordem.</b> Nada pendente com este cliente."});
+  const etapas = [["pendente","Rascunhos","seus, ainda não enviados"],["aguardando_cliente","Com o cliente","esperando aprovação"],["ajuste","Ajustes","o cliente pediu mudança"],["aprovado_cliente","Para agendar","aprovados pelo cliente"],["aprovado","Agendados","saem sozinhos no horário"]];
+  $("#view").innerHTML = `
+  <div class="grid g3">
+    <div class="card ink" style="grid-column:span 2"><p class="tag">Próximo post agendado · @${esc(contaAtual())}</p>
+      ${prox ? `<div class="next" style="margin-top:12px">
+        <button class="open" data-id="${esc(prox.id)}" style="all:unset;cursor:pointer">${prox.midia[0]?.endsWith(".mp4") ? `<video src="${file(prox.midia[0])}" muted style="width:120px;height:150px;object-fit:cover;border-radius:10px"></video>` : `<img src="${file(prox.midia[0])}" alt="Capa de ${esc(nomePost(prox.id))}">`}</button>
+        <div><p class="count">${cd}</p><h3 style="font-size:28px;margin-top:6px">${esc(nomePost(prox.id))}</h3>
+        <p class="muted">${fmt(prox.data)} às ${prox.hora} · ${prox.tipo}</p>
+        <p style="margin-top:10px"><span class="status aprovado">Agendado · aprovado pelo cliente</span></p></div></div>` : `<p class="muted" style="margin-top:12px">Nada agendado ainda. O caminho: criar → enviar ao cliente → ele aprova → você agenda.</p>`}
+    </div>
+    <div class="card" style="display:flex;flex-direction:column"><p class="tag">Portal do cliente</p><h3>${esc(c.nome)}</h3>
+      <p class="muted" style="margin:6px 0 0;font-size:14px">É por ali que o cliente aprova, pede ajuste e manda fotos ou ideias. Mande o link só para ele.</p>
+      <div class="inline" style="margin-top:auto;padding-top:16px"><button class="btn accent sm" id="h-copy">Copiar link</button><a class="btn ghost sm" href="${esc(S.portal.replace(/\?k=.*/, ""))}" target="_blank" rel="noopener">Ver como o cliente</a></div></div>
+  </div>
+  <div class="card" style="margin-top:18px"><p class="tag">Fluxo dos posts</p>
+    <div class="fluxo">${etapas.map(([s, t, d]) => `<button class="etapa ${s}" data-st="${s}"><b>${by(s).length}</b><span>${t}</span><small>${d}</small></button>`).join("")}</div></div>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><p class="tag">O que pede sua atenção</p><ul class="alerts" style="margin-top:12px">${al.map((a,i) => `<li><button class="alert ${a.c}" data-i="${i}">${a.t}</button></li>`).join("")}</ul></div>
+    <div class="card"><p class="tag">Criar conteúdo para ${esc(c.nome)}</p>
+      <p style="margin:8px 0 0;font-size:15px;line-height:1.5">Peça ao Claude, que já usa a voz da marca e o radar do ramo:</p>
+      <ul class="pedir">${[`/agencia ${c.slug} plano do mês`, `/agencia ${c.slug} carrossel sobre [assunto]`, `/agencia ${c.slug} reel narrado sobre [assunto]`, `/agencia ${c.slug} produzir os pedidos novos`].map(t => `<li><code>${esc(t)}</code><button class="btn ghost sm" data-cp="${esc(t)}">Copiar</button></li>`).join("")}</ul>
+      <p class="muted" style="font-size:13px;margin:10px 0 0">Os posts entram em <code>clientes/${esc(c.slug)}/posts/</code> e aparecem no Calendário em "Pastas novas".</p></div>
+  </div>`;
+  $("#h-copy").onclick = () => copiar(S.portal, "Link do portal copiado. Mande só para o cliente.");
+  document.querySelectorAll("[data-cp]").forEach(b => b.onclick = () => copiar(b.dataset.cp, "Copiado. Cole no Claude."));
+  document.querySelectorAll("[data-st]").forEach(b => b.onclick = () => go("calendario"));
+  document.querySelectorAll(".alert").forEach(b => b.onclick = () => { const a = al[b.dataset.i]; if (a.id) openPost(a.id); else if (a.go) go(a.go); });
+  bindOpen();
+}
+
+function vClientes() {
+  const cs = (S.clientes || []).filter(c => !c.casa);
+  $("#view").innerHTML = `
+  <p class="muted" style="margin:0 0 16px;max-width:720px">Cada cliente tem o próprio calendário, regras de legenda, voz da marca, radar do ramo e um portal onde aprova os posts e manda pedidos. O @projectatech continua igual.</p>
+  <div class="clis">${cs.map(c => { const s = c.status || {}, k = c.conexao || {};
+    return `<div class="card cli"><div class="cli-top"><span class="av big-av" style="${c.cor ? `background:${esc(c.cor)}` : ""}">${esc(c.nome.charAt(0).toUpperCase())}</span>
+      <div style="min-width:0"><h3>${esc(c.nome)}</h3><p class="muted" style="margin:2px 0 0;font-size:14px">@${esc(c.arroba || "?")}${c.ramo ? " · " + esc(c.ramo) : ""}${c.cidade ? " · " + esc(c.cidade) : ""}</p></div></div>
+      <p style="margin:12px 0 0;font-size:14px"><span class="pill" style="background:#fff"><i class="dot ${k.conectado ? "ok" : "err"}"></i>${k.conectado ? "Instagram conectado" : "Instagram não conectado"}</span></p>
+      <div class="mini">${[["aguardando_cliente","com o cliente"],["ajuste","ajustes"],["aprovado_cliente","para agendar"],["aprovado","agendados"]].map(([x, t]) => `<span class="${s[x] ? "on " + x : ""}"><b>${s[x] || 0}</b>${t}</span>`).join("")}<span class="${c.pedidos_novos ? "on ajuste" : ""}"><b>${c.pedidos_novos || 0}</b>pedidos novos</span></div>
+      <p class="muted" style="font-size:13px;margin:10px 0 0">${c.proximo ? "Próximo post: " + fmt(c.proximo.slice(0,10)) + " " + c.proximo.slice(11) : "Nenhum post agendado"}</p>
+      <div class="inline"><button class="btn accent sm" data-abrir="${esc(c.slug)}">Abrir</button></div></div>`; }).join("")}
+    <form class="card cli novo" id="nc"><p class="tag">Novo cliente</p><h3 style="margin-bottom:6px">Cadastrar cliente</h3>
+      <div class="row2"><div><label for="nc-nome">Nome da empresa</label><input type="text" id="nc-nome" required placeholder="Eixo Sul Engenharia"></div>
+      <div><label for="nc-arroba">@ do Instagram</label><input type="text" id="nc-arroba" placeholder="eixosulengenharia"></div>
+      <div><label for="nc-ramo">Ramo</label><input type="text" id="nc-ramo" placeholder="topografia e georreferenciamento"></div>
+      <div><label for="nc-cidade">Cidade</label><input type="text" id="nc-cidade" placeholder="Lages-SC"></div></div>
+      <div style="margin-top:12px"><label for="nc-cta">CTA único das legendas</label><input type="text" id="nc-cta" placeholder="chame no WhatsApp: link na bio"></div>
+      <div class="inline"><button class="btn" type="submit" id="nc-go">Criar espaço do cliente</button></div>
+      <p class="muted" style="font-size:13px;margin:10px 0 0">Cria a pasta <code>clientes/&lt;código&gt;/</code> (fora do GitHub), a voz da marca para preencher e o link do portal.</p></form>
+  </div>
+  <div class="card" style="margin-top:18px"><p class="tag">Como funciona com o cliente</p>
+    <ol class="passos"><li><b>Cadastre</b> e preencha a voz da marca com ele (15 min de conversa).</li><li><b>Mande o link do portal</b> pelo WhatsApp. ${S.nuvem?.oauth ? "Lá ele conecta o Instagram com um toque." : "Para ele conectar o Instagram sozinho, o painel precisa estar na nuvem (veja <code>deploy/LEIA-ME.md</code>). Até lá, conecte em Conexões."}</li>
+    <li><b>Crie os posts</b> com o Claude (<code>/agencia</code>) e envie para aprovação.</li><li><b>O cliente aprova</b> ou pede ajuste no celular, e manda fotos e ideias.</li><li><b>Você agenda</b>. O painel publica no horário.</li></ol></div>`;
+  document.querySelectorAll("[data-abrir]").forEach(b => b.onclick = () => { view = "hoje"; setCli(b.dataset.abrir); });
+  $("#nc").onsubmit = e => { e.preventDefault();
+    run($("#nc-go"), () => api("/api/cliente/criar", {nome: $("#nc-nome").value, arroba: $("#nc-arroba").value, ramo: $("#nc-ramo").value, cidade: $("#nc-cidade").value, cta: $("#nc-cta").value}),
+      "Cliente criado.").then(r => { if (r) { view = "config"; setCli(r.slug); } }); };
+}
+
+function vPedidos() {
+  const ps = S.pedidos || [];
+  const ordem = {novo:0, em_producao:1, concluido:2, recusado:3};
+  $("#view").innerHTML = `<p class="muted" style="margin:0 0 16px;max-width:720px">O que ${esc(S.cliente.nome)} mandou pelo portal: fotos, artes, ideias e pedidos de post. Responda por aqui (o cliente vê no portal) e peça ao Claude para produzir.</p>
+  ${ps.length ? `<div class="grid">${[...ps].sort((a,b) => ordem[a.status] - ordem[b.status] || b.criado_em.localeCompare(a.criado_em)).map(x => `<div class="card ped ${x.status}">
+    <div class="ped-top"><div><p class="tag">${esc(TIPOS[x.tipo] || x.tipo)} · enviado ${esc(x.criado_em.slice(8,10) + "/" + x.criado_em.slice(5,7) + " " + x.criado_em.slice(11))}${x.data_desejada ? ` · quer para <b>${fmt(x.data_desejada)}</b>` : ""}</p>
+      <p style="margin:6px 0 0;font-size:16px;white-space:pre-line">${esc(x.texto) || `<span class="muted">(sem texto, só anexos)</span>`}</p></div>
+      <label class="sr" for="ps-${esc(x.id)}">Situação</label><select id="ps-${esc(x.id)}" data-pst="${esc(x.id)}" class="pst">${Object.entries(PST).map(([k,v]) => `<option value="${k}" ${x.status === k ? "selected" : ""}>${v}</option>`).join("")}</select></div>
+    ${x.arquivos.length ? `<div class="anexos">${x.arquivos.map(a => /\.(mp4|mov)$/i.test(a) ? `<a href="${file(a)}" target="_blank" rel="noopener" class="anx vid">▶ vídeo</a>` : /\.pdf$/i.test(a) ? `<a href="${file(a)}" target="_blank" rel="noopener" class="anx vid">PDF</a>` : `<a href="${file(a)}" target="_blank" rel="noopener" class="anx"><img src="${file(a)}" alt="Anexo do cliente" loading="lazy"></a>`).join("")}</div>
+      <p class="muted" style="font-size:12px;margin:6px 0 0">Arquivos em <code>clientes/${esc(S.cliente.slug)}/${esc(x.arquivos[0].split("/").slice(0,2).join("/"))}/</code></p>` : ""}
+    ${(x.conversa || []).length ? `<div class="conversa">${x.conversa.map(m => `<p class="${m.quem === "cliente" ? "dele" : "nossa"}"><b>${m.quem === "cliente" ? esc(S.cliente.nome) : "Você"}</b> ${esc(m.texto)}<small>${esc(m.quando.slice(8,10) + "/" + m.quando.slice(5,7) + " " + m.quando.slice(11))}</small></p>`).join("")}</div>` : ""}
+    <div class="inline"><label class="sr" for="pr-${esc(x.id)}">Resposta</label><input type="text" id="pr-${esc(x.id)}" placeholder="Responder ao cliente (aparece no portal)"><button class="btn sm" data-resp="${esc(x.id)}">Responder</button>
+      <button class="btn ghost sm" data-cp="/agencia ${esc(S.cliente.slug)} produzir o pedido ${esc(x.id)}">Copiar pedido para o Claude</button></div></div>`).join("")}</div>`
+    : `<div class="empty">Nenhum pedido ainda. Quando o cliente mandar uma foto ou ideia pelo portal, aparece aqui.</div>`}`;
+  document.querySelectorAll("[data-pst]").forEach(s => s.onchange = () => run(null, () => api("/api/pedido/atualizar", {id: s.dataset.pst, status: s.value}), "Situação atualizada. O cliente vê no portal."));
+  document.querySelectorAll("[data-resp]").forEach(b => b.onclick = () => run(b, () => api("/api/pedido/atualizar", {id: b.dataset.resp, resposta: $("#pr-" + b.dataset.resp).value}), "Resposta enviada ao portal."));
+  document.querySelectorAll("[data-cp]").forEach(b => b.onclick = () => copiar(b.dataset.cp, "Copiado. Cole no Claude."));
+}
+
+function vConfigCli() {
+  const c = S.cliente, r = c.regras, k = S.conexao, nv = S.nuvem || {};
+  const lista = a => esc((a || []).join(", "));
+  const msg = `Olá! Este é o seu portal do Instagram com a Projecta. Por ele você aprova os posts antes de irem ao ar, pede ajustes e manda fotos ou ideias: ${S.portal}`;
+  $("#view").innerHTML = `<div class="steps">
+  <div class="step ${S.portal ? "done" : ""}"><span class="ic">${S.portal ? "✓" : 1}</span><div><h3>Portal do cliente</h3>
+    <p class="muted" style="margin:4px 0 0">Link pessoal: quem tem o link entra no portal de ${esc(c.nome)}. ${nv.ativo ? "Funciona de qualquer lugar." : S.celular?.ativo ? "Funciona na mesma rede Wi-Fi deste PC. Para o cliente abrir de qualquer lugar, publique o painel na nuvem." : "Hoje só abre neste computador. Para o cliente abrir de qualquer lugar, publique o painel na nuvem (<code>deploy/LEIA-ME.md</code>)."}</p>
+    <div class="inline"><input type="text" readonly value="${esc(S.portal)}" aria-label="Link do portal" onclick="this.select()"><button class="btn" id="cp-link">Copiar</button></div>
+    <div class="inline"><a class="btn ghost sm" href="https://wa.me/?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Mandar pelo WhatsApp</a><a class="btn ghost sm" href="${esc(S.portal.replace(/\?k=.*/, ""))}" target="_blank" rel="noopener">Ver como o cliente</a><button class="btn ghost sm" id="cp-nova">Gerar link novo (o antigo para de valer)</button></div></div></div>
+
+  <div class="step ${k.conectado ? "done" : "cur"}"><span class="ic">${k.conectado ? "✓" : 2}</span><div><h3>Instagram do cliente</h3>
+    ${k.conectado ? `<p class="muted" style="margin:4px 0 0">Conectado como <b>@${esc(k.username || "?")}</b> · ${k.tipo === "instagram" ? `login do Instagram, renovado sozinho a cada 20 dias (último: ${esc(k.salvo_em)})` : `token colado em ${esc(k.salvo_em)}`}. Fica só em <code>segredos/${esc(c.slug)}.env</code>.</p>
+      <div class="inline"><button class="btn ghost sm" id="tk-off">Desconectar</button></div>` :
+    nv.oauth ? `<p class="muted" style="margin:4px 0 0">O cliente conecta sozinho: no portal aparece o botão <b>Conectar meu Instagram</b>. Ele faz login no Instagram, autoriza e pronto. Enquanto o app da Meta estiver em desenvolvimento, adicione o @ dele como <b>testador do Instagram</b> no app.</p>` :
+    `<p class="muted" style="margin:4px 0 0">${nv.ativo ? "Falta configurar META_APP_ID e META_APP_SECRET (app da Meta com login do Instagram) para o cliente conectar pelo portal." : "A conexão por link (o cliente toca em Conectar e autoriza) precisa do painel na nuvem com HTTPS."} Até lá, cole aqui um token da conta dele:</p>
+      <ol><li>No <a href="https://developers.facebook.com/apps/" target="_blank" rel="noopener">app da Meta</a> → API do Instagram com login do Instagram → adicione a conta do cliente e gere o token (começa com IG).</li>
+      <li>Ou, se ele te der acesso à Página no Business Suite, gere um token do Login unificado (EAA…) e informe o ID da conta do Instagram.</li></ol>
+      <div class="inline"><label class="sr" for="ctk">Token</label><input type="password" id="ctk" placeholder="Cole o token do cliente" autocomplete="off"><label class="sr" for="cuid">ID da conta (só para token EAA)</label><input type="text" id="cuid" placeholder="ID da conta (só se for EAA…)" style="max-width:240px"><button class="btn" id="ctk-go">Salvar e testar</button></div>`}</div></div>
+
+  <div class="step ${nv.ativo || k.media_base_url ? "done" : ""}"><span class="ic">${nv.ativo || k.media_base_url ? "✓" : 3}</span><div><h3>Imagens públicas (carrossel e foto)</h3>
+    <p class="muted" style="margin:4px 0 0">O Instagram baixa as imagens por um link público. Reels não precisam disso (vão por upload). ${nv.ativo ? `Na nuvem o próprio painel serve as imagens em <code>${esc(nv.url)}/midia/${esc(c.slug)}/</code>, só depois que o post é agendado.` : "Rodando local, carrossel de cliente só publica com um endereço público para a pasta media do cliente, ou com o painel na nuvem."}</p>
+    ${nv.ativo ? "" : `<div class="inline"><label class="sr" for="cmb">Endereço público da mídia</label><input type="url" id="cmb" placeholder="https://… /media (opcional)" value="${esc(k.media_base_url)}"><button class="btn ghost" id="cmb-go">Salvar</button></div>`}</div></div>
+
+  <div class="step done"><span class="ic">✓</span><div><h3>Regras das legendas</h3>
+    <p class="muted" style="margin:4px 0 0">A checagem automática usa estas regras antes de enviar ao cliente. Sem preço, sem promessa e sem número inventado valem sempre.</p>
+    <form id="rg" class="row2" style="margin-top:12px">
+      <div><label for="rg-nome">Nome</label><input type="text" id="rg-nome" value="${esc(c.nome)}"></div>
+      <div><label for="rg-arroba">@ do Instagram</label><input type="text" id="rg-arroba" value="${esc(c.arroba)}"></div>
+      <div><label for="rg-ramo">Ramo</label><input type="text" id="rg-ramo" value="${esc(c.ramo)}"></div>
+      <div><label for="rg-cidade">Cidade</label><input type="text" id="rg-cidade" value="${esc(c.cidade)}"></div>
+      <div class="full"><label for="rg-cta">CTA único (a legenda precisa ter)</label><input type="text" id="rg-cta" value="${esc(r.cta)}"></div>
+      <div><label for="rg-hash">Hashtags fixas</label><input type="text" id="rg-hash" value="${lista(r.hashtags_fixas)}" placeholder="#lages, #topografia"></div>
+      <div><label for="rg-busca">Palavras de busca (uma por legenda)</label><input type="text" id="rg-busca" value="${lista(r.palavras_busca)}" placeholder="topografia, georreferenciamento"></div>
+      <div><label for="rg-proib">Palavras fora do tom</label><input type="text" id="rg-proib" value="${lista(r.proibidas)}"></div>
+      <div><label for="rg-prom">Promessas proibidas</label><input type="text" id="rg-prom" value="${lista(r.promessas)}"></div>
+      <div class="full inline" style="margin:0"><button class="btn" type="submit" id="rg-go">Salvar regras</button></div></form></div></div>
+
+  <div class="step ${S.voice_ok ? "done" : "cur"}"><span class="ic">${S.voice_ok ? "✓" : 5}</span><div><h3>Voz da marca</h3>
+    <p class="muted" style="margin:4px 0 0">${S.voice_ok ? "Preenchida." : "Ainda é o modelo."} Arquivo <code>clientes/${esc(c.slug)}/voice.md</code>: público, tom, assuntos que vendem no ramo. As skills <code>/agencia</code> e <code>ig-*</code> leem esse arquivo no lugar do da Projecta. Peça ao Claude: <code>/agencia ${esc(c.slug)} montar a voz da marca</code> com o site e o Instagram do cliente.</p></div></div>
+  </div>`;
+  $("#cp-link").onclick = () => copiar(S.portal, "Link do portal copiado.");
+  $("#cp-nova").onclick = e => confirm("Gerar um link novo? O link antigo para de funcionar.") && run(e.currentTarget, () => api("/api/cliente/nova-chave", {}), "Link novo gerado. Mande para o cliente.");
+  $("#tk-off")?.addEventListener("click", e => confirm("Desconectar o Instagram deste cliente?") && run(e.currentTarget, () => api("/api/cliente/desconectar", {}), "Desconectado."));
+  $("#ctk-go")?.addEventListener("click", e => { const t = $("#ctk").value; $("#ctk").value = "";
+    run(e.currentTarget, () => api("/api/cliente/token", {token: t, user_id: $("#cuid").value}), r => `Conectado como @${r.username}.`); });
+  $("#cmb-go")?.addEventListener("click", e => run(e.currentTarget, () => api("/api/cliente/media-base", {url: $("#cmb").value}), "Endereço salvo."));
+  $("#rg").onsubmit = e => { e.preventDefault(); run($("#rg-go"), () => api("/api/cliente/salvar", {nome: $("#rg-nome").value, arroba: $("#rg-arroba").value, ramo: $("#rg-ramo").value, cidade: $("#rg-cidade").value,
+    regras: {cta: $("#rg-cta").value, hashtags_fixas: $("#rg-hash").value, palavras_busca: $("#rg-busca").value, proibidas: $("#rg-proib").value, promessas: $("#rg-prom").value}}), "Regras salvas."); };
+}
+
+const VIEWS = ["hoje","calendario","stories","radar","feed","comentarios","config","clientes","pedidos"];
 function celularCard() {
   const c = S.celular || {};
   const noPC = ["127.0.0.1", "localhost"].includes(location.hostname);

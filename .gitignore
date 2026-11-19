@@ -9,3 +9,7 @@ posts/*/fonte/prev/
 posts/*/*/fonte/quadros/
 posts/*/*/fonte/original.mp4
 posts/*/*/fonte/prev/
+
+# Agência: dados e credenciais de clientes NUNCA vão para o GitHub público
+clientes/
+segredos/
