@@ -1,10 +1,10 @@
 {
-  "data": "2026-11-18",
-  "gerado_em": "2026-11-18 21:56",
+  "data": "2026-11-19",
+  "gerado_em": "2026-11-19 14:05",
   "conta": {
     "username": "projectatech",
-    "seguidores": 16,
-    "posts": 17
+    "seguidores": 18,
+    "posts": 18
   },
   "permissoes": {
     "insights": true,
@@ -31,10 +31,10 @@
       "alcance": 15,
       "salvos": 1,
       "compart": 0,
-      "views": 120,
+      "views": 121,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 18.75,
+      "taxa": 16.67,
       "mult": 1.0,
       "dia_semana": "dom"
     },
@@ -57,10 +57,10 @@
       "alcance": 16,
       "salvos": 1,
       "compart": 0,
-      "views": 110,
+      "views": 111,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 18.75,
+      "taxa": 16.67,
       "mult": 1.0,
       "dia_semana": "ter"
     },
@@ -83,10 +83,10 @@
       "alcance": 12,
       "salvos": 1,
       "compart": 0,
-      "views": 119,
+      "views": 120,
       "interacoes_api": 4,
       "interacoes": 4,
-      "taxa": 25.0,
+      "taxa": 22.22,
       "mult": 1.33,
       "dia_semana": "sex"
     },
@@ -110,10 +110,10 @@
       "alcance": 16,
       "salvos": 1,
       "compart": 0,
-      "views": 121,
+      "views": 122,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 18.75,
+      "taxa": 16.67,
       "mult": 1.0,
       "dia_semana": "sex"
     },
@@ -137,10 +137,10 @@
       "alcance": 130,
       "salvos": 1,
       "compart": 0,
-      "views": 186,
+      "views": 188,
       "interacoes_api": 5,
       "interacoes": 5,
-      "taxa": 31.25,
+      "taxa": 27.78,
       "mult": 1.67,
       "dia_semana": "sáb"
     },
@@ -164,10 +164,10 @@
       "alcance": 14,
       "salvos": 1,
       "compart": 0,
-      "views": 89,
+      "views": 92,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 18.75,
+      "taxa": 16.67,
       "mult": 1.0,
       "dia_semana": "dom"
     },
@@ -190,10 +190,10 @@
       "alcance": 16,
       "salvos": 1,
       "compart": 0,
-      "views": 89,
+      "views": 91,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 18.75,
+      "taxa": 16.67,
       "mult": 1.0,
       "dia_semana": "dom"
     },
@@ -216,13 +216,13 @@
       "pilar": null,
       "post": null,
       "alcance": 14,
-      "salvos": 0,
+      "salvos": 1,
       "compart": 0,
-      "views": 78,
-      "interacoes_api": 2,
-      "interacoes": 2,
-      "taxa": 12.5,
-      "mult": 0.67,
+      "views": 80,
+      "interacoes_api": 3,
+      "interacoes": 3,
+      "taxa": 16.67,
+      "mult": 1.0,
       "dia_semana": "qua"
     },
     {
@@ -243,10 +243,10 @@
       "alcance": 7,
       "salvos": 1,
       "compart": 0,
-      "views": 28,
+      "views": 29,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 18.75,
+      "taxa": 16.67,
       "mult": 1.0,
       "dia_semana": "qua"
     },
@@ -267,13 +267,13 @@
       "pilar": null,
       "post": null,
       "alcance": 11,
-      "salvos": 0,
+      "salvos": 1,
       "compart": 0,
-      "views": 26,
-      "interacoes_api": 2,
-      "interacoes": 2,
-      "taxa": 12.5,
-      "mult": 0.67,
+      "views": 27,
+      "interacoes_api": 3,
+      "interacoes": 3,
+      "taxa": 16.67,
+      "mult": 1.0,
       "dia_semana": "ter"
     },
     {
@@ -296,10 +296,10 @@
       "alcance": 5,
       "salvos": 1,
       "compart": 0,
-      "views": 15,
+      "views": 18,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 18.75,
+      "taxa": 16.67,
       "mult": 1.0,
       "dia_semana": "qui"
     },
@@ -320,13 +320,13 @@
       "pilar": null,
       "post": null,
       "alcance": 23,
-      "salvos": 0,
+      "salvos": 1,
       "compart": 0,
-      "views": 35,
-      "interacoes_api": 2,
-      "interacoes": 2,
-      "taxa": 12.5,
-      "mult": 0.67,
+      "views": 36,
+      "interacoes_api": 3,
+      "interacoes": 3,
+      "taxa": 16.67,
+      "mult": 1.0,
       "dia_semana": "dom"
     },
     {
@@ -345,13 +345,13 @@
       "pilar": null,
       "post": null,
       "alcance": 7,
-      "salvos": 0,
+      "salvos": 1,
       "compart": 0,
-      "views": 15,
-      "interacoes_api": 1,
-      "interacoes": 1,
-      "taxa": 6.25,
-      "mult": 0.33,
+      "views": 16,
+      "interacoes_api": 2,
+      "interacoes": 2,
+      "taxa": 11.11,
+      "mult": 0.67,
       "dia_semana": "sáb"
     },
     {
@@ -370,13 +370,13 @@
       "pilar": null,
       "post": null,
       "alcance": 5,
-      "salvos": 0,
+      "salvos": 1,
       "compart": 0,
-      "views": 14,
-      "interacoes_api": 1,
-      "interacoes": 1,
-      "taxa": 6.25,
-      "mult": 0.33,
+      "views": 16,
+      "interacoes_api": 2,
+      "interacoes": 2,
+      "taxa": 11.11,
+      "mult": 0.67,
       "dia_semana": "sex"
     },
     {
@@ -397,14 +397,14 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 24,
-      "salvos": 0,
+      "alcance": 25,
+      "salvos": 1,
       "compart": 0,
-      "views": 43,
-      "interacoes_api": 2,
-      "interacoes": 2,
-      "taxa": 12.5,
-      "mult": 0.67,
+      "views": 44,
+      "interacoes_api": 3,
+      "interacoes": 3,
+      "taxa": 16.67,
+      "mult": 1.0,
       "dia_semana": "ter"
     },
     {
@@ -427,13 +427,13 @@
       "pilar": null,
       "post": null,
       "alcance": 6,
-      "salvos": 0,
+      "salvos": 1,
       "compart": 0,
-      "views": 16,
-      "interacoes_api": 2,
-      "interacoes": 2,
-      "taxa": 12.5,
-      "mult": 0.67,
+      "views": 19,
+      "interacoes_api": 3,
+      "interacoes": 3,
+      "taxa": 16.67,
+      "mult": 1.0,
       "dia_semana": "ter"
     },
     {
@@ -454,135 +454,163 @@
       ],
       "pilar": "oferta",
       "post": "02-oferta-lages",
-      "alcance": 4,
-      "salvos": 0,
+      "alcance": 5,
+      "salvos": 1,
       "compart": 0,
-      "views": 8,
-      "interacoes_api": 2,
-      "interacoes": 2,
-      "taxa": 12.5,
-      "mult": 0.67,
+      "views": 15,
+      "interacoes_api": 3,
+      "interacoes": 3,
+      "taxa": 16.67,
+      "mult": 1.0,
       "dia_semana": "qua"
+    },
+    {
+      "id": "18202376929391620",
+      "data": "2026-11-19",
+      "hora": "15:09",
+      "tipo": "Reel",
+      "gancho": "Seu escritório ainda controla obra em planilha?",
+      "legenda": "Seu escritório ainda controla obra em planilha?\n\nCliente numa aba, orçamento em outra, o prazo na cabeça de alguém. Funciona até o dia em que alguém pergunta \"em que pé está aquele projeto?\" e ninguém sabe responder rápido.\n\nNo Projecta Gestão fica tudo numa tela só:\n📊 Dashboard com clientes, orçamentos e projetos ativos\n📝 Orçamento aprovado vira projeto\n✅ Cada etapa com responsável, status e prazo\n💸 Financeiro com o que entra, o que sai e o mês fechado\n🛡️ Auditoria: cada ação fica registrada, com quem fez e quando\n\nFeito para escritório técnico: topografia, engenharia e agrimensura, aqui de L",
+      "likes": 3,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/reel/Df7XlzGjaXn/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização",
+        "WhatsApp e atendimento",
+        "Oferta e proposta"
+      ],
+      "pilar": "oferta",
+      "post": "16-reel-gestao",
+      "alcance": 2,
+      "salvos": 1,
+      "compart": 0,
+      "views": 10,
+      "interacoes_api": 4,
+      "interacoes": 4,
+      "taxa": 22.22,
+      "mult": 1.33,
+      "dia_semana": "qui"
     }
   ],
   "melhores": [
     "18000727778846687",
-    "18061497545637043",
-    "18065250452213355"
+    "18202376929391620",
+    "18061497545637043"
   ],
   "piores": [
     "18174711166391970",
     "18064925792386225",
-    "18122170486535726"
+    "17939094771097507"
   ],
   "por_formato": [
     {
-      "nome": "Imagem",
-      "n": 9,
-      "media": 2.89
-    },
-    {
       "nome": "Reel",
-      "n": 5,
-      "media": 2.4
+      "n": 6,
+      "media": 3.33
     },
     {
       "nome": "Carrossel",
       "n": 3,
-      "media": 2.0
+      "media": 3.0
+    },
+    {
+      "nome": "Imagem",
+      "n": 9,
+      "media": 3.0
     }
   ],
   "por_pilar": [
     {
-      "nome": "sem",
-      "n": 16,
-      "media": 2.62
+      "nome": "oferta",
+      "n": 2,
+      "media": 3.5
     },
     {
-      "nome": "oferta",
-      "n": 1,
-      "media": 2.0
+      "nome": "sem",
+      "n": 16,
+      "media": 3.06
     }
   ],
   "por_dia": [
     {
+      "nome": "qui",
+      "n": 2,
+      "media": 3.5
+    },
+    {
       "nome": "sáb",
       "n": 2,
+      "media": 3.5
+    },
+    {
+      "nome": "qua",
+      "n": 3,
       "media": 3.0
     },
     {
-      "nome": "qui",
-      "n": 1,
+      "nome": "ter",
+      "n": 4,
+      "media": 3.0
+    },
+    {
+      "nome": "sex",
+      "n": 3,
       "media": 3.0
     },
     {
       "nome": "dom",
       "n": 4,
-      "media": 2.75
-    },
-    {
-      "nome": "sex",
-      "n": 3,
-      "media": 2.67
-    },
-    {
-      "nome": "qua",
-      "n": 3,
-      "media": 2.33
-    },
-    {
-      "nome": "ter",
-      "n": 4,
-      "media": 2.25
+      "media": 3.0
     }
   ],
   "temas_meus": [
     {
-      "nome": "Planilha e organização",
-      "n": 12,
-      "media": 2.92
-    },
-    {
-      "nome": "Sistema e gestão",
-      "n": 13,
-      "media": 2.85
+      "nome": "WhatsApp e atendimento",
+      "n": 2,
+      "media": 3.5
     },
     {
       "nome": "Oferta e proposta",
-      "n": 6,
-      "media": 2.67
+      "n": 7,
+      "media": 3.43
     },
     {
-      "nome": "Prova, case e bastidor",
-      "n": 2,
-      "media": 2.5
+      "nome": "Planilha e organização",
+      "n": 13,
+      "media": 3.31
+    },
+    {
+      "nome": "Sistema e gestão",
+      "n": 14,
+      "media": 3.29
     },
     {
       "nome": "Google e ser encontrado",
       "n": 4,
-      "media": 2.25
+      "media": 3.0
     },
     {
-      "nome": "WhatsApp e atendimento",
-      "n": 1,
-      "media": 2.0
-    },
-    {
-      "nome": "Outros",
+      "nome": "Prova, case e bastidor",
       "n": 2,
-      "media": 2.0
+      "media": 3.0
     },
     {
       "nome": "Site e landing page",
       "n": 4,
-      "media": 1.75
+      "media": 2.75
+    },
+    {
+      "nome": "Outros",
+      "n": 2,
+      "media": 2.5
     }
   ],
   "referencias": [
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Modernizar sem parar a operação: a disciplina mais rara em projeto técnico de longo prazo.",
@@ -602,7 +630,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Garantia de Qualidade: a camada final antes da entrega ao cliente.",
@@ -623,7 +651,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Por trás de bancos e corretoras: doze anos atendendo operações que não podem parar.",
@@ -645,7 +673,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Em 2026, a IA está em quase todo lugar. A experiência continua escassa.",
@@ -667,7 +695,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Quatrocentos não é número de portfólio. É volume de operação. Ecossistema, no vocabulário",
@@ -690,7 +718,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2025-12-25",
       "tipo": "Carrossel",
       "gancho": "O Brasil está entre os países que mais sofrem com ciberataques e vazamentos de dados.",
@@ -710,7 +738,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-11",
       "tipo": "Imagem",
       "gancho": "A Leven não contrata pra preencher vaga. Contrata pra manter um padrão que levou anos pra construir.",
@@ -730,7 +758,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-09",
       "tipo": "Imagem",
       "gancho": "Antes da proposta, a análise.",
@@ -752,7 +780,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2025-12-24",
       "tipo": "Carrossel",
       "gancho": "Nem sempre a empresa precisa “começar do zero”. Muitas vezes, o que falta é atualizar a base tecnológica para que o negócio volte a crescer com força, ou saia d",
@@ -776,7 +804,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Sistemas caem onde a arquitetura não previu.",
@@ -796,7 +824,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-09",
       "tipo": "Imagem",
       "gancho": "Estruturação técnica e cultura de alta performance.",
@@ -816,7 +844,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-11",
       "tipo": "Imagem",
       "gancho": "A maioria das empresas de tecnologia escolhe projetos confortáveis. A Leven escolheu ajudar todos.",
@@ -899,7 +927,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-03-28",
       "tipo": "Imagem",
       "gancho": "Alta performance não é slogan na Leven. É como cada projeto começa, se desenvolve e chega na mão do cliente.",
@@ -921,7 +949,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2025-12-24",
       "tipo": "Imagem",
       "gancho": "Sabia que o principal fator de alavanca de muitas empresas hoje é o pilar tecnológico que sustenta operação, vendas e marketing?",
@@ -945,7 +973,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2025-12-24",
       "tipo": "Imagem",
       "gancho": "Muitas empresas têm ideias poderosas para crescer, inovar e se diferenciar no mercado, mas esbarram na mesma barreira: falta de estrutura tecnológica para tirar",
@@ -1027,7 +1055,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-11",
       "tipo": "Imagem",
       "gancho": "Alta performance não é slogan na Leven. É como cada projeto começa, se desenvolve e chega na mão do cliente.",
@@ -1049,7 +1077,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2025-12-29",
       "tipo": "Imagem",
       "gancho": "1. Segurança de dados",
@@ -1071,7 +1099,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2025-12-24",
       "tipo": "Imagem",
       "gancho": "Sabia que, hoje, a forma como sua empresa aparece no digital impacta diretamente na forma como ela é percebida pelo mercado?",
@@ -1093,7 +1121,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-03-17",
       "tipo": "Imagem",
       "gancho": "Uma software house com cultura de alta performance abre novos horizontes pra qualquer operação.",
@@ -1176,7 +1204,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2025-12-29",
       "tipo": "Imagem",
       "gancho": "Você deseja um braço tecnológico para cuidar do pilar de tecnologia da sua empresa? Vai ser um prazer te atender.",
@@ -1198,7 +1226,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-09-29",
       "tipo": "Carrossel",
       "gancho": "Quem vive a operação sabe onde o processo emperra.",
@@ -1218,7 +1246,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-09-22",
       "tipo": "Reel",
       "gancho": "Toda empresa que decide construir um sistema chega à mesma pergunta: qual é a melhor tecnologia para desenvolvê-lo.",
@@ -1239,7 +1267,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-03-17",
       "tipo": "Imagem",
       "gancho": "Performance de verdade começa no código.",
@@ -1255,6 +1283,27 @@
         "Sistema e gestão"
       ],
       "relevancia": 2
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-17",
+      "tipo": "Carrossel",
+      "gancho": "Contratar desenvolvedor ou terceirizar? Depende do que está faltando.",
+      "legenda": "Contratar desenvolvedor ou terceirizar? Depende do que está faltando.\n\nSe a função é permanente e central para o produto, faz sentido ter a pessoa no quadro. Se a necessidade é de capacidade agora, ou de uma especialidade que o time não tem, um processo seletivo pode levar mais tempo do que a prioridade permite.\n\nÉ para isso que existe a alocação: um profissional da Korvena trabalhando dentro da sua operação, nos seus ritos e nas suas ferramentas, pelo período e com a dedicação combinados. O perfil é escolhido pela frente, e a Korvena acompanha o profissional, ajusta a composição quando o perf",
+      "likes": 5,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 5,
+      "mediana": 5.5,
+      "mult": 0.91,
+      "link": "https://www.instagram.com/p/Df1_PTPFPGT/",
+      "temas": [
+        "Sistema e gestão",
+        "IA e automação"
+      ],
+      "relevancia": 3
     },
     {
       "fonte": "instagram",
@@ -1280,7 +1329,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-09",
       "tipo": "Imagem",
       "gancho": "Nove em cada dez clientes continuam.",
@@ -1300,7 +1349,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-03-29",
       "tipo": "Imagem",
       "gancho": "Sistemas, apps e infraestrutura. Três frentes que a Leven domina com o mesmo nível de engenharia.",
@@ -1320,7 +1369,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-03-29",
       "tipo": "Imagem",
       "gancho": "Seu próximo sistema começa aqui.",
@@ -1343,7 +1392,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-03-20",
       "tipo": "Imagem",
       "gancho": "Tudo o que a sua operação precisa em um só lugar.",
@@ -1365,27 +1414,6 @@
       "fonte": "instagram",
       "conta": "korvena.tech",
       "seguidores": 40,
-      "data": "2026-11-17",
-      "tipo": "Carrossel",
-      "gancho": "Contratar desenvolvedor ou terceirizar? Depende do que está faltando.",
-      "legenda": "Contratar desenvolvedor ou terceirizar? Depende do que está faltando.\n\nSe a função é permanente e central para o produto, faz sentido ter a pessoa no quadro. Se a necessidade é de capacidade agora, ou de uma especialidade que o time não tem, um processo seletivo pode levar mais tempo do que a prioridade permite.\n\nÉ para isso que existe a alocação: um profissional da Korvena trabalhando dentro da sua operação, nos seus ritos e nas suas ferramentas, pelo período e com a dedicação combinados. O perfil é escolhido pela frente, e a Korvena acompanha o profissional, ajusta a composição quando o perf",
-      "likes": 4,
-      "comentarios": 0,
-      "views": null,
-      "interacoes": 4,
-      "mediana": 5.5,
-      "mult": 0.73,
-      "link": "https://www.instagram.com/p/Df1_PTPFPGT/",
-      "temas": [
-        "Sistema e gestão",
-        "IA e automação"
-      ],
-      "relevancia": 3
-    },
-    {
-      "fonte": "instagram",
-      "conta": "korvena.tech",
-      "seguidores": 40,
       "data": "2026-11-13",
       "tipo": "Carrossel",
       "gancho": "Escopo fechado e escopo definido parecem a mesma coisa, mas não são.",
@@ -1402,6 +1430,27 @@
         "IA e automação"
       ],
       "relevancia": 3
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-11",
+      "tipo": "Carrossel",
+      "gancho": "Por que pagar por uma etapa que ainda não entrega o produto?",
+      "legenda": "Por que pagar por uma etapa que ainda não entrega o produto?\n\nPorque é nela que o projeto deixa de ser ideia e vira escopo. No Discovery, a gente entende o negócio, os usuários e o problema, define e prioriza as funcionalidades com você e monta o protótipo.\n\nVocê sai com o protótipo validado e o escopo fechado. O que não cabe nessa versão fica registrado para a próxima, em vez de virar surpresa no meio do desenvolvimento.\n\nO valor do Discovery é abatido do desenvolvimento contratado com a Korvena. E os documentos ficam com você, mesmo que o projeto não siga.\n\nTem um produto digital para tirar ",
+      "likes": 4,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 4,
+      "mediana": 5.5,
+      "mult": 0.73,
+      "link": "https://www.instagram.com/p/DfmidqvlNzW/",
+      "temas": [
+        "Sistema e gestão",
+        "IA e automação"
+      ],
+      "relevancia": 2
     },
     {
       "fonte": "instagram",
@@ -1468,7 +1517,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-07-24",
       "tipo": "Imagem",
       "gancho": "A diferença está na engenharia.",
@@ -1489,7 +1538,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-03-28",
       "tipo": "Imagem",
       "gancho": "A maioria das empresas de tecnologia escolhe projetos confortáveis. A Leven escolheu ajudar todos.",
@@ -1511,7 +1560,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-03-22",
       "tipo": "Imagem",
       "gancho": "Sair de 2,5 para 4,9 estrelas nas lojas de aplicativos não é sobre “deixar o app mais bonito”. É sobre resolver débito técnico e otimizar a arquitetura de inter",
@@ -1533,7 +1582,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-05-08",
       "tipo": "Reel",
       "gancho": "“Construímos tecnologia para durar.”",
@@ -1553,7 +1602,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-03-29",
       "tipo": "Imagem",
       "gancho": "Desse endereço saem, todos os dias, os projetos que movem a operação de cada cliente que confia na Leven.",
@@ -1569,27 +1618,6 @@
         "Sistema e gestão"
       ],
       "relevancia": 1
-    },
-    {
-      "fonte": "instagram",
-      "conta": "korvena.tech",
-      "seguidores": 40,
-      "data": "2026-11-11",
-      "tipo": "Carrossel",
-      "gancho": "Por que pagar por uma etapa que ainda não entrega o produto?",
-      "legenda": "Por que pagar por uma etapa que ainda não entrega o produto?\n\nPorque é nela que o projeto deixa de ser ideia e vira escopo. No Discovery, a gente entende o negócio, os usuários e o problema, define e prioriza as funcionalidades com você e monta o protótipo.\n\nVocê sai com o protótipo validado e o escopo fechado. O que não cabe nessa versão fica registrado para a próxima, em vez de virar surpresa no meio do desenvolvimento.\n\nO valor do Discovery é abatido do desenvolvimento contratado com a Korvena. E os documentos ficam com você, mesmo que o projeto não siga.\n\nTem um produto digital para tirar ",
-      "likes": 3,
-      "comentarios": 0,
-      "views": null,
-      "interacoes": 3,
-      "mediana": 5.5,
-      "mult": 0.55,
-      "link": "https://www.instagram.com/p/DfmidqvlNzW/",
-      "temas": [
-        "Sistema e gestão",
-        "IA e automação"
-      ],
-      "relevancia": 2
     },
     {
       "fonte": "instagram",
@@ -1635,7 +1663,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-08-10",
       "tipo": "Carrossel",
       "gancho": "Por que o sistema quebra justo no melhor dia?",
@@ -1658,7 +1686,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-08-12",
       "tipo": "Carrossel",
       "gancho": "O que a equipe faz quando o sistema não cobre a exceção?",
@@ -1680,7 +1708,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2025-12-23",
       "tipo": "Imagem",
       "gancho": "Sua empresa não precisa estar sozinha na parte de tecnologia. Muitas operações crescem em vendas e demanda, mas continuam rodando em sistemas limitados, process",
@@ -1723,7 +1751,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-10-09",
       "tipo": "Reel",
       "gancho": "Onde ficam os dados da sua empresa? Pouca gente sabe responder de cabeça, e é normal: enquanto tudo funciona, o servidor é invisível.",
@@ -1745,7 +1773,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "data": "2026-10-01",
       "tipo": "Carrossel",
       "gancho": "Nenhuma empresa escolhe o dia em que o sistema para.",
@@ -1778,12 +1806,12 @@
     {
       "nome": "Sistema e gestão",
       "n": 52,
-      "media": 1.44
+      "media": 1.45
     },
     {
       "nome": "IA e automação",
       "n": 17,
-      "media": 1.3
+      "media": 1.32
     },
     {
       "nome": "Planilha e organização",
@@ -1815,7 +1843,7 @@
     {
       "nome": "Carrossel",
       "n": 24,
-      "media": 1.07
+      "media": 1.08
     },
     {
       "nome": "Reel",
@@ -1937,6 +1965,13 @@
       "link": "https://www.instagram.com/reel/DSNoorbDsTa/"
     },
     {
+      "texto": "Seu escritório ainda controla obra em planilha?",
+      "mult": 1.33,
+      "conta": "projectatech",
+      "fonte": "seu",
+      "link": "https://www.instagram.com/reel/Df7XlzGjaXn/"
+    },
+    {
       "texto": "Produtividade começa com organização.",
       "mult": 1.33,
       "conta": "projectatech",
@@ -1944,31 +1979,24 @@
       "link": "https://www.instagram.com/p/DSKus0HDolV/"
     },
     {
-      "texto": "✨ Bem-vindo, 2026! ✨",
+      "texto": "Tem empresa em Lages e ainda não tem site? 👀",
       "mult": 1.0,
       "conta": "projectatech",
       "fonte": "seu",
-      "link": "https://www.instagram.com/p/DS87nZkjkk4/"
+      "link": "https://www.instagram.com/p/Df4YAURlSTk/"
     },
     {
-      "texto": "🎄 Feliz Natal!",
+      "texto": "Seu cliente procura você no Google. O que ele encontra? 👀",
       "mult": 1.0,
       "conta": "projectatech",
       "fonte": "seu",
-      "link": "https://www.instagram.com/p/DSqKlcWjkpJ/"
-    },
-    {
-      "texto": "✅ Quando a gestão é clara, o trabalho flui.",
-      "mult": 1.0,
-      "conta": "projectatech",
-      "fonte": "seu",
-      "link": "https://www.instagram.com/p/DSQgKl_jt5W/"
+      "link": "https://www.instagram.com/reel/Df2vHm-tlOi/"
     }
   ],
   "contas": [
     {
       "conta": "leventech",
-      "seguidores": 10482,
+      "seguidores": 10478,
       "posts": 40,
       "relevantes": 37,
       "mediana": 58.5
