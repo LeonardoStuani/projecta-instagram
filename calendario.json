@@ -115,10 +115,13 @@
     "legenda": "media/16-reel-gestao/legenda.txt",
     "data": "2026-12-01",
     "hora": "18:00",
-    "status": "pendente",
+    "status": "publicado",
     "pilar": "oferta",
     "observacao": "Voz, legenda, batida e efeitos já estão no vídeo: não troque o áudio por música do app. Telas reais da base de demonstração, com nomes trocados. A troca APROVADO→PROJETO é animação ilustrativa e o rodapé avisa.",
-    "voz": "pt-BR-AntonioNeural"
+    "voz": "pt-BR-AntonioNeural",
+    "media_id": "18202376929391620",
+    "link": "https://www.instagram.com/reel/Df7XlzGjaXn/",
+    "publicado_em": "2026-11-19 12:09"
   },
   {
     "id": "10-reel-site-novo",
