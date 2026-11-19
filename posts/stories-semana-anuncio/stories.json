@@ -47,7 +47,7 @@
       "data": "2026-11-19",
       "titulo": "O cliente procura no Google",
       "pasta": "dia-2-google",
-      "postado": false,
+      "postado": true,
       "depois": "Para quem votou \"Não sei\": a mesma mensagem do dia 1.",
       "quadros": [
         {
