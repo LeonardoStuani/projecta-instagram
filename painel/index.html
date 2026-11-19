@@ -34,6 +34,9 @@ aside{background:var(--ink);color:var(--paper);padding:24px 18px;display:flex;fl
 .nav:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .nav .n{font-size:12px;background:var(--accent);color:var(--ink);border-radius:99px;padding:0 8px;font-weight:600}
 .side-foot{margin-top:auto;font-size:13px;color:var(--fog);padding:0 8px}
+.nav-lista{display:flex;flex-direction:column;gap:6px}
+.menu-btn{display:none}
+code{overflow-wrap:anywhere}
 main{padding:32px 40px 80px;min-width:0}
 .top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:28px}
 .top h1{font-size:44px}
@@ -183,11 +186,37 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
 
 @media (max-width:1100px){.g3{grid-template-columns:1fr 1fr}.weeks{grid-template-columns:1fr 1fr}.feed-wrap{grid-template-columns:1fr}}
 @media (max-width:860px){
-  .app{grid-template-columns:1fr}
-  aside{position:sticky;top:0;z-index:20;height:auto;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;padding:10px 12px;gap:2px;scrollbar-width:none}
-  aside::-webkit-scrollbar{display:none}
-  .brand{flex:none;margin:0 10px 0 4px;align-self:center}.nav{flex:none;padding:8px 11px}.side-foot{display:none}
-  main{padding:20px 16px 60px}.top h1{font-size:32px}
+  body{overflow-x:clip}
+  .app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr}
+  /* Celular: barra fixa com a marca e um botão Menu que abre todas as seções */
+  aside{position:sticky;top:0;z-index:30;height:auto;flex-direction:row;align-items:center;justify-content:space-between;padding:10px 16px;gap:12px}
+  .brand{margin:0;font-size:19px}
+  .menu-btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border-radius:99px;background:#232220;color:var(--paper);font-weight:600;font-size:15px}
+  .menu-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .menu-dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .menu-ic{position:relative;width:16px;height:2px;background:currentColor;border-radius:2px;transition:background-color .15s}
+  .menu-ic::before,.menu-ic::after{content:"";position:absolute;left:0;width:16px;height:2px;background:currentColor;border-radius:2px;transition:transform .18s cubic-bezier(.23,1,.32,1)}
+  .menu-ic::before{transform:translateY(-5px)}.menu-ic::after{transform:translateY(5px)}
+  aside.aberto .menu-ic{background:transparent}
+  aside.aberto .menu-ic::before{transform:rotate(45deg)}aside.aberto .menu-ic::after{transform:rotate(-45deg)}
+  .nav-lista{display:none;position:absolute;left:0;right:0;top:100%;background:var(--ink);padding:6px 12px 16px;
+    grid-template-columns:1fr 1fr;gap:6px;box-shadow:0 18px 30px -12px #0008;border-top:1px solid #2a2927}
+  aside.aberto .nav-lista{display:grid}
+  .nav{padding:14px 14px;font-size:16px;background:#1b1a18;color:var(--paper)}
+  .side-foot{display:none}
+  main{padding:20px 16px 60px}.top h1{font-size:32px}.top{margin-bottom:20px}
+  .inline input{min-width:0;flex:1 1 180px}
+  .step{grid-template-columns:34px minmax(0,1fr);gap:12px;padding:16px}.step .ic{width:34px;height:34px}
+  .step a,.card a{overflow-wrap:anywhere}
+  .card{padding:18px}
+  .card[style*="grid-template-columns:220px"]{grid-template-columns:1fr!important}
+  .next{grid-template-columns:96px 1fr;gap:14px}.next img{width:96px}
+  .big{font-size:44px}
+  .cm-post{grid-template-columns:64px 1fr;gap:12px;padding:12px}.cm-post img{width:64px}
+  .weeks{grid-template-columns:1fr}
+  .hb .r{grid-template-columns:minmax(80px,34%) 1fr auto}
+  .kpis{grid-template-columns:1fr 1fr}
+  .frames{grid-auto-columns:150px}.frame img,.frame .rec{width:150px}
   .g3,.g2{grid-template-columns:1fr}.g3>*,.g2>*{grid-column:auto!important}
   .dlg{grid-template-columns:1fr}.dlg .left{padding:16px}
   .cal .wd{font-size:10px;padding:6px 4px}.day{min-height:80px;padding:3px}.chip img{display:none}.chip{font-size:10px}
@@ -242,6 +271,8 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
 <div class="app">
   <aside>
     <div class="brand">projecta<span>.</span>insta</div>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav-lista"><span id="menu-atual">Hoje</span><i class="menu-dot" id="menu-dot" hidden></i><span class="menu-ic" aria-hidden="true"></span><span class="sr">Abrir menu</span></button>
+    <nav class="nav-lista" id="nav-lista" aria-label="Seções do painel">
     <button class="nav" data-view="hoje" aria-current="page">Hoje</button>
     <button class="nav" data-view="calendario">Calendário</button>
     <button class="nav" data-view="stories">Stories <span class="n" id="st-n" hidden></span></button>
@@ -249,6 +280,7 @@ code{background:var(--stone);border-radius:6px;padding:1px 6px;font-size:13px}
     <button class="nav" data-view="feed">Prévia do feed</button>
     <button class="nav" data-view="comentarios">Comentários</button>
     <button class="nav" data-view="config">Conexões <span class="n" id="cfg-n" hidden></span></button>
+    </nav>
     <div class="side-foot">Nada vai ao ar sem a sua aprovação.<br>Rodando só neste computador.</div>
   </aside>
   <main id="conteudo" tabindex="-1">
@@ -334,9 +366,11 @@ function render() {
   document.querySelectorAll(".nav").forEach(b => { if (b.dataset.view === view) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
   const titles = {hoje:"Hoje", calendario:"Calendário", stories:"Stories", radar:"Radar do Instagram", feed:"Prévia do feed", comentarios:"Comentários", config:"Conexões"};
   $("#titulo").textContent = titles[view];
+  $("#menu-atual").textContent = $(`.nav[data-view="${view}"]`).firstChild.textContent.trim();
   ({hoje:vHoje, calendario:vCal, stories:vStories, radar:vRadar, feed:vFeed, comentarios:vComent, config:vConfig})[view]();
   const pend = storyDias().filter(x => x.st === "hoje" || x.st === "atrasado").length;
   const n = $("#st-n"); n.hidden = !pend; n.textContent = pend;
+  $("#menu-dot").hidden = $("#st-n").hidden && $("#cfg-n").hidden;
 }
 
 /* ---------- STORIES ---------- */
@@ -733,14 +767,16 @@ function vFeed() {
 /* ---------- COMENTÁRIOS ---------- */
 // A busca leva alguns segundos. Se você trocar de aba antes de terminar, a resposta é descartada
 // (antes ela escrevia os comentários por cima da aba nova). Guarda 2 min em memória para não buscar a cada clique.
-let comentSeq = 0, comentCache = null;
+// Uma busca em andamento é reaproveitada: se o painel redesenhar no meio, não recomeça do zero.
+let comentSeq = 0, comentCache = null, comentBusca = null;
 async function vComent(forcar) {
   if (!S.token.configurado) { $("#view").innerHTML = `<div class="empty">Conecte o Instagram em <b>Conexões</b> para ver os comentários.<div class="inline" style="justify-content:center"><button class="btn" onclick="go('config')">Ir para Conexões</button></div></div>`; return; }
   const meu = ++comentSeq;
   const fresco = !forcar && comentCache && Date.now() - comentCache.t < 120000;
   if (!fresco) $("#view").innerHTML = `<p class="muted">Carregando comentários dos 8 posts mais recentes…</p>`;
   try {
-    const r = fresco ? comentCache.r : await api("/api/comentarios");
+    if (!fresco && (forcar || !comentBusca)) comentBusca = api("/api/comentarios").finally(() => { comentBusca = null; });
+    const r = fresco ? comentCache.r : await comentBusca;
     if (meu !== comentSeq || view !== "comentarios") return;
     comentCache = {t: Date.now(), r};
     const itens = r.itens.filter(i => i.comentarios.length);
@@ -831,7 +867,13 @@ function celularCard() {
 }
 
 function go(v) { view = v; history.replaceState(null, "", "#" + v); render(); $("#conteudo").focus({preventScroll:true}); window.scrollTo(0,0); }
-document.querySelectorAll(".nav").forEach(b => b.onclick = () => go(b.dataset.view));
+document.querySelectorAll(".nav").forEach(b => b.onclick = () => { menu(false); go(b.dataset.view); });
+// Menu do celular: abre/fecha a lista de seções; fecha ao escolher, com Esc ou tocando fora.
+const aside = $("aside");
+function menu(abrir) { aside.classList.toggle("aberto", abrir); $("#menu-btn").setAttribute("aria-expanded", String(abrir)); }
+$("#menu-btn").onclick = () => menu(!aside.classList.contains("aberto"));
+document.addEventListener("keydown", e => { if (e.key === "Escape" && aside.classList.contains("aberto")) { menu(false); $("#menu-btn").focus(); } });
+document.addEventListener("click", e => { if (aside.classList.contains("aberto") && !aside.contains(e.target)) menu(false); });
 const dlg = $("#dlg");
 dlg.addEventListener("close", () => render());
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });

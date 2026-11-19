@@ -462,10 +462,15 @@ def comentarios(_=None):
     ig.load_env()
     uid = ig.user_id()
     media = ig.api("GET", f"{uid}/media", {"fields": "id,caption,permalink,timestamp,media_url,thumbnail_url", "limit": 8}).get("data", [])
-    out = []
-    for m in media:
+    # Busca os comentários dos 8 posts ao mesmo tempo (antes era um por vez, e o celular ficava esperando).
+    from concurrent.futures import ThreadPoolExecutor
+
+    def busca(m):
         cs = ig.api("GET", f"{m['id']}/comments", {"fields": "id,text,username,timestamp,replies{id,text,username}"}).get("data", [])
-        out.append({"post": m, "comentarios": cs})
+        return {"post": m, "comentarios": cs}
+
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        out = list(ex.map(busca, media))
     return {"ok": True, "itens": out}
 
 
