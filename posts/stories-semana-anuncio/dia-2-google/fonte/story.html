@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Story dia 2 · gravado</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../scripts/video/base.css">
+<style>
+/* Story do dia 2, quadro 1: vídeo gravado pelo Leo (quadros/NNNN.jpg, já recortado e acelerado) no padrão dos stories animados. */
+.frase{position:absolute;left:80px;right:80px;top:250px;font-family:var(--display);font-weight:700;font-size:88px;line-height:1;letter-spacing:-.045em;z-index:4}
+.frase.b{opacity:0}
+.cartao{position:absolute;left:60px;top:620px;width:960px;height:718px;border-radius:40px;overflow:hidden;background:#222;
+  box-shadow:0 60px 120px -40px #000,0 0 0 2px #ffffff14;z-index:2}
+.cartao img{width:100%;height:100%;display:block;object-fit:cover;transform-origin:50% 40%}
+.rec{position:absolute;left:28px;top:26px;display:flex;align-items:center;gap:10px;padding:10px 18px;border-radius:99px;background:#111111cc;
+  font:600 22px var(--sans);letter-spacing:.06em;color:#fff;z-index:3}
+.rec i{width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.busca{position:absolute;left:150px;top:1290px;width:780px;height:104px;border-radius:52px;background:#fff;color:#202124;z-index:5;
+  display:flex;align-items:center;gap:22px;padding:0 40px;box-shadow:0 30px 60px -20px #000c;font:500 40px var(--sans)}
+.busca svg{flex:none}
+.busca .car{display:inline-block;width:3px;height:44px;background:#1a73e8;margin-left:2px;vertical-align:middle}
+.passos{position:absolute;left:60px;right:60px;top:1480px;display:flex;gap:18px;z-index:4}
+.passo{flex:1;border-radius:26px;padding:22px 24px;background:#1d1c1a;border:2px solid #2e2d2a;color:var(--muted);font:600 30px/1.15 var(--sans)}
+.passo b{display:block;font:700 26px var(--display);letter-spacing:.02em;margin-bottom:6px;color:#5b5852}
+.passo.on{background:#2a1a12;border-color:var(--accent);color:var(--paper)}
+.passo.on b{color:var(--accent)}
+.arroba{position:absolute;left:0;right:0;bottom:120px;text-align:center;font-size:30px;color:var(--muted);z-index:4}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:3;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="palco">
+  <div class="mundo" id="mundo">
+    <div class="cartao" id="cartao"><img id="v" alt=""><div class="rec"><i></i>GRAVADO AGORA</div><div class="flash" id="flash"></div></div>
+  </div>
+  <div class="marca">projecta<i>.</i>tech</div>
+  <p class="frase" id="f1">Todo mundo faz isso *antes de contratar.*</p>
+  <p class="frase b" id="f2">Em segundos ele decide: *fica ou vai embora.*</p>
+  <div class="busca" id="busca"><svg width="40" height="40" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="#5f6368" stroke-width="2.4"/><path d="M15 15l6 6" stroke="#5f6368" stroke-width="2.4" stroke-linecap="round"/></svg><span id="txt"></span><span class="car" id="car"></span></div>
+  <div class="passos">
+    <div class="passo" id="p1"><b>01</b>Pesquisa no Google</div>
+    <div class="passo" id="p2"><b>02</b>Clica no primeiro</div>
+    <div class="passo" id="p3"><b>03</b>Decide em segundos</div>
+  </div>
+  <div class="arroba">@projectatech</div>
+  <div class="grao"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+window.palavras = (el) => {
+  el.innerHTML = el.textContent.split(/(\*[^*]+\*)/).map((p) => /^\*.*\*$/.test(p)
+    ? `<em>${p.slice(1, -1).split(" ").map((w) => `<span class="w">${w}</span>`).join(" ")}</em>`
+    : p.split(" ").filter(Boolean).map((w) => `<span class="w">${w}</span>`).join(" ")).join(" ");
+  return el.querySelectorAll(".w");
+};
+const N = 419, FPS = 30;  // quadros do vídeo (13,97 s)
+const BUSCA = "projecta tech lages";
+// Cortes do vídeo acelerado: digitação | resultados e clique | site abrindo | rolagem
+const CORTES = [0, 3.4, 6.47, 10.17];
+(async () => {
+  const q = new URLSearchParams(location.search);
+  if (document.fonts) await document.fonts.ready;
+  const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+  const w1 = palavras(document.getElementById("f1")), w2 = palavras(document.getElementById("f2"));
+  tl.fromTo(w1, { y: 80, opacity: 0, rotate: 3 }, { y: 0, opacity: 1, rotate: 0, duration: .45, stagger: .06 }, .1)
+    .fromTo("#cartao", { y: 160, opacity: 0, scale: .92 }, { y: 0, opacity: 1, scale: 1, duration: .8, ease: "back.out(1.3)" }, .15)
+    .fromTo("#busca", { y: 60, opacity: 0, scale: .9 }, { y: 0, opacity: 1, scale: 1, duration: .5, ease: "back.out(1.6)" }, .5)
+    .fromTo(".passo", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: .45, stagger: .08 }, .7)
+    .set("#p1", { className: "passo on" }, .9)
+    .to({ n: 0 }, { n: BUSCA.length, duration: 2.3, ease: "none", onUpdate() { document.getElementById("txt").textContent = BUSCA.slice(0, Math.round(this.targets()[0].n)); } }, .9)
+    .to("#car", { opacity: 0, duration: .01, repeat: 9, yoyo: true, repeatDelay: .25 }, 3.3)
+    // resultados: a busca "aperta Enter" e o passo 2 acende
+    .to("#busca", { scale: .96, duration: .08, yoyo: true, repeat: 1 }, 3.3)
+    .set("#p1", { className: "passo" }, 3.4).set("#p2", { className: "passo on" }, 3.4)
+    .to("#busca", { y: 40, opacity: 0, scale: .9, duration: .4, ease: "power2.in" }, 6.0)
+    // site abre: flash curto, passo 3 e troca da frase
+    .fromTo("#flash", { opacity: 0 }, { opacity: .55, duration: .06, yoyo: true, repeat: 1, immediateRender: false }, 6.42)
+    .set("#p2", { className: "passo" }, 6.47).set("#p3", { className: "passo on" }, 6.47)
+    .to(w1, { y: -60, opacity: 0, duration: .3, stagger: .03, ease: "power2.in" }, 6.75)
+    .fromTo(w2, { y: 80, opacity: 0, rotate: 3 }, { y: 0, opacity: 1, rotate: 0, duration: .45, stagger: .06, immediateRender: false }, 7.05)
+    .set("#f2", { opacity: 1 }, 7.05)
+    .to("#cartao", { scale: 1.03, duration: .5, yoyo: true, repeat: 1, ease: "sine.inOut" }, 12.9)
+    .fromTo("#mundo", { scale: 1.04 }, { scale: 1, duration: 14.6, ease: "sine.out" }, 0)
+    .to({}, { duration: .01 }, 14.59);
+  // zoom lento dentro de cada trecho do vídeo (sensação de câmera)
+  CORTES.forEach((c, i) => tl.fromTo("#v", { scale: 1 }, { scale: 1.07, duration: (CORTES[i + 1] || 14.6) - c, ease: "none", immediateRender: i === 0 }, c));
+  window.DUR = 14.6;
+  const img = document.getElementById("v");
+  const src = (t) => `quadros/${String(Math.min(N, Math.floor(t * FPS) + 1)).padStart(4, "0")}.jpg`;
+  window.render = async (t) => { tl.seek(t, false); img.src = src(t); await img.decode().catch(() => {}); };
+  if (!q.has("export")) {
+    let t0 = performance.now();
+    const loop = () => { const t = ((performance.now() - t0) / 1000) % window.DUR; tl.seek(t, false); img.src = src(t); requestAnimationFrame(loop); };
+    loop();
+  } else { img.src = src(0); await img.decode().catch(() => {}); }
+  window.READY = true;
+})();
+</script>
+</body>
+</html>

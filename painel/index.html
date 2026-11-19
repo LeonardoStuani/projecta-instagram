@@ -398,7 +398,7 @@ function vStories() {
       ${q.img ? `<a href="${file(q.img)}" target="_blank" rel="noopener" title="Abrir em tamanho real"><img src="${file(q.img)}" alt="Story ${d.n}, quadro ${q.n}" loading="lazy"></a>
         <a class="btn ghost sm" href="${file(q.img)}" download="story-dia${d.n}-${q.n}.png">Baixar</a>`
       : q.video ? `<video class="vid" src="${file(q.video)}" muted loop playsinline autoplay preload="metadata" aria-label="Story ${d.n}, quadro ${q.n} (vídeo animado)"></video>
-        <a class="btn ghost sm" href="${file(q.video)}" download="story-dia${d.n}-${q.n}.mp4">Baixar vídeo</a>`
+        <a class="btn ghost sm" href="${file(q.video)}" download="story-dia${d.n}-${q.n}.mp4">Baixar vídeo</a>${q.voz ? `<span class="muted" style="font-size:12px;display:block;margin-top:4px">🎙️ Com narração: ligue o som</span>` : ""}`
       : `<div class="rec"><b>🎥 Você grava</b>${esc(q.texto)}</div>`}
       ${q.sobre ? `<p class="sobre"><b>O que é</b>${esc(q.sobre)}</p>` : ""}
       ${q.adesivo ? `<span class="ad">${esc(q.adesivo)}</span>` : ""}

@@ -1,0 +1,18 @@
+{
+  "voz": "pt-BR-AntonioNeural",
+  "bpm": 112,
+  "drop": 0.0,
+  "fim": 14.6,
+  "corte_batida": 13.2,
+  "falas": [
+    { "t": 0.25, "texto": "Antes de contratar, todo mundo faz isso." },
+    { "t": 3.5, "texto": "Pesquisa no Google, e clica no primeiro que aparece." },
+    { "t": 7.0, "texto": "Aí, em poucos segundos, decide: fica no seu site, ou chama o concorrente." }
+  ],
+  "sfx": [
+    { "t": 6.3, "tipo": "clique", "g": 0.7 },
+    { "t": 6.5, "tipo": "whoosh", "g": 0.45 },
+    { "t": 10.2, "tipo": "whoosh", "g": 0.35 },
+    { "t": 13.3, "tipo": "ding", "g": 0.35 }
+  ]
+}

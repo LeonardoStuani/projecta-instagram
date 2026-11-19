@@ -54,7 +54,10 @@
           "n": 1,
           "tipo": "gravar",
           "texto": "Só a mão digitando no Google do celular \"[ramo] em Lages\". Texto por cima: \"Todo mundo faz isso antes de contratar.\"",
-          "adesivo": "Localização: Lages, SC"
+          "adesivo": "Localização: Lages, SC",
+          "video": "posts/stories-semana-anuncio/dia-2-q1.mp4",
+          "gravado": "Vídeo do Leo (notebook, busca \"projecta tech lages\"), editado em posts/stories-semana-anuncio/dia-2-google/fonte/story.html",
+          "voz": "pt-BR-AntonioNeural"
         },
         {
           "n": 2,
