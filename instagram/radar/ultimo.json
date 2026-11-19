@@ -1,6 +1,6 @@
 {
   "data": "2026-11-18",
-  "gerado_em": "2026-11-18 16:05",
+  "gerado_em": "2026-11-18 21:56",
   "conta": {
     "username": "projectatech",
     "seguidores": 16,
@@ -164,7 +164,7 @@
       "alcance": 14,
       "salvos": 1,
       "compart": 0,
-      "views": 88,
+      "views": 89,
       "interacoes_api": 3,
       "interacoes": 3,
       "taxa": 18.75,
@@ -190,7 +190,7 @@
       "alcance": 16,
       "salvos": 1,
       "compart": 0,
-      "views": 88,
+      "views": 89,
       "interacoes_api": 3,
       "interacoes": 3,
       "taxa": 18.75,
@@ -218,7 +218,7 @@
       "alcance": 14,
       "salvos": 0,
       "compart": 0,
-      "views": 77,
+      "views": 78,
       "interacoes_api": 2,
       "interacoes": 2,
       "taxa": 12.5,
@@ -397,10 +397,10 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 23,
+      "alcance": 24,
       "salvos": 0,
       "compart": 0,
-      "views": 42,
+      "views": 43,
       "interacoes_api": 2,
       "interacoes": 2,
       "taxa": 12.5,
@@ -454,10 +454,10 @@
       ],
       "pilar": "oferta",
       "post": "02-oferta-lages",
-      "alcance": 3,
+      "alcance": 4,
       "salvos": 0,
       "compart": 0,
-      "views": 6,
+      "views": 8,
       "interacoes_api": 2,
       "interacoes": 2,
       "taxa": 12.5,
@@ -582,7 +582,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Modernizar sem parar a operação: a disciplina mais rara em projeto técnico de longo prazo.",
@@ -602,7 +602,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Garantia de Qualidade: a camada final antes da entrega ao cliente.",
@@ -623,7 +623,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Por trás de bancos e corretoras: doze anos atendendo operações que não podem parar.",
@@ -645,7 +645,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Em 2026, a IA está em quase todo lugar. A experiência continua escassa.",
@@ -667,7 +667,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Quatrocentos não é número de portfólio. É volume de operação. Ecossistema, no vocabulário",
@@ -690,7 +690,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2025-12-25",
       "tipo": "Carrossel",
       "gancho": "O Brasil está entre os países que mais sofrem com ciberataques e vazamentos de dados.",
@@ -710,7 +710,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-11",
       "tipo": "Imagem",
       "gancho": "A Leven não contrata pra preencher vaga. Contrata pra manter um padrão que levou anos pra construir.",
@@ -730,7 +730,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-09",
       "tipo": "Imagem",
       "gancho": "Antes da proposta, a análise.",
@@ -752,7 +752,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2025-12-24",
       "tipo": "Carrossel",
       "gancho": "Nem sempre a empresa precisa “começar do zero”. Muitas vezes, o que falta é atualizar a base tecnológica para que o negócio volte a crescer com força, ou saia d",
@@ -776,7 +776,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Sistemas caem onde a arquitetura não previu.",
@@ -796,7 +796,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-09",
       "tipo": "Imagem",
       "gancho": "Estruturação técnica e cultura de alta performance.",
@@ -816,7 +816,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-11",
       "tipo": "Imagem",
       "gancho": "A maioria das empresas de tecnologia escolhe projetos confortáveis. A Leven escolheu ajudar todos.",
@@ -837,8 +837,69 @@
     },
     {
       "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-05",
+      "tipo": "Carrossel",
+      "gancho": "\"Meu time só apaga incêndio.\"",
+      "legenda": "\"Meu time só apaga incêndio.\"\n\nA semana começa com um bug em produção, segue com uma urgência do comercial e termina com o sistema instável na sexta. A feature planejada fica para a próxima sprint, de novo.\n\nA sustentação e evolução técnica da Korvena mantém o sistema funcionando e evoluindo: manutenção corretiva, evolução contínua, suporte, performance, observabilidade e monitoramento de incidentes.\n\nTambém atende sistemas criados por outro time ou fornecedor, depois de uma avaliação inicial.\n\nArraste para ver como funciona.\n\nConte como está a operação do seu sistema. Fale com a gente pelo Wh",
+      "likes": 9,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 9,
+      "mediana": 5.5,
+      "mult": 1.64,
+      "link": "https://www.instagram.com/p/DfXFs3fD7Qs/",
+      "temas": [
+        "Sistema e gestão",
+        "WhatsApp e atendimento"
+      ],
+      "relevancia": 3
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-03",
+      "tipo": "Carrossel",
+      "gancho": "Você precisa de uma entrega com prazo, e ninguém no time pode assumir.",
+      "legenda": "Você precisa de uma entrega com prazo, e ninguém no time pode assumir.\n\nA integração com o ERP precisa estar pronta antes do fechamento do semestre. O time está comprometido com a operação, e contratar para uma demanda pontual não fecha a conta.\n\nNo projeto com escopo definido, objetivo, entregáveis, prazo, responsáveis e critério de aceite ficam definidos antes de começar. Tudo começa pelo Discovery, etapa em que o sistema é desenhado e validado com você.\n\nArraste para entender como funciona.\n\nDescreva a entrega que precisa fazer. Avalie seu projeto pelo link na bio.\n\n#desenvolvimentodesoftwa",
+      "likes": 9,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 9,
+      "mediana": 5.5,
+      "mult": 1.64,
+      "link": "https://www.instagram.com/p/DfR8INiCKn5/",
+      "temas": [
+        "Sistema e gestão"
+      ],
+      "relevancia": 4
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-10-23",
+      "tipo": "Carrossel",
+      "gancho": "Nem toda vulnerabilidade nasce de código mal escrito. Parte delas nasce de decisões que ninguém tomou: quais dados guardar, quem pode acessá-los, o que fazer qu",
+      "legenda": "Nem toda vulnerabilidade nasce de código mal escrito. Parte delas nasce de decisões que ninguém tomou: quais dados guardar, quem pode acessá-los, o que fazer quando algo falha e quais riscos a empresa aceita correr.\n\nO desenvolvedor pode seguir o que foi pedido e ainda assim entregar um software vulnerável. Quando a segurança entra só no teste final, o que aparece não são bugs, são decisões que já ficaram caras de mudar.\n\nNa Korvena, essas decisões acontecem no começo do projeto e ficam registradas, com responsável. Avalie sua demanda pelo link na bio.",
+      "likes": 9,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 9,
+      "mediana": 5.5,
+      "mult": 1.64,
+      "link": "https://www.instagram.com/p/De1ggtaDApe/",
+      "temas": [
+        "Sistema e gestão"
+      ],
+      "relevancia": 2
+    },
+    {
+      "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-03-28",
       "tipo": "Imagem",
       "gancho": "Alta performance não é slogan na Leven. É como cada projeto começa, se desenvolve e chega na mão do cliente.",
@@ -860,7 +921,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2025-12-24",
       "tipo": "Imagem",
       "gancho": "Sabia que o principal fator de alavanca de muitas empresas hoje é o pilar tecnológico que sustenta operação, vendas e marketing?",
@@ -884,7 +945,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2025-12-24",
       "tipo": "Imagem",
       "gancho": "Muitas empresas têm ideias poderosas para crescer, inovar e se diferenciar no mercado, mas esbarram na mesma barreira: falta de estrutura tecnológica para tirar",
@@ -904,8 +965,69 @@
     },
     {
       "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-01",
+      "tipo": "Carrossel",
+      "gancho": "Seu time tem gestão e backlog. Falta gente para entregar.",
+      "legenda": "Seu time tem gestão e backlog. Falta gente para entregar.\n\nO tech lead sabe o que precisa ser feito. O backlog está priorizado. Mas o time passa a semana resolvendo o presente, e a migração para cloud prevista para o trimestre não sai do lugar.\n\nO reforço para times internos coloca capacidade ou especialidade dentro do seu time: backend, frontend e mobile, QA e automação, DevOps, cloud e segurança.\nA liderança técnica continua sua. A Korvena cuida da governança sobre os profissionais.\n\nArraste para ver quando esse é o formato certo.\n\nConte qual especialidade falta no seu time. Fale com a gente",
+      "likes": 7,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 7,
+      "mediana": 5.5,
+      "mult": 1.27,
+      "link": "https://www.instagram.com/p/DfMykviAQG0/",
+      "temas": [
+        "Sistema e gestão",
+        "IA e automação"
+      ],
+      "relevancia": 2
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-10-27",
+      "tipo": "Carrossel",
+      "gancho": "Projetos sob medida começam pelo Discovery: o sistema é desenhado e validado com você antes do desenvolvimento, com escopo fechado, preço e prazo definidos.",
+      "legenda": "Projetos sob medida começam pelo Discovery: o sistema é desenhado e validado com você antes do desenvolvimento, com escopo fechado, preço e prazo definidos.\n\nEnvie o que precisa desenvolver pelo link: korvena.com.br",
+      "likes": 7,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 7,
+      "mediana": 5.5,
+      "mult": 1.27,
+      "link": "https://www.instagram.com/p/De_6jXqDaUj/",
+      "temas": [
+        "Sistema e gestão"
+      ],
+      "relevancia": 2
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-10-20",
+      "tipo": "Carrossel",
+      "gancho": "Um desenvolvedor corrige permissão, atualiza dependência e fecha vulnerabilidade.",
+      "legenda": "Um desenvolvedor corrige permissão, atualiza dependência e fecha vulnerabilidade. \n\nO que ele não decide sozinho é quais riscos o negócio aceita, quais dados precisam mesmo ser guardados e se o prazo permite os testes necessários.\n\nQuando essas decisões não têm dono, a mesma vulnerabilidade volta em outra forma, algumas sprints depois. O código corrige. O processo impede que volte.\n\nNa Korvena, risco aceito e critério de aceite ficam registrados, com responsável. Avalie sua demanda pelo link na bio.",
+      "likes": 7,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 7,
+      "mediana": 5.5,
+      "mult": 1.27,
+      "link": "https://www.instagram.com/p/DeuHCoejgW4/",
+      "temas": [
+        "Outros"
+      ],
+      "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-11",
       "tipo": "Imagem",
       "gancho": "Alta performance não é slogan na Leven. É como cada projeto começa, se desenvolve e chega na mão do cliente.",
@@ -927,7 +1049,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2025-12-29",
       "tipo": "Imagem",
       "gancho": "1. Segurança de dados",
@@ -949,7 +1071,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2025-12-24",
       "tipo": "Imagem",
       "gancho": "Sabia que, hoje, a forma como sua empresa aparece no digital impacta diretamente na forma como ela é percebida pelo mercado?",
@@ -971,7 +1093,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-03-17",
       "tipo": "Imagem",
       "gancho": "Uma software house com cultura de alta performance abre novos horizontes pra qualquer operação.",
@@ -990,8 +1112,71 @@
     },
     {
       "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-15",
+      "tipo": "Carrossel",
+      "gancho": "Se eu contratar profissionais de fora, quem responde por eles?",
+      "legenda": "Se eu contratar profissionais de fora, quem responde por eles?\n\nNa alocação, o profissional entra nos ritos e nas ferramentas do seu time, e o backlog continua com você. O que a Korvena faz é acompanhar esse profissional do pedido em diante: entende a demanda, define o perfil, cuida da integração e mantém ritos de acompanhamento.\n\nSe o perfil não encaixar, a composição é ajustada. Se alguém sair, a reposição segue o que foi combinado em contrato.\n\nVocê ganha capacidade no time sem somar a gestão de mais pessoas à sua rotina. O contrato é mensal e não tem fidelidade.\n\nFalta capacidade ou uma es",
+      "likes": 6,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 6,
+      "mediana": 5.5,
+      "mult": 1.09,
+      "link": "https://www.instagram.com/p/DfxzcUhja-D/",
+      "temas": [
+        "Sistema e gestão",
+        "IA e automação"
+      ],
+      "relevancia": 2
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-10",
+      "tipo": "Carrossel",
+      "gancho": "A empresa pede IA. Ninguém combinou o que conta como ganho.",
+      "legenda": "A empresa pede IA. Ninguém combinou o que conta como ganho.\n\nÉ assim que muito projeto começa: a ferramenta vem antes do problema, e o resultado vira opinião. Uns acham que melhorou, outros não.\n\nAntes de escolher o modelo, vale fazer a conta do processo como ele é hoje: quanto tempo cada tarefa leva, quanto passa por conferência, quanto erra, quanto custa. Essa é a linha de base. Sem ela, não dá para saber se o projeto se pagou.\n\nNa Korvena, o critério de sucesso e a conferência humana entram no escopo antes de começar. E, se a IA não for o caminho para aquele processo, a gente diz.\n\nTem um p",
+      "likes": 6,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 6,
+      "mediana": 5.5,
+      "mult": 1.09,
+      "link": "https://www.instagram.com/p/DfkzcdhifuK/",
+      "temas": [
+        "Sistema e gestão",
+        "IA e automação",
+        "Prova, case e bastidor"
+      ],
+      "relevancia": 2
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-10-29",
+      "tipo": "Carrossel",
+      "gancho": "Contratar leva meses. Errar a contratação custa mais caro ainda.",
+      "legenda": "Contratar leva meses. Errar a contratação custa mais caro ainda.\n\nEnquanto a vaga de dev sênior segue aberta, a feature prioritária fica parada e o time se divide entre entregar e entrevistar. Quando a pessoa chega e não encaixa, o ciclo recomeça.\n\nA Korvena coloca profissionais de tecnologia dentro da sua operação: devs, QAs, DevOps, dados, produto, UX, tech leads e arquitetos, de júnior a especialista. Eles trabalham nos seus ritos e nas suas ferramentas, com dedicação parcial ou integral.\n\nA diferença está no acompanhamento. Se o perfil não encaixar, a Korvena ajusta a composição e repõe co",
+      "likes": 6,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 6,
+      "mediana": 5.5,
+      "mult": 1.09,
+      "link": "https://www.instagram.com/p/DfFEJI6Cbd1/",
+      "temas": [
+        "Sistema e gestão"
+      ],
+      "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2025-12-29",
       "tipo": "Imagem",
       "gancho": "Você deseja um braço tecnológico para cuidar do pilar de tecnologia da sua empresa? Vai ser um prazer te atender.",
@@ -1013,7 +1198,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-09-29",
       "tipo": "Carrossel",
       "gancho": "Quem vive a operação sabe onde o processo emperra.",
@@ -1033,7 +1218,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-09-22",
       "tipo": "Reel",
       "gancho": "Toda empresa que decide construir um sistema chega à mesma pergunta: qual é a melhor tecnologia para desenvolvê-lo.",
@@ -1054,7 +1239,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-03-17",
       "tipo": "Imagem",
       "gancho": "Performance de verdade começa no código.",
@@ -1073,8 +1258,29 @@
     },
     {
       "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-10-26",
+      "tipo": "Carrossel",
+      "gancho": "Mais demanda no roadmap, mesmo número de pessoas no time.",
+      "legenda": "Mais demanda no roadmap, mesmo número de pessoas no time.\n\nArraste para ver as cinco formas de a Korvena entrar na sua operação, de profissionais integrados ao seu time até projetos de IA com escopo fechado.\n\nO formato depende do seu cenário. Conte o que precisa entregar pelo WhatsApp, link na bio.",
+      "likes": 5,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 5,
+      "mediana": 5.5,
+      "mult": 0.91,
+      "link": "https://www.instagram.com/p/De9VwmQgcXQ/",
+      "temas": [
+        "WhatsApp e atendimento",
+        "IA e automação"
+      ],
+      "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-09",
       "tipo": "Imagem",
       "gancho": "Nove em cada dez clientes continuam.",
@@ -1094,7 +1300,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-03-29",
       "tipo": "Imagem",
       "gancho": "Sistemas, apps e infraestrutura. Três frentes que a Leven domina com o mesmo nível de engenharia.",
@@ -1114,7 +1320,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-03-29",
       "tipo": "Imagem",
       "gancho": "Seu próximo sistema começa aqui.",
@@ -1137,7 +1343,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-03-20",
       "tipo": "Imagem",
       "gancho": "Tudo o que a sua operação precisa em um só lugar.",
@@ -1157,8 +1363,112 @@
     },
     {
       "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-17",
+      "tipo": "Carrossel",
+      "gancho": "Contratar desenvolvedor ou terceirizar? Depende do que está faltando.",
+      "legenda": "Contratar desenvolvedor ou terceirizar? Depende do que está faltando.\n\nSe a função é permanente e central para o produto, faz sentido ter a pessoa no quadro. Se a necessidade é de capacidade agora, ou de uma especialidade que o time não tem, um processo seletivo pode levar mais tempo do que a prioridade permite.\n\nÉ para isso que existe a alocação: um profissional da Korvena trabalhando dentro da sua operação, nos seus ritos e nas suas ferramentas, pelo período e com a dedicação combinados. O perfil é escolhido pela frente, e a Korvena acompanha o profissional, ajusta a composição quando o perf",
+      "likes": 4,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 4,
+      "mediana": 5.5,
+      "mult": 0.73,
+      "link": "https://www.instagram.com/p/Df1_PTPFPGT/",
+      "temas": [
+        "Sistema e gestão",
+        "IA e automação"
+      ],
+      "relevancia": 3
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-13",
+      "tipo": "Carrossel",
+      "gancho": "Escopo fechado e escopo definido parecem a mesma coisa, mas não são.",
+      "legenda": "Escopo fechado e escopo definido parecem a mesma coisa, mas não são.\n\nEscopo definido é a forma de contratar: uma entrega com objetivo, prazo e critério de aceite. Escopo fechado é o que o Discovery produz dentro desse formato, ou seja, o que exatamente será construído.\n\nNa Korvena, isso é fechado antes da primeira linha de código. O Discovery mede fluxos, telas, integrações e plataformas. Só depois o preço e o prazo entram no contrato. Antes disso existe estimativa, e estimativa não é prazo.\n\nE se algo mudar no meio do caminho? A mudança entra por aditivo formal, com o impacto em prazo e em v",
+      "likes": 4,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 4,
+      "mediana": 5.5,
+      "mult": 0.73,
+      "link": "https://www.instagram.com/p/Dfry61bmWyP/",
+      "temas": [
+        "Sistema e gestão",
+        "IA e automação"
+      ],
+      "relevancia": 3
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-10-15",
+      "tipo": "Carrossel",
+      "gancho": "\"Ágil não documenta\" é uma interpretação comum do Manifesto, mas não é o que ele diz.",
+      "legenda": "\"Ágil não documenta\" é uma interpretação comum do Manifesto, mas não é o que ele diz. \n\nO ponto é priorizar software funcionando sem tratar documentação como algo sem valor.\n\nNa prática, a pergunta é: o que precisa ser registrado para o produto não depender de uma única pessoa?\n\nNa Korvena, a documentação faz parte da entrega. \n\nAvalie sua demanda pelo link da bio.",
+      "likes": 4,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 4,
+      "mediana": 5.5,
+      "mult": 0.73,
+      "link": "https://www.instagram.com/p/DehFyymjudv/",
+      "temas": [
+        "Sistema e gestão"
+      ],
+      "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-10-05",
+      "tipo": "Reel",
+      "gancho": "Atraso não significa automaticamente falta de desenvolvedores.",
+      "legenda": "Atraso não significa automaticamente falta de desenvolvedores.\n\nO gargalo pode estar na prioridade, na tomada de decisão, na qualidade ou na capacidade disponível.\n\nCada problema exige uma resposta diferente.\n\nSe o seu gargalo é capacidade, a Korvena estrutura e opera squads de tecnologia com gestão e responsabilidade pela entrega.\n\nConheça nosso modelo no link da bio.",
+      "likes": 4,
+      "comentarios": 0,
+      "views": 24,
+      "interacoes": 4,
+      "mediana": 5.5,
+      "mult": 0.73,
+      "link": "https://www.instagram.com/reel/DeHRJlyjbZN/",
+      "temas": [
+        "Sistema e gestão",
+        "IA e automação"
+      ],
+      "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-09-30",
+      "tipo": "Carrossel",
+      "gancho": "Seu time não para, mas o produto não anda?",
+      "legenda": "Seu time não para, mas o produto não anda? \n\nMuito esforço não garante previsibilidade. Quando faltam prioridades claras e gestão de dependências, o resultado é um ciclo sem fim de atrasos e justificativas plausíveis.\n\nAntes de contratar mais pessoas, ajuste o seu modelo de entrega. \n\n🔗 Acesse o link na bio e descubra como a Korvena assume a responsabilidade pelas suas entregas do início ao fim com profissionais seniores e governança real.",
+      "likes": 4,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 4,
+      "mediana": 5.5,
+      "mult": 0.73,
+      "link": "https://www.instagram.com/p/Dd6SSBzgYtU/",
+      "temas": [
+        "Sistema e gestão",
+        "Prova, case e bastidor"
+      ],
+      "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-07-24",
       "tipo": "Imagem",
       "gancho": "A diferença está na engenharia.",
@@ -1179,7 +1489,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-03-28",
       "tipo": "Imagem",
       "gancho": "A maioria das empresas de tecnologia escolhe projetos confortáveis. A Leven escolheu ajudar todos.",
@@ -1201,7 +1511,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-03-22",
       "tipo": "Imagem",
       "gancho": "Sair de 2,5 para 4,9 estrelas nas lojas de aplicativos não é sobre “deixar o app mais bonito”. É sobre resolver débito técnico e otimizar a arquitetura de inter",
@@ -1223,7 +1533,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-05-08",
       "tipo": "Reel",
       "gancho": "“Construímos tecnologia para durar.”",
@@ -1243,7 +1553,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-03-29",
       "tipo": "Imagem",
       "gancho": "Desse endereço saem, todos os dias, os projetos que movem a operação de cada cliente que confia na Leven.",
@@ -1262,8 +1572,70 @@
     },
     {
       "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-11",
+      "tipo": "Carrossel",
+      "gancho": "Por que pagar por uma etapa que ainda não entrega o produto?",
+      "legenda": "Por que pagar por uma etapa que ainda não entrega o produto?\n\nPorque é nela que o projeto deixa de ser ideia e vira escopo. No Discovery, a gente entende o negócio, os usuários e o problema, define e prioriza as funcionalidades com você e monta o protótipo.\n\nVocê sai com o protótipo validado e o escopo fechado. O que não cabe nessa versão fica registrado para a próxima, em vez de virar surpresa no meio do desenvolvimento.\n\nO valor do Discovery é abatido do desenvolvimento contratado com a Korvena. E os documentos ficam com você, mesmo que o projeto não siga.\n\nTem um produto digital para tirar ",
+      "likes": 3,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 3,
+      "mediana": 5.5,
+      "mult": 0.55,
+      "link": "https://www.instagram.com/p/DfmidqvlNzW/",
+      "temas": [
+        "Sistema e gestão",
+        "IA e automação"
+      ],
+      "relevancia": 2
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-10-02",
+      "tipo": "Carrossel",
+      "gancho": "A tarefa que incomoda mais nem sempre é a que custa mais. Antes de escolher o que automatizar, some três coisas: as horas gastas, o retrabalho e a receita que f",
+      "legenda": "A tarefa que incomoda mais nem sempre é a que custa mais. Antes de escolher o que automatizar, some três coisas: as horas gastas, o retrabalho e a receita que fica parada esperando.\n\nNo exemplo do carrossel, a hora de quem ganha um salário mínimo custa cerca de R$ 16, e mesmo assim uma única tarefa chega a R$ 13.600 por mês. A ordem da lista costuma mudar.\n\nA Korvena faz essa conta com você antes de construir qualquer coisa.\n\nAvalie sua demanda pelo link na bio.",
+      "likes": 3,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 3,
+      "mediana": 5.5,
+      "mult": 0.55,
+      "link": "https://www.instagram.com/p/Dd_bzOyFnx5/",
+      "temas": [
+        "Planilha e organização",
+        "IA e automação"
+      ],
+      "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-08-04",
+      "tipo": "Carrossel",
+      "gancho": "Você já viveu alguma situação dessas?",
+      "legenda": "Você já viveu alguma situação dessas?\n\n→ Pediu dev sênior. Mandaram alguém que precisava de mentoria.\n→ O profissional saiu no meio do projeto. A empresa não quis saber.\n→ Levaram 3 meses para contratar. O prazo não esperou.\n\nEssas não são exceções. São os problemas mais comuns de quem terceiriza tecnologia sem o parceiro certo.\n\nA Korvena foi criada para acabar com cada um deles.\n\nDeslize e veja como →\n\n🔗 korvena.com.br\n\n#Korvena #Bodyshop#TechOutsourcing #GestãoDeTI",
+      "likes": 3,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 3,
+      "mediana": 5.5,
+      "mult": 0.55,
+      "link": "https://www.instagram.com/p/DbnqpclFmHI/",
+      "temas": [
+        "Sistema e gestão"
+      ],
+      "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-08-10",
       "tipo": "Carrossel",
       "gancho": "Por que o sistema quebra justo no melhor dia?",
@@ -1286,7 +1658,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-08-12",
       "tipo": "Carrossel",
       "gancho": "O que a equipe faz quando o sistema não cobre a exceção?",
@@ -1308,7 +1680,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2025-12-23",
       "tipo": "Imagem",
       "gancho": "Sua empresa não precisa estar sozinha na parte de tecnologia. Muitas operações crescem em vendas e demanda, mas continuam rodando em sistemas limitados, process",
@@ -1329,8 +1701,29 @@
     },
     {
       "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-08-20",
+      "tipo": "Carrossel",
+      "gancho": "Contratar a senioridade errada custa caro dos dois lados.",
+      "legenda": "Contratar a senioridade errada custa caro dos dois lados.\n\nJúnior tomando decisão de arquitetura gera retrabalho. Especialista em tarefa operacional é custo alto para um problema simples.\n\nO ponto não é currículo. É ambiguidade, autonomia e criticidade da frente que você precisa cobrir.\n\nNeste carrossel, mostramos como identificar o perfil certo (Júnior, Pleno, Sênior ou Especialista) para cada situação técnica.\n\nFale com a gente e monte o time certo para o seu próximo desafio: korvena.com.br\n\n#TechStaffing #Bodyshop #GestaoDeTimes",
+      "likes": 2,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 2,
+      "mediana": 5.5,
+      "mult": 0.36,
+      "link": "https://www.instagram.com/p/DcRRHZ7lnK7/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização"
+      ],
+      "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-10-09",
       "tipo": "Reel",
       "gancho": "Onde ficam os dados da sua empresa? Pouca gente sabe responder de cabeça, e é normal: enquanto tudo funciona, o servidor é invisível.",
@@ -1352,7 +1745,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "data": "2026-10-01",
       "tipo": "Carrossel",
       "gancho": "Nenhuma empresa escolhe o dia em que o sistema para.",
@@ -1373,19 +1766,9 @@
   ],
   "temas_nicho": [
     {
-      "nome": "IA e automação",
-      "n": 8,
-      "media": 1.81
-    },
-    {
-      "nome": "Sistema e gestão",
-      "n": 36,
-      "media": 1.64
-    },
-    {
       "nome": "Prova, case e bastidor",
-      "n": 20,
-      "media": 1.64
+      "n": 22,
+      "media": 1.57
     },
     {
       "nome": "Site e landing page",
@@ -1393,9 +1776,19 @@
       "media": 1.56
     },
     {
+      "nome": "Sistema e gestão",
+      "n": 52,
+      "media": 1.44
+    },
+    {
+      "nome": "IA e automação",
+      "n": 17,
+      "media": 1.3
+    },
+    {
       "nome": "Planilha e organização",
-      "n": 9,
-      "media": 1.38
+      "n": 11,
+      "media": 1.22
     },
     {
       "nome": "Oferta e proposta",
@@ -1404,13 +1797,13 @@
     },
     {
       "nome": "Outros",
-      "n": 1,
-      "media": 0.96
+      "n": 2,
+      "media": 1.11
     },
     {
       "nome": "WhatsApp e atendimento",
-      "n": 1,
-      "media": 0.14
+      "n": 3,
+      "media": 0.9
     }
   ],
   "formatos_nicho": [
@@ -1421,13 +1814,13 @@
     },
     {
       "nome": "Carrossel",
-      "n": 6,
-      "media": 1.29
+      "n": 24,
+      "media": 1.07
     },
     {
       "nome": "Reel",
-      "n": 3,
-      "media": 0.57
+      "n": 4,
+      "media": 0.61
     }
   ],
   "ganchos": [
@@ -1516,6 +1909,27 @@
       "link": "https://www.instagram.com/p/DYNG8SgAGy3/"
     },
     {
+      "texto": "\"Meu time só apaga incêndio.\"",
+      "mult": 1.64,
+      "conta": "korvena.tech",
+      "fonte": "instagram",
+      "link": "https://www.instagram.com/p/DfXFs3fD7Qs/"
+    },
+    {
+      "texto": "Você precisa de uma entrega com prazo, e ninguém no time pode assumir.",
+      "mult": 1.64,
+      "conta": "korvena.tech",
+      "fonte": "instagram",
+      "link": "https://www.instagram.com/p/DfR8INiCKn5/"
+    },
+    {
+      "texto": "Nem toda vulnerabilidade nasce de código mal escrito. Parte delas nasce de decisões que ninguém tomou: quais dados guardar, quem pode acessá-los, o que fazer qu",
+      "mult": 1.64,
+      "conta": "korvena.tech",
+      "fonte": "instagram",
+      "link": "https://www.instagram.com/p/De1ggtaDApe/"
+    },
+    {
       "texto": "Tudo o que sua empresa precisa em um único sistema.",
       "mult": 1.67,
       "conta": "projectatech",
@@ -1554,10 +1968,17 @@
   "contas": [
     {
       "conta": "leventech",
-      "seguidores": 10479,
+      "seguidores": 10482,
       "posts": 40,
       "relevantes": 37,
       "mediana": 58.5
+    },
+    {
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "posts": 24,
+      "relevantes": 19,
+      "mediana": 5.5
     }
   ]
 }
