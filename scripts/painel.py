@@ -739,7 +739,7 @@ def pedido_atualizar(b):
 def _post_portal(e):
     return {"id": e["id"], "tipo": e.get("tipo"), "data": e.get("data"), "hora": e.get("hora"), "status": e.get("status"),
             "texto": legenda_de(e), "midia": [f"media/{f}" for f in e.get("arquivos", [])], "link": e.get("link", ""),
-            "historico": e.get("historico", []), "voz": bool(e.get("voz"))}
+            "historico": e.get("historico", []), "voz": bool(e.get("voz")), "capa_s": e.get("capa_s")}
 
 
 def portal_estado(_=None):

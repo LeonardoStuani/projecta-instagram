@@ -167,8 +167,10 @@ def publish_entry(e):
     cap = legenda(e)
     files = e["arquivos"]
     if e["tipo"] == "reel":
-        c = api("POST", f"{uid}/media", {"media_type": "REELS", "upload_type": "resumable",
-                                         "caption": cap, "share_to_feed": "true"})
+        par = {"media_type": "REELS", "upload_type": "resumable", "caption": cap, "share_to_feed": "true"}
+        if e.get("capa_s"):  # segundo do vídeo usado como capa (quando o quadro 0 é escuro ou vazio)
+            par["thumb_offset"] = str(int(float(e["capa_s"]) * 1000))
+        c = api("POST", f"{uid}/media", par)
         cid = c["id"]
         path = os.path.join(_media(), files[0])
         blob = open(path, "rb").read()
@@ -255,6 +257,8 @@ def cmd_preparar(a):
     pasta = a[0].rstrip("/")
     opts = dict(zip(a[1::2], a[2::2]))
     src = os.path.join(_root(), pasta) if not os.path.isabs(pasta) else pasta
+    if not os.path.isdir(src) and os.path.isdir(os.path.join(ROOT, pasta)):  # aceita clientes/<slug>/posts/<pasta>
+        src = os.path.join(ROOT, pasta)
     pid = os.path.basename(src)
     out = os.path.join(_media(), pid)
     os.makedirs(out, exist_ok=True)

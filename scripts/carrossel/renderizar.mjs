@@ -3,7 +3,7 @@
 // Saída: slide-01.png, slide-02.png… na mesma pasta, e previa.png com todos lado a lado.
 // Depois: python scripts/ig.py preparar posts/<pasta> --data AAAA-MM-DD --hora 18:00 --pilar dica
 import { createRequire } from "node:module";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -18,7 +18,11 @@ const { slides } = JSON.parse(readFileSync(join(BASE, "slides.json"), "utf-8"));
 
 const browser = await chromium.launch({ channel: "msedge", headless: true });
 const page = await browser.newPage({ viewport: { width: 1080, height: 1350 } });
-await page.goto(pathToFileURL(join(AQUI, "modelo.html")).href);
+// Cliente da agência: clientes/<slug>/marca/modelo.html (identidade do cliente) substitui o modelo da Projecta.
+const MARCA = resolve(BASE, "../../marca/modelo.html");
+const MODELO = /[\\/]clientes[\\/][^\\/]+[\\/]posts[\\/]/.test(BASE) && existsSync(MARCA) ? MARCA : join(AQUI, "modelo.html");
+if (MODELO !== join(AQUI, "modelo.html")) console.log("Identidade do cliente:", MODELO);
+await page.goto(pathToFileURL(MODELO).href);
 await page.waitForFunction(() => window.READY === true, null, { timeout: 60000 });
 const thumbs = [];
 for (let i = 0; i < slides.length; i++) {

@@ -843,7 +843,7 @@ function vFeed() {
   const ord = S.posts.filter(p => p.data).sort((a,b) => quando(b) - quando(a));
   $("#view").innerHTML = `<div class="feed-wrap">
     <div class="phone"><div class="profile"><span class="av">${esc(inicial())}</span><div><b>${esc(contaAtual())}</b><p class="muted" style="margin:0;font-size:12px">${CLI ? esc(S.cliente.nome + (S.cliente.ramo ? " · " + S.cliente.ramo : "")) : "Projecta Tech · Sites e Sistemas Lages"}</p></div></div>
-      <div class="pgrid">${ord.map(p => `<button class="open" data-id="${esc(p.id)}" aria-label="${esc(nomePost(p.id))}">${p.midia[0]?.endsWith(".mp4") ? `<video src="${file(p.midia[0])}" muted style="width:100%;height:100%;object-fit:cover"></video>` : `<img src="${file(p.midia[0])}" alt="">`}<span class="lab ${p.status==="publicado"?"pub":""}">${p.data.slice(8)}/${p.data.slice(5,7)}</span></button>`).join("")}</div></div>
+      <div class="pgrid">${ord.map(p => `<button class="open" data-id="${esc(p.id)}" aria-label="${esc(nomePost(p.id))}">${p.midia[0]?.endsWith(".mp4") ? `<video src="${file(p.midia[0])}#t=${p.capa_s||0.1}" muted preload="metadata" style="width:100%;height:100%;object-fit:cover"></video>` : `<img src="${file(p.midia[0])}" alt="">`}<span class="lab ${p.status==="publicado"?"pub":""}">${p.data.slice(8)}/${p.data.slice(5,7)}</span></button>`).join("")}</div></div>
     <div class="card"><p class="tag">Como o perfil vai ficar</p><h3 style="font-size:28px">A grade com os posts agendados, <em class="s">do mais novo ao mais antigo</em>.</h3>
       <p class="muted" style="margin-top:12px">É o que alguém vê ao abrir o @${esc(contaAtual())} depois do último post agendado. Use para conferir se as capas se alternam bem (claro e escuro, foto e texto) e se o laranja não se repete demais lado a lado.</p>
       <p class="muted">Mostra só os posts deste calendário. Os publicados à mão antes do painel não aparecem.</p>
@@ -997,7 +997,7 @@ function vHojeCli() {
   <div class="grid g3">
     <div class="card ink" style="grid-column:span 2"><p class="tag">Próximo post agendado · @${esc(contaAtual())}</p>
       ${prox ? `<div class="next" style="margin-top:12px">
-        <button class="open" data-id="${esc(prox.id)}" style="all:unset;cursor:pointer">${prox.midia[0]?.endsWith(".mp4") ? `<video src="${file(prox.midia[0])}" muted style="width:120px;height:150px;object-fit:cover;border-radius:10px"></video>` : `<img src="${file(prox.midia[0])}" alt="Capa de ${esc(nomePost(prox.id))}">`}</button>
+        <button class="open" data-id="${esc(prox.id)}" style="all:unset;cursor:pointer">${prox.midia[0]?.endsWith(".mp4") ? `<video src="${file(prox.midia[0])}#t=${prox.capa_s||0.1}" muted preload="metadata" style="width:120px;height:150px;object-fit:cover;border-radius:10px"></video>` : `<img src="${file(prox.midia[0])}" alt="Capa de ${esc(nomePost(prox.id))}">`}</button>
         <div><p class="count">${cd}</p><h3 style="font-size:28px;margin-top:6px">${esc(nomePost(prox.id))}</h3>
         <p class="muted">${fmt(prox.data)} às ${prox.hora} · ${prox.tipo}</p>
         <p style="margin-top:10px"><span class="status aprovado">Agendado · aprovado pelo cliente</span></p></div></div>` : `<p class="muted" style="margin-top:12px">Nada agendado ainda. O caminho: criar → enviar ao cliente → ele aprova → você agenda.</p>`}
