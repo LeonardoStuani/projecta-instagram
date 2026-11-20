@@ -3,7 +3,7 @@
 // Cada quadro com "tela" vira <pasta do dia>/<img>. Quadros "gravar" (o Leo grava) não geram imagem.
 // No fim gera previa.png com todos os dias, para conferir de uma vez.
 import { createRequire } from "node:module";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -19,7 +19,11 @@ const S = JSON.parse(readFileSync(join(BASE, "stories.json"), "utf-8"));
 
 const browser = await chromium.launch({ channel: "msedge", headless: true });
 const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
-await page.goto(pathToFileURL(join(AQUI, "modelo.html")).href);
+// Cliente da agência: clientes/<slug>/marca/story.html (identidade do cliente) substitui o modelo da Projecta.
+const MARCA = resolve(BASE, "../../marca/story.html");
+const MODELO = /[\\/]clientes[\\/][^\\/]+[\\/]posts[\\/]/.test(BASE) && existsSync(MARCA) ? MARCA : join(AQUI, "modelo.html");
+if (MODELO !== join(AQUI, "modelo.html")) console.log("Identidade do cliente:", MODELO);
+await page.goto(pathToFileURL(MODELO).href);
 await page.waitForFunction(() => window.READY === true, null, { timeout: 60000 });
 
 const linhas = [];

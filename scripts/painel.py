@@ -264,7 +264,9 @@ def radar_contas(b):
 
 
 def _stories_arquivos():
-    base = os.path.join(ROOT, "posts")
+    base = os.path.join(ig._root(), "posts")  # @projectatech ou clientes/<slug> (contexto atual)
+    if not os.path.isdir(base):
+        return
     for d in sorted(os.listdir(base)):
         f = os.path.join(base, d, "stories.json")
         if d.startswith("stories-") and os.path.isfile(f):
@@ -626,7 +628,7 @@ def estado_cliente():
             "conexao": conexao_cliente(slug), "portal": link_portal(slug), "pedidos": clientes.pedidos(slug),
             "tipos_pedido": TIPOS_PEDIDO,
             "voice_ok": os.path.exists(voice) and "[quem compra" not in open(voice, encoding="utf-8").read(),
-            "radar": radar_info(), "clientes": resumo_clientes(), "nuvem": nuvem_info(),
+            "radar": radar_info(), "stories": stories_info(), "clientes": resumo_clientes(), "nuvem": nuvem_info(),
             "celular": {"ativo": REDE, "ip": LAN_IP, "porta": PORT}}
 
 
@@ -1218,6 +1220,18 @@ class Handler(BaseHTTPRequestHandler):
             self._send(500, {"erro": scrub(f"{type(err).__name__}: {err}", tok)})
 
 
+class Servidor(ThreadingHTTPServer):
+    """Uma cópia só por porta. No Windows, SO_REUSEADDR deixaria abrir dois painéis na mesma porta
+    (e o agendador rodaria duas vezes, com risco de publicar o mesmo post duas vezes)."""
+    allow_reuse_address = False
+
+    def server_bind(self):
+        import socket
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        super().server_bind()
+
+
 def html_esc(t):
     import html
     return html.escape(t or "")
@@ -1252,7 +1266,11 @@ def main():
             CHAVE = secrets.token_urlsafe(24)   # gerada uma vez; o acesso continua valendo entre reinícios
             env_write({"PAINEL_CHAVE": CHAVE})
         bind = os.environ.get("PAINEL_BIND", "0.0.0.0")
-    srv = ThreadingHTTPServer((bind, PORT), Handler)
+    try:
+        srv = Servidor((bind, PORT), Handler)
+    except OSError:
+        print(f"Já existe um painel aberto na porta {PORT}: use http://127.0.0.1:{PORT} (ou feche o outro antes).")
+        sys.exit(1)
     url = f"http://127.0.0.1:{PORT}"
     print(f"Painel do Instagram rodando em {url}  (Ctrl+C para fechar)")
     if os.environ.get("PAINEL_AGENDADOR", "1") != "0":

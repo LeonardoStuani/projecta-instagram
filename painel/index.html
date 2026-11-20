@@ -413,10 +413,11 @@ function pills() {
 }
 
 function render() {
+  SUJO = false;  // tela nova: nada digitado ainda
   if (!S) return;  // clique numa aba antes do painel terminar de carregar
   document.querySelectorAll(".nav").forEach(b => { if (b.dataset.view === view) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
-  $(`.nav[data-view="stories"]`).hidden = !!CLI; $(`.nav[data-view="pedidos"]`).hidden = !CLI;
-  if ((CLI && view === "stories") || (!CLI && view === "pedidos")) view = "hoje";
+  $(`.nav[data-view="pedidos"]`).hidden = !CLI;
+  if (!CLI && view === "pedidos") view = "hoje";
   const titles = {hoje:"Hoje", calendario:"Calendário", stories:"Stories", radar:"Radar do Instagram", feed:"Prévia do feed", comentarios:"Comentários", config: CLI ? "Conexões do cliente" : "Conexões", clientes:"Clientes da agência", pedidos:"Pedidos do cliente"};
   $("#titulo").textContent = titles[view];
   $("#menu-atual").textContent = $(`.nav[data-view="${view}"]`).firstChild.textContent.trim();
@@ -439,9 +440,9 @@ function storyDias() {
 const STS = {postado:"Postado", hoje:"Hoje", atrasado:"Não postado", prox:"Próximo"};
 function vStories() {
   const dias = storyDias();
-  if (!dias.length) { $("#view").innerHTML = `<div class="card"><p class="muted">Nenhuma semana de Stories. Peça ao Claude "/ig-story da semana".</p></div>`; return; }
+  if (!dias.length) { $("#view").innerHTML = `<div class="card"><p class="muted">Nenhuma semana de Stories${CLI ? ` de ${esc(S.cliente.nome)}` : ""}. Peça ao Claude "${CLI ? `/agencia ${esc(S.cliente.slug)} stories da semana` : "/ig-story da semana"}".</p></div>`; return; }
   $("#view").innerHTML = `
-  <p class="muted" style="margin:0 0 16px">Stories vão pelo <b>app do Instagram</b>, porque a API não coloca enquete, caixinha nem link. Aqui você vê o que postar, salva as imagens (no celular, toque e segure) e marca como postado. O quadro 1 agora vem pronto como vídeo animado: é só baixar e postar (a localização você coloca no app).</p>
+  <p class="muted" style="margin:0 0 16px">Stories vão pelo <b>app do Instagram</b>, porque a API não coloca enquete, caixinha nem link. Aqui você vê o que postar, salva as imagens (no celular, toque e segure) e marca como postado.${CLI ? " Quadros \"Você grava\" usam foto ou vídeo do cliente (peça pelo portal). Se o cliente posta sozinho, mande as imagens para ele." : " O quadro 1 agora vem pronto como vídeo animado: é só baixar e postar (a localização você coloca no app)."}</p>
   ${dias.map(({s, d, st}, i) => `${i === 0 || dias[i - 1].s !== s ? `<div class="semana-h"><h2>${esc(s.titulo || s.semana)}</h2>${s.resumo ? `<p class="muted" style="margin:4px 0 0">${esc(s.resumo)}</p>` : ""}</div>` : ""}
   <div class="card sday ${st === "hoje" ? "hoje" : ""}" id="st-${esc(s.semana)}-${d.n}" style="margin-bottom:16px">
     <div class="sday-h"><div><p class="tag">Dia ${d.n} · ${fmt(d.data)}${d.horario ? ` · postar ${esc(d.horario)}` : ""}</p><h3>${esc(d.titulo)}</h3></div>
@@ -509,7 +510,7 @@ function alertas() {
   }
   // semana de Stories acabando: hora de pedir a próxima ao Claude
   const ult = storyDias().map(x => x.d.data).sort().pop(), limite = new Date(now); limite.setDate(limite.getDate() + 2);
-  if (!ult || ult <= iso(limite)) out.push({c:"warn", t:`<b>${ult ? `Os Stories prontos acabam em ${fmt(ult)}.` : "Nenhum Story pronto."}</b> Peça ao Claude: "/ig-story da semana" para criar a próxima.`, go:"stories"});
+  if (!ult || ult <= iso(limite)) out.push({c:"warn", t:`<b>${ult ? `Os Stories prontos acabam em ${fmt(ult)}.` : "Nenhum Story pronto."}</b> Peça ao Claude: "${CLI ? `/agencia ${esc(S.cliente.slug)} stories da semana` : "/ig-story da semana"}" para criar a próxima.`, go:"stories"});
   if (!out.length) out.push({c:"ok", t:"<b>Tudo em ordem.</b> Nenhuma pendência para os próximos 7 dias."});
   return out;
 }
@@ -950,7 +951,7 @@ function setCli(v) {
   CLI = !v || v === "projectatech" ? "" : v;
   try { localStorage.setItem("cli", CLI); } catch {}
   S = null; mes = null; comentCache = null;
-  if ((CLI && view === "stories") || (!CLI && view === "pedidos") || view === "clientes") view = "hoje";
+  if ((!CLI && view === "pedidos") || view === "clientes") view = "hoje";
   history.replaceState(null, "", "#" + view);
   $("#view").innerHTML = `<p class="muted">Abrindo…</p>`;
   load().catch(e => { toast(e.message, true); setCli(""); });
@@ -1152,7 +1153,11 @@ const h0 = location.hash.slice(1).split("/");
 if (VIEWS.includes(h0[0])) view = h0[0];
 load().then(() => { if (h0[1] && !["stories", "radar"].includes(h0[0])) openPost(decodeURIComponent(h0[1])); })
   .catch(e => $("#view").innerHTML = `<div class="empty">O painel não respondeu: ${esc(e.message)}</div>`);
-setInterval(() => { if (!dlg.open && view !== "comentarios") load().catch(() => {}); }, 60000);
+// Atualiza a cada 60 s, mas nunca enquanto alguém digita: um formulário com texto ou com foco não é redesenhado.
+var SUJO = false;
+document.addEventListener("input", (e) => { if (e.target.closest("#view")) SUJO = true; });
+const digitando = () => { const a = document.activeElement; return SUJO || (a && a.closest("#view") && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)); };
+setInterval(() => { if (!dlg.open && view !== "comentarios" && !digitando()) load().catch(() => {}); }, 60000);
 </script>
 </body>
 </html>

@@ -51,6 +51,11 @@ Use as skills de sempre, com a voz do cliente:
 - Reel narrado: copie `marca/reel.html` para `posts/<pasta>/fonte/`, escreva `fonte/roteiro.json` (falas) e
   `fonte/cenas.js` (uma cena por fala; `fala` conta do 0) e rode `scripts/video/voz.py` (voz Antonio) →
   `scripts/video/trilha.py` → `scripts/video/renderizar.mjs fonte/reel.html fonte/mudo.mp4` → ffmpeg com `fonte/audio/mix.wav`.
+- Stories da semana: `clientes/<slug>/posts/stories-AAAA-MM-DD/stories.json` (mesmo formato do @projectatech:
+  dias → quadros com `tela`, `img`, `adesivo`, `link`, `sobre`; quadro "gravar" = foto/vídeo do cliente) e rode
+  `node scripts/stories/renderizar.mjs clientes/<slug>/posts/stories-AAAA-MM-DD` (usa `marca/story.html` do cliente).
+  Aparecem na aba Stories do painel com a conta do cliente selecionada. Link do adesivo = WhatsApp do cliente, nunca o da Projecta.
+  O quadro 1 em vídeo animado (scripts/video/stories.mjs) ainda é só da Projecta.
 - Legenda: `legenda.md` na pasta do post, entre ``` ```, passando por /ig-human.
 - Depois: `python scripts/ig.py --cliente <slug> preparar clientes/<slug>/posts/<pasta> --data AAAA-MM-DD --hora 18:00`
   (ou o Leo clica em Preparar no Calendário). Mostre o print ao Leo.
