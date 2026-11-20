@@ -65,6 +65,20 @@ Use as skills de sempre, com a voz do cliente:
 - Depois: `python scripts/ig.py --cliente <slug> preparar clientes/<slug>/posts/<pasta> --data AAAA-MM-DD --hora 18:00`
   (ou o Leo clica em Preparar no Calendário). Mostre o print ao Leo.
 
+## Diagnóstico e plano de crescimento orgânico (todo cliente novo, e toda segunda)
+Modelo pronto, feito para o @projectatech em 20/11/2026: `PLANO/documentos/plano-crescimento-instagram-projecta.md`.
+1. **Validar:** `python scripts/ig.py --cliente <slug> desempenho` (alcance x mediana, envios por alcance, retenção dos reels,
+   totais de 28 dias). Alcance perto do nº de seguidores = o post não sai da base (falta envio/retenção), não é bloqueio.
+   Pedir ao cliente o print de Configurações → Status da conta → Recomendações para descartar restrição.
+2. **Diagnóstico** em tabela com os números reais (seguidores, alcance mediano, reel x carrossel, envios, comentários,
+   buracos no calendário, posts genéricos de data, dois posts no mesmo dia, link na legenda).
+3. **Métodos** (sinais confirmados pelo Mosseri: tempo assistido, curtidas e envios; envio pesa mais para quem não segue):
+   conteúdo feito para ser enviado · gancho em até 2 s com texto na tela · pessoa real na câmera · séries fixas ·
+   collab com clientes/parceiros · primeiros 100 seguidores pela rede local (convite pessoal, nunca comprar) ·
+   responder na 1ª hora · SEO do Instagram (palavras de busca + localização) · Trial Reels quando liberar · constância.
+4. **Plano de 12 semanas** (base → séries e testes → escala) com metas estimadas, marcadas como estimativa, e a lista
+   do que parar de fazer. Impulsionar só o melhor reel orgânico, se o cliente quiser.
+
 ## Pedidos do portal
 `clientes/<slug>/pedidos.json`: cada pedido tem tipo, texto, data_desejada, arquivos e conversa.
 "Produzir os pedidos novos" = para cada pedido com status `novo`: ler o texto, olhar as fotos em

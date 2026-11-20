@@ -13,6 +13,7 @@ Comandos (para um cliente da agência, comece com --cliente <slug>, ex.: ig.py -
   python3 scripts/ig.py agendados                  publica os aprovados cuja data/hora já passou (usado pelo GitHub Actions)
   python3 scripts/ig.py comentarios [--n 5]        comentários recentes nos últimos N posts
   python3 scripts/ig.py responder <comment_id> "texto"   responde um comentário (sempre pede confirmação)
+  python3 scripts/ig.py desempenho [--n 15]         validação semanal: alcance, envios/alcance, retenção por post
   python3 scripts/ig.py renovar-token              não é necessário: o token de usuário do sistema não expira
 
 Variáveis de ambiente (arquivo .env na raiz ou secrets do GitHub):
@@ -388,13 +389,51 @@ def cmd_responder(a):
     print(api("POST", f"{cid}/replies", {"message": texto}))
 
 
+def cmd_desempenho(a):
+    """Validação semanal: alcance, envios, salvamentos e seguidores por post, com a mediana da conta.
+    Mostra o que o algoritmo usa para decidir se leva o post a quem não segue (envios por alcance, retenção)."""
+    n = int(dict(zip(a[::2], a[1::2])).get("--n", 15))
+    uid = user_id()
+    c = api("GET", uid, {"fields": "username,followers_count,media_count"})
+    agora = int(time.time())
+    tot = api("GET", f"{uid}/insights", {"metric": "reach,views,profile_views,accounts_engaged,website_clicks", "period": "day",
+                                         "metric_type": "total_value", "since": str(agora - 28 * 86400), "until": str(agora)})
+    t = {x["name"]: x.get("total_value", {}).get("value", 0) for x in tot.get("data", [])}
+    print(f"@{c.get('username')} · {c.get('followers_count')} seguidores · {c.get('media_count')} posts")
+    print(f"Últimos 28 dias: alcance {t.get('reach')} · visualizações {t.get('views')} · visitas ao perfil {t.get('profile_views')}"
+          f" · contas que interagiram {t.get('accounts_engaged')} · cliques no site {t.get('website_clicks')}\n")
+    media = api("GET", f"{uid}/media", {"fields": "id,caption,media_product_type,media_type,timestamp", "limit": n}).get("data", [])
+    linhas = []
+    for m in media:
+        reel = m.get("media_product_type") == "REELS"
+        met = "reach,views,saved,shares,likes,comments" + (",ig_reels_avg_watch_time" if reel else ",follows")
+        try:
+            ins = {x["name"]: (x.get("values") or [{}])[0].get("value", 0) for x in api("GET", f"{m['id']}/insights", {"metric": met}).get("data", [])}
+        except SystemExit:
+            continue
+        linhas.append((m, ins, reel))
+    alc = sorted(i.get("reach", 0) for _, i, _ in linhas) or [0]
+    med = alc[len(alc) // 2] or 1
+    print(f"{'data':<11}{'tipo':<6}{'alcance':>8}{'x med':>7}{'envios':>8}{'env/alc':>9}{'salv':>6}{'curt':>6}{'coment':>8}{'ret(s)':>8}  legenda")
+    for m, i, reel in linhas:
+        r = i.get("reach", 0)
+        tipo = "reel" if reel else ("carr" if m.get("media_type") == "CAROUSEL_ALBUM" else "foto")
+        ret = f"{i.get('ig_reels_avg_watch_time', 0) / 1000:.1f}" if reel else "-"
+        cap = " ".join((m.get("caption") or "").split())[:42]
+        print(f"{m['timestamp'][:10]:<11}{tipo:<6}{r:>8}{r / med:>6.1f}x{i.get('shares', 0):>8}{(i.get('shares', 0) / r * 100 if r else 0):>8.1f}%"
+              f"{i.get('saved', 0):>6}{i.get('likes', 0):>6}{i.get('comments', 0):>8}{ret:>8}  {cap}")
+    env = sum(i.get("shares", 0) for _, i, _ in linhas); ra = sum(i.get("reach", 0) for _, i, _ in linhas)
+    print(f"\nMediana de alcance: {med} · envios por alcance no período: {env / ra * 100 if ra else 0:.1f}% (meta do plano: 1% ou mais)")
+    print("Leitura: alcance perto do nº de seguidores = o post não saiu da base (falta envio/retenção, não é bloqueio).")
+
+
 def cmd_renovar(a):
     print("Não é necessário: o token é de usuário do sistema (Login unificado) e não expira.")
 
 
 CMDS = {"conta": cmd_conta, "preparar": cmd_preparar, "plano": cmd_plano, "aprovar": cmd_aprovar,
         "publicar": cmd_publicar, "agendados": cmd_agendados, "comentarios": cmd_comentarios,
-        "responder": cmd_responder, "renovar-token": cmd_renovar}
+        "responder": cmd_responder, "renovar-token": cmd_renovar, "desempenho": cmd_desempenho}
 
 if __name__ == "__main__":
     load_env()

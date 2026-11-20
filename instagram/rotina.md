@@ -10,6 +10,7 @@ Painel: dois cliques em `PLANO\Abrir painel do Instagram.bat`. Nada é publicado
 5. **Stories (dias úteis), de 4 a 5 quadros.** O quadro 1 já vem pronto como **vídeo animado** (baixe pelo botão no painel e poste; a localização Lages, SC você põe no app). Se quiser, ainda pode gravar o seu, que alcança mais. Enquete, caixinha ou link no quadro 4. Pelo app, porque a API não põe adesivo. Tudo fica na aba **Stories** do painel: imagem, o que é cada uma, adesivo, link e horário. Quando o painel avisar que os Stories estão acabando, peça ao Claude "/ig-story da semana". Responda no direct quem votou ou respondeu, nunca quem não interagiu.
 
 ## Toda segunda · 20 minutos
+0. **Validação:** `python scripts/ig.py desempenho` (ou "valida o Instagram da Projecta"). Mostra alcance x mediana, envios por alcance e retenção dos reels. Metas e plano de 12 semanas: `PLANO/documentos/plano-crescimento-instagram-projecta.md`.
 1. **"/ig-audit da semana passada"**: o que teve mais alcance, salvamentos e cliques no perfil.
 2. **Ajuste do plano**: arraste posts no Calendário do painel se algo precisar mudar de dia.
 3. **Aprove os posts da semana** (Calendário → abrir post → Aprovar). Depois clique em **Enviar para o GitHub**. O robô publica cada um no horário.
