@@ -122,11 +122,12 @@ def checar(texto, entrada=None):
     me = int(R.get("max_emojis", 1))
     if n_emoji > me:
         avisos.append(f"{n_emoji} emojis. O tom pede no máximo {me}.")
+    tem = lambda p: re.search(r"(?<!\w)" + re.escape(p.lower()) + r"(?!\w)", low)  # palavra inteira ("cura" ≠ "procura")
     for p in R.get("proibidas") or []:
-        if p.lower() in low:
+        if tem(p):
             avisos.append(f'Palavra fora do tom: "{p}".')
     for p in R.get("promessas") or []:
-        if p.lower() in low:
+        if tem(p):
             avisos.append(f'Parece promessa de resultado: "{p}".')
     busca = R.get("palavras_busca") or []
     if busca and not any(b.lower() in low for b in busca):
