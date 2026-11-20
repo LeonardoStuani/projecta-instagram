@@ -32,8 +32,11 @@
     "legenda": "media/04-quem-somos/legenda.txt",
     "data": "2026-11-20",
     "hora": "18:00",
-    "status": "aprovado",
-    "pilar": "bastidores"
+    "status": "publicado",
+    "pilar": "bastidores",
+    "media_id": "18384565441234763",
+    "link": "https://www.instagram.com/p/Df-ozkcDOWH/",
+    "publicado_em": "2026-11-20 18:37"
   },
   {
     "id": "05-projecta-gestao",
