@@ -914,12 +914,71 @@ def publicar_vencidos(slug):
             ig.cal_save(cal)
 
 
+JANELA_PAINEL = 20  # min. Vencido há mais que isso, quem publica o @projectatech é o GitHub Actions (--folga 25).
+
+
+def _vencido_agora(e, agora_):
+    if e.get("status") != "aprovado" or not e.get("data"):
+        return False
+    quando = datetime.strptime(f"{e['data']} {e.get('hora') or '18:00'}", "%Y-%m-%d %H:%M").replace(tzinfo=ig.TZ)
+    return timedelta(0) <= agora_ - quando < timedelta(minutes=JANELA_PAINEL)
+
+
+def publicar_projecta():
+    """@projectatech na hora certa enquanto o painel está aberto. O GitHub Actions atrasa horas (agenda "de hora em hora"
+    roda ~3x por dia) e fica de reserva para quando o PC estiver desligado. Para nunca publicar em dobro:
+    janelas separadas (painel 0–20 min, Actions 25+ min), git pull antes, trava ig.ja_publicado e push logo depois."""
+    if not os.path.isdir(os.path.join(ROOT, ".git")):
+        return
+    with LOCK, ig.usar({}):
+        if not any(_vencido_agora(e, datetime.now(ig.TZ)) for e in ig.cal_load()):
+            return
+        r = git("pull", "--rebase", "--autostash", "origin", "main")  # traz o que o robô do GitHub já publicou
+        if r.returncode != 0:
+            git("rebase", "--abort")
+            print("Agendador @projectatech: não consegui atualizar do GitHub, deixo para o robô de lá:", (r.stderr or r.stdout).strip()[-200:])
+            return
+        ig.load_env()
+        tok = os.environ.get("IG_ACCESS_TOKEN", "")
+        if not tok:
+            return
+        cal = ig.cal_load()
+        mudou = False
+        for e in cal:
+            if not _vencido_agora(e, datetime.now(ig.TZ)):
+                continue
+            # carrossel/foto: a Meta baixa as imagens do GitHub, então elas precisam já estar lá
+            faltando = [f for f in e.get("arquivos", []) if not git("ls-tree", "--name-only", "origin/main", "--", f"media/{f}").stdout.strip()]
+            if e.get("tipo") != "reel" and faltando:
+                print(f"Agendador @projectatech: {e['id']} ainda não foi enviado ao GitHub (clique em Enviar para o GitHub).")
+                continue
+            try:
+                if ig.ja_publicado(e):
+                    print(f"[projectatech] {e['id']} já estava no ar: calendário atualizado.")
+                else:
+                    print(f"[projectatech] publicado: {e['id']} {ig.publish_entry(e)}")
+            except SystemExit as err:
+                e["status"] = "erro"
+                e["erro"] = scrub(str(err), tok)[:500]
+                print(f"[projectatech] erro em {e['id']}: {e['erro'][:160]}")
+            ig.cal_save(cal)
+            mudou = True
+        if mudou:  # sobe o status na hora, para o robô do GitHub não tentar de novo
+            git("add", "calendario.json")
+            git("commit", "-m", "Instagram: publicado pelo painel")
+            git("pull", "--rebase", "--autostash", "origin", "main")
+            p = git("push", "origin", "main")
+            if p.returncode != 0:
+                print("Agendador @projectatech: publiquei, mas não consegui enviar o calendário ao GitHub:", (p.stderr or p.stdout).strip()[-200:])
+
+
 def agendador():
-    """Roda junto com o painel, a cada 5 min. O @projectatech continua sendo publicado pelo GitHub Actions."""
+    """Roda junto com o painel, a cada 5 min: @projectatech (na hora certa) e clientes da agência."""
     import time
     ultimo_renovar = None
     while True:
         try:
+            publicar_projecta()
             for c in clientes.listar():
                 if not c.get("casa"):
                     publicar_vencidos(c["slug"])
@@ -1279,6 +1338,7 @@ def main():
         n = sum(1 for c in clientes.listar() if not c.get("casa"))
         if n:
             print(f"Agendador dos clientes ligado ({n} cliente(s)): publica o que você agendou, a cada 5 min, enquanto o painel estiver aberto.")
+        print("Agendador do @projectatech ligado: publica na hora certa (o GitHub Actions fica de reserva, para quando o PC estiver desligado).")
     if NUVEM:
         print(f"\nMODO NUVEM · {url_publica()}\nAcesso da agência (guarde, não compartilhe): {url_publica()}/?chave=•••  (a chave está em PAINEL_CHAVE)\n")
     if REDE:

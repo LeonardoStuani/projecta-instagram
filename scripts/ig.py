@@ -320,14 +320,46 @@ def cmd_publicar(a):
     print("Publicado:", publish_entry(e)); cal_save(c)
 
 
+def ja_publicado(e, horas=72):
+    """Trava contra post duplicado: se a legenda já está num post recente da conta (publicado pelo painel
+    ou pelo GitHub Actions), marca como publicado e devolve True em vez de publicar de novo."""
+    alvo = " ".join(legenda(e).split())[:120]
+    if not alvo:
+        return False
+    try:
+        recentes = api("GET", f"{user_id()}/media", {"fields": "id,caption,permalink,timestamp", "limit": 12}).get("data", [])
+    except SystemExit:
+        return False
+    limite = datetime.now(TZ) - timedelta(hours=horas)
+    for m in recentes:
+        if " ".join((m.get("caption") or "").split())[:120] != alvo:
+            continue
+        try:
+            quando = datetime.strptime(m.get("timestamp", ""), "%Y-%m-%dT%H:%M:%S%z").astimezone(TZ)
+        except ValueError:
+            quando = datetime.now(TZ)
+        if quando >= limite:
+            e.update(status="publicado", media_id=m["id"], link=m.get("permalink", ""),
+                     publicado_em=quando.strftime("%Y-%m-%d %H:%M"))
+            return True
+    return False
+
+
 def cmd_agendados(a):
+    # --folga N: só publica posts vencidos há N minutos ou mais. O GitHub Actions usa --folga 25 porque o painel
+    # aberto publica na hora certa (janela de 0 a 20 min); assim os dois nunca disputam o mesmo post.
+    folga = timedelta(minutes=int(dict(zip(a[::2], a[1::2])).get("--folga", 0)))
     c = cal_load(); now = datetime.now(TZ); feitos = 0
     for e in c:
         if e["status"] != "aprovado" or not e["data"]:
             continue
         quando = datetime.strptime(f"{e['data']} {e['hora']}", "%Y-%m-%d %H:%M").replace(tzinfo=TZ)
-        if quando <= now:
+        if quando + folga <= now:
             try:
+                if ja_publicado(e):
+                    print(f"{e['id']} já estava no ar ({e.get('link')}): só atualizei o calendário.")
+                    cal_save(c)
+                    continue
                 print(f"Publicando {e['id']}…", publish_entry(e)); feitos += 1
             except SystemExit as err:
                 e["status"] = "erro"; e["erro"] = str(err)[:500]; print(err)
