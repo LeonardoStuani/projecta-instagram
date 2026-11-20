@@ -51,6 +51,11 @@ Use as skills de sempre, com a voz do cliente:
 - Reel narrado: copie `marca/reel.html` para `posts/<pasta>/fonte/`, escreva `fonte/roteiro.json` (falas) e
   `fonte/cenas.js` (uma cena por fala; `fala` conta do 0) e rode `scripts/video/voz.py` (voz Antonio) →
   `scripts/video/trilha.py` → `scripts/video/renderizar.mjs fonte/reel.html fonte/mudo.mp4` → ffmpeg com `fonte/audio/mix.wav`.
+- Reel de montagem (vídeos/fotos reais do cliente, sem narração): escreva `posts/<pasta>/fonte/montagem.json`
+  (clipes com `arq` relativo a `clientes/<slug>/media/`, `ini`, `dur`, `texto`, `sub`; `fim` = cartela final) e rode
+  `python scripts/video/montagem.py clientes/<slug>/posts/<pasta>`. Textos usam `marca/rotulo.html` do cliente; trilha
+  original do trilha.py (sem música de terceiros) + som original dos vídeos. Exemplo: `clientes/spitzzaroca/posts/01-reel-voltei`.
+  Depois do preparar, ponha `capa_s` no calendário (segundo da capa do Reel).
 - Stories da semana: `clientes/<slug>/posts/stories-AAAA-MM-DD/stories.json` (mesmo formato do @projectatech:
   dias → quadros com `tela`, `img`, `adesivo`, `link`, `sobre`; quadro "gravar" = foto/vídeo do cliente) e rode
   `node scripts/stories/renderizar.mjs clientes/<slug>/posts/stories-AAAA-MM-DD` (usa `marca/story.html` do cliente).

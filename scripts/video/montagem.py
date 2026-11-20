@@ -95,7 +95,8 @@ total = round(t, 3)
 lista = os.path.join(tmp, "lista.txt")
 open(lista, "w", encoding="utf-8").write("".join(f"file '{s.replace(os.sep, '/')}'\n" for s in segs))
 mudo = os.path.join(fonte, "mudo.mp4")
-run(["-f", "concat", "-safe", "0", "-i", lista, "-c", "copy", mudo])
+run(["-f", "concat", "-safe", "0", "-i", lista, "-vf", "scale=in_range=auto:out_range=tv,format=yuv420p", "-r", "30",
+     "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-pix_fmt", "yuv420p", "-color_range", "tv", mudo])
 
 # 3) trilha original (trilha.py sem falas) com whoosh nos cortes
 rot = {"bpm": M.get("bpm", 104), "fim": total, "drop": M.get("drop", 0.0), "falas": [],
@@ -121,7 +122,7 @@ saida = os.path.join(pasta, nome + ".mp4")
 for f in os.listdir(pasta):  # só um .mp4 na pasta (o preparar pega o primeiro)
     if f.endswith(".mp4"):
         os.remove(os.path.join(pasta, f))
-run(["-i", mudo, "-i", final_wav, "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+run(["-i", mudo, "-i", final_wav, "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", str(SR),
      "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-shortest", "-movflags", "+faststart", saida])
 shutil.rmtree(tmp, ignore_errors=True)
 print(f"{os.path.relpath(saida)} · {total}s · {len(M['clipes'])} trechos")
