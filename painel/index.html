@@ -62,8 +62,6 @@ main{padding:32px 40px 80px;min-width:0}
 .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
-.admin-barra{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 14px}
-#admin-frame{display:block;width:100%;min-height:480px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper)}
 .card.ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .card.ink .muted,.card.ink .tag{color:var(--fog)}
 .card h3{font-size:22px;margin-top:6px}
@@ -311,7 +309,23 @@ body.modo-cliente .conta-sel select{border-color:var(--accent)}
 .hist small{color:var(--muted)}
 @media (max-width:860px){.fluxo{grid-template-columns:repeat(2,minmax(0,1fr))}.row2{grid-template-columns:1fr}.ped-top{flex-direction:column}.pst{width:100%}.conta-sel{margin:4px 0 10px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Dentro do painel da Projecta (iframe): sem a barra lateral escura; as seções viram uma faixa de abas no topo. */
+html.embutido .app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr}
+html.embutido aside{position:sticky;top:0;z-index:30;height:auto;flex-direction:row;align-items:center;gap:12px;padding:10px 24px;background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line)}
+html.embutido .brand,html.embutido .side-foot,html.embutido .menu-btn{display:none!important}
+html.embutido .nav-lista{display:flex!important;flex-direction:row;align-items:center;position:static;flex:1;min-width:0;overflow-x:auto;gap:6px;padding:2px;background:none;box-shadow:none;border:0;scrollbar-width:none}
+html.embutido .nav{flex:none;gap:8px;padding:7px 14px;border-radius:99px;font-size:14px;background:transparent;color:var(--muted);border:1px solid var(--line)}
+html.embutido .nav:hover{color:var(--ink);background:#fff}
+html.embutido .nav[aria-current=page]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+html.embutido .conta-sel{flex:none;display:flex;align-items:center;gap:8px;margin:0 6px 0 0}
+html.embutido .conta-sel label{margin:0;color:var(--muted)}
+html.embutido .conta-sel select{background:#fff;color:var(--ink);border-color:var(--line);padding:6px 10px;width:auto}
+html.embutido main{padding:24px 28px 60px}
+html.embutido .top h1{font-size:32px}
+@media (max-width:860px){html.embutido aside{padding:8px 12px}html.embutido main{padding:16px 12px 48px}html.embutido .conta-sel label{display:none}html.embutido .conta-sel select{max-width:132px;font-size:14px}}
 </style>
+<script>if (window.self !== window.top) document.documentElement.classList.add("embutido");</script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -330,7 +344,6 @@ body.modo-cliente .conta-sel select{border-color:var(--accent)}
     <button class="nav" data-view="comentarios">Comentários</button>
     <button class="nav" data-view="config">Conexões <span class="n" id="cfg-n" hidden></span></button>
     <button class="nav" data-view="clientes">Clientes <span class="n" id="cl-n" hidden></span></button>
-    <button class="nav" data-view="admin">Administração</button>
     </nav>
     <div class="side-foot" id="side-foot">Nada vai ao ar sem a sua aprovação.<br>Rodando só neste computador.</div>
   </aside>
@@ -421,10 +434,10 @@ function render() {
   document.querySelectorAll(".nav").forEach(b => { if (b.dataset.view === view) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
   $(`.nav[data-view="pedidos"]`).hidden = !CLI;
   if (!CLI && view === "pedidos") view = "hoje";
-  const titles = {hoje:"Hoje", calendario:"Calendário", stories:"Stories", radar:"Radar do Instagram", feed:"Prévia do feed", comentarios:"Comentários", config: CLI ? "Conexões do cliente" : "Conexões", clientes:"Clientes da agência", pedidos:"Pedidos do cliente", admin:"Administração"};
+  const titles = {hoje:"Hoje", calendario:"Calendário", stories:"Stories", radar:"Radar do Instagram", feed:"Prévia do feed", comentarios:"Comentários", config: CLI ? "Conexões do cliente" : "Conexões", clientes:"Clientes da agência", pedidos:"Pedidos do cliente"};
   $("#titulo").textContent = titles[view];
   $("#menu-atual").textContent = $(`.nav[data-view="${view}"]`).firstChild.textContent.trim();
-  ({hoje: CLI ? vHojeCli : vHoje, calendario:vCal, stories:vStories, radar:vRadar, feed:vFeed, comentarios:vComent, config: CLI ? vConfigCli : vConfig, clientes:vClientes, pedidos:vPedidos, admin:vAdmin})[view]();
+  ({hoje: CLI ? vHojeCli : vHoje, calendario:vCal, stories:vStories, radar:vRadar, feed:vFeed, comentarios:vComent, config: CLI ? vConfigCli : vConfig, clientes:vClientes, pedidos:vPedidos})[view]();
   const pend = storyDias().filter(x => x.st === "hoje" || x.st === "atrasado").length;
   const n = $("#st-n"); n.hidden = !pend; n.textContent = pend;
   $("#menu-dot").hidden = $("#st-n").hidden && $("#cfg-n").hidden && $("#pd-n").hidden && $("#cl-n").hidden;
@@ -1124,37 +1137,7 @@ function vConfigCli() {
     regras: {cta: $("#rg-cta").value, hashtags_fixas: $("#rg-hash").value, palavras_busca: $("#rg-busca").value, proibidas: $("#rg-proib").value, promessas: $("#rg-prom").value}}), "Regras salvas."); };
 }
 
-const VIEWS = ["hoje","calendario","stories","radar","feed","comentarios","config","clientes","pedidos","admin"];
-
-// Administração: o painel interno (dashboard-projecta, porta 3102) aberto aqui dentro.
-// Mesmo endereço do painel (127.0.0.1 no PC, IP da rede no celular), só muda a porta.
-const ADMIN_URL = `${location.protocol}//${location.hostname}:3102/dashboard`;
-let ADMIN_SRC = ADMIN_URL;  // guarda a aba em que você estava ao trocar de seção
-function vAdmin() {
-  $("#view").innerHTML = `<div class="admin-barra">
-      <p class="muted" style="margin:0">Visão geral, anúncios, clientes, prospecção e sites, no painel interno.</p>
-      <a class="btn ghost sm" href="${esc(ADMIN_URL)}" target="_blank" rel="noopener">Abrir em nova aba</a></div>
-    <div id="admin-caixa"><div class="empty">Carregando o painel interno…</div></div>`;
-  fetch(ADMIN_URL.replace(/\/dashboard$/, "/login"), {mode: "no-cors", cache: "no-store"})
-    .then(() => {
-      if (view !== "admin") return;
-      const f = document.createElement("iframe");
-      f.id = "admin-frame"; f.title = "Painel interno da Projecta"; f.src = ADMIN_SRC;
-      f.onload = () => { try { ADMIN_SRC = f.contentWindow.location.href; } catch { /* outra origem: segue na aba inicial */ } };
-      $("#admin-caixa").replaceChildren(f);
-      ajustaAdmin();
-    })
-    .catch(() => {
-      if (view !== "admin") return;
-      $("#admin-caixa").innerHTML = `<div class="empty"><b>O painel interno não está ligado.</b><br>
-        No PC, abra a pasta <code>PLANO/dashboard-projecta</code> e rode <code>npm run dev</code>. Depois volte aqui e toque em Administração de novo.</div>`;
-    });
-}
-function ajustaAdmin() {
-  const f = $("#admin-frame"); if (!f) return;
-  f.style.height = Math.max(480, window.innerHeight - f.getBoundingClientRect().top - window.scrollY - 16) + "px";
-}
-window.addEventListener("resize", ajustaAdmin);
+const VIEWS = ["hoje","calendario","stories","radar","feed","comentarios","config","clientes","pedidos"];
 function celularCard() {
   const c = S.celular || {};
   const noPC = ["127.0.0.1", "localhost"].includes(location.hostname);
@@ -1190,8 +1173,7 @@ load().then(() => { if (h0[1] && !["stories", "radar"].includes(h0[0])) openPost
 var SUJO = false;
 document.addEventListener("input", (e) => { if (e.target.closest("#view")) SUJO = true; });
 const digitando = () => { const a = document.activeElement; return SUJO || (a && a.closest("#view") && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)); };
-// Na Administração não recarrega: redesenhar recriaria o painel interno e perderia a aba aberta.
-setInterval(() => { if (!dlg.open && view !== "comentarios" && view !== "admin" && !digitando()) load().catch(() => {}); }, 60000);
+setInterval(() => { if (!dlg.open && view !== "comentarios" && !digitando()) load().catch(() => {}); }, 60000);
 </script>
 </body>
 </html>
