@@ -1033,8 +1033,21 @@ def ip_local():
         s.close()
 
 
+PORTA_PROJECTA = 3102   # painel geral da Projecta (dashboard-projecta), que abre este painel dentro dele
+
+
+def projecta_ligado():
+    import socket
+    try:
+        with socket.create_connection(("127.0.0.1", PORTA_PROJECTA), timeout=0.4):
+            return True
+    except OSError:
+        return False
+
+
 def link_celular():
-    return f"http://{LAN_IP}:{PORT}/?chave={CHAVE}" if REDE and LAN_IP else None
+    # ir=projecta: depois de liberar o celular, segue para o painel geral (se estiver ligado)
+    return f"http://{LAN_IP}:{PORT}/?chave={CHAVE}&ir=projecta" if REDE and LAN_IP else None
 
 
 def qr_svg():
@@ -1208,10 +1221,13 @@ class Handler(BaseHTTPRequestHandler):
         if (REDE or NUVEM) and chave and CHAVE and not self._local():
             import hmac
             if hmac.compare_digest(chave, CHAVE):  # troca a chave do link por um cookie e limpa a URL
-                return self._set_cookie("painel_chave", CHAVE, "/")
+                # O cookie vale para o IP inteiro: o painel da Projecta (outra porta) já abre este aqui dentro dele.
+                destino = (f"http://{LAN_IP}:{PORTA_PROJECTA}/dashboard"
+                           if REDE and LAN_IP and q.get("ir") == "projecta" and projecta_ligado() else "/")
+                return self._set_cookie("painel_chave", CHAVE, destino)
         if not self._autorizado():
             msg = ("Abra pelo link de acesso da agência (com a chave)." if NUVEM else
-                   "No PC, abra <b>Conexões → Abrir no celular</b> e leia o QR code com a câmera.")
+                   "No PC, abra o painel da Projecta em <b>No celular</b> e leia o QR code com a câmera.")
             return self._html(pagina("Painel da Projecta", f"<p>Acesso bloqueado. {msg}</p>", 401))
         if u.path == "/api/qr":
             if not self._local() or not link_celular():

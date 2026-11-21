@@ -310,7 +310,9 @@ body.modo-cliente .conta-sel select{border-color:var(--accent)}
 @media (max-width:860px){.fluxo{grid-template-columns:repeat(2,minmax(0,1fr))}.row2{grid-template-columns:1fr}.ped-top{flex-direction:column}.pst{width:100%}.conta-sel{margin:4px 0 10px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
-/* Dentro do painel da Projecta (iframe): sem a barra lateral escura; as seções viram uma faixa de abas no topo. */
+/* Dentro do painel da Projecta (iframe), no PC: sem a barra lateral escura; as seções viram uma faixa de abas no topo.
+   No celular continua o menu próprio (botão com a seção atual que abre a grade de seções). */
+@media (min-width:861px){
 html.embutido .app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr}
 html.embutido aside{position:sticky;top:0;z-index:30;height:auto;flex-direction:row;align-items:center;gap:12px;padding:10px 24px;background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line)}
 html.embutido .brand,html.embutido .side-foot,html.embutido .menu-btn{display:none!important}
@@ -323,7 +325,8 @@ html.embutido .conta-sel label{margin:0;color:var(--muted)}
 html.embutido .conta-sel select{background:#fff;color:var(--ink);border-color:var(--line);padding:6px 10px;width:auto}
 html.embutido main{padding:24px 28px 60px}
 html.embutido .top h1{font-size:32px}
-@media (max-width:860px){html.embutido aside{padding:8px 12px}html.embutido main{padding:16px 12px 48px}html.embutido .conta-sel label{display:none}html.embutido .conta-sel select{max-width:132px;font-size:14px}}
+}
+@media (max-width:860px){html.embutido main{padding:16px 14px 40px}html.embutido .top h1{font-size:28px}}
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add("embutido");</script>
 </head>
