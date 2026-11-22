@@ -1,10 +1,10 @@
 {
-  "data": "2026-11-19",
-  "gerado_em": "2026-11-19 14:05",
+  "data": "2026-11-22",
+  "gerado_em": "2026-11-22 09:45",
   "conta": {
     "username": "projectatech",
-    "seguidores": 18,
-    "posts": 18
+    "seguidores": 29,
+    "posts": 19
   },
   "permissoes": {
     "insights": true,
@@ -28,13 +28,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 15,
+      "alcance": 16,
       "salvos": 1,
       "compart": 0,
-      "views": 121,
+      "views": 123,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 16.67,
+      "taxa": 10.34,
       "mult": 1.0,
       "dia_semana": "dom"
     },
@@ -54,13 +54,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 16,
+      "alcance": 17,
       "salvos": 1,
       "compart": 0,
-      "views": 111,
+      "views": 112,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 16.67,
+      "taxa": 10.34,
       "mult": 1.0,
       "dia_semana": "ter"
     },
@@ -80,13 +80,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 12,
+      "alcance": 13,
       "salvos": 1,
       "compart": 0,
-      "views": 120,
+      "views": 122,
       "interacoes_api": 4,
       "interacoes": 4,
-      "taxa": 22.22,
+      "taxa": 13.79,
       "mult": 1.33,
       "dia_semana": "sex"
     },
@@ -107,13 +107,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 16,
+      "alcance": 17,
       "salvos": 1,
       "compart": 0,
-      "views": 122,
+      "views": 123,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 16.67,
+      "taxa": 10.34,
       "mult": 1.0,
       "dia_semana": "sex"
     },
@@ -134,13 +134,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 130,
+      "alcance": 131,
       "salvos": 1,
       "compart": 0,
-      "views": 188,
+      "views": 189,
       "interacoes_api": 5,
       "interacoes": 5,
-      "taxa": 27.78,
+      "taxa": 17.24,
       "mult": 1.67,
       "dia_semana": "sáb"
     },
@@ -161,13 +161,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 14,
+      "alcance": 15,
       "salvos": 1,
       "compart": 0,
-      "views": 92,
+      "views": 93,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 16.67,
+      "taxa": 10.34,
       "mult": 1.0,
       "dia_semana": "dom"
     },
@@ -187,13 +187,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 16,
+      "alcance": 17,
       "salvos": 1,
       "compart": 0,
-      "views": 91,
+      "views": 93,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 16.67,
+      "taxa": 10.34,
       "mult": 1.0,
       "dia_semana": "dom"
     },
@@ -215,13 +215,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 14,
+      "alcance": 15,
       "salvos": 1,
       "compart": 0,
-      "views": 80,
+      "views": 81,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 16.67,
+      "taxa": 10.34,
       "mult": 1.0,
       "dia_semana": "qua"
     },
@@ -240,13 +240,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 7,
+      "alcance": 8,
       "salvos": 1,
       "compart": 0,
-      "views": 29,
+      "views": 30,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 16.67,
+      "taxa": 10.34,
       "mult": 1.0,
       "dia_semana": "qua"
     },
@@ -266,13 +266,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 11,
+      "alcance": 12,
       "salvos": 1,
       "compart": 0,
-      "views": 27,
+      "views": 28,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 16.67,
+      "taxa": 10.34,
       "mult": 1.0,
       "dia_semana": "ter"
     },
@@ -293,13 +293,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 5,
+      "alcance": 6,
       "salvos": 1,
       "compart": 0,
-      "views": 18,
+      "views": 20,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 16.67,
+      "taxa": 10.34,
       "mult": 1.0,
       "dia_semana": "qui"
     },
@@ -319,13 +319,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 23,
+      "alcance": 24,
       "salvos": 1,
       "compart": 0,
-      "views": 36,
+      "views": 38,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 16.67,
+      "taxa": 10.34,
       "mult": 1.0,
       "dia_semana": "dom"
     },
@@ -344,13 +344,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 7,
+      "alcance": 8,
       "salvos": 1,
       "compart": 0,
-      "views": 16,
+      "views": 17,
       "interacoes_api": 2,
       "interacoes": 2,
-      "taxa": 11.11,
+      "taxa": 6.9,
       "mult": 0.67,
       "dia_semana": "sáb"
     },
@@ -369,13 +369,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 5,
+      "alcance": 6,
       "salvos": 1,
       "compart": 0,
-      "views": 16,
+      "views": 20,
       "interacoes_api": 2,
       "interacoes": 2,
-      "taxa": 11.11,
+      "taxa": 6.9,
       "mult": 0.67,
       "dia_semana": "sex"
     },
@@ -397,14 +397,14 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 25,
+      "alcance": 29,
       "salvos": 1,
-      "compart": 0,
-      "views": 44,
-      "interacoes_api": 3,
-      "interacoes": 3,
-      "taxa": 16.67,
-      "mult": 1.0,
+      "compart": 1,
+      "views": 52,
+      "interacoes_api": 4,
+      "interacoes": 4,
+      "taxa": 13.79,
+      "mult": 1.33,
       "dia_semana": "ter"
     },
     {
@@ -426,13 +426,13 @@
       ],
       "pilar": null,
       "post": null,
-      "alcance": 6,
+      "alcance": 9,
       "salvos": 1,
       "compart": 0,
-      "views": 19,
+      "views": 31,
       "interacoes_api": 3,
       "interacoes": 3,
-      "taxa": 16.67,
+      "taxa": 10.34,
       "mult": 1.0,
       "dia_semana": "ter"
     },
@@ -443,7 +443,7 @@
       "tipo": "Carrossel",
       "gancho": "Tem empresa em Lages e ainda não tem site? 👀",
       "legenda": "Tem empresa em Lages e ainda não tem site? 👀\n\nSeu cliente procura no Google e, sem site, quem aparece é o concorrente.\n\nA landing page da Projecta fica no ar em até 7 dias, com botão de WhatsApp e mapa, Google Meu Negócio otimizado, domínio, hospedagem e SSL. Alterações? É só pedir pelo WhatsApp.\n\nVocê recebe a proposta em 24h, com escopo, prazo e valor fechados.\n\n🎁 Bônus: análise gratuita da sua presença online, com os 3 pontos que mais estão custando clientes.\n\nPeça sua análise gratuita: link na bio. Ou manda \"SITE\" no WhatsApp.\n\n#Lages #LagesSC #SerraCatarinense #CriacaoDeSites #MarketingLo",
-      "likes": 2,
+      "likes": 3,
       "comentarios": 0,
       "link": "https://www.instagram.com/p/Df4YAURlSTk/",
       "temas": [
@@ -454,14 +454,14 @@
       ],
       "pilar": "oferta",
       "post": "02-oferta-lages",
-      "alcance": 5,
-      "salvos": 1,
+      "alcance": 9,
+      "salvos": 2,
       "compart": 0,
-      "views": 15,
-      "interacoes_api": 3,
-      "interacoes": 3,
-      "taxa": 16.67,
-      "mult": 1.0,
+      "views": 25,
+      "interacoes_api": 5,
+      "interacoes": 5,
+      "taxa": 17.24,
+      "mult": 1.67,
       "dia_semana": "qua"
     },
     {
@@ -482,21 +482,49 @@
       ],
       "pilar": "oferta",
       "post": "16-reel-gestao",
-      "alcance": 2,
+      "alcance": 19,
       "salvos": 1,
       "compart": 0,
-      "views": 10,
+      "views": 30,
       "interacoes_api": 4,
       "interacoes": 4,
-      "taxa": 22.22,
+      "taxa": 13.79,
       "mult": 1.33,
       "dia_semana": "qui"
+    },
+    {
+      "id": "18384565441234763",
+      "data": "2026-11-20",
+      "hora": "21:37",
+      "tipo": "Carrossel",
+      "gancho": "Somos a Projecta Tech, estúdio de software de Lages – SC. 👋",
+      "legenda": "Somos a Projecta Tech, estúdio de software de Lages – SC. 👋\n\nCriamos landing pages, websites, sistemas internos e SaaS para empresas da Serra Catarinense: clínicas, oficinas, escritórios de engenharia e topografia, comércio e prestadores de serviço.\n\nTambém somos os criadores do Projecta Gestão, o sistema do escritório técnico, que nasceu da operação real de escritórios como a Eixo Sul Engenharia.\n\nNada de pacote de prateleira: você conta o que precisa e recebe uma proposta feita para o seu negócio em 24h. Depois que está no ar, cuidamos de hospedagem, segurança e alterações pelo WhatsApp. E d",
+      "likes": 2,
+      "comentarios": 0,
+      "link": "https://www.instagram.com/p/Df-ozkcDOWH/",
+      "temas": [
+        "Site e landing page",
+        "Sistema e gestão",
+        "WhatsApp e atendimento",
+        "Oferta e proposta"
+      ],
+      "pilar": "bastidores",
+      "post": "04-quem-somos",
+      "alcance": 8,
+      "salvos": 1,
+      "compart": 0,
+      "views": 20,
+      "interacoes_api": 3,
+      "interacoes": 3,
+      "taxa": 10.34,
+      "mult": 1.0,
+      "dia_semana": "sex"
     }
   ],
   "melhores": [
+    "17883050442543272",
     "18000727778846687",
-    "18202376929391620",
-    "18061497545637043"
+    "18202376929391620"
   ],
   "piores": [
     "18174711166391970",
@@ -505,14 +533,14 @@
   ],
   "por_formato": [
     {
-      "nome": "Reel",
-      "n": 6,
-      "media": 3.33
+      "nome": "Carrossel",
+      "n": 4,
+      "media": 3.5
     },
     {
-      "nome": "Carrossel",
-      "n": 3,
-      "media": 3.0
+      "nome": "Reel",
+      "n": 6,
+      "media": 3.5
     },
     {
       "nome": "Imagem",
@@ -524,15 +552,25 @@
     {
       "nome": "oferta",
       "n": 2,
-      "media": 3.5
+      "media": 4.5
     },
     {
       "nome": "sem",
       "n": 16,
-      "media": 3.06
+      "media": 3.12
+    },
+    {
+      "nome": "bastidores",
+      "n": 1,
+      "media": 3.0
     }
   ],
   "por_dia": [
+    {
+      "nome": "qua",
+      "n": 3,
+      "media": 3.67
+    },
     {
       "nome": "qui",
       "n": 2,
@@ -544,18 +582,13 @@
       "media": 3.5
     },
     {
-      "nome": "qua",
-      "n": 3,
-      "media": 3.0
-    },
-    {
       "nome": "ter",
       "n": 4,
-      "media": 3.0
+      "media": 3.25
     },
     {
       "nome": "sex",
-      "n": 3,
+      "n": 4,
       "media": 3.0
     },
     {
@@ -567,13 +600,28 @@
   "temas_meus": [
     {
       "nome": "WhatsApp e atendimento",
-      "n": 2,
-      "media": 3.5
+      "n": 3,
+      "media": 4.0
     },
     {
       "nome": "Oferta e proposta",
-      "n": 7,
-      "media": 3.43
+      "n": 8,
+      "media": 3.75
+    },
+    {
+      "nome": "Google e ser encontrado",
+      "n": 4,
+      "media": 3.75
+    },
+    {
+      "nome": "Site e landing page",
+      "n": 5,
+      "media": 3.4
+    },
+    {
+      "nome": "Sistema e gestão",
+      "n": 15,
+      "media": 3.33
     },
     {
       "nome": "Planilha e organização",
@@ -581,24 +629,9 @@
       "media": 3.31
     },
     {
-      "nome": "Sistema e gestão",
-      "n": 14,
-      "media": 3.29
-    },
-    {
-      "nome": "Google e ser encontrado",
-      "n": 4,
-      "media": 3.0
-    },
-    {
       "nome": "Prova, case e bastidor",
       "n": 2,
       "media": 3.0
-    },
-    {
-      "nome": "Site e landing page",
-      "n": 4,
-      "media": 2.75
     },
     {
       "nome": "Outros",
@@ -610,17 +643,17 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Modernizar sem parar a operação: a disciplina mais rara em projeto técnico de longo prazo.",
       "legenda": "Modernizar sem parar a operação: a disciplina mais rara em projeto técnico de longo prazo.\n\nSistema antigo em uso há cinco, dez ou quinze anos não é apenas software desatualizado. É um repositório de decisões de negócio acumuladas ao longo de gestões inteiras, em que cada regra resolve um caso real que apareceu em algum momento da operação e nunca foi formalmente documentada. \n\nTrocar esse sistema por outro mais moderno é tecnicamente possível. Trocar sem parar a operação que depende dele é o que separa fornecedor preparado de fornecedor que aprende com o cliente.\n\nNão existe migração instantâ",
-      "likes": 319,
+      "likes": 318,
       "comentarios": 6,
       "views": null,
-      "interacoes": 325,
-      "mediana": 58.5,
-      "mult": 5.56,
+      "interacoes": 324,
+      "mediana": 57.5,
+      "mult": 5.63,
       "link": "https://www.instagram.com/p/DYKjxWpkbt4/",
       "temas": [
         "Sistema e gestão"
@@ -630,7 +663,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Garantia de Qualidade: a camada final antes da entrega ao cliente.",
@@ -639,8 +672,8 @@
       "comentarios": 1,
       "views": null,
       "interacoes": 296,
-      "mediana": 58.5,
-      "mult": 5.06,
+      "mediana": 57.5,
+      "mult": 5.15,
       "link": "https://www.instagram.com/p/DYKhuzzEZkv/",
       "temas": [
         "Sistema e gestão",
@@ -651,17 +684,17 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Por trás de bancos e corretoras: doze anos atendendo operações que não podem parar.",
       "legenda": "Por trás de bancos e corretoras: doze anos atendendo operações que não podem parar.\n\nHá mais de uma década, a Leven opera como o lado técnico invisível de instituições financeiras brasileiras. Bancos, corretoras, plataformas de investimento, gestoras. Operações em que cada minuto de interrupção tem custo direto: financeiro, regulatório e reputacional. Trabalhar nesse ambiente impõe uma disciplina diferente. O cliente final raramente sabe que a Leven está envolvida. É a marca do banco que aparece. \n\nMas a engenharia que sustenta o funcionamento, em muitos casos, é a nossa.\n\nOperar dentro de ins",
-      "likes": 215,
+      "likes": 213,
       "comentarios": 1,
       "views": null,
-      "interacoes": 216,
-      "mediana": 58.5,
-      "mult": 3.69,
+      "interacoes": 214,
+      "mediana": 57.5,
+      "mult": 3.72,
       "link": "https://www.instagram.com/p/DYKjpQzkb6a/",
       "temas": [
         "Sistema e gestão",
@@ -673,7 +706,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Em 2026, a IA está em quase todo lugar. A experiência continua escassa.",
@@ -682,8 +715,8 @@
       "comentarios": 1,
       "views": null,
       "interacoes": 207,
-      "mediana": 58.5,
-      "mult": 3.54,
+      "mediana": 57.5,
+      "mult": 3.6,
       "link": "https://www.instagram.com/p/DYIzAZ9CW0M/",
       "temas": [
         "Site e landing page",
@@ -695,7 +728,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Quatrocentos não é número de portfólio. É volume de operação. Ecossistema, no vocabulário",
@@ -704,8 +737,8 @@
       "comentarios": 12,
       "views": null,
       "interacoes": 204,
-      "mediana": 58.5,
-      "mult": 3.49,
+      "mediana": 57.5,
+      "mult": 3.55,
       "link": "https://www.instagram.com/p/DYIzPYCiSIf/",
       "temas": [
         "Site e landing page",
@@ -718,7 +751,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2025-12-25",
       "tipo": "Carrossel",
       "gancho": "O Brasil está entre os países que mais sofrem com ciberataques e vazamentos de dados.",
@@ -727,8 +760,8 @@
       "comentarios": 4,
       "views": null,
       "interacoes": 198,
-      "mediana": 58.5,
-      "mult": 3.38,
+      "mediana": 57.5,
+      "mult": 3.44,
       "link": "https://www.instagram.com/p/DSquNq1gIHx/",
       "temas": [
         "Sistema e gestão"
@@ -738,7 +771,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-05-11",
       "tipo": "Imagem",
       "gancho": "A Leven não contrata pra preencher vaga. Contrata pra manter um padrão que levou anos pra construir.",
@@ -747,8 +780,8 @@
       "comentarios": 5,
       "views": null,
       "interacoes": 171,
-      "mediana": 58.5,
-      "mult": 2.92,
+      "mediana": 57.5,
+      "mult": 2.97,
       "link": "https://www.instagram.com/p/DYNHFdXgKwc/",
       "temas": [
         "Sistema e gestão"
@@ -758,7 +791,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-05-09",
       "tipo": "Imagem",
       "gancho": "Antes da proposta, a análise.",
@@ -767,8 +800,8 @@
       "comentarios": 4,
       "views": null,
       "interacoes": 171,
-      "mediana": 58.5,
-      "mult": 2.92,
+      "mediana": 57.5,
+      "mult": 2.97,
       "link": "https://www.instagram.com/p/DYGd5cHAIpp/",
       "temas": [
         "Sistema e gestão",
@@ -780,7 +813,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2025-12-24",
       "tipo": "Carrossel",
       "gancho": "Nem sempre a empresa precisa “começar do zero”. Muitas vezes, o que falta é atualizar a base tecnológica para que o negócio volte a crescer com força, ou saia d",
@@ -789,8 +822,8 @@
       "comentarios": 2,
       "views": null,
       "interacoes": 143,
-      "mediana": 58.5,
-      "mult": 2.44,
+      "mediana": 57.5,
+      "mult": 2.49,
       "link": "https://www.instagram.com/p/DSoqoS4gPCW/",
       "temas": [
         "Site e landing page",
@@ -804,7 +837,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-05-10",
       "tipo": "Imagem",
       "gancho": "Sistemas caem onde a arquitetura não previu.",
@@ -813,8 +846,8 @@
       "comentarios": 2,
       "views": null,
       "interacoes": 132,
-      "mediana": 58.5,
-      "mult": 2.26,
+      "mediana": 57.5,
+      "mult": 2.3,
       "link": "https://www.instagram.com/p/DYI0OOuiXdP/",
       "temas": [
         "Sistema e gestão"
@@ -824,7 +857,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-05-09",
       "tipo": "Imagem",
       "gancho": "Estruturação técnica e cultura de alta performance.",
@@ -833,8 +866,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 129,
-      "mediana": 58.5,
-      "mult": 2.21,
+      "mediana": 57.5,
+      "mult": 2.24,
       "link": "https://www.instagram.com/p/DYGhoWtgL8D/",
       "temas": [
         "Sistema e gestão"
@@ -844,7 +877,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-05-11",
       "tipo": "Imagem",
       "gancho": "A maioria das empresas de tecnologia escolhe projetos confortáveis. A Leven escolheu ajudar todos.",
@@ -853,8 +886,8 @@
       "comentarios": 1,
       "views": null,
       "interacoes": 101,
-      "mediana": 58.5,
-      "mult": 1.73,
+      "mediana": 57.5,
+      "mult": 1.76,
       "link": "https://www.instagram.com/p/DYNG8SgAGy3/",
       "temas": [
         "Sistema e gestão",
@@ -875,8 +908,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 9,
-      "mediana": 5.5,
-      "mult": 1.64,
+      "mediana": 6,
+      "mult": 1.5,
       "link": "https://www.instagram.com/p/DfXFs3fD7Qs/",
       "temas": [
         "Sistema e gestão",
@@ -896,8 +929,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 9,
-      "mediana": 5.5,
-      "mult": 1.64,
+      "mediana": 6,
+      "mult": 1.5,
       "link": "https://www.instagram.com/p/DfR8INiCKn5/",
       "temas": [
         "Sistema e gestão"
@@ -916,8 +949,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 9,
-      "mediana": 5.5,
-      "mult": 1.64,
+      "mediana": 6,
+      "mult": 1.5,
       "link": "https://www.instagram.com/p/De1ggtaDApe/",
       "temas": [
         "Sistema e gestão"
@@ -927,7 +960,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-03-28",
       "tipo": "Imagem",
       "gancho": "Alta performance não é slogan na Leven. É como cada projeto começa, se desenvolve e chega na mão do cliente.",
@@ -936,8 +969,8 @@
       "comentarios": 2,
       "views": null,
       "interacoes": 79,
-      "mediana": 58.5,
-      "mult": 1.35,
+      "mediana": 57.5,
+      "mult": 1.37,
       "link": "https://www.instagram.com/p/DWaOcd6AJXR/",
       "temas": [
         "Sistema e gestão",
@@ -949,17 +982,61 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
+      "data": "2026-05-11",
+      "tipo": "Imagem",
+      "gancho": "Alta performance não é slogan na Leven. É como cada projeto começa, se desenvolve e chega na mão do cliente.",
+      "legenda": "Alta performance não é slogan na Leven. É como cada projeto começa, se desenvolve e chega na mão do cliente.\n\nA conversa que você vê nesse criativo é real. É assim que a Leven recebe cada empresa que nos procura. Sem script, sem robô, sem enrolação. Direto com quem entende de engenharia e sabe ouvir antes de propor.\n\nTestes de carga, pentest, equipe de QA, arquitetura pensada pra escalar. Isso não é diferencial aqui. É processo. Faz parte de cada entrega, independente da escala do projeto.\n\nÉ isso que cultura de alta performance significa na prática. Não é sobre prometer. É sobre como a gente ",
+      "likes": 74,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 74,
+      "mediana": 57.5,
+      "mult": 1.29,
+      "link": "https://www.instagram.com/p/DYNG0RlgO9A/",
+      "temas": [
+        "Sistema e gestão",
+        "IA e automação",
+        "Prova, case e bastidor"
+      ],
+      "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
+      "conta": "leventech",
+      "seguidores": 10471,
+      "data": "2025-12-29",
+      "tipo": "Imagem",
+      "gancho": "1. Segurança de dados",
+      "legenda": "1. Segurança de dados\nToda aplicação desenvolvida por nós passa por níveis rigorosos de revisão e desenvolvimento, seguindo regras e protocolos modernos de segurança.\n\nQualquer empresa que investe em tecnologia precisa ter suas aplicações protegidas para não se tornar refém de pessoas mal-intencionadas que possam roubar dados para uso em processos, vendas ou até ameaças.\n\nNa Leven, segurança não é opcional, é pilar.\n\n2. Velocidade\nUma aplicação lenta, que trava e gera dor de cabeça, afasta clientes e atrasa processos.\n\nPor isso, nossas soluções passam por diversas etapas de teste, validação de",
+      "likes": 71,
+      "comentarios": 3,
+      "views": null,
+      "interacoes": 74,
+      "mediana": 57.5,
+      "mult": 1.29,
+      "link": "https://www.instagram.com/p/DS2p-pzABxo/",
+      "temas": [
+        "Sistema e gestão",
+        "Planilha e organização",
+        "Prova, case e bastidor"
+      ],
+      "relevancia": 3
+    },
+    {
+      "fonte": "instagram",
+      "conta": "leventech",
+      "seguidores": 10471,
       "data": "2025-12-24",
       "tipo": "Imagem",
       "gancho": "Sabia que o principal fator de alavanca de muitas empresas hoje é o pilar tecnológico que sustenta operação, vendas e marketing?",
       "legenda": "Sabia que o principal fator de alavanca de muitas empresas hoje é o pilar tecnológico que sustenta operação, vendas e marketing?\n\nQuando a base de tecnologia é fraca, o crescimento trava mesmo com esforço, tráfego e time dedicado.\n\nCom sistemas bem estruturados, páginas rápidas e processos digitais organizados, sua empresa vende mais, atende melhor e escala com muito mais segurança.\n\nNa Leven, usamos tecnologia para impulsionar resultados reais e ajudar sua empresa a crescer agora, com estrutura para continuar crescendo amanhã.\n\n#LevenTecnologia #SoftwareHouse #TransformacaoDigital #Tecnologia",
-      "likes": 76,
+      "likes": 74,
       "comentarios": 0,
       "views": null,
-      "interacoes": 76,
-      "mediana": 58.5,
-      "mult": 1.3,
+      "interacoes": 74,
+      "mediana": 57.5,
+      "mult": 1.29,
       "link": "https://www.instagram.com/p/DSoqefiAOoU/",
       "temas": [
         "Site e landing page",
@@ -973,23 +1050,87 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2025-12-24",
       "tipo": "Imagem",
       "gancho": "Muitas empresas têm ideias poderosas para crescer, inovar e se diferenciar no mercado, mas esbarram na mesma barreira: falta de estrutura tecnológica para tirar",
       "legenda": "Muitas empresas têm ideias poderosas para crescer, inovar e se diferenciar no mercado, mas esbarram na mesma barreira: falta de estrutura tecnológica para tirar tudo isso do papel com segurança e escala.\n\nSó que, em muitos casos, são justamente essas ideias que podem salvar a empresa, destravar resultados e reposicionar o negócio no seu segmento.\n\nQuando você conecta visão de negócio com tecnologia bem executada, suas ideias deixam de ser só planos e viram sistemas, aplicações e soluções reais, prontas para sustentar crescimento, proteger dados e gerar novas oportunidades.\n\nNa Leven, ajudamos ",
-      "likes": 76,
+      "likes": 74,
       "comentarios": 0,
       "views": null,
-      "interacoes": 76,
-      "mediana": 58.5,
-      "mult": 1.3,
+      "interacoes": 74,
+      "mediana": 57.5,
+      "mult": 1.29,
       "link": "https://www.instagram.com/p/DSoiwx4AKnN/",
       "temas": [
         "Sistema e gestão",
         "Prova, case e bastidor"
       ],
       "relevancia": 4
+    },
+    {
+      "fonte": "instagram",
+      "conta": "leventech",
+      "seguidores": 10471,
+      "data": "2026-03-17",
+      "tipo": "Imagem",
+      "gancho": "Uma software house com cultura de alta performance abre novos horizontes pra qualquer operação.",
+      "legenda": "Uma software house com cultura de alta performance abre novos horizontes pra qualquer operação.\nA Leven é especializada no desenvolvimento de ecossistemas de alta complexidade. Sistemas, plataformas e aplicações que sustentam operações reais.\nTecnologia que funciona para a sua empresa.\n\n#softwarehouse #desenvolvimentodesoftware #altaperformance #tecnologia #inovação",
+      "likes": 72,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 72,
+      "mediana": 57.5,
+      "mult": 1.25,
+      "link": "https://www.instagram.com/p/DWAIdt1iTw-/",
+      "temas": [
+        "Sistema e gestão"
+      ],
+      "relevancia": 4
+    },
+    {
+      "fonte": "instagram",
+      "conta": "leventech",
+      "seguidores": 10471,
+      "data": "2025-12-24",
+      "tipo": "Imagem",
+      "gancho": "Sabia que, hoje, a forma como sua empresa aparece no digital impacta diretamente na forma como ela é percebida pelo mercado?",
+      "legenda": "Sabia que, hoje, a forma como sua empresa aparece no digital impacta diretamente na forma como ela é percebida pelo mercado?\n\nUma presença online desatualizada, lenta ou amadora faz um bom negócio parecer pequeno, inseguro ou pouco profissional, mesmo com um ótimo produto por trás.\n\nQuando sua empresa tem sites, sistemas e páginas bem construídos, rápidos e alinhados com a sua marca, a percepção muda. Você transmite confiança, autoridade e preparo para atender em outro nível, desde o primeiro contato até o pós-venda.\n\nNa Leven, transformamos a presença online da sua empresa com tecnologia, per",
+      "likes": 72,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 72,
+      "mediana": 57.5,
+      "mult": 1.25,
+      "link": "https://www.instagram.com/p/DSomx6dgE9c/",
+      "temas": [
+        "Site e landing page",
+        "Sistema e gestão",
+        "Prova, case e bastidor"
+      ],
+      "relevancia": 8
+    },
+    {
+      "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-10",
+      "tipo": "Carrossel",
+      "gancho": "A empresa pede IA. Ninguém combinou o que conta como ganho.",
+      "legenda": "A empresa pede IA. Ninguém combinou o que conta como ganho.\n\nÉ assim que muito projeto começa: a ferramenta vem antes do problema, e o resultado vira opinião. Uns acham que melhorou, outros não.\n\nAntes de escolher o modelo, vale fazer a conta do processo como ele é hoje: quanto tempo cada tarefa leva, quanto passa por conferência, quanto erra, quanto custa. Essa é a linha de base. Sem ela, não dá para saber se o projeto se pagou.\n\nNa Korvena, o critério de sucesso e a conferência humana entram no escopo antes de começar. E, se a IA não for o caminho para aquele processo, a gente diz.\n\nTem um p",
+      "likes": 7,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 7,
+      "mediana": 6,
+      "mult": 1.17,
+      "link": "https://www.instagram.com/p/DfkzcdhifuK/",
+      "temas": [
+        "Sistema e gestão",
+        "IA e automação",
+        "Prova, case e bastidor"
+      ],
+      "relevancia": 2
     },
     {
       "fonte": "instagram",
@@ -1003,8 +1144,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 7,
-      "mediana": 5.5,
-      "mult": 1.27,
+      "mediana": 6,
+      "mult": 1.17,
       "link": "https://www.instagram.com/p/DfMykviAQG0/",
       "temas": [
         "Sistema e gestão",
@@ -1024,8 +1165,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 7,
-      "mediana": 5.5,
-      "mult": 1.27,
+      "mediana": 6,
+      "mult": 1.17,
       "link": "https://www.instagram.com/p/De_6jXqDaUj/",
       "temas": [
         "Sistema e gestão"
@@ -1044,8 +1185,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 7,
-      "mediana": 5.5,
-      "mult": 1.27,
+      "mediana": 6,
+      "mult": 1.17,
       "link": "https://www.instagram.com/p/DeuHCoejgW4/",
       "temas": [
         "Outros"
@@ -1055,88 +1196,45 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
-      "data": "2026-05-11",
-      "tipo": "Imagem",
-      "gancho": "Alta performance não é slogan na Leven. É como cada projeto começa, se desenvolve e chega na mão do cliente.",
-      "legenda": "Alta performance não é slogan na Leven. É como cada projeto começa, se desenvolve e chega na mão do cliente.\n\nA conversa que você vê nesse criativo é real. É assim que a Leven recebe cada empresa que nos procura. Sem script, sem robô, sem enrolação. Direto com quem entende de engenharia e sabe ouvir antes de propor.\n\nTestes de carga, pentest, equipe de QA, arquitetura pensada pra escalar. Isso não é diferencial aqui. É processo. Faz parte de cada entrega, independente da escala do projeto.\n\nÉ isso que cultura de alta performance significa na prática. Não é sobre prometer. É sobre como a gente ",
-      "likes": 74,
-      "comentarios": 0,
-      "views": null,
-      "interacoes": 74,
-      "mediana": 58.5,
-      "mult": 1.26,
-      "link": "https://www.instagram.com/p/DYNG0RlgO9A/",
-      "temas": [
-        "Sistema e gestão",
-        "IA e automação",
-        "Prova, case e bastidor"
-      ],
-      "relevancia": 1
-    },
-    {
-      "fonte": "instagram",
-      "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2025-12-29",
       "tipo": "Imagem",
-      "gancho": "1. Segurança de dados",
-      "legenda": "1. Segurança de dados\nToda aplicação desenvolvida por nós passa por níveis rigorosos de revisão e desenvolvimento, seguindo regras e protocolos modernos de segurança.\n\nQualquer empresa que investe em tecnologia precisa ter suas aplicações protegidas para não se tornar refém de pessoas mal-intencionadas que possam roubar dados para uso em processos, vendas ou até ameaças.\n\nNa Leven, segurança não é opcional, é pilar.\n\n2. Velocidade\nUma aplicação lenta, que trava e gera dor de cabeça, afasta clientes e atrasa processos.\n\nPor isso, nossas soluções passam por diversas etapas de teste, validação de",
-      "likes": 71,
+      "gancho": "Você deseja um braço tecnológico para cuidar do pilar de tecnologia da sua empresa? Vai ser um prazer te atender.",
+      "legenda": "Você deseja um braço tecnológico para cuidar do pilar de tecnologia da sua empresa? Vai ser um prazer te atender.\n\nNa Leven Software House, desenvolvemos desde páginas de venda até softwares complexos, homologados em corretoras e bancos, sempre com foco em segurança, estabilidade e resultado para o seu negócio.\n\nChame nosso suporte, conheça nossos serviços e, se fizer sentido, podemos marcar uma reunião para apresentar algumas soluções para a sua empresa e tirar todas as suas dúvidas.\n\nSeja bem-vindo à Leven Tecnologia.\n\n#LevenTecnologia #LevenSoftwareHouse #SoftwareHouse #BrasoTecnologico #Te",
+      "likes": 58,
       "comentarios": 3,
       "views": null,
-      "interacoes": 74,
-      "mediana": 58.5,
-      "mult": 1.26,
-      "link": "https://www.instagram.com/p/DS2p-pzABxo/",
-      "temas": [
-        "Sistema e gestão",
-        "Planilha e organização",
-        "Prova, case e bastidor"
-      ],
-      "relevancia": 3
-    },
-    {
-      "fonte": "instagram",
-      "conta": "leventech",
-      "seguidores": 10478,
-      "data": "2025-12-24",
-      "tipo": "Imagem",
-      "gancho": "Sabia que, hoje, a forma como sua empresa aparece no digital impacta diretamente na forma como ela é percebida pelo mercado?",
-      "legenda": "Sabia que, hoje, a forma como sua empresa aparece no digital impacta diretamente na forma como ela é percebida pelo mercado?\n\nUma presença online desatualizada, lenta ou amadora faz um bom negócio parecer pequeno, inseguro ou pouco profissional, mesmo com um ótimo produto por trás.\n\nQuando sua empresa tem sites, sistemas e páginas bem construídos, rápidos e alinhados com a sua marca, a percepção muda. Você transmite confiança, autoridade e preparo para atender em outro nível, desde o primeiro contato até o pós-venda.\n\nNa Leven, transformamos a presença online da sua empresa com tecnologia, per",
-      "likes": 74,
-      "comentarios": 0,
-      "views": null,
-      "interacoes": 74,
-      "mediana": 58.5,
-      "mult": 1.26,
-      "link": "https://www.instagram.com/p/DSomx6dgE9c/",
+      "interacoes": 61,
+      "mediana": 57.5,
+      "mult": 1.06,
+      "link": "https://www.instagram.com/p/DS2k8YzAF5h/",
       "temas": [
         "Site e landing page",
         "Sistema e gestão",
         "Prova, case e bastidor"
       ],
-      "relevancia": 8
+      "relevancia": 5
     },
     {
       "fonte": "instagram",
-      "conta": "leventech",
-      "seguidores": 10478,
-      "data": "2026-03-17",
-      "tipo": "Imagem",
-      "gancho": "Uma software house com cultura de alta performance abre novos horizontes pra qualquer operação.",
-      "legenda": "Uma software house com cultura de alta performance abre novos horizontes pra qualquer operação.\nA Leven é especializada no desenvolvimento de ecossistemas de alta complexidade. Sistemas, plataformas e aplicações que sustentam operações reais.\nTecnologia que funciona para a sua empresa.\n\n#softwarehouse #desenvolvimentodesoftware #altaperformance #tecnologia #inovação",
-      "likes": 73,
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-17",
+      "tipo": "Carrossel",
+      "gancho": "Contratar desenvolvedor ou terceirizar? Depende do que está faltando.",
+      "legenda": "Contratar desenvolvedor ou terceirizar? Depende do que está faltando.\n\nSe a função é permanente e central para o produto, faz sentido ter a pessoa no quadro. Se a necessidade é de capacidade agora, ou de uma especialidade que o time não tem, um processo seletivo pode levar mais tempo do que a prioridade permite.\n\nÉ para isso que existe a alocação: um profissional da Korvena trabalhando dentro da sua operação, nos seus ritos e nas suas ferramentas, pelo período e com a dedicação combinados. O perfil é escolhido pela frente, e a Korvena acompanha o profissional, ajusta a composição quando o perf",
+      "likes": 6,
       "comentarios": 0,
       "views": null,
-      "interacoes": 73,
-      "mediana": 58.5,
-      "mult": 1.25,
-      "link": "https://www.instagram.com/p/DWAIdt1iTw-/",
+      "interacoes": 6,
+      "mediana": 6,
+      "mult": 1.0,
+      "link": "https://www.instagram.com/p/Df1_PTPFPGT/",
       "temas": [
-        "Sistema e gestão"
+        "Sistema e gestão",
+        "IA e automação"
       ],
-      "relevancia": 4
+      "relevancia": 3
     },
     {
       "fonte": "instagram",
@@ -1150,34 +1248,12 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 6,
-      "mediana": 5.5,
-      "mult": 1.09,
+      "mediana": 6,
+      "mult": 1.0,
       "link": "https://www.instagram.com/p/DfxzcUhja-D/",
       "temas": [
         "Sistema e gestão",
         "IA e automação"
-      ],
-      "relevancia": 2
-    },
-    {
-      "fonte": "instagram",
-      "conta": "korvena.tech",
-      "seguidores": 40,
-      "data": "2026-11-10",
-      "tipo": "Carrossel",
-      "gancho": "A empresa pede IA. Ninguém combinou o que conta como ganho.",
-      "legenda": "A empresa pede IA. Ninguém combinou o que conta como ganho.\n\nÉ assim que muito projeto começa: a ferramenta vem antes do problema, e o resultado vira opinião. Uns acham que melhorou, outros não.\n\nAntes de escolher o modelo, vale fazer a conta do processo como ele é hoje: quanto tempo cada tarefa leva, quanto passa por conferência, quanto erra, quanto custa. Essa é a linha de base. Sem ela, não dá para saber se o projeto se pagou.\n\nNa Korvena, o critério de sucesso e a conferência humana entram no escopo antes de começar. E, se a IA não for o caminho para aquele processo, a gente diz.\n\nTem um p",
-      "likes": 6,
-      "comentarios": 0,
-      "views": null,
-      "interacoes": 6,
-      "mediana": 5.5,
-      "mult": 1.09,
-      "link": "https://www.instagram.com/p/DfkzcdhifuK/",
-      "temas": [
-        "Sistema e gestão",
-        "IA e automação",
-        "Prova, case e bastidor"
       ],
       "relevancia": 2
     },
@@ -1193,8 +1269,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 6,
-      "mediana": 5.5,
-      "mult": 1.09,
+      "mediana": 6,
+      "mult": 1.0,
       "link": "https://www.instagram.com/p/DfFEJI6Cbd1/",
       "temas": [
         "Sistema e gestão"
@@ -1204,59 +1280,17 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
-      "data": "2025-12-29",
-      "tipo": "Imagem",
-      "gancho": "Você deseja um braço tecnológico para cuidar do pilar de tecnologia da sua empresa? Vai ser um prazer te atender.",
-      "legenda": "Você deseja um braço tecnológico para cuidar do pilar de tecnologia da sua empresa? Vai ser um prazer te atender.\n\nNa Leven Software House, desenvolvemos desde páginas de venda até softwares complexos, homologados em corretoras e bancos, sempre com foco em segurança, estabilidade e resultado para o seu negócio.\n\nChame nosso suporte, conheça nossos serviços e, se fizer sentido, podemos marcar uma reunião para apresentar algumas soluções para a sua empresa e tirar todas as suas dúvidas.\n\nSeja bem-vindo à Leven Tecnologia.\n\n#LevenTecnologia #LevenSoftwareHouse #SoftwareHouse #BrasoTecnologico #Te",
-      "likes": 58,
-      "comentarios": 3,
-      "views": null,
-      "interacoes": 61,
-      "mediana": 58.5,
-      "mult": 1.04,
-      "link": "https://www.instagram.com/p/DS2k8YzAF5h/",
-      "temas": [
-        "Site e landing page",
-        "Sistema e gestão",
-        "Prova, case e bastidor"
-      ],
-      "relevancia": 5
-    },
-    {
-      "fonte": "instagram",
-      "conta": "leventech",
-      "seguidores": 10478,
-      "data": "2026-09-29",
-      "tipo": "Carrossel",
-      "gancho": "Quem vive a operação sabe onde o processo emperra.",
-      "legenda": "Quem vive a operação sabe onde o processo emperra.\nNa Leven, o projeto parte desse saber. Analisamos a necessidade com o cliente e fechamos escopo, valor e prazo antes do código.\n\nFale conosco para conhecer nossas soluções.",
-      "likes": 56,
-      "comentarios": 0,
-      "views": null,
-      "interacoes": 56,
-      "mediana": 58.5,
-      "mult": 0.96,
-      "link": "https://www.instagram.com/p/Dd2vhRjAND6/",
-      "temas": [
-        "Outros"
-      ],
-      "relevancia": 1
-    },
-    {
-      "fonte": "instagram",
-      "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-09-22",
       "tipo": "Reel",
       "gancho": "Toda empresa que decide construir um sistema chega à mesma pergunta: qual é a melhor tecnologia para desenvolvê-lo.",
       "legenda": "Toda empresa que decide construir um sistema chega à mesma pergunta: qual é a melhor tecnologia para desenvolvê-lo.\n\nNão existe a melhor tecnologia. Existe a melhor escolha para cada projeto. O mesmo sistema pode ser construído com tecnologias diferentes e chegar ao mesmo resultado, e o que muda é o que o negócio exige.\n\nCada operação tem um perfil próprio: o volume de acessos, as integrações com o que a empresa já usa, o nível de segurança, a disponibilidade que a operação precisa, o prazo e a manutenção ao longo dos anos. É esse conjunto que define a escolha, e ele muda de empresa para empre",
-      "likes": 55,
+      "likes": 53,
       "comentarios": 1,
       "views": null,
-      "interacoes": 56,
-      "mediana": 58.5,
-      "mult": 0.96,
+      "interacoes": 54,
+      "mediana": 57.5,
+      "mult": 0.94,
       "link": "https://www.instagram.com/reel/Ddl_TQpuxM5/",
       "temas": [
         "Sistema e gestão",
@@ -1267,7 +1301,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-03-17",
       "tipo": "Imagem",
       "gancho": "Performance de verdade começa no código.",
@@ -1276,8 +1310,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 54,
-      "mediana": 58.5,
-      "mult": 0.92,
+      "mediana": 57.5,
+      "mult": 0.94,
       "link": "https://www.instagram.com/p/DV98sTKAIHu/",
       "temas": [
         "Sistema e gestão"
@@ -1286,22 +1320,41 @@
     },
     {
       "fonte": "instagram",
-      "conta": "korvena.tech",
-      "seguidores": 40,
-      "data": "2026-11-17",
+      "conta": "leventech",
+      "seguidores": 10471,
+      "data": "2026-09-29",
       "tipo": "Carrossel",
-      "gancho": "Contratar desenvolvedor ou terceirizar? Depende do que está faltando.",
-      "legenda": "Contratar desenvolvedor ou terceirizar? Depende do que está faltando.\n\nSe a função é permanente e central para o produto, faz sentido ter a pessoa no quadro. Se a necessidade é de capacidade agora, ou de uma especialidade que o time não tem, um processo seletivo pode levar mais tempo do que a prioridade permite.\n\nÉ para isso que existe a alocação: um profissional da Korvena trabalhando dentro da sua operação, nos seus ritos e nas suas ferramentas, pelo período e com a dedicação combinados. O perfil é escolhido pela frente, e a Korvena acompanha o profissional, ajusta a composição quando o perf",
-      "likes": 5,
+      "gancho": "Quem vive a operação sabe onde o processo emperra.",
+      "legenda": "Quem vive a operação sabe onde o processo emperra.\nNa Leven, o projeto parte desse saber. Analisamos a necessidade com o cliente e fechamos escopo, valor e prazo antes do código.\n\nFale conosco para conhecer nossas soluções.",
+      "likes": 53,
       "comentarios": 0,
       "views": null,
-      "interacoes": 5,
-      "mediana": 5.5,
-      "mult": 0.91,
-      "link": "https://www.instagram.com/p/Df1_PTPFPGT/",
+      "interacoes": 53,
+      "mediana": 57.5,
+      "mult": 0.92,
+      "link": "https://www.instagram.com/p/Dd2vhRjAND6/",
       "temas": [
-        "Sistema e gestão",
-        "IA e automação"
+        "Outros"
+      ],
+      "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
+      "conta": "leventech",
+      "seguidores": 10471,
+      "data": "2026-05-09",
+      "tipo": "Imagem",
+      "gancho": "Nove em cada dez clientes continuam.",
+      "legenda": "Nove em cada dez clientes continuam.\n\nA retenção na Leven não vem de cláusula contratual. Vem de arquitetura.\n\nSoftware bem desenhado não envelhece em dezoito meses. O código permanece legível,\nrefatorável, extensível. A operação do cliente cresce e o sistema cresce junto, sem\nprecisar ser refeito do zero a cada novo ciclo do negócio.\n\nPor isso o time que constrói é o mesmo que mantém. Sem rotatividade artificial, sem N1,\nsem fila de triage. Quando algo precisa evoluir, quem responde já conhece cada decisão\ntécnica do primeiro commit. A velocidade é consequência da continuidade.\n\nNão há progra",
+      "likes": 51,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 51,
+      "mediana": 57.5,
+      "mult": 0.89,
+      "link": "https://www.instagram.com/p/DYGgN1-AKRR/",
+      "temas": [
+        "Sistema e gestão"
       ],
       "relevancia": 3
     },
@@ -1317,8 +1370,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 5,
-      "mediana": 5.5,
-      "mult": 0.91,
+      "mediana": 6,
+      "mult": 0.83,
       "link": "https://www.instagram.com/p/De9VwmQgcXQ/",
       "temas": [
         "WhatsApp e atendimento",
@@ -1329,36 +1382,16 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
-      "data": "2026-05-09",
-      "tipo": "Imagem",
-      "gancho": "Nove em cada dez clientes continuam.",
-      "legenda": "Nove em cada dez clientes continuam.\n\nA retenção na Leven não vem de cláusula contratual. Vem de arquitetura.\n\nSoftware bem desenhado não envelhece em dezoito meses. O código permanece legível,\nrefatorável, extensível. A operação do cliente cresce e o sistema cresce junto, sem\nprecisar ser refeito do zero a cada novo ciclo do negócio.\n\nPor isso o time que constrói é o mesmo que mantém. Sem rotatividade artificial, sem N1,\nsem fila de triage. Quando algo precisa evoluir, quem responde já conhece cada decisão\ntécnica do primeiro commit. A velocidade é consequência da continuidade.\n\nNão há progra",
-      "likes": 52,
-      "comentarios": 0,
-      "views": null,
-      "interacoes": 52,
-      "mediana": 58.5,
-      "mult": 0.89,
-      "link": "https://www.instagram.com/p/DYGgN1-AKRR/",
-      "temas": [
-        "Sistema e gestão"
-      ],
-      "relevancia": 3
-    },
-    {
-      "fonte": "instagram",
-      "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-03-29",
       "tipo": "Imagem",
       "gancho": "Sistemas, apps e infraestrutura. Três frentes que a Leven domina com o mesmo nível de engenharia.",
       "legenda": "Sistemas, apps e infraestrutura. Três frentes que a Leven domina com o mesmo nível de engenharia.\n\nCada empresa tem uma necessidade diferente. Algumas precisam de um sistema robusto pra sustentar uma operação que não para. Outras precisam de um app que funcione na mão de milhares de usuários ao mesmo tempo. E muitas precisam de uma infraestrutura que garanta que tudo isso rode com segurança, velocidade e estabilidade.\n\nA Leven atende as três pontas. Com processo, com estrutura e com um time que foi construído pra lidar com qualquer nível de complexidade, em qualquer nicho.\n\nNão importa se sua ",
-      "likes": 47,
+      "likes": 46,
       "comentarios": 0,
       "views": null,
-      "interacoes": 47,
-      "mediana": 58.5,
+      "interacoes": 46,
+      "mediana": 57.5,
       "mult": 0.8,
       "link": "https://www.instagram.com/p/DWfMut5CfKm/",
       "temas": [
@@ -1369,17 +1402,17 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-03-29",
       "tipo": "Imagem",
       "gancho": "Seu próximo sistema começa aqui.",
       "legenda": "Seu próximo sistema começa aqui.\n\nA maioria dos projetos de software no Brasil nasce sem teste de qualidade, sem arquitetura pensada pra escalar e sem um processo que proteja o orçamento do cliente. O resultado é sempre o mesmo: retrabalho, custo extra e um sistema que não aguenta o ritmo da operação.\n\nA Leven existe pra quem não aceita isso.\n\nCada projeto aqui começa com escopo definido, equipe dedicada, QA em cada etapa e uma cultura que não negocia qualidade por velocidade. Não importa se é um app, um sistema ou uma infraestrutura completa.\n\nExcelência é exigência, não bônus.\n\nSe a sua empr",
-      "likes": 46,
+      "likes": 45,
       "comentarios": 0,
       "views": null,
-      "interacoes": 46,
-      "mediana": 58.5,
-      "mult": 0.79,
+      "interacoes": 45,
+      "mediana": 57.5,
+      "mult": 0.78,
       "link": "https://www.instagram.com/p/DWfMhBfCUUJ/",
       "temas": [
         "Sistema e gestão",
@@ -1392,23 +1425,44 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-03-20",
       "tipo": "Imagem",
       "gancho": "Tudo o que a sua operação precisa em um só lugar.",
       "legenda": "Tudo o que a sua operação precisa em um só lugar. \n\nO Ecossistema Leven integra as bases essenciais para a sua tecnologia rodar sem gargalos e acompanhar o ritmo do seu negócio:\n\n💻 Desenvolvimento: Soluções criadas sob medida para a sua demanda.\n⚙️ Infraestrutura: Arquitetura sólida e escalável para suportar o seu crescimento.\n🛠️ Manutenção: Cuidado contínuo para garantir estabilidade, segurança e zero dor de cabeça.\n\nVocê foca exclusivamente nos resultados. Nós garantimos que a tecnologia dê conta do recado.",
-      "likes": 43,
+      "likes": 42,
       "comentarios": 0,
       "views": null,
-      "interacoes": 43,
-      "mediana": 58.5,
-      "mult": 0.74,
+      "interacoes": 42,
+      "mediana": 57.5,
+      "mult": 0.73,
       "link": "https://www.instagram.com/p/DWF-HTqju_Q/",
       "temas": [
         "Sistema e gestão",
         "Prova, case e bastidor"
       ],
       "relevancia": 1
+    },
+    {
+      "fonte": "instagram",
+      "conta": "leventech",
+      "seguidores": 10471,
+      "data": "2026-07-24",
+      "tipo": "Imagem",
+      "gancho": "A diferença está na engenharia.",
+      "legenda": "A diferença está na engenharia.\n\nO mundo não está investindo pouco em tecnologia. Só em 2026, o investimento em transformação digital deve passar de US$ 3,4 trilhões no planeta. No Brasil, a TI já consome 10% da receita líquida das empresas.\n\nE mesmo assim, a conta não fecha:\n\n▪ Só 16% das transformações digitais melhoram o desempenho da empresa e sustentam o ganho no tempo.\n▪ Apenas 30% atingem as metas que definiram.\n▪ Grandes projetos de TI estouram, em média, 45% do orçamento e entregam 56% menos valor do que prometeram.\n\nSe dinheiro e intenção não faltam, o que falta?\n\nFalta a travessia. ",
+      "likes": 39,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 39,
+      "mediana": 57.5,
+      "mult": 0.68,
+      "link": "https://www.instagram.com/p/DbLgHzNg-K-/",
+      "temas": [
+        "Sistema e gestão",
+        "Oferta e proposta"
+      ],
+      "relevancia": 3
     },
     {
       "fonte": "instagram",
@@ -1422,8 +1476,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 4,
-      "mediana": 5.5,
-      "mult": 0.73,
+      "mediana": 6,
+      "mult": 0.67,
       "link": "https://www.instagram.com/p/Dfry61bmWyP/",
       "temas": [
         "Sistema e gestão",
@@ -1443,8 +1497,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 4,
-      "mediana": 5.5,
-      "mult": 0.73,
+      "mediana": 6,
+      "mult": 0.67,
       "link": "https://www.instagram.com/p/DfmidqvlNzW/",
       "temas": [
         "Sistema e gestão",
@@ -1464,8 +1518,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 4,
-      "mediana": 5.5,
-      "mult": 0.73,
+      "mediana": 6,
+      "mult": 0.67,
       "link": "https://www.instagram.com/p/DehFyymjudv/",
       "temas": [
         "Sistema e gestão"
@@ -1484,8 +1538,8 @@
       "comentarios": 0,
       "views": 24,
       "interacoes": 4,
-      "mediana": 5.5,
-      "mult": 0.73,
+      "mediana": 6,
+      "mult": 0.67,
       "link": "https://www.instagram.com/reel/DeHRJlyjbZN/",
       "temas": [
         "Sistema e gestão",
@@ -1505,8 +1559,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 4,
-      "mediana": 5.5,
-      "mult": 0.73,
+      "mediana": 6,
+      "mult": 0.67,
       "link": "https://www.instagram.com/p/Dd6SSBzgYtU/",
       "temas": [
         "Sistema e gestão",
@@ -1517,28 +1571,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
-      "data": "2026-07-24",
-      "tipo": "Imagem",
-      "gancho": "A diferença está na engenharia.",
-      "legenda": "A diferença está na engenharia.\n\nO mundo não está investindo pouco em tecnologia. Só em 2026, o investimento em transformação digital deve passar de US$ 3,4 trilhões no planeta. No Brasil, a TI já consome 10% da receita líquida das empresas.\n\nE mesmo assim, a conta não fecha:\n\n▪ Só 16% das transformações digitais melhoram o desempenho da empresa e sustentam o ganho no tempo.\n▪ Apenas 30% atingem as metas que definiram.\n▪ Grandes projetos de TI estouram, em média, 45% do orçamento e entregam 56% menos valor do que prometeram.\n\nSe dinheiro e intenção não faltam, o que falta?\n\nFalta a travessia. ",
-      "likes": 39,
-      "comentarios": 0,
-      "views": null,
-      "interacoes": 39,
-      "mediana": 58.5,
-      "mult": 0.67,
-      "link": "https://www.instagram.com/p/DbLgHzNg-K-/",
-      "temas": [
-        "Sistema e gestão",
-        "Oferta e proposta"
-      ],
-      "relevancia": 3
-    },
-    {
-      "fonte": "instagram",
-      "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-03-28",
       "tipo": "Imagem",
       "gancho": "A maioria das empresas de tecnologia escolhe projetos confortáveis. A Leven escolheu ajudar todos.",
@@ -1547,8 +1580,8 @@
       "comentarios": 1,
       "views": null,
       "interacoes": 38,
-      "mediana": 58.5,
-      "mult": 0.65,
+      "mediana": 57.5,
+      "mult": 0.66,
       "link": "https://www.instagram.com/p/DWaOqYygI9D/",
       "temas": [
         "Sistema e gestão",
@@ -1560,7 +1593,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-03-22",
       "tipo": "Imagem",
       "gancho": "Sair de 2,5 para 4,9 estrelas nas lojas de aplicativos não é sobre “deixar o app mais bonito”. É sobre resolver débito técnico e otimizar a arquitetura de inter",
@@ -1569,8 +1602,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 37,
-      "mediana": 58.5,
-      "mult": 0.63,
+      "mediana": 57.5,
+      "mult": 0.64,
       "link": "https://www.instagram.com/p/DWLAKzdgLdf/",
       "temas": [
         "Sistema e gestão",
@@ -1582,7 +1615,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-05-08",
       "tipo": "Reel",
       "gancho": "“Construímos tecnologia para durar.”",
@@ -1591,8 +1624,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 36,
-      "mediana": 58.5,
-      "mult": 0.62,
+      "mediana": 57.5,
+      "mult": 0.63,
       "link": "https://www.instagram.com/reel/DYFrYPoJ8h8/",
       "temas": [
         "Sistema e gestão"
@@ -1602,7 +1635,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-03-29",
       "tipo": "Imagem",
       "gancho": "Desse endereço saem, todos os dias, os projetos que movem a operação de cada cliente que confia na Leven.",
@@ -1611,8 +1644,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 35,
-      "mediana": 58.5,
-      "mult": 0.6,
+      "mediana": 57.5,
+      "mult": 0.61,
       "link": "https://www.instagram.com/p/DWefd1JALHZ/",
       "temas": [
         "Sistema e gestão"
@@ -1631,8 +1664,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 3,
-      "mediana": 5.5,
-      "mult": 0.55,
+      "mediana": 6,
+      "mult": 0.5,
       "link": "https://www.instagram.com/p/Dd_bzOyFnx5/",
       "temas": [
         "Planilha e organização",
@@ -1652,8 +1685,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 3,
-      "mediana": 5.5,
-      "mult": 0.55,
+      "mediana": 6,
+      "mult": 0.5,
       "link": "https://www.instagram.com/p/DbnqpclFmHI/",
       "temas": [
         "Sistema e gestão"
@@ -1663,7 +1696,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-08-10",
       "tipo": "Carrossel",
       "gancho": "Por que o sistema quebra justo no melhor dia?",
@@ -1672,8 +1705,8 @@
       "comentarios": 2,
       "views": null,
       "interacoes": 28,
-      "mediana": 58.5,
-      "mult": 0.48,
+      "mediana": 57.5,
+      "mult": 0.49,
       "link": "https://www.instagram.com/p/Db3z18yCY5i/",
       "temas": [
         "Site e landing page",
@@ -1686,7 +1719,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-08-12",
       "tipo": "Carrossel",
       "gancho": "O que a equipe faz quando o sistema não cobre a exceção?",
@@ -1695,8 +1728,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 27,
-      "mediana": 58.5,
-      "mult": 0.46,
+      "mediana": 57.5,
+      "mult": 0.47,
       "link": "https://www.instagram.com/p/Db6-CXugBZb/",
       "temas": [
         "Sistema e gestão",
@@ -1708,7 +1741,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2025-12-23",
       "tipo": "Imagem",
       "gancho": "Sua empresa não precisa estar sozinha na parte de tecnologia. Muitas operações crescem em vendas e demanda, mas continuam rodando em sistemas limitados, process",
@@ -1717,7 +1750,7 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 25,
-      "mediana": 58.5,
+      "mediana": 57.5,
       "mult": 0.43,
       "link": "https://www.instagram.com/p/DSmFnlcACHl/",
       "temas": [
@@ -1739,8 +1772,8 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 2,
-      "mediana": 5.5,
-      "mult": 0.36,
+      "mediana": 6,
+      "mult": 0.33,
       "link": "https://www.instagram.com/p/DcRRHZ7lnK7/",
       "temas": [
         "Sistema e gestão",
@@ -1750,8 +1783,30 @@
     },
     {
       "fonte": "instagram",
+      "conta": "korvena.tech",
+      "seguidores": 40,
+      "data": "2026-11-22",
+      "tipo": "Carrossel",
+      "gancho": "Preciso de um júnior ou de um especialista? No outsourcing de TI, a resposta começa pela frente, não pelo cargo.",
+      "legenda": "Preciso de um júnior ou de um especialista? No outsourcing de TI, a resposta começa pela frente, não pelo cargo.\n\nFrente é uma área de trabalho com objetivo próprio dentro da sua operação: a integração com o ERP, a sustentação do app, o novo módulo de pagamentos.\n\nTrês perguntas definem a senioridade:\n→ Quão complexo é o trabalho?\n→ Quanta autonomia a pessoa vai precisar ter?\n→ Quanto o seu time consegue acompanhar quem chega?\n\nUma frente bem especificada e acompanhada de perto pode ficar com um júnior ou um pleno. Uma frente ambígua, com decisões técnicas, pede um sênior. IA, cloud, segurança",
+      "likes": 1,
+      "comentarios": 0,
+      "views": null,
+      "interacoes": 1,
+      "mediana": 6,
+      "mult": 0.17,
+      "link": "https://www.instagram.com/p/DgBd7xWTwKm/",
+      "temas": [
+        "Sistema e gestão",
+        "WhatsApp e atendimento",
+        "IA e automação"
+      ],
+      "relevancia": 3
+    },
+    {
+      "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-10-09",
       "tipo": "Reel",
       "gancho": "Onde ficam os dados da sua empresa? Pouca gente sabe responder de cabeça, e é normal: enquanto tudo funciona, o servidor é invisível.",
@@ -1760,7 +1815,7 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 8,
-      "mediana": 58.5,
+      "mediana": 57.5,
       "mult": 0.14,
       "link": "https://www.instagram.com/reel/DeQuJrxuaTF/",
       "temas": [
@@ -1773,7 +1828,7 @@
     {
       "fonte": "instagram",
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "data": "2026-10-01",
       "tipo": "Carrossel",
       "gancho": "Nenhuma empresa escolhe o dia em que o sistema para.",
@@ -1782,7 +1837,7 @@
       "comentarios": 0,
       "views": null,
       "interacoes": 3,
-      "mediana": 58.5,
+      "mediana": 57.5,
       "mult": 0.05,
       "link": "https://www.instagram.com/p/Dd8CzwFgALB/",
       "temas": [
@@ -1796,22 +1851,27 @@
     {
       "nome": "Prova, case e bastidor",
       "n": 22,
-      "media": 1.57
+      "media": 1.59
     },
     {
       "nome": "Site e landing page",
       "n": 9,
-      "media": 1.56
+      "media": 1.58
     },
     {
       "nome": "Sistema e gestão",
-      "n": 52,
-      "media": 1.45
+      "n": 53,
+      "media": 1.42
     },
     {
       "nome": "IA e automação",
-      "n": 17,
-      "media": 1.32
+      "n": 18,
+      "media": 1.25
+    },
+    {
+      "nome": "Oferta e proposta",
+      "n": 4,
+      "media": 1.23
     },
     {
       "nome": "Planilha e organização",
@@ -1819,143 +1879,145 @@
       "media": 1.22
     },
     {
-      "nome": "Oferta e proposta",
-      "n": 4,
-      "media": 1.22
-    },
-    {
       "nome": "Outros",
       "n": 2,
-      "media": 1.11
+      "media": 1.04
     },
     {
       "nome": "WhatsApp e atendimento",
-      "n": 3,
-      "media": 0.9
+      "n": 4,
+      "media": 0.66
     }
   ],
   "formatos_nicho": [
     {
       "nome": "Imagem",
       "n": 28,
-      "media": 1.8
+      "media": 1.83
     },
     {
       "nome": "Carrossel",
-      "n": 24,
-      "media": 1.08
+      "n": 25,
+      "media": 1.0
     },
     {
       "nome": "Reel",
       "n": 4,
-      "media": 0.61
+      "media": 0.59
     }
   ],
   "ganchos": [
     {
       "texto": "Modernizar sem parar a operação: a disciplina mais rara em projeto técnico de longo prazo.",
-      "mult": 5.56,
+      "mult": 5.63,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DYKjxWpkbt4/"
     },
     {
       "texto": "Garantia de Qualidade: a camada final antes da entrega ao cliente.",
-      "mult": 5.06,
+      "mult": 5.15,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DYKhuzzEZkv/"
     },
     {
       "texto": "Por trás de bancos e corretoras: doze anos atendendo operações que não podem parar.",
-      "mult": 3.69,
+      "mult": 3.72,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DYKjpQzkb6a/"
     },
     {
       "texto": "Em 2026, a IA está em quase todo lugar. A experiência continua escassa.",
-      "mult": 3.54,
+      "mult": 3.6,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DYIzAZ9CW0M/"
     },
     {
       "texto": "Quatrocentos não é número de portfólio. É volume de operação. Ecossistema, no vocabulário",
-      "mult": 3.49,
+      "mult": 3.55,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DYIzPYCiSIf/"
     },
     {
       "texto": "O Brasil está entre os países que mais sofrem com ciberataques e vazamentos de dados.",
-      "mult": 3.38,
+      "mult": 3.44,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DSquNq1gIHx/"
     },
     {
       "texto": "A Leven não contrata pra preencher vaga. Contrata pra manter um padrão que levou anos pra construir.",
-      "mult": 2.92,
+      "mult": 2.97,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DYNHFdXgKwc/"
     },
     {
       "texto": "Antes da proposta, a análise.",
-      "mult": 2.92,
+      "mult": 2.97,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DYGd5cHAIpp/"
     },
     {
       "texto": "Nem sempre a empresa precisa “começar do zero”. Muitas vezes, o que falta é atualizar a base tecnológica para que o negócio volte a crescer com força, ou saia d",
-      "mult": 2.44,
+      "mult": 2.49,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DSoqoS4gPCW/"
     },
     {
       "texto": "Sistemas caem onde a arquitetura não previu.",
-      "mult": 2.26,
+      "mult": 2.3,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DYI0OOuiXdP/"
     },
     {
       "texto": "Estruturação técnica e cultura de alta performance.",
-      "mult": 2.21,
+      "mult": 2.24,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DYGhoWtgL8D/"
     },
     {
       "texto": "A maioria das empresas de tecnologia escolhe projetos confortáveis. A Leven escolheu ajudar todos.",
-      "mult": 1.73,
+      "mult": 1.76,
       "conta": "leventech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DYNG8SgAGy3/"
     },
     {
       "texto": "\"Meu time só apaga incêndio.\"",
-      "mult": 1.64,
+      "mult": 1.5,
       "conta": "korvena.tech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DfXFs3fD7Qs/"
     },
     {
       "texto": "Você precisa de uma entrega com prazo, e ninguém no time pode assumir.",
-      "mult": 1.64,
+      "mult": 1.5,
       "conta": "korvena.tech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/DfR8INiCKn5/"
     },
     {
       "texto": "Nem toda vulnerabilidade nasce de código mal escrito. Parte delas nasce de decisões que ninguém tomou: quais dados guardar, quem pode acessá-los, o que fazer qu",
-      "mult": 1.64,
+      "mult": 1.5,
       "conta": "korvena.tech",
       "fonte": "instagram",
       "link": "https://www.instagram.com/p/De1ggtaDApe/"
+    },
+    {
+      "texto": "Tem empresa em Lages e ainda não tem site? 👀",
+      "mult": 1.67,
+      "conta": "projectatech",
+      "fonte": "seu",
+      "link": "https://www.instagram.com/p/Df4YAURlSTk/"
     },
     {
       "texto": "Tudo o que sua empresa precisa em um único sistema.",
@@ -1972,41 +2034,34 @@
       "link": "https://www.instagram.com/reel/Df7XlzGjaXn/"
     },
     {
+      "texto": "Seu cliente procura você no Google. O que ele encontra? 👀",
+      "mult": 1.33,
+      "conta": "projectatech",
+      "fonte": "seu",
+      "link": "https://www.instagram.com/reel/Df2vHm-tlOi/"
+    },
+    {
       "texto": "Produtividade começa com organização.",
       "mult": 1.33,
       "conta": "projectatech",
       "fonte": "seu",
       "link": "https://www.instagram.com/p/DSKus0HDolV/"
-    },
-    {
-      "texto": "Tem empresa em Lages e ainda não tem site? 👀",
-      "mult": 1.0,
-      "conta": "projectatech",
-      "fonte": "seu",
-      "link": "https://www.instagram.com/p/Df4YAURlSTk/"
-    },
-    {
-      "texto": "Seu cliente procura você no Google. O que ele encontra? 👀",
-      "mult": 1.0,
-      "conta": "projectatech",
-      "fonte": "seu",
-      "link": "https://www.instagram.com/reel/Df2vHm-tlOi/"
     }
   ],
   "contas": [
     {
       "conta": "leventech",
-      "seguidores": 10478,
+      "seguidores": 10471,
       "posts": 40,
       "relevantes": 37,
-      "mediana": 58.5
+      "mediana": 57.5
     },
     {
       "conta": "korvena.tech",
       "seguidores": 40,
-      "posts": 24,
-      "relevantes": 19,
-      "mediana": 5.5
+      "posts": 25,
+      "relevantes": 20,
+      "mediana": 6
     }
   ]
 }
