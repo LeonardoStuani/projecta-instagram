@@ -1,0 +1,12 @@
+{
+  "pilar": "Mesa Posta",
+  "slides": [
+    {"fundo": "dark", "kick": "Pastelaria, lanchonete, bar", "palavra": "Bloquinho.", "gancho": "Onde a conta da sua casa se perde."},
+    {"num": "1", "titulo": "O pedido *some.*", "texto": "Folha arrancada, letra que só quem anotou entende, pedido que nunca chegou na cozinha.", "caixa": {"rotulo": "Repara hoje", "texto": "Quantos pedidos foram refeitos ou reclamados na última sexta?"}},
+    {"num": "2", "titulo": "A conta *não fecha.*", "texto": "Item que saiu e não foi cobrado. Duas mesas que viraram uma e a soma foi feita de cabeça.", "caixa": {"rotulo": "Repara hoje", "texto": "No fim da noite, compare o que saiu da cozinha com o que entrou no caixa."}},
+    {"num": "3", "titulo": "O dono *não sabe o dia.*", "texto": "Quanto vendeu, o que mais saiu, quantas mesas seguem abertas: só depois de fechar e somar papel."},
+    {"fundo": "dark", "kick": "O custo", "titulo": "Cada item que sai sem ser lançado é *dinheiro que fica na mesa.*"},
+    {"kick": "Como se resolve", "titulo": "No *Mesa Posta*, o sistema de comandas da Projecta:", "tam": "m", "lista": ["O garçom lança no celular, sem instalar app", "O caixa junta mesas e fecha no Pix, cartão ou dinheiro", "O dono vê o faturamento do dia de onde estiver"], "nota": "Telas do sistema em projectatech.com.br/mesa-posta"},
+    {"fundo": "laranja", "kick": "Agora você", "titulo": "Na sua casa, a comanda ainda é *de papel?*", "texto": "Conta nos comentários. Se quiser ver funcionando, a gente monta a demonstração com o seu cardápio.", "pill": "MESA no WhatsApp"}
+  ]
+}

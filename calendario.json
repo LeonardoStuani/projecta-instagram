@@ -74,6 +74,19 @@
     "pilar": "prova"
   },
   {
+    "id": "17-reel-mesa-posta",
+    "tipo": "reel",
+    "arquivos": [
+      "17-reel-mesa-posta/reel-mesa-posta.mp4"
+    ],
+    "legenda": "media/17-reel-mesa-posta/legenda.txt",
+    "data": "2026-11-26",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "Mesa Posta",
+    "voz": "pt-BR-AntonioNeural"
+  },
+  {
     "id": "08-dica-planilha",
     "tipo": "carrossel",
     "arquivos": [
@@ -140,6 +153,24 @@
     "observacao": "Confirme que projectatech.com.br está no ar antes de aprovar (o vídeo mostra o domínio). Vídeo sem áudio: para mais alcance, publique pelo app com um áudio em alta."
   },
   {
+    "id": "18-mesa-posta-bloquinho",
+    "tipo": "carrossel",
+    "arquivos": [
+      "18-mesa-posta-bloquinho/slide-01.jpg",
+      "18-mesa-posta-bloquinho/slide-02.jpg",
+      "18-mesa-posta-bloquinho/slide-03.jpg",
+      "18-mesa-posta-bloquinho/slide-04.jpg",
+      "18-mesa-posta-bloquinho/slide-05.jpg",
+      "18-mesa-posta-bloquinho/slide-06.jpg",
+      "18-mesa-posta-bloquinho/slide-07.jpg"
+    ],
+    "legenda": "media/18-mesa-posta-bloquinho/legenda.txt",
+    "data": "2026-12-03",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "Mesa Posta"
+  },
+  {
     "id": "14-reel-3-sinais",
     "tipo": "reel",
     "arquivos": [
@@ -187,6 +218,24 @@
     "hora": "18:00",
     "status": "pendente",
     "pilar": "prova"
+  },
+  {
+    "id": "19-mesa-posta-fechar-mesa",
+    "tipo": "carrossel",
+    "arquivos": [
+      "19-mesa-posta-fechar-mesa/slide-01.jpg",
+      "19-mesa-posta-fechar-mesa/slide-02.jpg",
+      "19-mesa-posta-fechar-mesa/slide-03.jpg",
+      "19-mesa-posta-fechar-mesa/slide-04.jpg",
+      "19-mesa-posta-fechar-mesa/slide-05.jpg",
+      "19-mesa-posta-fechar-mesa/slide-06.jpg",
+      "19-mesa-posta-fechar-mesa/slide-07.jpg"
+    ],
+    "legenda": "media/19-mesa-posta-fechar-mesa/legenda.txt",
+    "data": "2026-12-10",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "Mesa Posta"
   },
   {
     "id": "13-sinais-do-site",

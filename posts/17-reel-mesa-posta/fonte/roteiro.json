@@ -1,0 +1,36 @@
+{
+  "voz": "pt-BR-AntonioNeural",
+  "bpm": 104,
+  "drop": 4.6,
+  "fim": 48.0,
+  "corte_batida": 38.2,
+  "falas": [
+    {"t": 0.4, "texto": "Sexta à noite, casa cheia, e o pedido do bloquinho sumiu."},
+    {"t": 4.7, "texto": "Chegou o Mesa Posta."},
+    {"t": 6.6, "texto": "O sistema de comandas da Projecta, para pastelaria, lanchonete, bar e restaurante."},
+    {"t": 11.8, "texto": "O garçom abre a mesa no celular, escolhe o item e lança. Pronto: está na conta."},
+    {"t": 17.5, "texto": "Sem aplicativo pra instalar. Abre no navegador."},
+    {"t": 21.0, "texto": "No caixa, junta as mesas, marca Pix, cartão ou dinheiro, e a conta sai certa."},
+    {"t": 26.7, "texto": "Cardápio com foto e um preço só, pra todo mundo."},
+    {"t": 30.2, "texto": "E o dono vê o faturamento do dia de onde estiver."},
+    {"t": 34.2, "texto": "Garçom, caixa e dono: cada um com o seu acesso."},
+    {"t": 38.3, "texto": "Mesa Posta. Comanda no celular, conta certa no caixa."},
+    {"t": 42.9, "texto": "Chama a Projecta no WhatsApp e veja funcionando."}
+  ],
+  "sfx": [
+    {"t": 3.2, "tipo": "whoosh", "g": 0.6},
+    {"t": 4.6, "tipo": "subida", "g": 0.5},
+    {"t": 4.6, "tipo": "impacto", "g": 0.6},
+    {"t": 11.6, "tipo": "whoosh"},
+    {"t": 15.5, "tipo": "clique", "g": 0.8},
+    {"t": 15.9, "tipo": "ding", "g": 0.4},
+    {"t": 17.4, "tipo": "whoosh", "g": 0.6},
+    {"t": 20.9, "tipo": "whoosh"},
+    {"t": 25.4, "tipo": "ding", "g": 0.45},
+    {"t": 26.6, "tipo": "whoosh"},
+    {"t": 30.1, "tipo": "whoosh"},
+    {"t": 34.1, "tipo": "whoosh", "g": 0.6},
+    {"t": 38.2, "tipo": "impacto", "g": 0.45},
+    {"t": 46.6, "tipo": "ding", "g": 0.35}
+  ]
+}

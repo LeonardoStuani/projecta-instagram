@@ -1,0 +1,12 @@
+{
+  "pilar": "Mesa Posta",
+  "slides": [
+    {"fundo": "dark", "kick": "Dica pra quem tem lanchonete", "palavra": "Fila.", "gancho": "4 jeitos de fechar mesa sem fila no caixa."},
+    {"num": "1", "titulo": "Lance *na hora* do pedido.", "texto": "Pedido anotado pra lançar depois é pedido esquecido. Quem anota, lança, ali do lado da mesa."},
+    {"num": "2", "titulo": "Divida na hora de *pagar*, não de pedir.", "tam": "m", "texto": "Uma conta por mesa. Separar por pessoa no meio do pedido é onde o item some."},
+    {"num": "3", "titulo": "Confira *antes* de cobrar.", "texto": "Leia os itens com o cliente antes do valor final. Discussão no caixa é o que mais segura a fila.", "caixa": {"rotulo": "Teste", "texto": "Cronometre um fechamento de mesa na próxima sexta. Onde ele trava?"}},
+    {"num": "4", "titulo": "Feche o dia *no mesmo dia.*", "texto": "Somar caixa e cozinha antes de ir embora mostra o erro enquanto alguém ainda lembra o que aconteceu."},
+    {"kick": "Sem papel", "titulo": "O *Mesa Posta* já faz os 4 por você.", "tam": "m", "lista": ["Item lançado no celular vai direto pra conta", "Mesas juntas na hora de fechar", "Conferência na tela antes do pagamento", "Faturamento do dia pronto no painel"], "nota": "Sistema de comandas da Projecta, feito em Lages."},
+    {"fundo": "laranja", "kick": "Agora você", "titulo": "Qual dos 4 *mais trava* aí?", "texto": "Responde com o número nos comentários.", "pill": "MESA no WhatsApp"}
+  ]
+}
