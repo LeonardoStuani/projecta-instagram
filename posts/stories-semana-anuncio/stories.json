@@ -171,7 +171,7 @@
       "data": "2026-11-23",
       "titulo": "Respostas da caixinha",
       "pasta": "dia-5-respostas",
-      "postado": false,
+      "postado": true,
       "depois": "Nunca mostre o nome de quem perguntou sem pedir. Se ninguém perguntou, use as do destaque Dúvidas. Não invente pergunta de seguidor.",
       "quadros": [
         {
@@ -211,7 +211,7 @@
       "data": "2026-11-24",
       "titulo": "Análise gratuita",
       "pasta": "dia-6-analise-gratuita",
-      "postado": false,
+      "postado": true,
       "depois": "Último dia do anúncio. Amanhã: anote votos, respostas, toques no link e conversas no WhatsApp.",
       "quadros": [
         {

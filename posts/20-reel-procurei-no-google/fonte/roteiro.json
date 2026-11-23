@@ -1,0 +1,28 @@
+{
+ "voz": "pt-BR-AntonioNeural",
+ "bpm": 112,
+ "drop": 8.6,
+ "fim": 33.0,
+ "corte_batida": 26.2,
+ "falas": [
+  {"t": 0.3, "texto": "Seu próximo cliente acabou de pegar o celular."},
+  {"t": 3.1, "texto": "Ele pesquisou o que você faz, aqui em Lages. E apareceram eles."},
+  {"t": 8.6, "texto": "Cadê você?"},
+  {"t": 10.2, "texto": "Quando aparece, é só um perfil. Ele procura horário, endereço... e desiste."},
+  {"t": 16.0, "texto": "Em dez segundos, ele já marcou com outro."},
+  {"t": 19.2, "texto": "O post some em dois dias. O site fica no ar 24 horas, trazendo quem já quer comprar."},
+  {"t": 26.4, "texto": "Projecta. Seu negócio encontrado no Google. Chama no WhatsApp."}
+ ],
+ "sfx": [
+  {"t": 0.25, "tipo": "clique", "g": 0.5},
+  {"t": 3.1, "tipo": "whoosh"},
+  {"t": 8.6, "tipo": "subida", "g": 0.5},
+  {"t": 8.6, "tipo": "impacto", "g": 0.8},
+  {"t": 10.2, "tipo": "whoosh"},
+  {"t": 16.0, "tipo": "whoosh"},
+  {"t": 18.3, "tipo": "clique", "g": 0.8},
+  {"t": 19.2, "tipo": "impacto", "g": 0.5},
+  {"t": 26.2, "tipo": "whoosh"},
+  {"t": 30.6, "tipo": "ding", "g": 0.45}
+ ]
+}

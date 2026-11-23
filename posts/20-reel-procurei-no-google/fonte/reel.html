@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Reel · Procurei você no Google (narrado)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../scripts/video/base.css">
+<style>
+/* Busca, resultados, perfil e site do concorrente são ILUSTRAÇÕES genéricas (sem marca de buscador, nomes ocultos).
+   Os sites do final são capturas reais: projecta.tech e Eixo Sul (cliente). */
+body{background:#0B0B0D}
+.fundo{position:absolute;inset:-200px;background:
+  radial-gradient(900px 700px at 85% 8%,#F04E1230,transparent 60%),
+  radial-gradient(800px 800px at 5% 95%,#1D4ED82a,transparent 60%),#0B0B0D}
+.gradeF{position:absolute;inset:-200px;opacity:.22;background-image:linear-gradient(#ffffff10 2px,transparent 2px),linear-gradient(90deg,#ffffff10 2px,transparent 2px);background-size:90px 90px}
+
+/* celular */
+.cel{position:absolute;left:170px;top:270px;width:740px;height:1200px;border-radius:92px;background:#1a1a1d;padding:20px;
+  box-shadow:0 90px 160px -40px #000,0 0 0 3px #ffffff1f inset,0 0 0 2px #2c2c31;z-index:3}
+.tela{position:relative;width:100%;height:100%;border-radius:74px;overflow:hidden;background:#fff;color:#1b1b1f;font-family:var(--sans)}
+.ilha{position:absolute;left:50%;top:26px;width:190px;height:52px;margin-left:-95px;border-radius:30px;background:#000;z-index:30}
+.cena{position:absolute;inset:0;opacity:0}
+
+/* busca genérica */
+.busca{position:absolute;left:44px;right:44px;top:120px;height:104px;border-radius:52px;background:#fff;box-shadow:0 4px 22px #0002,0 0 0 2px #e3e3e8;
+  display:flex;align-items:center;gap:22px;padding:0 34px;font-size:36px;color:#1b1b1f}
+.busca svg{flex:none}
+.cursorTxt{display:inline-block;width:3px;height:42px;background:#1b1b1f;margin-left:2px;vertical-align:middle}
+.teclado{position:absolute;left:0;right:0;bottom:0;height:520px;background:#d6d8de;padding:28px 12px 0;display:grid;grid-template-rows:repeat(4,96px);gap:16px}
+.teclado div{display:flex;justify-content:center;gap:10px}
+.teclado i{font-style:normal;width:60px;height:96px;border-radius:12px;background:#fff;box-shadow:0 3px 0 #9a9ca3;display:grid;place-items:center;font-size:36px;color:#222}
+.teclado i.on{background:#bfc2c9}
+.teclado i.esp{width:380px}
+
+/* resultados */
+.res{position:absolute;left:0;right:0;top:250px}
+.mapa{margin:0 34px;height:400px;border-radius:30px;overflow:hidden;position:relative;background:#ecebe6}
+.pino{position:absolute;width:54px;height:54px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#1b1b1f;box-shadow:0 6px 10px #0004}
+.pino::after{content:"";position:absolute;left:17px;top:17px;width:20px;height:20px;border-radius:50%;background:#fff}
+.card{margin:26px 34px 0;padding:28px 30px;border-radius:26px;background:#fff;box-shadow:0 0 0 2px #ececf0;display:grid;grid-template-columns:1fr 130px;gap:8px 20px}
+.card .nome{height:34px;border-radius:10px;background:#3b3b44;filter:blur(7px);width:78%}
+.card .est{font-size:26px;color:#b8860b;letter-spacing:.06em}
+.card .est span{color:#666;letter-spacing:0;margin-left:8px}
+.card .lin{height:20px;border-radius:8px;background:#d9d9df;width:92%}
+.card .foto{grid-row:1/5;grid-column:2;border-radius:18px;background:linear-gradient(135deg,#cfc8bd,#9e968a)}
+.oc{position:absolute;right:34px;top:206px;font-size:22px;font-weight:600;color:#8b8b93;letter-spacing:.04em}
+
+/* "e você?" */
+.vc{position:absolute;inset:0;background:#0B0B0Dcc;display:grid;place-items:center;z-index:9;opacity:0;pointer-events:none}
+.vc b{font-family:var(--display);font-weight:800;font-size:230px;letter-spacing:-.06em;color:#fff;text-shadow:0 20px 60px #000}
+.vc b em{font-size:1.05em}
+
+/* perfil genérico */
+.perfil{padding:120px 40px 0}
+.pTopo{display:flex;align-items:center;gap:34px}
+.av{width:170px;height:170px;border-radius:50%;background:linear-gradient(135deg,#d7cfc4,#a39a8d);box-shadow:0 0 0 6px #fff,0 0 0 9px #ddd}
+.nums{display:flex;gap:40px;font-size:24px;color:#666;text-align:center}
+.nums b{display:block;font-size:38px;color:#1b1b1f}
+.pNome{margin-top:26px;font-weight:700;font-size:34px}
+.pBio{margin-top:8px;font-size:28px;color:#777}
+.grade{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-left:-40px;margin-right:-40px}
+.grade i{aspect-ratio:1;background:#e5e2dc;position:relative}
+.grade i:nth-child(3n+1){background:#d9d4cb}.grade i:nth-child(4n){background:#cdc6bb}
+.grade i.velho::after{content:"há 3 meses";position:absolute;left:12px;bottom:12px;background:#000b;color:#fff;font-size:22px;font-weight:600;padding:6px 12px;border-radius:10px}
+.pergunta{position:absolute;padding:20px 30px;border-radius:999px;background:#1b1b1f;color:#fff;font-weight:700;font-size:34px;box-shadow:0 20px 40px -10px #0007;z-index:5;opacity:0}
+.pergunta span{color:#F04E12}
+.sair{position:absolute;inset:0;background:#0B0B0D;opacity:0;z-index:6;display:grid;place-items:center}
+.sair b{font-family:var(--display);font-weight:800;font-size:80px;color:#fff;letter-spacing:-.04em}
+
+/* site do concorrente (genérico) */
+.conc{background:#f6f4ef}
+.cTopo{height:200px;padding:110px 40px 0;display:flex;justify-content:space-between;align-items:center}
+.cTopo .nome{width:230px;height:36px;border-radius:10px;background:#2a2a30;filter:blur(7px)}
+.cTopo .menu{width:48px;height:30px;border-top:5px solid #2a2a30;border-bottom:5px solid #2a2a30;position:relative}
+.cHero{margin:40px 40px 0;height:430px;border-radius:30px;background:linear-gradient(160deg,#cdbfae,#8f7f6c);position:relative;overflow:hidden}
+.cHero::after{content:"";position:absolute;left:40px;bottom:50px;width:60%;height:40px;border-radius:12px;background:#fffa;filter:blur(5px)}
+.cLin{margin:34px 40px 0;height:24px;border-radius:9px;background:#dcd7cf}
+.zap{position:absolute;left:40px;right:40px;top:860px;height:120px;border-radius:60px;background:#1F7A4D;color:#fff;font-weight:700;font-size:38px;display:flex;align-items:center;justify-content:center;gap:18px;box-shadow:0 18px 30px -12px #1F7A4D99}
+.chat{position:absolute;inset:0;background:#ece5dc;opacity:0;z-index:4}
+.chat .top{height:200px;background:#1F7A4D;padding:110px 40px 0;display:flex;align-items:center;gap:22px;color:#fff;font-weight:700;font-size:32px}
+.chat .top i{width:64px;height:64px;border-radius:50%;background:#ffffff55}
+.chat .top span{width:200px;height:30px;border-radius:9px;background:#fff9;filter:blur(6px)}
+.bal{position:absolute;max-width:520px;padding:24px 30px;border-radius:30px;font-size:34px;line-height:1.25;box-shadow:0 2px 0 #0001;opacity:0}
+.bal.eu{right:34px;background:#d8f7c6;border-bottom-right-radius:8px}
+.bal.ele{left:34px;background:#fff;border-bottom-left-radius:8px}
+.bal small{display:block;text-align:right;font-size:22px;color:#6b8f6b;margin-top:6px}
+.relogio{position:absolute;right:-40px;top:-70px;z-index:8;width:230px;height:230px;border-radius:50%;background:#F04E12;display:grid;place-items:center;
+  font-family:var(--display);font-weight:800;font-size:66px;letter-spacing:-.04em;color:#fff;box-shadow:0 30px 60px -20px #F04E12aa;opacity:0}
+.toque{position:absolute;width:110px;height:110px;border-radius:50%;background:#fff6;border:5px solid #fff;z-index:9;opacity:0;margin:-55px 0 0 -55px}
+
+/* post que some */
+.post{position:absolute;left:250px;top:430px;width:580px;height:720px;border-radius:40px;background:#fff;z-index:4;opacity:0;padding:26px;box-shadow:0 60px 120px -30px #000;color:#1b1b1f}
+.post .im{height:520px;border-radius:24px;background:linear-gradient(135deg,#d7cfc4,#a39a8d)}
+.post p{margin-top:22px;font-size:30px;font-weight:600}
+.post p span{color:#999;font-weight:500}
+
+/* vitrine real */
+.fone{position:absolute;width:400px;height:820px;border-radius:58px;background:#1a1a1d;padding:13px;box-shadow:0 60px 120px -30px #000,0 0 0 2px #2c2c31;opacity:0;z-index:4}
+.fone .scr{width:100%;height:100%;border-radius:46px;overflow:hidden;position:relative;background:#F3F1EA}
+.fone img{position:absolute;left:0;top:0;width:100%;display:block}
+.etq{position:absolute;left:50%;bottom:-66px;transform:translateX(-50%);white-space:nowrap;font-size:26px;font-weight:600;color:#c9c9cf}
+.ar{position:absolute;left:0;right:0;top:250px;text-align:center;z-index:5;opacity:0}
+.ar b{display:inline-flex;align-items:center;gap:16px;padding:16px 34px;border-radius:999px;background:#ffffff14;border:2px solid #ffffff26;font-size:32px;font-weight:700;color:#fff;letter-spacing:.02em}
+.ar b i{width:16px;height:16px;border-radius:50%;background:#2fd27a;box-shadow:0 0 0 7px #2fd27a33}
+
+/* textos */
+.titulo{position:absolute;left:64px;right:64px;top:120px;font-family:var(--display);font-weight:800;font-size:72px;line-height:1;letter-spacing:-.045em;z-index:6;color:#fff;opacity:0}
+.leg{position:absolute;left:40px;right:40px;top:1510px;height:260px;z-index:8;display:flex;align-items:center;justify-content:center}
+.chunk{position:absolute;left:0;right:0;text-align:center;font-family:var(--display);font-weight:800;font-size:88px;line-height:1.05;letter-spacing:-.045em;color:#fff;opacity:0;text-shadow:0 6px 24px #000c}
+.chunk b{display:inline-block;font-weight:800;padding:0 .12em;border-radius:.18em;margin:0 .02em}
+.chunk b.on{background:var(--hl,#F04E12);color:#fff;text-shadow:none}
+.rod{position:absolute;left:0;right:0;bottom:60px;text-align:center;font-size:24px;color:#8a8a92;z-index:6}
+
+/* final em papel */
+.fim{position:absolute;inset:0;background:var(--paper);z-index:7;clip-path:circle(0% at 50% 50%);color:var(--ink)}
+.fim .logo{position:absolute;left:72px;top:250px;font-family:var(--display);font-weight:800;font-size:64px;letter-spacing:-.05em}
+.fim .logo i{color:var(--accent);font-style:normal}
+.fim h2{position:absolute;left:72px;right:60px;top:430px;font-family:var(--display);font-weight:800;font-size:150px;line-height:.9;letter-spacing:-.06em}
+.fim .sub{position:absolute;left:72px;top:900px;font-size:40px;color:#55524b}
+.fim .wpp{position:absolute;left:72px;top:1060px;display:flex;align-items:center;gap:22px;padding:30px 44px;border-radius:999px;background:#1F7A4D;color:#fff;font-weight:700;font-size:52px;box-shadow:0 24px 40px -16px #1F7A4Daa}
+.fim .arroba{position:absolute;left:72px;top:1240px;font-size:36px;font-weight:600;color:#55524b}
+.leg.escuro .chunk{color:var(--ink);text-shadow:none}
+.leg.escuro .chunk b.on{color:#fff}
+</style>
+</head>
+<body>
+<div class="palco">
+  <div class="mundo" id="mundo">
+    <div class="fundo"></div><div class="gradeF"></div>
+
+    <div class="cel" id="cel"><div class="tela" id="tela">
+      <div class="ilha"></div>
+
+      <!-- 1. busca -->
+      <div class="cena" id="cBusca">
+        <div class="busca"><svg width="44" height="44" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#555" stroke-width="2.4"/><path d="M15.5 15.5L21 21" stroke="#555" stroke-width="2.6" stroke-linecap="round"/></svg>
+          <span><span id="digit"></span><span class="cursorTxt" id="cur"></span></span></div>
+        <div class="teclado" id="tec"></div>
+      </div>
+
+      <!-- 2. resultados (ilustração) -->
+      <div class="cena" id="cRes">
+        <div class="busca"><svg width="44" height="44" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#555" stroke-width="2.4"/><path d="M15.5 15.5L21 21" stroke="#555" stroke-width="2.6" stroke-linecap="round"/></svg>salão de cabelo em Lages</div>
+        <div class="oc">NOMES OCULTOS</div>
+        <div class="res" id="res">
+          <div class="mapa">
+            <svg width="100%" height="100%" viewBox="0 0 640 400" preserveAspectRatio="none">
+              <path d="M-10 120 C150 90 260 160 420 130 S600 70 660 90" stroke="#fff" stroke-width="26" fill="none"/>
+              <path d="M200 -10 C230 120 180 260 240 420" stroke="#fff" stroke-width="20" fill="none"/>
+              <path d="M-10 300 L660 270" stroke="#fff" stroke-width="16" fill="none"/>
+              <path d="M470 -10 C440 140 520 260 480 420" stroke="#fff" stroke-width="14" fill="none"/>
+              <rect x="300" y="170" width="120" height="70" rx="10" fill="#d8e6cf"/>
+            </svg>
+            <i class="pino" id="p1" style="left:150px;top:150px"></i>
+            <i class="pino" id="p2" style="left:380px;top:70px"></i>
+            <i class="pino" id="p3" style="left:520px;top:230px"></i>
+          </div>
+          <div class="card"><div class="nome"></div><div class="foto"></div><div class="est">★★★★★<span>(214)</span></div><div class="lin"></div><div class="lin" style="width:60%"></div></div>
+          <div class="card"><div class="nome" style="width:64%"></div><div class="foto"></div><div class="est">★★★★★<span>(158)</span></div><div class="lin"></div><div class="lin" style="width:70%"></div></div>
+          <div class="card"><div class="nome" style="width:84%"></div><div class="foto"></div><div class="est">★★★★☆<span>(97)</span></div><div class="lin"></div><div class="lin" style="width:50%"></div></div>
+          <div class="card"><div class="nome" style="width:58%"></div><div class="foto"></div><div class="est">★★★★☆<span>(61)</span></div><div class="lin"></div><div class="lin" style="width:66%"></div></div>
+          <div class="card"><div class="nome" style="width:72%"></div><div class="foto"></div><div class="est">★★★★★<span>(43)</span></div><div class="lin"></div><div class="lin" style="width:44%"></div></div>
+          <div class="card"><div class="nome" style="width:66%"></div><div class="foto"></div><div class="est">★★★☆☆<span>(12)</span></div><div class="lin"></div><div class="lin" style="width:62%"></div></div>
+        </div>
+      </div>
+
+      <!-- 3. perfil (ilustração) -->
+      <div class="cena" id="cPerfil">
+        <div class="perfil">
+          <div class="pTopo"><div class="av"></div><div class="nums"><div><b>38</b>posts</div><div><b>412</b>seguidores</div><div><b>290</b>seguindo</div></div></div>
+          <div class="pNome">seu.negocio</div>
+          <div class="pBio">✂️ Salão · Lages</div>
+          <div class="grade"><i class="velho"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="pergunta" id="q1" style="left:60px;top:720px">Horário<span>?</span></div>
+        <div class="pergunta" id="q2" style="right:50px;top:850px">Endereço<span>?</span></div>
+        <div class="pergunta" id="q3" style="left:150px;top:980px">Preço<span>?</span></div>
+        <div class="sair" id="sair"><b>✕</b></div>
+      </div>
+
+      <!-- 4. site do concorrente (ilustração) -->
+      <div class="cena conc" id="cConc">
+        <div class="cTopo"><div class="nome"></div><div class="menu"></div></div>
+        <div class="cHero"></div>
+        <div class="cLin" style="width:70%"></div><div class="cLin" style="width:52%"></div>
+        <div class="zap" id="zap"><svg width="46" height="46" viewBox="0 0 24 24"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.6-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.6-.1 1.2Z"/></svg>Agendar pelo WhatsApp</div>
+        <div class="chat" id="chat">
+          <div class="top"><i></i><span></span></div>
+          <div class="bal eu" id="b1" style="top:300px">Oi! Tem horário amanhã?<small>✓✓</small></div>
+          <div class="bal ele" id="b2" style="top:470px">Tem sim! 14h, pode ser? 😊</div>
+          <div class="bal eu" id="b3" style="top:620px">Fechado, marca pra mim.<small>✓✓</small></div>
+        </div>
+      </div>
+    </div></div>
+    <div class="relogio" id="relogio" style="left:770px;top:230px"><span id="seg">0s</span></div>
+
+    <div class="vc" id="vc"><b>E <em>você?</em></b></div>
+
+    <div class="post" id="post"><div class="im"></div><p>Promoção da semana! <span>· há 2 dias</span></p></div>
+
+    <div class="ar" id="ar"><b><i></i>NO AR · 24 HORAS</b></div>
+    <div class="fone" id="f1" style="left:60px;top:380px"><div class="scr"><img id="i1" src="assets/eixosul-celular.png" alt=""></div><div class="etq">Eixo Sul · Lages</div></div>
+    <div class="fone" id="f2" style="left:620px;top:440px"><div class="scr"><img id="i2" src="assets/site-00.png" alt=""></div><div class="etq">Projecta</div></div>
+  </div>
+
+  <p class="titulo" id="titulo"></p>
+  <div class="leg" id="leg"></div>
+  <div class="fim" id="fim">
+    <div class="logo">Projecta<i>.</i></div>
+    <h2>Seu site no ar em <em>7 dias.</em></h2>
+    <p class="sub">Seu negócio encontrado no Google.</p>
+    <div class="wpp"><svg width="58" height="58" viewBox="0 0 24 24"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.6-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.6-.1 1.2Z"/></svg>(49) 99959-2640</div>
+    <p class="arroba">@projectatech</p>
+  </div>
+  <div class="rod" id="rod">Cena ilustrativa · nomes ocultos · sites do final são reais</div>
+  <div class="grao"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="legendas.js"></script>
+<script>
+const LEG = window.LEG;
+const at = (f, w) => LEG.find((x) => x.fala === f && x.w.toLowerCase().startsWith(w)).s;
+const PONT = /[,.?!:…]+$/;
+
+function legendas(tl) {
+  const blocos = []; let b = [];
+  LEG.forEach((w, i) => {
+    b.push(w);
+    const prox = LEG[i + 1];
+    if (b.length === 3 || PONT.test(w.w) || !prox || prox.fala !== w.fala) { blocos.push(b); b = []; }
+  });
+  const box = document.getElementById("leg");
+  blocos.forEach((bl, k) => {
+    const el = document.createElement("div");
+    el.className = "chunk";
+    el.innerHTML = bl.map((w) => `<b>${w.w.replace(PONT, "")}</b>`).join(" ");
+    box.appendChild(el);
+    const ini = bl[0].s - 0.04, fim = (blocos[k + 1] && blocos[k + 1][0].s - 0.04 < bl.at(-1).e + 0.5) ? blocos[k + 1][0].s - 0.04 : bl.at(-1).e + 0.25;
+    tl.fromTo(el, { opacity: 0, y: 40, scale: .86 }, { opacity: 1, y: 0, scale: 1, duration: .16, ease: "back.out(2.4)" }, ini)
+      .set(el, { opacity: 0 }, fim);
+    [...el.children].forEach((c, j) => {
+      tl.set(c, { className: "on" }, bl[j].s).set(c, { className: "" }, bl[j].e)
+        .fromTo(c, { scale: 1.12 }, { scale: 1, duration: .18, ease: "power2.out" }, bl[j].s);
+    });
+  });
+}
+
+function titulo(tl, html, t0, t1) {
+  const el = document.getElementById("titulo");
+  tl.call(() => { el.innerHTML = html; }, null, t0 - .01)
+    .fromTo(el, { opacity: 0, y: 50 }, { immediateRender: false, opacity: 1, y: 0, duration: .4, ease: "back.out(1.8)" }, t0)
+    .to(el, { opacity: 0, y: -30, duration: .22 }, t1);
+}
+
+window.montar = (tl) => {
+  // teclado
+  const linhas = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+  const tec = document.getElementById("tec");
+  tec.innerHTML = linhas.map((l) => `<div>${[...l].map((c) => `<i data-k="${c}">${c}</i>`).join("")}</div>`).join("") + `<div><i class="esp" data-k=" ">espaço</i></div>`;
+  const teclas = {};
+  tec.querySelectorAll("i").forEach((i) => (teclas[i.dataset.k] = i));
+  const BUSCA = "salão de cabelo em Lages";
+  const dig = document.getElementById("digit");
+  const prox = { n: 0 };
+  const semAc = (c) => c.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+  // ---------- 0–3,1 s: celular entra, digita a busca ----------
+  tl.fromTo("#cel", { y: 900, rotate: 8, scale: .9 }, { y: 0, rotate: 0, scale: 1, duration: .7, ease: "expo.out" }, 0)
+    .set("#cBusca", { opacity: 1 }, 0)
+    .to(prox, { n: BUSCA.length, duration: 2.0, ease: "none", onUpdate() {
+      const n = Math.floor(prox.n);
+      dig.textContent = BUSCA.slice(0, n);
+      Object.values(teclas).forEach((k) => k.classList.remove("on"));
+      const c = BUSCA[Math.min(n, BUSCA.length - 1)];
+      if (n < BUSCA.length && teclas[semAc(c)]) teclas[semAc(c)].classList.add("on");
+    } }, .6)
+    .to("#cur", { opacity: 0, duration: .01, repeat: 7, yoyo: true, repeatDelay: .2 }, 0);
+  titulo(tl, "Seu cliente fez isso <em>hoje.</em>", .35, 2.95);
+
+  // ---------- 3,1–8,5 s: resultados com 3 concorrentes ----------
+  tl.to("#tec", { y: 560, duration: .35, ease: "power2.in" }, 2.85)
+    .set("#cRes", { opacity: 1 }, 3.1).set("#cBusca", { opacity: 0 }, 3.1)
+    .from("#res", { y: 200, opacity: 0, duration: .5, ease: "power3.out" }, 3.1)
+    .from(["#p1", "#p2", "#p3"], { y: -80, opacity: 0, duration: .4, ease: "bounce.out", stagger: .25 }, at(2, "apareceram") - .1)
+    .fromTo("#cel", { scale: 1 }, { scale: 1.12, duration: 5.2, ease: "none" }, 3.2)
+    .from(".oc", { opacity: 0, duration: .3 }, 3.6)
+    .from("#rod", { opacity: 0, duration: .4 }, 3.4);
+  titulo(tl, "E apareceram <em>eles.</em>", at(2, "e") , 8.4);
+
+  // ---------- 8,6–10,1 s: rolagem rápida, "E você?" ----------
+  tl.to("#res", { y: -900, duration: 1.4, ease: "power2.inOut" }, 8.35)
+    .to("#cel", { scale: 1, duration: .35, ease: "power3.out" }, 8.5)
+    .to("#mundo", { x: 10, duration: .05, repeat: 7, yoyo: true, ease: "none" }, 8.6)
+    .fromTo("#vc", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: .3, ease: "expo.out" }, 8.6)
+    .to("#vc", { opacity: .7, duration: .12, repeat: 3, yoyo: true }, 9.1)
+    .to("#vc", { opacity: 0, scale: .8, duration: .2 }, 9.95);
+
+  // ---------- 10,2–15,9 s: só um perfil, sem informação ----------
+  tl.set("#cRes", { opacity: 0 }, 10.15)
+    .fromTo("#cPerfil", { opacity: 1, x: 740 }, { immediateRender: false, x: 0, duration: .4, ease: "power3.out" }, 10.15)
+    .fromTo("#q1", { opacity: 0, scale: .4 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(3)" }, at(4, "horário") - .05)
+    .fromTo("#q2", { opacity: 0, scale: .4 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(3)" }, at(4, "endereço") - .05)
+    .fromTo("#q3", { opacity: 0, scale: .4 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(3)" }, at(4, "endereço") + .45)
+    .to(["#q1", "#q2", "#q3"], { x: "+=6", duration: .05, repeat: 5, yoyo: true }, at(4, "desiste") - .1)
+    .to("#cPerfil .perfil", { filter: "grayscale(1) blur(3px)", duration: .4 }, at(4, "desiste"))
+    .fromTo("#sair", { opacity: 0 }, { opacity: .85, duration: .35 }, at(4, "desiste") + .2)
+    .from("#sair b", { scale: 0, rotate: -90, duration: .35, ease: "back.out(2)" }, at(4, "desiste") + .2);
+  titulo(tl, "Só um perfil. <em>Sem horário.</em>", 10.4, 15.75);
+
+  // ---------- 16,0–19,1 s: o concorrente fecha em 10 s ----------
+  const seg = { s: 0 };
+  const segEl = document.getElementById("seg");
+  tl.set("#cPerfil", { opacity: 0 }, 15.95)
+    .fromTo("#cConc", { opacity: 1, y: 1200 }, { immediateRender: false, y: 0, duration: .4, ease: "power3.out" }, 15.95)
+    .fromTo("#relogio", { opacity: 0, scale: .3, rotate: -30 }, { opacity: 1, scale: 1, rotate: 0, duration: .4, ease: "back.out(2)" }, 16.1)
+    .to(seg, { s: 10, duration: 2.6, ease: "none", onUpdate() { segEl.textContent = Math.floor(seg.s) + "s"; } }, 16.2)
+    .to("#zap", { scale: 1.06, duration: .25, yoyo: true, repeat: 1 }, 16.6)
+    .to("#zap", { scale: .94, duration: .08, yoyo: true, repeat: 1 }, 17.2)
+    .to("#chat", { opacity: 1, duration: .25 }, 17.35)
+    .fromTo("#b1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .25 }, 17.5)
+    .fromTo("#b2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .25 }, 18.0)
+    .fromTo("#b3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .25 }, 18.45)
+    .to("#relogio", { scale: 1.15, duration: .15, yoyo: true, repeat: 1 }, 18.8);
+  titulo(tl, "Marcou com <em>outro.</em>", at(5, "marcou"), 19.05);
+
+  // ---------- 19,2–26,1 s: post some, site fica no ar (sites reais) ----------
+  tl.to("#relogio", { opacity: 0, scale: .5, duration: .2 }, 19.0)
+    .to("#cel", { y: 2100, rotate: -8, duration: .45, ease: "power3.in" }, 19.0)
+    .to("#rod", { opacity: 0, duration: .3 }, 19.1)
+    .fromTo("#post", { opacity: 0, y: 200, rotate: -6 }, { opacity: 1, y: 0, rotate: -3, duration: .4, ease: "back.out(1.6)" }, 19.25)
+    .to("#post", { opacity: 0, scale: .6, filter: "blur(30px)", y: -200, duration: .75, ease: "power2.in" }, at(6, "some") + .15)
+    .fromTo("#f1", { opacity: 0, y: 500, rotate: -12 }, { opacity: 1, y: 0, rotate: -5, duration: .6, ease: "expo.out" }, at(6, "site") - .15)
+    .fromTo("#f2", { opacity: 0, y: 500, rotate: 12 }, { opacity: 1, y: 0, rotate: 5, duration: .6, ease: "expo.out" }, at(6, "site") + .05)
+    .fromTo("#ar", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: .35 }, at(6, "24") - .1)
+    .to("#ar b i", { opacity: .3, duration: .3, repeat: 7, yoyo: true }, at(6, "24"))
+    .to("#i1", { y: -16, duration: 4, ease: "power1.inOut" }, 21.6)
+    .to("#i2", { y: -(5400 * 374 / 1170 - 794), duration: 4.4, ease: "power1.inOut" }, 21.4)
+    .to(["#f1", "#f2"], { y: "-=50", duration: 4.5, ease: "none" }, 21.7);
+  titulo(tl, "Site fica no ar. <em>Todo dia.</em>", at(6, "site"), 26.0);
+
+  // ---------- 26,2–33 s: fechamento em papel ----------
+  tl.to("#fim", { clipPath: "circle(150% at 50% 50%)", duration: .6, ease: "power3.in" }, 25.95)
+    .set("#leg", { "--hl": "#F04E12" }, 26.2)
+    .set("#leg", { className: "leg escuro" }, 26.2)
+    .from(".fim .logo", { y: 40, opacity: 0, duration: .4, ease: "back.out(1.6)" }, at(7, "projecta"))
+    .from(".fim h2", { y: 80, opacity: 0, duration: .5, ease: "back.out(1.6)" }, at(7, "projecta") + .35)
+    .from(".fim .sub", { opacity: 0, y: 20, duration: .4 }, at(7, "encontrado") - .2)
+    .from(".fim .wpp", { y: 60, opacity: 0, scale: .8, duration: .45, ease: "back.out(2)" }, at(7, "chama") - .1)
+    .to(".fim .wpp", { scale: 1.05, duration: .3, yoyo: true, repeat: 3, ease: "sine.inOut" }, at(7, "whatsapp") + .3)
+    .from(".fim .arroba", { opacity: 0, duration: .4 }, at(7, "whatsapp"))
+    .to({}, { duration: .1 }, 32.9);
+
+  legendas(tl);
+};
+</script>
+<script src="../../../scripts/video/kit.js"></script>
+</body>
+</html>
