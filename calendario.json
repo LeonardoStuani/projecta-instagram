@@ -52,9 +52,12 @@
     "legenda": "media/05-projecta-gestao/legenda.txt",
     "data": "2026-11-23",
     "hora": "18:00",
-    "status": "aprovado",
+    "status": "publicado",
     "substitui": "#3 Reel \"Gerencie seu escritório\" (arquivar o antigo depois de publicar)",
-    "pilar": "bastidores"
+    "pilar": "bastidores",
+    "media_id": "18101332139401937",
+    "link": "https://www.instagram.com/p/DgGKC-olhy_/",
+    "publicado_em": "2026-11-23 16:42"
   },
   {
     "id": "06-antes-depois",
