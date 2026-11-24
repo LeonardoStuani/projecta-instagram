@@ -77,17 +77,21 @@
     "pilar": "prova"
   },
   {
-    "id": "17-reel-mesa-posta",
-    "tipo": "reel",
+    "id": "22-novidades",
+    "tipo": "carrossel",
     "arquivos": [
-      "17-reel-mesa-posta/reel-mesa-posta.mp4"
+      "22-novidades/slide-01.jpg",
+      "22-novidades/slide-02.jpg",
+      "22-novidades/slide-03.jpg",
+      "22-novidades/slide-04.jpg",
+      "22-novidades/slide-05.jpg",
+      "22-novidades/slide-06.jpg"
     ],
-    "legenda": "media/17-reel-mesa-posta/legenda.txt",
+    "legenda": "media/22-novidades/legenda.txt",
     "data": "2026-11-26",
     "hora": "18:00",
     "status": "pendente",
-    "pilar": "Mesa Posta",
-    "voz": "pt-BR-AntonioNeural"
+    "pilar": "novidade"
   },
   {
     "id": "08-dica-planilha",
@@ -126,6 +130,19 @@
     "pilar": "dica"
   },
   {
+    "id": "17-reel-mesa-posta",
+    "tipo": "reel",
+    "arquivos": [
+      "17-reel-mesa-posta/reel-mesa-posta.mp4"
+    ],
+    "legenda": "media/17-reel-mesa-posta/legenda.txt",
+    "data": "2026-12-01",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "Mesa Posta",
+    "voz": "pt-BR-AntonioNeural"
+  },
+  {
     "id": "16-reel-gestao",
     "tipo": "reel",
     "arquivos": [
@@ -156,22 +173,17 @@
     "observacao": "Confirme que projectatech.com.br está no ar antes de aprovar (o vídeo mostra o domínio). Vídeo sem áudio: para mais alcance, publique pelo app com um áudio em alta."
   },
   {
-    "id": "18-mesa-posta-bloquinho",
-    "tipo": "carrossel",
+    "id": "21-reel-link-da-bio",
+    "tipo": "reel",
     "arquivos": [
-      "18-mesa-posta-bloquinho/slide-01.jpg",
-      "18-mesa-posta-bloquinho/slide-02.jpg",
-      "18-mesa-posta-bloquinho/slide-03.jpg",
-      "18-mesa-posta-bloquinho/slide-04.jpg",
-      "18-mesa-posta-bloquinho/slide-05.jpg",
-      "18-mesa-posta-bloquinho/slide-06.jpg",
-      "18-mesa-posta-bloquinho/slide-07.jpg"
+      "21-reel-link-da-bio/reel-link-da-bio.mp4"
     ],
-    "legenda": "media/18-mesa-posta-bloquinho/legenda.txt",
+    "legenda": "media/21-reel-link-da-bio/legenda.txt",
     "data": "2026-12-03",
     "hora": "18:00",
     "status": "pendente",
-    "pilar": "Mesa Posta"
+    "pilar": "novidade",
+    "voz": "pt-BR-AntonioNeural"
   },
   {
     "id": "14-reel-3-sinais",
@@ -187,22 +199,35 @@
     "observacao": "Reel animado (sem gravar). Vídeo sem áudio: se puder, publique pelo app com um áudio em alta. Mesmo tema do carrossel 13, uma semana antes."
   },
   {
-    "id": "11-planilha-de-uma-pessoa",
+    "id": "18-mesa-posta-bloquinho",
     "tipo": "carrossel",
     "arquivos": [
-      "11-planilha-de-uma-pessoa/slide-01.jpg",
-      "11-planilha-de-uma-pessoa/slide-02.jpg",
-      "11-planilha-de-uma-pessoa/slide-03.jpg",
-      "11-planilha-de-uma-pessoa/slide-04.jpg",
-      "11-planilha-de-uma-pessoa/slide-05.jpg",
-      "11-planilha-de-uma-pessoa/slide-06.jpg",
-      "11-planilha-de-uma-pessoa/slide-07.jpg"
+      "18-mesa-posta-bloquinho/slide-01.jpg",
+      "18-mesa-posta-bloquinho/slide-02.jpg",
+      "18-mesa-posta-bloquinho/slide-03.jpg",
+      "18-mesa-posta-bloquinho/slide-04.jpg",
+      "18-mesa-posta-bloquinho/slide-05.jpg",
+      "18-mesa-posta-bloquinho/slide-06.jpg",
+      "18-mesa-posta-bloquinho/slide-07.jpg"
     ],
-    "legenda": "media/11-planilha-de-uma-pessoa/legenda.txt",
+    "legenda": "media/18-mesa-posta-bloquinho/legenda.txt",
     "data": "2026-12-07",
     "hora": "18:00",
     "status": "pendente",
-    "pilar": "dica"
+    "pilar": "Mesa Posta"
+  },
+  {
+    "id": "20-reel-procurei-no-google",
+    "tipo": "reel",
+    "arquivos": [
+      "20-reel-procurei-no-google/reel-procurei-no-google.mp4"
+    ],
+    "legenda": "media/20-reel-procurei-no-google/legenda.txt",
+    "data": "2026-12-08",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "oferta",
+    "voz": "pt-BR-AntonioNeural"
   },
   {
     "id": "12-case-organizacao",
@@ -241,6 +266,24 @@
     "pilar": "Mesa Posta"
   },
   {
+    "id": "11-planilha-de-uma-pessoa",
+    "tipo": "carrossel",
+    "arquivos": [
+      "11-planilha-de-uma-pessoa/slide-01.jpg",
+      "11-planilha-de-uma-pessoa/slide-02.jpg",
+      "11-planilha-de-uma-pessoa/slide-03.jpg",
+      "11-planilha-de-uma-pessoa/slide-04.jpg",
+      "11-planilha-de-uma-pessoa/slide-05.jpg",
+      "11-planilha-de-uma-pessoa/slide-06.jpg",
+      "11-planilha-de-uma-pessoa/slide-07.jpg"
+    ],
+    "legenda": "media/11-planilha-de-uma-pessoa/legenda.txt",
+    "data": "2026-12-11",
+    "hora": "18:00",
+    "status": "pendente",
+    "pilar": "dica"
+  },
+  {
     "id": "13-sinais-do-site",
     "tipo": "carrossel",
     "arquivos": [
@@ -253,7 +296,7 @@
       "13-sinais-do-site/slide-07.jpg"
     ],
     "legenda": "media/13-sinais-do-site/legenda.txt",
-    "data": "2026-12-11",
+    "data": "2026-12-14",
     "hora": "18:00",
     "status": "pendente",
     "pilar": "dica"
@@ -265,7 +308,7 @@
       "15-reel-planilha/reel-planilha.mp4"
     ],
     "legenda": "media/15-reel-planilha/legenda.txt",
-    "data": "2026-12-14",
+    "data": "2026-12-16",
     "hora": "18:00",
     "status": "pendente",
     "pilar": "dica",

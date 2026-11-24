@@ -1,0 +1,48 @@
+{
+  "titulo": "Novidades da Projecta",
+  "dias": [
+    {
+      "n": 1, "data": "2026-11-26", "titulo": "Novidade: 3 lançamentos", "pasta": "dia-1-novidades",
+      "horario": "18h30 (o carrossel de novidades sai às 18h)", "postado": false,
+      "depois": "Para quem votou em qualquer opção: \"Oi, [nome]! Vi seu voto na enquete. Quer que eu te mostre funcionando? Leva 10 minutos, pelo WhatsApp mesmo.\"",
+      "quadros": [
+        {"n": 1, "img": "01.png", "adesivo": "Localização: Lages, SC", "sobre": "Abre a semana avisando que tem novidade.", "tela": {"fundo": "dark", "kick": "Novidade", "titulo": "A Projecta lançou *3 coisas novas* este mês.", "sub": "Te mostro em 30 segundos."}},
+        {"n": 2, "img": "02.png", "sobre": "As três novidades numa tela só.", "tela": {"kick": "O que chegou", "titulo": "Pra empresa *daqui de Lages:*", "tam": "m", "lista": ["Mesa Posta: comanda no celular", "Link da bio no endereço da sua empresa", "Portal pra acompanhar o seu Instagram"]}},
+        {"n": 3, "img": "03.png", "adesivo": "Enquete: Mesa Posta / Link da bio / Portal", "sobre": "Quem votar é a lista do direct.", "tela": {"kick": "Responde aí", "titulo": "Qual delas *faz falta* na sua empresa?", "tam": "g"}},
+        {"n": 4, "img": "04.png", "adesivo": "Link: Ver o post", "sobre": "Leva para o carrossel do feed.", "tela": {"fundo": "dark", "kick": "No feed agora", "titulo": "Os 3 lançamentos *explicados* no post de hoje.", "nota": "Arrasta pro lado no carrossel."}}
+      ]
+    },
+    {
+      "n": 2, "data": "2026-12-01", "titulo": "Mesa Posta", "pasta": "dia-2-mesa-posta",
+      "horario": "12h00 (o Reel do Mesa Posta sai às 18h)", "postado": false,
+      "depois": "Para quem respondeu a caixinha: \"Oi, [nome]! Posso montar uma demonstração do Mesa Posta com o seu cardápio? É gratuito.\"",
+      "quadros": [
+        {"n": 1, "img": "01.png", "adesivo": "Localização: Lages, SC", "sobre": "A dor de sexta à noite.", "tela": {"fundo": "dark", "kick": "Sexta, casa cheia", "titulo": "E o pedido do bloquinho *sumiu.*", "sub": "Acontece em quase todo bar e lanchonete."}},
+        {"n": 2, "img": "02.png", "sobre": "Como o Mesa Posta resolve.", "tela": {"kick": "Mesa Posta", "titulo": "A comanda *no celular* do garçom.", "tam": "m", "lista": ["Lançou na mesa, já está na conta", "Sem aplicativo pra instalar", "Fecha no Pix, cartão ou dinheiro", "O dono vê o dia de onde estiver"]}},
+        {"n": 3, "img": "03.png", "adesivo": "Caixinha: O que mais trava na sua noite?", "sobre": "Caixinha de perguntas: cada resposta vira conversa.", "tela": {"kick": "Conta pra gente", "titulo": "O que mais *trava* na sua noite?", "tam": "g"}},
+        {"n": 4, "img": "04.png", "adesivo": "Link: Ver o Mesa Posta", "link": "https://projectatech.com.br/mesa-posta", "sobre": "Leva para a página do produto.", "tela": {"fundo": "dark", "kick": "Hoje às 18h", "titulo": "O Reel do *Mesa Posta* funcionando.", "nota": "projectatech.com.br/mesa-posta"}}
+      ]
+    },
+    {
+      "n": 3, "data": "2026-12-03", "titulo": "Link da bio", "pasta": "dia-3-link-da-bio",
+      "horario": "12h00 (o Reel do link da bio sai às 18h)", "postado": false,
+      "depois": "Para quem votou \"Linktree\" ou \"Nada\": \"Oi, [nome]! Quer ver como ficaria o link da bio da [empresa] no endereço de vocês?\"",
+      "quadros": [
+        {"n": 1, "img": "01.png", "sobre": "A dor do link da bio.", "tela": {"fundo": "dark", "kick": "Link da bio", "titulo": "Uma lista de *botões iguais* não vende.", "sub": "O cliente abre, não sabe onde tocar e vai embora."}},
+        {"n": 2, "img": "02.png", "adesivo": "Link: Ver o nosso", "link": "https://projectatech.com.br/links", "sobre": "Mostra o da Projecta funcionando.", "tela": {"kick": "O nosso", "titulo": "Mostra o que importa *de cara:*", "tam": "m", "lista": ["Uma ação clara no topo", "Os serviços por ícone", "Um projeto real", "WhatsApp com a mensagem pronta"]}},
+        {"n": 3, "img": "03.png", "adesivo": "Enquete: Linktree / Site / Nada", "sobre": "Quem votar Linktree ou Nada é a lista do direct.", "tela": {"kick": "Responde aí", "titulo": "Hoje o link da sua bio *leva pra onde?*", "tam": "g"}}
+      ]
+    },
+    {
+      "n": 4, "data": "2026-12-04", "titulo": "Portal do cliente", "pasta": "dia-4-portal",
+      "horario": "12h00 ou 18h30", "postado": false,
+      "depois": "Para quem respondeu \"Eu mesmo\": \"Oi, [nome]! Quer ver como funciona o portal? Te mostro com um perfil de exemplo.\"",
+      "quadros": [
+        {"n": 1, "img": "01.png", "sobre": "Quem cuida do Instagram da empresa.", "tela": {"fundo": "dark", "kick": "Instagram da empresa", "titulo": "Quem cuida *do seu* hoje?", "sub": "Dono, sobrinho, agência ou ninguém?"}},
+        {"n": 2, "img": "02.png", "sobre": "O que o portal do cliente faz.", "tela": {"kick": "Portal do cliente", "titulo": "Tudo do seu Instagram *no celular:*", "tam": "m", "lista": ["Vê como o perfil vai ficar", "Aprova ou pede ajuste em cada post", "Baixa os Stories da semana", "Envia fotos e vídeos pra equipe"]}},
+        {"n": 3, "img": "03.png", "adesivo": "Enquete: Eu mesmo / Alguém da equipe / Ninguém", "sobre": "Quem responder \"Eu mesmo\" é a lista do direct.", "tela": {"kick": "Responde aí", "titulo": "Quem posta *por aí?*", "tam": "g"}},
+        {"n": 4, "img": "04.png", "sobre": "Chamada final para o WhatsApp.", "tela": {"fundo": "dark", "kick": "Quer ver?", "titulo": "Manda *NOVIDADE* no WhatsApp.", "nota": "(49) 99959-2640"}}
+      ]
+    }
+  ]
+}

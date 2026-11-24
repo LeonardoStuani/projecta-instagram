@@ -1,0 +1,19 @@
+# Carrossel: Novidades da Projecta (Mesa Posta, link da bio, portal do cliente)
+
+```
+Novidade na Projecta: três lançamentos pra empresa daqui de Lages.
+
+1️⃣ Mesa Posta: o sistema de comandas no celular. O garçom lança o pedido na mesa e ele já cai na conta. No caixa, junta as mesas e fecha no Pix, cartão ou dinheiro.
+
+2️⃣ Link da bio que vende: uma página no endereço da sua empresa, com uma ação clara no topo, os serviços, um projeto real e o WhatsApp com a mensagem pronta. O da nossa bio já é assim.
+
+3️⃣ Portal do cliente: quem tem o Instagram com a Projecta acompanha tudo pelo celular. Vê como o perfil vai ficar, aprova os posts, pede ajuste e envia fotos.
+
+Qual dos três faz falta na sua empresa? Responde com o número aqui embaixo.
+
+Quer ver funcionando? Manda NOVIDADE no WhatsApp: link na bio.
+
+#Lages #LagesSC #SerraCatarinense #EmpresaLocal #Projecta
+```
+
+Sem preço e sem número inventado. Mesa Posta: projectatech.com.br/mesa-posta. Link da bio: projectatech.com.br/links. O portal do cliente é o online do painel (/c/<cliente>).

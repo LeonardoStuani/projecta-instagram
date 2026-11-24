@@ -1,0 +1,11 @@
+{
+  "pilar": "novidade",
+  "slides": [
+    {"fundo": "dark", "kick": "Novidade na Projecta", "palavra": "Novo.", "gancho": "3 coisas que a Projecta lançou pra empresa daqui."},
+    {"num": "1", "titulo": "*Mesa Posta:* a comanda no celular.", "tam": "m", "texto": "O garçom lança o pedido na mesa e ele já cai na conta. No caixa, junta as mesas e fecha no Pix, cartão ou dinheiro.", "nota": "Para pastelaria, lanchonete, bar e restaurante."},
+    {"num": "2", "titulo": "Link da bio *que vende.*", "texto": "Uma página no endereço da sua empresa: ação clara no topo, serviços, um projeto real e o WhatsApp com a mensagem pronta.", "caixa": {"rotulo": "Veja", "texto": "Toca no link da nossa bio. É ele funcionando."}},
+    {"num": "3", "titulo": "Seu Instagram *na palma da mão.*", "tam": "m", "texto": "Quem tem o Instagram com a Projecta acompanha tudo num portal: vê como o perfil vai ficar, aprova os posts, pede ajuste e envia fotos.", "nota": "Sem planilha, sem perder mensagem no WhatsApp."},
+    {"kick": "Feito em Lages", "titulo": "Tudo pensado pra *quem atende* o cliente.", "tam": "m", "lista": ["Abre no celular, sem instalar aplicativo", "No endereço da sua empresa", "Suporte de quem está aqui na Serra"]},
+    {"fundo": "laranja", "kick": "Agora você", "titulo": "Qual dos 3 *faz falta* aí?", "texto": "Responde com o número nos comentários. A gente te mostra funcionando.", "pill": "NOVIDADE no WhatsApp"}
+  ]
+}
