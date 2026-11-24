@@ -8,7 +8,7 @@
       "titulo": "Antes e depois",
       "pasta": "dia-1-antes-depois",
       "horario": "12h00 (o carrossel antes e depois sai às 18h)",
-      "postado": false,
+      "postado": true,
       "depois": "Para quem votou \"Planilha\" ou \"Caderno\": \"Oi, [nome]! Vi seu voto. O que mais dá trabalho aí hoje: orçamento, cliente ou financeiro? Se quiser, te mostro como ficaria num sistema.\"",
       "quadros": [
         {
