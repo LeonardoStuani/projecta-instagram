@@ -1,0 +1,94 @@
+{
+ "voz": "pt-BR-AntonioNeural",
+ "bpm": 118,
+ "drop": 2.2,
+ "fim": 25.5,
+ "corte_batida": 22.6,
+ "falas": [
+  {
+   "t": 0.2,
+   "texto": "Seu cliente te achou no Google."
+  },
+  {
+   "t": 2.3,
+   "texto": "Esse é o site que ele abre."
+  },
+  {
+   "t": 4.5,
+   "texto": "Abre em menos de dois segundos."
+  },
+  {
+   "t": 6.6,
+   "texto": "Serviços e prazos, já na primeira tela."
+  },
+  {
+   "t": 9.5,
+   "texto": "Case real: Eixo Sul, aqui de Lages."
+  },
+  {
+   "t": 12.1,
+   "texto": "Sistema pronto, rodando na Eixo Sul."
+  },
+  {
+   "t": 14.3,
+   "texto": "Orçamento? Um toque, e cai no WhatsApp."
+  },
+  {
+   "t": 17.2,
+   "texto": "Proposta em 24 horas, feita pro seu negócio."
+  },
+  {
+   "t": 20.2,
+   "texto": "Próximo passo: análise gratuita, no link da bio."
+  },
+  {
+   "t": 22.7,
+   "texto": "Seu próximo cliente te acha no Google."
+  }
+ ],
+ "sfx": [
+  {
+   "t": 1.7,
+   "tipo": "clique",
+   "g": 0.7
+  },
+  {
+   "t": 2.2,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 6.5,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 9.4,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 12,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 14.2,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 15.5,
+   "tipo": "clique",
+   "g": 0.7
+  },
+  {
+   "t": 17.1,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 20,
+   "tipo": "impacto",
+   "g": 0.6
+  },
+  {
+   "t": 22.6,
+   "tipo": "whoosh"
+  }
+ ]
+}

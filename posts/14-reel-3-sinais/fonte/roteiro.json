@@ -1,0 +1,84 @@
+{
+ "voz": "pt-BR-AntonioNeural",
+ "bpm": 120,
+ "drop": 3.2,
+ "fim": 26,
+ "corte_batida": 23,
+ "falas": [
+  {
+   "t": 0.3,
+   "texto": "Três sinais de que o seu site perde cliente."
+  },
+  {
+   "t": 3.3,
+   "texto": "Um: abra o seu site no 4G."
+  },
+  {
+   "t": 5.6,
+   "texto": "Demorou? O cliente já foi embora."
+  },
+  {
+   "t": 9.1,
+   "texto": "Dois: conte os toques até o WhatsApp."
+  },
+  {
+   "t": 12.7,
+   "texto": "Mais de um já é demais."
+  },
+  {
+   "t": 15.1,
+   "texto": "Três: mostre a primeira tela por cinco segundos."
+  },
+  {
+   "t": 18,
+   "texto": "Ninguém entendeu o que você faz? O cliente também não."
+  },
+  {
+   "t": 21.5,
+   "texto": "Quantos dos três o seu site tem?"
+  },
+  {
+   "t": 23.4,
+   "texto": "Comenta o número. Análise gratuita no link da bio."
+  }
+ ],
+ "sfx": [
+  {
+   "t": 3.2,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 9,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 10,
+   "tipo": "clique",
+   "g": 0.7
+  },
+  {
+   "t": 10.9,
+   "tipo": "clique",
+   "g": 0.7
+  },
+  {
+   "t": 11.8,
+   "tipo": "clique",
+   "g": 0.7
+  },
+  {
+   "t": 12.7,
+   "tipo": "clique",
+   "g": 0.7
+  },
+  {
+   "t": 15,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 21.4,
+   "tipo": "impacto",
+   "g": 0.7
+  }
+ ]
+}

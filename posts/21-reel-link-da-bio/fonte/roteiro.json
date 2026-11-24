@@ -1,0 +1,26 @@
+{
+ "voz": "pt-BR-AntonioNeural",
+ "bpm": 112,
+ "drop": 8.2,
+ "fim": 27.0,
+ "corte_batida": 19.3,
+ "falas": [
+  {"t": 0.3, "texto": "Esse é o link da bio da maioria das empresas."},
+  {"t": 3.3, "texto": "Um monte de botão igual. O cliente não sabe onde tocar... e vai embora."},
+  {"t": 8.2, "texto": "Agora, olha esse."},
+  {"t": 9.7, "texto": "Uma ação clara no topo. Os serviços, por ícone. E um projeto real, entregue."},
+  {"t": 15.7, "texto": "E o WhatsApp sempre à mão, com a mensagem pronta."},
+  {"t": 19.5, "texto": "Projecta. Link da bio que vende, no endereço da sua empresa. Chama no WhatsApp."}
+ ],
+ "sfx": [
+  {"t": 0.25, "tipo": "clique", "g": 0.5},
+  {"t": 3.3, "tipo": "whoosh"},
+  {"t": 6.9, "tipo": "impacto", "g": 0.5},
+  {"t": 8.2, "tipo": "subida", "g": 0.5},
+  {"t": 8.2, "tipo": "impacto", "g": 0.8},
+  {"t": 9.6, "tipo": "whoosh"},
+  {"t": 17.1, "tipo": "clique", "g": 0.8},
+  {"t": 19.3, "tipo": "whoosh"},
+  {"t": 25.0, "tipo": "ding", "g": 0.45}
+ ]
+}

@@ -31,6 +31,12 @@ short spoken lines (`fonte/roteiro.json`), voiced by the default Brazilian voice
 (`pt-BR-AntonioNeural`, `scripts/video/voz.py`), with word-by-word captions from
 `scripts/video/trilha.py`. Do not use Kokoro voices (foreign accent). Model: `posts/16-reel-gestao`.
 
+**Rule (Leo, 2026-11-24): a video with text on screen must have audio.** `renderizar.mjs` now muxes
+`fonte/audio/mix.wav` automatically and stops with an error if it is missing (`--mudo` only for
+silent stories). Before sending a reel to a client or scheduling it, check the MP4 is not silent
+(ffmpeg `volumedetect`: mean_volume above about -40 dB). Reels 02 and 07 of the Eixo Sul and 10, 14 and 15
+of @projectatech had shipped silent before this fix.
+
 ## Before you write
 
 1. Read `~/.claude/instagram/voice.md` if it exists. That is the user's voice

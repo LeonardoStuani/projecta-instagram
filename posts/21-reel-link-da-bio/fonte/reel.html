@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Reel · Link da bio que vende (narrado)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../scripts/video/base.css">
+<style>
+/* Cena 1 ("antes") é ILUSTRAÇÃO genérica de link de lista: sem marca de nenhuma ferramenta.
+   Cena 2 ("depois") é captura real de projectatech.com.br/links (assets/links-pagina.png e barra-whatsapp.png). */
+body{background:#0B0B0D}
+.fundo{position:absolute;inset:-200px;background:
+  radial-gradient(900px 700px at 85% 8%,#F04E1230,transparent 60%),
+  radial-gradient(800px 800px at 5% 95%,#1D4ED82a,transparent 60%),#0B0B0D}
+.gradeF{position:absolute;inset:-200px;opacity:.22;background-image:linear-gradient(#ffffff10 2px,transparent 2px),linear-gradient(90deg,#ffffff10 2px,transparent 2px);background-size:90px 90px}
+
+/* celular */
+.cel{position:absolute;left:170px;top:290px;width:740px;height:1200px;border-radius:92px;background:#1a1a1d;padding:20px;
+  box-shadow:0 90px 160px -40px #000,0 0 0 3px #ffffff1f inset,0 0 0 2px #2c2c31;z-index:3}
+.tela{position:relative;width:100%;height:100%;border-radius:74px;overflow:hidden;background:#fff;color:#1b1b1f;font-family:var(--sans)}
+.ilha{position:absolute;left:50%;top:26px;width:190px;height:52px;margin-left:-95px;border-radius:30px;background:#000;z-index:30}
+.cena{position:absolute;inset:0;opacity:0}
+
+/* ANTES: link de lista genérico */
+.antes{background:#ecebf0}
+.lista{position:absolute;left:0;right:0;top:0;padding:130px 50px 0;text-align:center}
+.lista .av{width:150px;height:150px;border-radius:50%;margin:0 auto;background:linear-gradient(135deg,#d7cfc4,#a39a8d)}
+.lista .arr{margin-top:20px;font-weight:700;font-size:32px}
+.lista .bio{margin-top:6px;font-size:24px;color:#8a8a92}
+.lista .bt{margin-top:22px;height:96px;border-radius:20px;background:#fff;box-shadow:0 0 0 2px #dcdce2;display:grid;place-items:center;font-size:30px;font-weight:600;color:#3a3a42}
+.lista .bt:first-of-type{margin-top:36px}
+.pergunta{position:absolute;padding:20px 30px;border-radius:999px;background:#1b1b1f;color:#fff;font-weight:700;font-size:36px;box-shadow:0 20px 40px -10px #0007;z-index:5;opacity:0;white-space:nowrap}
+.pergunta span{color:#F04E12}
+.sair{position:absolute;inset:0;background:#0B0B0D;opacity:0;z-index:6;display:grid;place-items:center}
+.sair b{font-family:var(--display);font-weight:800;font-size:80px;color:#fff;letter-spacing:-.04em}
+.toque{position:absolute;width:110px;height:110px;border-radius:50%;background:#1b1b1f40;border:6px solid #fff;z-index:9;opacity:0;margin:-55px 0 0 -55px;box-shadow:0 0 0 4px #1b1b1f99,0 12px 30px #0006}
+
+/* DEPOIS: página real */
+.depois{background:#F3F1EA}
+.depois .pag{position:absolute;left:0;top:64px;width:100%;display:block}
+.depois .barra{position:absolute;left:28px;bottom:28px;width:644px;display:block;border-radius:30px;z-index:4}
+.anel{position:absolute;border:6px solid #F04E12;border-radius:34px;opacity:0;z-index:5;box-shadow:0 0 0 9999px #0B0B0D00}
+
+/* chat */
+.chat{position:absolute;inset:0;background:#ece5dc;opacity:0;z-index:7}
+.chat .top{height:200px;background:#1F7A4D;padding:110px 40px 0;display:flex;align-items:center;gap:22px;color:#fff;font-weight:700;font-size:32px}
+.chat .top i{width:64px;height:64px;border-radius:50%;background:#ffffff55}
+.chat .top small{display:block;font-size:22px;font-weight:500;opacity:.8}
+.campo{position:absolute;left:24px;right:24px;bottom:40px;display:flex;align-items:flex-end;gap:16px}
+.campo .txt{flex:1;background:#fff;border-radius:40px;padding:24px 30px;font-size:30px;line-height:1.3;color:#1b1b1f}
+.campo .env{width:96px;height:96px;border-radius:50%;background:#1F7A4D;display:grid;place-items:center;flex:none}
+.bal{position:absolute;right:34px;top:300px;max-width:560px;padding:24px 30px;border-radius:30px;border-bottom-right-radius:8px;font-size:32px;line-height:1.3;background:#d8f7c6;box-shadow:0 2px 0 #0001;opacity:0}
+.bal small{display:block;text-align:right;font-size:22px;color:#6b8f6b;margin-top:6px}
+
+/* "agora, olha esse" */
+.vc{position:absolute;inset:0;background:#0B0B0Dcc;display:grid;place-items:center;z-index:9;opacity:0;pointer-events:none;text-align:center}
+.vc b{font-family:var(--display);font-weight:800;font-size:170px;line-height:.92;letter-spacing:-.06em;color:#fff;text-shadow:0 20px 60px #000}
+
+/* textos */
+.titulo{position:absolute;left:64px;right:64px;top:110px;font-family:var(--display);font-weight:800;font-size:76px;line-height:1;letter-spacing:-.045em;z-index:6;color:#fff;opacity:0}
+.leg{position:absolute;left:40px;right:40px;top:1530px;height:260px;z-index:8;display:flex;align-items:center;justify-content:center}
+.chunk{position:absolute;left:0;right:0;text-align:center;font-family:var(--display);font-weight:800;font-size:88px;line-height:1.05;letter-spacing:-.045em;color:#fff;opacity:0;text-shadow:0 6px 24px #000c}
+.chunk b{display:inline-block;font-weight:800;padding:0 .12em;border-radius:.18em;margin:0 .02em}
+.chunk b.on{background:var(--hl,#F04E12);color:#fff;text-shadow:none}
+.rod{position:absolute;left:0;right:0;bottom:56px;text-align:center;font-size:24px;color:#8a8a92;z-index:6}
+
+/* final em papel */
+.fim{position:absolute;inset:0;background:var(--paper);z-index:7;clip-path:circle(0% at 50% 50%);color:var(--ink)}
+.fim .logo{position:absolute;left:72px;top:240px;display:flex;align-items:center;gap:22px;font-family:var(--display);font-weight:700;font-size:64px;letter-spacing:-.05em}
+.fim .logo i{color:var(--accent);font-style:normal}
+.fim h2{position:absolute;left:72px;right:60px;top:400px;font-family:var(--display);font-weight:800;font-size:160px;line-height:.9;letter-spacing:-.06em}
+.fim .sub{position:absolute;left:72px;top:900px;font-size:42px;color:#55524b}
+.fim .wpp{position:absolute;left:72px;top:1040px;display:flex;align-items:center;gap:22px;padding:30px 44px;border-radius:999px;background:#1F7A4D;color:#fff;font-weight:700;font-size:52px;box-shadow:0 24px 40px -16px #1F7A4Daa}
+.fim .arroba{position:absolute;left:72px;top:1220px;font-size:36px;font-weight:600;color:#55524b}
+.leg.escuro .chunk{color:var(--ink);text-shadow:none}
+.leg.escuro .chunk b.on{color:#fff}
+</style>
+</head>
+<body>
+<div class="palco">
+  <div class="mundo" id="mundo">
+    <div class="fundo"></div><div class="gradeF"></div>
+
+    <div class="cel" id="cel"><div class="tela" id="tela">
+      <div class="ilha"></div>
+
+      <!-- 1. ANTES: link de lista (ilustração) -->
+      <div class="cena antes" id="cAntes">
+        <div class="lista" id="lista">
+          <div class="av"></div>
+          <div class="arr">@sua.empresa</div>
+          <div class="bio">Links</div>
+          <div class="bt">Site</div><div class="bt">WhatsApp</div><div class="bt">Instagram</div><div class="bt">Catálogo</div>
+          <div class="bt">Promoções</div><div class="bt">Localização</div><div class="bt">Avaliações</div><div class="bt">Contato</div>
+          <div class="bt">Trabalhe conosco</div>
+        </div>
+        <div class="pergunta" id="q1" style="left:120px;top:560px">Qual eu toco<span>?</span></div>
+        <div class="toque" id="dedo"></div>
+        <div class="sair" id="sair"><b>✕</b></div>
+      </div>
+
+      <!-- 2. DEPOIS: projectatech.com.br/links (captura real) -->
+      <div class="cena depois" id="cDepois">
+        <img class="pag" id="pag" src="assets/links-pagina.png" alt="">
+        <div class="anel" id="anel"></div>
+        <img class="barra" id="barra" src="assets/barra-whatsapp.png" alt="">
+        <div class="toque" id="dedo2"></div>
+        <div class="chat" id="chat">
+          <div class="top"><i></i><div>Projecta Tech<small>online</small></div></div>
+          <div class="bal" id="bal">Oi! Vim pelo Instagram da Projecta Tech e queria conversar sobre um projeto.<small>✓✓</small></div>
+          <div class="campo" id="campo">
+            <div class="txt">Oi! Vim pelo Instagram da Projecta Tech e queria conversar sobre um projeto.</div>
+            <div class="env"><svg width="44" height="44" viewBox="0 0 24 24"><path fill="#fff" d="M3 20.5 21 12 3 3.5l.01 6.6L15 12 3.01 13.9z"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+    <div class="vc" id="vc"><b>Agora,<br><em>olha esse.</em></b></div>
+  </div>
+
+  <p class="titulo" id="titulo"></p>
+  <div class="leg" id="leg"></div>
+  <div class="fim" id="fim">
+    <div class="logo"><svg viewBox="0 0 40 48" width="62" height="74"><path d="M2 14 L20 2 L38 14 V26 L14 40 V46 H2 Z M14 20 V31 L26 23 V18 L20 14 Z" fill="#111110" fill-rule="evenodd"/><path d="M16 36 L38 24 V36 L27 46 Z" fill="#F04E12"/></svg><span>projecta<i>.</i>tech</span></div>
+    <h2>Link da bio que <em>vende.</em></h2>
+    <p class="sub">No endereço da sua empresa.</p>
+    <div class="wpp"><svg width="58" height="58" viewBox="0 0 24 24"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.6-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.6-.1 1.2Z"/></svg>(49) 99959-2640</div>
+    <p class="arroba">@projectatech · veja o nosso no link da bio</p>
+  </div>
+  <div class="rod" id="rod">1ª cena ilustrativa · a 2ª página é real: projectatech.com.br/links</div>
+  <div class="grao"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="legendas.js"></script>
+<script>
+const LEG = window.LEG;
+const at = (f, w) => LEG.find((x) => x.fala === f && x.w.toLowerCase().startsWith(w)).s;
+const PONT = /[,.?!:…]+$/;
+
+function legendas(tl) {
+  const blocos = []; let b = [];
+  LEG.forEach((w, i) => {
+    b.push(w);
+    const prox = LEG[i + 1];
+    if (b.length === 3 || PONT.test(w.w) || !prox || prox.fala !== w.fala) { blocos.push(b); b = []; }
+  });
+  const box = document.getElementById("leg");
+  blocos.forEach((bl, k) => {
+    const el = document.createElement("div");
+    el.className = "chunk";
+    el.innerHTML = bl.map((w) => `<b>${w.w.replace(PONT, "")}</b>`).join(" ");
+    box.appendChild(el);
+    const ini = bl[0].s - 0.04, fim = (blocos[k + 1] && blocos[k + 1][0].s - 0.04 < bl.at(-1).e + 0.5) ? blocos[k + 1][0].s - 0.04 : bl.at(-1).e + 0.25;
+    tl.fromTo(el, { opacity: 0, y: 40, scale: .86 }, { opacity: 1, y: 0, scale: 1, duration: .16, ease: "back.out(2.4)" }, ini)
+      .set(el, { opacity: 0 }, fim);
+    [...el.children].forEach((c, j) => {
+      tl.set(c, { className: "on" }, bl[j].s).set(c, { className: "" }, bl[j].e)
+        .fromTo(c, { scale: 1.12 }, { scale: 1, duration: .18, ease: "power2.out" }, bl[j].s);
+    });
+  });
+}
+
+function titulo(tl, html, t0, t1) {
+  const el = document.getElementById("titulo");
+  tl.call(() => { el.innerHTML = html; }, null, t0 - .01)
+    .fromTo(el, { opacity: 0, y: 50 }, { immediateRender: false, opacity: 1, y: 0, duration: .4, ease: "back.out(1.8)" }, t0)
+    .to(el, { opacity: 0, y: -30, duration: .22 }, t1);
+}
+
+// página real: 390 px de CSS viram 700 px na tela do celular
+const K = 700 / 390;
+const rolar = (cssY) => -cssY * K;
+// anel de destaque sobre um trecho da página (coordenadas CSS da página, já com a rolagem aplicada)
+const anel = (x, y, w, h, scroll) => ({ left: x * K - 8, top: 64 + (y - scroll) * K - 8, width: w * K + 16, height: h * K + 16 });
+
+window.montar = (tl) => {
+  // ---------- 0–8,1 s: ANTES — lista de botões iguais ----------
+  tl.fromTo("#cel", { y: 900, rotate: 8, scale: .9 }, { y: 0, rotate: 0, scale: 1, duration: .7, ease: "expo.out" }, 0)
+    .set("#cAntes", { opacity: 1 }, 0)
+    .from("#lista .bt", { opacity: 0, y: 30, duration: .3, stagger: .08 }, .4)
+    .from("#rod", { opacity: 0, duration: .4 }, .6);
+  titulo(tl, "O link da bio de <em>quase todo mundo.</em>", .35, 3.15);
+
+  tl.to("#lista", { y: -260, duration: 3.2, ease: "power1.inOut" }, 3.3)
+    .fromTo("#cel", { scale: 1 }, { scale: 1.06, duration: 4.6, ease: "none" }, 3.3)
+    // dedo indeciso: passa por vários botões e não toca em nenhum
+    .fromTo("#dedo", { opacity: 0, left: 520, top: 760 }, { opacity: 1, duration: .25 }, 4.0)
+    .to("#dedo", { left: 200, top: 600, duration: .55, ease: "power2.inOut" }, 4.3)
+    .to("#dedo", { left: 480, top: 880, duration: .55, ease: "power2.inOut" }, 4.9)
+    .to("#dedo", { left: 300, top: 1000, duration: .5, ease: "power2.inOut" }, 5.5)
+    .to("#dedo", { left: 420, top: 720, duration: .5, ease: "power2.inOut" }, 6.05)
+    .fromTo("#q1", { opacity: 0, scale: .4 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(3)" }, at(2, "sabe") - .1)
+    .to("#q1", { x: "+=6", duration: .05, repeat: 5, yoyo: true }, at(2, "tocar") + .2)
+    .to("#dedo", { opacity: 0, duration: .2 }, at(2, "embora") - .3)
+    .to(".lista", { filter: "grayscale(1) blur(3px)", duration: .4 }, at(2, "embora") - .2)
+    .fromTo("#sair", { opacity: 0 }, { opacity: .85, duration: .35 }, at(2, "embora"))
+    .from("#sair b", { scale: 0, rotate: -90, duration: .35, ease: "back.out(2)" }, at(2, "embora"));
+  titulo(tl, "Botão igual. <em>Cliente perdido.</em>", 3.35, 8.0);
+
+  // ---------- 8,2–9,6 s: "Agora, olha esse." ----------
+  tl.to("#cel", { scale: 1, duration: .3, ease: "power3.out" }, 8.1)
+    .to("#rod", { opacity: 0, duration: .3 }, 8.1)
+    .to("#mundo", { x: 10, duration: .05, repeat: 7, yoyo: true, ease: "none" }, 8.2)
+    .fromTo("#vc", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: .3, ease: "expo.out" }, 8.2)
+    .set("#cAntes", { opacity: 0 }, 8.6)
+    .set("#cDepois", { opacity: 1 }, 8.6)
+    .to("#vc", { opacity: 0, scale: .85, duration: .25 }, 9.35);
+
+  // ---------- 9,6–15,6 s: DEPOIS — rola a página real ----------
+  const tAcao = at(4, "ação"), tServ = at(4, "serviços"), tProj = at(4, "projeto");
+  tl.fromTo("#cel", { scale: 1 }, { scale: 1.08, duration: 6, ease: "none" }, 9.6)
+    // uma ação clara no topo: anel no botão laranja
+    .set("#anel", anel(38, 296, 314, 84, 0), tAcao - .2)
+    .fromTo("#anel", { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: .3, ease: "back.out(2)" }, tAcao - .2)
+    .to("#anel", { opacity: 0, duration: .2 }, tServ - .45)
+    // serviços por ícone
+    .to("#pag", { y: rolar(470), duration: .7, ease: "power3.inOut" }, tServ - .4)
+    .set("#anel", anel(14, 520, 362, 330, 470), tServ + .3)
+    .fromTo("#anel", { opacity: 0, scale: 1.08 }, { immediateRender: false, opacity: 1, scale: 1, duration: .3, ease: "back.out(2)" }, tServ + .3)
+    .to("#anel", { opacity: 0, duration: .2 }, tProj - .5)
+    // projeto real (Eixo Sul)
+    .to("#pag", { y: rolar(1040), duration: .7, ease: "power3.inOut" }, tProj - .45)
+    .set("#anel", anel(14, 1102, 362, 226, 1040), tProj + .25)
+    .fromTo("#anel", { opacity: 0, scale: 1.08 }, { immediateRender: false, opacity: 1, scale: 1, duration: .3, ease: "back.out(2)" }, tProj + .25)
+    .to("#anel", { opacity: 0, duration: .2 }, 15.5);
+  titulo(tl, "Uma ação. <em>No topo.</em>", 9.75, tServ - .45);
+  titulo(tl, "Serviços <em>por ícone.</em>", tServ - .3, tProj - .5);
+  titulo(tl, "Projeto <em>real.</em>", tProj - .35, 15.55);
+
+  // ---------- 15,7–19,2 s: WhatsApp à mão, mensagem pronta ----------
+  const tWa = at(5, "whatsapp"), tMsg = at(5, "mensagem");
+  tl.to("#cel", { scale: 1, duration: .4 }, 15.6)
+    .to("#barra", { scale: 1.06, duration: .22, yoyo: true, repeat: 3, ease: "sine.inOut" }, tWa)
+    .fromTo("#dedo2", { opacity: 0, left: 560, top: 1200 }, { opacity: 1, left: 560, top: 1080, duration: .35, ease: "power2.out" }, tWa + .5)
+    .to("#dedo2", { scale: .8, duration: .1, yoyo: true, repeat: 1 }, 17.05)
+    .to("#barra", { scale: .95, duration: .1, yoyo: true, repeat: 1 }, 17.05)
+    .to("#dedo2", { opacity: 0, duration: .15 }, 17.3)
+    .fromTo("#chat", { opacity: 0, y: 200 }, { opacity: 1, y: 0, duration: .3, ease: "power3.out" }, 17.3)
+    .from("#campo .txt", { opacity: 0, x: -30, duration: .3 }, 17.55)
+    .to("#campo .env", { scale: .85, duration: .1, yoyo: true, repeat: 1 }, tMsg + .45)
+    .to("#campo .txt", { opacity: 0, duration: .15 }, tMsg + .55)
+    .fromTo("#bal", { opacity: 0, y: 600 }, { opacity: 1, y: 0, duration: .35, ease: "back.out(1.4)" }, tMsg + .55);
+  titulo(tl, "WhatsApp <em>à mão.</em>", 15.7, 19.2);
+
+  // ---------- 19,3–27 s: fechamento em papel ----------
+  tl.to("#fim", { clipPath: "circle(150% at 50% 50%)", duration: .6, ease: "power3.in" }, 19.0)
+    .set("#leg", { "--hl": "#F04E12" }, 19.4)
+    .set("#leg", { className: "leg escuro" }, 19.4)
+    .from(".fim .logo", { y: 40, opacity: 0, duration: .4, ease: "back.out(1.6)" }, at(6, "projecta") - .1)
+    .from(".fim h2", { y: 80, opacity: 0, duration: .5, ease: "back.out(1.6)" }, at(6, "link") - .1)
+    .from(".fim .sub", { opacity: 0, y: 20, duration: .4 }, at(6, "endereço") - .2)
+    .from(".fim .wpp", { y: 60, opacity: 0, scale: .8, duration: .45, ease: "back.out(2)" }, at(6, "chama") - .1)
+    .to(".fim .wpp", { scale: 1.05, duration: .3, yoyo: true, repeat: 3, ease: "sine.inOut" }, at(6, "whatsapp") + .3)
+    .from(".fim .arroba", { opacity: 0, duration: .4 }, at(6, "whatsapp"))
+    .to({}, { duration: .1 }, 26.9);
+
+  legendas(tl);
+};
+</script>
+<script src="../../../scripts/video/kit.js"></script>
+</body>
+</html>

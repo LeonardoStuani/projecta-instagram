@@ -1,0 +1,80 @@
+{
+ "voz": "pt-BR-AntonioNeural",
+ "bpm": 118,
+ "drop": 3.2,
+ "fim": 22.5,
+ "corte_batida": 19.5,
+ "falas": [
+  {
+   "t": 0.3,
+   "texto": "Sua empresa roda numa planilha?"
+  },
+  {
+   "t": 3.3,
+   "texto": "Cheia de abas."
+  },
+  {
+   "t": 5.1,
+   "texto": "E só uma pessoa sabe mexer."
+  },
+  {
+   "t": 8.1,
+   "texto": "Aí essa pessoa tira férias..."
+  },
+  {
+   "t": 10.7,
+   "texto": "e ninguém acha mais nada."
+  },
+  {
+   "t": 13.1,
+   "texto": "Um sistema guarda o processo."
+  },
+  {
+   "t": 15.1,
+   "texto": "Não a memória de uma pessoa."
+  },
+  {
+   "t": 18.2,
+   "texto": "Sua planilha já virou um problema? Peça sua análise gratuita: link na bio."
+  }
+ ],
+ "sfx": [
+  {
+   "t": 3.2,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 8,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 8.9,
+   "tipo": "impacto",
+   "g": 0.6
+  },
+  {
+   "t": 13,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 14,
+   "tipo": "clique",
+   "g": 0.6
+  },
+  {
+   "t": 14.25,
+   "tipo": "clique",
+   "g": 0.6
+  },
+  {
+   "t": 14.5,
+   "tipo": "clique",
+   "g": 0.6
+  },
+  {
+   "t": 18.1,
+   "tipo": "subida",
+   "g": 0.5
+  }
+ ]
+}
