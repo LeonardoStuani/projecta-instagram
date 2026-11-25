@@ -71,8 +71,8 @@
     ],
     "legenda": "media/06-antes-depois/legenda.txt",
     "data": "2026-11-25",
-    "hora": "18:00",
-    "status": "pendente",
+    "hora": "10:00",
+    "status": "aprovado",
     "substitui": "#8 Antes/depois (arquivar o antigo depois de publicar)",
     "pilar": "prova"
   },

@@ -80,7 +80,7 @@
       "titulo": "Quanto tempo vai na planilha?",
       "pasta": "dia-2-tempo",
       "horario": "12h00 ou 18h30",
-      "postado": false,
+      "postado": true,
       "depois": "Para quem votou \"Mais de 3h\": \"Oi, [nome]! Mais de 3 horas por semana é bastante. Me conta o que toma mais tempo que eu te digo o que dá pra automatizar.\"",
       "quadros": [
         {
