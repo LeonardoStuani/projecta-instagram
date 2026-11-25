@@ -72,9 +72,12 @@
     "legenda": "media/06-antes-depois/legenda.txt",
     "data": "2026-11-25",
     "hora": "10:00",
-    "status": "aprovado",
+    "status": "publicado",
     "substitui": "#8 Antes/depois (arquivar o antigo depois de publicar)",
-    "pilar": "prova"
+    "pilar": "prova",
+    "media_id": "18087426824336251",
+    "link": "https://www.instagram.com/p/DgKueHUHOLX/",
+    "publicado_em": "2026-11-25 11:18"
   },
   {
     "id": "22-novidades",
