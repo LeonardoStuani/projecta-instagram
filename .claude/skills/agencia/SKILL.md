@@ -82,8 +82,18 @@ Modelo pronto, feito para o @projectatech em 20/11/2026: `PLANO/documentos/plano
 ## Pedidos do portal
 `clientes/<slug>/pedidos.json`: cada pedido tem tipo, texto, data_desejada, arquivos e conversa.
 "Produzir os pedidos novos" = para cada pedido com status `novo`: ler o texto, olhar as fotos em
-`clientes/<slug>/pedidos/<id>/`, criar o post com elas e avisar o Leo para mudar a situação para
+`clientes/<slug>/pedidos/<id>/`, criar o material com elas e avisar o Leo para mudar a situação para
 "Em produção" e responder o cliente pelo painel. Não escreva no pedidos.json sem o Leo pedir.
+
+**O campo `tipo` do pedido manda no formato. Produza só aquele formato, uma peça só, nada a mais**
+(sem "bônus" de carrossel, reel ou stories extras):
+- `story` → 1 story (1 quadro, ou 1 por foto se ele mandou várias e o texto pedir sequência) em
+  `posts/stories-AAAA-MM-DD/` com a data_desejada, só aquele dia. Sem legenda, sem hashtags.
+- `post` → 1 post no feed: foto única (até 2 fotos) ou carrossel (3+ fotos, ou se o texto pedir) + legenda.md.
+- `reel` → 1 Reel de montagem com os vídeos/fotos dele + legenda.md. Narração só se o texto pedir.
+- `sugestao` / `outro` → não produza nada ainda: resuma o pedido e proponha 1 formato ao Leo, esperando o OK.
+"Usar a foto como está" (ou similar no texto) = foto original sem arte por cima, só a legenda (no story, a foto pura).
+Data do calendário = `data_desejada` do pedido.
 
 ## Radar do ramo
 No painel (conta do cliente → Radar), o Leo cadastra contas de referência e palavras do ramo.
