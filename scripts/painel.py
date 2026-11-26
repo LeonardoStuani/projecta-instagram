@@ -83,6 +83,7 @@ def regras():
     slug = ig.CTX.get("slug")
     if not slug:
         return {"cta": CTA, "hashtags_fixas": HASH_FIXAS, "proibidas": PROIBIDAS, "promessas": PROMESSAS,
+                "cta_alternativo": r"\b(manda|chama)\b[^\n]*\bwhatsapp\b",
                 "palavras_busca": BUSCA, "max_hashtags": 5, "max_emojis": 1, "sem_preco": True, "pilares": PILARES,
                 "dica_busca": "site, sistema de gestão, Lages…"}
     return clientes.carregar(slug)["regras"]
@@ -111,8 +112,11 @@ def checar(texto, entrada=None):
     mx = int(R.get("max_hashtags") or 5)
     if len(tags) > mx:
         erros.append(f"{len(tags)} hashtags. O máximo é {mx}.")
-    if cta and cta not in low:
-        erros.append(f'Falta o CTA "{R.get("cta")}".')
+    # CTA alternativo aceito (voice.md: palavra-chave no WhatsApp, ex. "Manda MESA no WhatsApp: link na bio")
+    alt = R.get("cta_alternativo")
+    cta_alt_ok = bool(alt) and re.search(alt, low)
+    if cta and cta not in low and not cta_alt_ok:
+        erros.append(f'Falta o CTA "{R.get("cta")}" (ou "Manda PALAVRA no WhatsApp").')
     if not ig.CTX.get("slug"):
         for cliente, ok in aut_load().items():
             if not ok and cliente.lower() in low:
