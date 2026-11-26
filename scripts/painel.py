@@ -782,6 +782,19 @@ def _avisar_leo(titulo, texto):
         pass
 
 
+def _sincronizar_nuvem():
+    """Manda na hora para o portal online (Vercel/Supabase) o que mudou, sem esperar a tarefa de hora em hora."""
+    s = os.path.normpath(os.path.join(ROOT, "..", "..", "dashboard-projecta", "scripts", "sincronizar.mjs"))
+    if NUVEM or not os.path.exists(s):
+        return
+    try:
+        subprocess.Popen(["node", s], cwd=os.path.dirname(os.path.dirname(s)), stdin=subprocess.DEVNULL,
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                         creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    except OSError:
+        pass
+
+
 def _prompt_producao(slug, p, py):
     hoje = date.today().isoformat()
     pasta = f"clientes/{slug}"
@@ -870,6 +883,7 @@ def _concluir_producao(slug, pid, job):
         job["fim"] = agora()
         p["producao"] = {k: v for k, v in job.items() if k != "proc"}
         clientes.pedidos_salvar(slug, lista)
+    _sincronizar_nuvem()
 
 
 def _rodar_producao(slug, pid, cmd, env):
@@ -960,6 +974,7 @@ def pedido_produzir(b):
             "texto": "Recebemos seu pedido e já estamos produzindo. A prévia aparece aqui no portal, na aba Aprovar."})
     clientes.pedidos_salvar(slug, lista)
     threading.Thread(target=_rodar_producao, args=(slug, p["id"], cmd, env), daemon=True).start()
+    _sincronizar_nuvem()   # o "Recebemos" chega ao portal online em segundos
     return {"ok": True}
 
 
