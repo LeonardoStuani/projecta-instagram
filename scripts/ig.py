@@ -191,7 +191,14 @@ def publish_entry(e):
         try:
             urllib.request.urlopen(req, timeout=600).read()
         except urllib.error.HTTPError as err:
-            raise SystemExit(f"Falha no upload do vídeo: {err.read().decode(errors='replace')}")
+            # Upload direto recusado (ex.: ProcessingFailedError): a Meta baixa o vídeo pela URL pública do GitHub.
+            erro_upload = err.read().decode(errors="replace")
+            par2 = {k: v for k, v in par.items() if k != "upload_type"}
+            par2["video_url"] = media_url(files[0])
+            try:
+                cid = api("POST", f"{uid}/media", par2)["id"]
+            except SystemExit as e2:
+                raise SystemExit(f"Falha no upload do vídeo: {erro_upload} | e pela URL: {e2}")
         wait_ready(cid)
     elif len(files) == 1:
         cid = api("POST", f"{uid}/media", {"image_url": media_url(files[0]), "caption": cap})["id"]
