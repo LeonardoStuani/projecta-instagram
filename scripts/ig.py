@@ -167,6 +167,15 @@ def publish_entry(e):
     uid = user_id()
     cap = legenda(e)
     files = e["arquivos"]
+    if e["tipo"] == "story":  # um Story por quadro, na ordem; o link fica o do último
+        mid = None
+        for f in files[:10]:
+            cid = api("POST", f"{uid}/media", {"media_type": "STORIES", "image_url": media_url(f)})["id"]
+            wait_ready(cid)
+            mid = api("POST", f"{uid}/media_publish", {"creation_id": cid})["id"]
+        e.update(status="publicado", media_id=mid, link="",
+                 publicado_em=datetime.now(TZ).strftime("%Y-%m-%d %H:%M"))
+        return ""
     if e["tipo"] == "reel":
         par = {"media_type": "REELS", "upload_type": "resumable", "caption": cap, "share_to_feed": "true"}
         if e.get("capa_s"):  # segundo do vídeo usado como capa (quando o quadro 0 é escuro ou vazio)
@@ -253,6 +262,24 @@ def imprimir_checklist(leg):
     print("  'olhe' = confira na arte. 'X' = corrija antes de aprovar.\n")
 
 
+def story_1080(im):
+    """Quadro de Story 1080x1920: a foto inteira (sem corte) sobre ela mesma ampliada, bem desfocada e escurecida."""
+    from PIL import Image, ImageEnhance, ImageFilter
+    W, H = 1080, 1920
+    im = im.convert("RGB")
+    if im.size == (W, H):
+        return im
+    cobre = max(W / im.width, H / im.height)
+    fundo = im.resize((round(im.width * cobre / 8) + 1, round(im.height * cobre / 8) + 1), Image.BILINEAR)
+    fundo = fundo.filter(ImageFilter.GaussianBlur(6)).resize((round(im.width * cobre), round(im.height * cobre)), Image.BICUBIC)
+    l, t = (fundo.width - W) // 2, (fundo.height - H) // 2
+    fundo = ImageEnhance.Brightness(fundo.crop((l, t, l + W, t + H)).filter(ImageFilter.GaussianBlur(30))).enhance(0.55)
+    esc = min(W / im.width, H / im.height)
+    fr = im.resize((round(im.width * esc), round(im.height * esc)), Image.LANCZOS)
+    fundo.paste(fr, ((W - fr.width) // 2, (H - fr.height) // 2))
+    return fundo
+
+
 def cmd_preparar(a):
     from PIL import Image  # pip install pillow
     pasta = a[0].rstrip("/")
@@ -265,8 +292,15 @@ def cmd_preparar(a):
     os.makedirs(out, exist_ok=True)
     pngs = sorted(f for f in os.listdir(src) if f.startswith("slide-") and f.endswith(".png"))
     mp4 = sorted(f for f in os.listdir(src) if f.endswith(".mp4"))
+    stories = sorted(f for f in os.listdir(src) if f.startswith("story-") and f.lower().endswith((".png", ".jpg", ".jpeg", ".webp")))
     arquivos = []
-    if mp4:
+    if stories:  # Story: cada quadro vira 1080x1920 (foto inteira sobre fundo desfocado), sem legenda
+        for f in stories:
+            jpg = os.path.splitext(f)[0] + ".jpg"
+            story_1080(Image.open(os.path.join(src, f))).save(os.path.join(out, jpg), quality=95)
+            arquivos.append(f"{pid}/{jpg}")
+        tipo = "story"
+    elif mp4:
         import shutil
         shutil.copy(os.path.join(src, mp4[0]), os.path.join(out, mp4[0]))
         arquivos = [f"{pid}/{mp4[0]}"]

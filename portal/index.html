@@ -185,10 +185,10 @@ function conectarCard() {
 function phone(p, i, aberta) {
   const m = p.midia, cur = m[i] || "", v = /\.mp4$/i.test(cur);
   return `<div class="ph"><div class="ph-top"><span class="av">${esc((S.cliente.nome || "?").charAt(0).toUpperCase())}</span>${esc(S.cliente.arroba || "")}<span class="muted" style="font-weight:400;margin-left:auto;font-size:13px">${esc(S.cliente.cidade || "")}</span></div>
-    <div class="ph-media ${v ? "reel" : ""}">${v ? `<video src="${arq(cur)}" controls playsinline preload="metadata"></video>` : `<img src="${arq(cur)}" alt="Imagem ${i+1} de ${m.length}">`}
+    <div class="ph-media ${v || p.tipo === "story" ? "reel" : ""}">${v ? `<video src="${arq(cur)}" controls playsinline preload="metadata"></video>` : `<img src="${arq(cur)}" alt="Imagem ${i+1} de ${m.length}">`}
     ${m.length > 1 ? `<span class="ph-n">${i+1}/${m.length}</span>${i > 0 ? `<button class="ph-nav l" data-go="${i-1}" aria-label="Imagem anterior">‹</button>` : ""}${i < m.length-1 ? `<button class="ph-nav r" data-go="${i+1}" aria-label="Próxima imagem">›</button>` : ""}` : ""}</div>
     ${m.length > 1 ? `<div class="dots">${m.map((_, k) => `<i class="${k === i ? "on" : ""}"></i>`).join("")}</div>` : `<div style="height:8px"></div>`}
-    <div class="ph-cap ${aberta ? "" : "fechada"}"><b>${esc(S.cliente.arroba || "")}</b> ${esc(p.texto)}</div>${aberta ? "" : `<button class="mais">ver legenda inteira</button>`}</div>`;
+    ${p.tipo === "story" ? `<p class="muted" style="margin:0 12px 12px;font-size:13px">Story: some depois de 24 horas, sem legenda.</p>` : `<div class="ph-cap ${aberta ? "" : "fechada"}"><b>${esc(S.cliente.arroba || "")}</b> ${esc(p.texto)}</div>${aberta ? "" : `<button class="mais">ver legenda inteira</button>`}`}</div>`;
 }
 function montarPhone(el, p) {
   let i = 0, aberta = false;
@@ -202,7 +202,7 @@ const recado = p => [...(p.historico || [])].reverse().find(h => h.acao === "env
 function vAprovar() {
   const ps = S.posts.filter(p => p.status === "aguardando_cliente").sort((a, b) => (a.data || "9").localeCompare(b.data || "9"));
   $("#view").innerHTML = conectarCard() + (ps.length ? ps.map(p => `<article class="card" id="p-${esc(p.id)}">
-    <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><p class="tag">${p.tipo === "reel" ? "Reel" : p.tipo === "carrossel" ? "Carrossel" : "Post"} · sugerido para</p><h3 style="font-size:22px;margin-top:4px">${fmt(p.data)}${p.hora ? `, ${esc(p.hora)}` : ""}</h3></div><span class="status aguardando_cliente">Esperando você</span></div>
+    <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><p class="tag">${p.tipo === "reel" ? "Reel" : p.tipo === "carrossel" ? "Carrossel" : p.tipo === "story" ? "Story" : "Post"} · sugerido para</p><h3 style="font-size:22px;margin-top:4px">${fmt(p.data)}${p.hora ? `, ${esc(p.hora)}` : ""}</h3></div><span class="status aguardando_cliente">Esperando você</span></div>
     ${recado(p) && recado(p) !== "Enviado para aprovação." ? `<p class="recado"><b>Recado da agência:</b> ${esc(recado(p))}</p>` : ""}
     ${p.voz ? `<p class="recado">🔊 Este vídeo tem narração: ligue o som.</p>` : ""}
     <div class="phone-slot"></div>

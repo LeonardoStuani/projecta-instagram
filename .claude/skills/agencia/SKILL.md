@@ -95,6 +95,20 @@ Modelo pronto, feito para o @projectatech em 20/11/2026: `PLANO/documentos/plano
 "Usar a foto como está" (ou similar no texto) = foto original sem arte por cima, só a legenda (no story, a foto pura).
 Data do calendário = `data_desejada` do pedido.
 
+**Story de pedido entra no calendário (e no portal):** pasta `posts/<nn>-story-<nome>/` com `story-01.png`
+(`story-02.png`... se for sequência), arte pelo `marca/story.html` ou a foto do cliente copiada. O `preparar` vê os
+`story-*` e cria a entrada `tipo: "story"` (ajusta para 1080x1920 com fundo desfocado, sem legenda). O cliente aprova
+no portal e o agendador publica pela API (`media_type=STORIES`, precisa de URL pública como as imagens; sem adesivos).
+As semanas de Stories (`stories-AAAA-MM-DD/`) continuam como antes, postadas à mão.
+
+**Botão "Produzir com Claude" (aba Pedidos):** o clique do Leo autoriza produzir E enviar aquela peça ao cliente.
+O painel roda `claude -p` com esta skill (só escreve em `clientes/<slug>/`, só roda `scripts/`), avisa o cliente
+("Recebemos..."), e quando o Claude grava `pedidos/<id>/resultado.json` (`{"post","resumo","recado"}` ou `{"erro"}`)
+o painel confere (checar), muda o post para `aguardando_cliente`, marca o pedido como concluído, responde o cliente
+e manda notificação do Windows ao Leo. Se a checagem falhar, fica "revisar" e nada vai ao cliente.
+Rodando assim, sozinho: não pergunte nada, não escreva em pedidos.json, não mude status, termine no `preparar`.
+Log em `pedidos/<id>/producao.log`. Agendar e publicar continuam sendo clique do Leo.
+
 ## Radar do ramo
 No painel (conta do cliente → Radar), o Leo cadastra contas de referência e palavras do ramo.
 O radar consulta as contas com a conexão da agência. Ganchos: adapte a estrutura, nunca copie.
