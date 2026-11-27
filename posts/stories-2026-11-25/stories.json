@@ -153,7 +153,7 @@
       "titulo": "Os riscos da planilha",
       "pasta": "dia-3-riscos",
       "horario": "12h00 (o carrossel dos 5 riscos sai às 18h)",
-      "postado": false,
+      "postado": true,
       "depois": "Para quem votou \"Já aconteceu\": \"Oi, [nome]! Perder dado de planilha dói. Quer que eu te mostre como fica com backup automático?\"",
       "quadros": [
         {

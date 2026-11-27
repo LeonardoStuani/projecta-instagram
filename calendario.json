@@ -111,9 +111,12 @@
     "legenda": "media/08-dica-planilha/legenda.txt",
     "data": "2026-11-27",
     "hora": "18:00",
-    "status": "pendente",
+    "status": "publicado",
     "substitui": "#25 \"5 desvantagens do CSV\" (arquivar o antigo depois de publicar)",
-    "pilar": "dica"
+    "pilar": "dica",
+    "media_id": "18110561897206969",
+    "link": "https://www.instagram.com/p/DgQWaMtlq4X/",
+    "publicado_em": "2026-11-27 15:43"
   },
   {
     "id": "07-por-que-sistema",
